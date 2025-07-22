@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Admin | taisinh.vn – Quản trị hệ thống</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    body { background: #f6f8f7; }
+    .admin-sidebar { background: #3b5d50; color: #fff; min-height: 100vh; padding: 32px 0 0 0; }
+    .admin-sidebar h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; text-align: center; }
+    .admin-sidebar ul { list-style: none; padding: 0; }
+    .admin-sidebar li { margin-bottom: 18px; }
+    .admin-sidebar a { color: #fff; font-weight: 500; display: block; padding: 10px 32px; border-radius: 8px; transition: background 0.2s; }
+    .admin-sidebar a.active, .admin-sidebar a:hover { background: #2a4237; text-decoration: none; }
+    .admin-content { padding: 40px 32px; }
+    .admin-table th, .admin-table td { vertical-align: middle; }
+    .admin-table th { background: #e9ecef; }
+    .admin-table tr { background: #fff; }
+    .admin-table tr:nth-child(even) { background: #f6f8f7; }
+    .admin-section-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; }
+    .admin-btn { border-radius: 8px; padding: 8px 18px; font-weight: 500; }
+    .admin-btn + .admin-btn { margin-left: 8px; }
+    .modal-header { background: #3b5d50; color: #fff; }
+    .form-label { font-weight: 500; }
+    .form-control, .form-select { border-radius: 8px; }
+    .admin-nav-mobile { display: none; }
+    @media (max-width: 991.98px) {
+      .admin-sidebar { min-height: unset; padding: 16px 0; }
+      .admin-content { padding: 24px 8px; }
+      .admin-nav-mobile { display: block; margin-bottom: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-lg-2 admin-sidebar d-none d-lg-block">
+        <h2>Admin Panel</h2>
+        <ul>
+          <li><a href="#orders" class="active" data-tab="orders">Quản lý đơn hàng</a></li>
+          <li><a href="#blogs" data-tab="blogs">Quản lý blog</a></li>
+          <li><a href="#sort" data-tab="sort">Sắp xếp & Danh mục</a></li>
+          <li><a href="#users" data-tab="users">Quản lý người dùng</a></li>
+        </ul>
+      </nav>
+      <div class="col-lg-10 admin-content">
+        <div class="admin-nav-mobile mb-3">
+          <select class="form-select" id="adminTabMobile">
+            <option value="orders">Quản lý đơn hàng</option>
+            <option value="blogs">Quản lý blog</option>
+            <option value="sort">Sắp xếp & Danh mục</option>
+            <option value="users">Quản lý người dùng</option>
+          </select>
+        </div>
+        <div id="tab-orders" class="admin-tab">
+          <div class="admin-section-title">Quản lý đơn hàng</div>
+          <button class="admin-btn btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#orderModal">+ Thêm đơn hàng</button>
+          <table class="table admin-table">
+            <thead>
+              <tr>
+                <th>Mã đơn</th>
+                <th>Khách hàng</th>
+                <th>Sản phẩm</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#1001</td>
+                <td>Nguyễn Văn A</td>
+                <td>Ngọn gió đầu mùa</td>
+                <td><span class="badge bg-warning text-dark">Chờ xử lý</span></td>
+                <td>23/07/2025</td>
+                <td>
+                  <button class="admin-btn btn btn-primary btn-sm">Sửa</button>
+                  <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#1002</td>
+                <td>Trần Thị B</td>
+                <td>Ký ức nhà kho cũ</td>
+                <td><span class="badge bg-success">Đã giao</span></td>
+                <td>22/07/2025</td>
+                <td>
+                  <button class="admin-btn btn btn-primary btn-sm">Sửa</button>
+                  <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tab-blogs" class="admin-tab d-none">
+          <div class="admin-section-title">Quản lý blog</div>
+          <button class="admin-btn btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#blogModal">+ Thêm bài viết</button>
+          <table class="table admin-table">
+            <thead>
+              <tr>
+                <th>Tiêu đề</th>
+                <th>Chuyên mục</th>
+                <th>Ngày đăng</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hành trình tái sinh – Câu chuyện cảm hứng</td>
+                <td>Cảm hứng sống xanh</td>
+                <td>20/07/2025</td>
+                <td><span class="badge bg-success">Hiển thị</span></td>
+                <td>
+                  <button class="admin-btn btn btn-primary btn-sm">Sửa</button>
+                  <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Ký ức của vật liệu cũ</td>
+                <td>Chuyện nghề</td>
+                <td>18/07/2025</td>
+                <td><span class="badge bg-secondary">Ẩn</span></td>
+                <td>
+                  <button class="admin-btn btn btn-primary btn-sm">Sửa</button>
+                  <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tab-sort" class="admin-tab d-none">
+          <div class="admin-section-title">Sắp xếp & Danh mục sản phẩm/blog</div>
+          <div class="mb-3 text-muted" style="font-size: 1rem;">Kéo thả để sắp xếp thứ tự danh mục. Có thể thêm, sửa, xoá danh mục sản phẩm hoặc blog. Thứ tự sẽ ảnh hưởng đến cách hiển thị trên website.</div>
+          <button class="admin-btn btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#categoryModal">+ Thêm danh mục</button>
+          <ul class="list-group" id="categoryList" style="max-width: 600px;">
+            <li class="list-group-item d-flex align-items-center justify-content-between" draggable="true" data-id="1">
+              <span><span class="handle me-2" style="cursor:grab; color:#3b5d50;"><i class="fa fa-bars"></i></span>Cảm hứng sống xanh</span>
+              <span>
+                <button class="admin-btn btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#categoryModal">Sửa</button>
+                <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+              </span>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between" draggable="true" data-id="2">
+              <span><span class="handle me-2" style="cursor:grab; color:#3b5d50;"><i class="fa fa-bars"></i></span>Chuyện nghề</span>
+              <span>
+                <button class="admin-btn btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#categoryModal">Sửa</button>
+                <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+              </span>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between" draggable="true" data-id="3">
+              <span><span class="handle me-2" style="cursor:grab; color:#3b5d50;"><i class="fa fa-bars"></i></span>Độc bản nghệ thuật</span>
+              <span>
+                <button class="admin-btn btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#categoryModal">Sửa</button>
+                <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div id="tab-users" class="admin-tab d-none">
+          <div class="admin-section-title">Quản lý người dùng</div>
+          <button class="admin-btn btn btn-success mb-3">+ Thêm người dùng</button>
+          <table class="table admin-table">
+            <thead>
+              <tr>
+                <th>Tên đăng nhập</th>
+                <th>Họ tên</th>
+                <th>Vai trò</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>admin</td>
+                <td>Quản trị viên</td>
+                <td>Super Admin</td>
+                <td><span class="badge bg-success">Hoạt động</span></td>
+                <td>
+                  <button class="admin-btn btn btn-primary btn-sm">Sửa</button>
+                  <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+                </td>
+              </tr>
+              <tr>
+                <td>user01</td>
+                <td>Nguyễn Văn C</td>
+                <td>Biên tập viên</td>
+                <td><span class="badge bg-warning text-dark">Chờ duyệt</span></td>
+                <td>
+                  <button class="admin-btn btn btn-primary btn-sm">Sửa</button>
+                  <button class="admin-btn btn btn-danger btn-sm">Xoá</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Thêm/Sửa Đơn Hàng -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderModalLabel">Thêm/Sửa đơn hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Khách hàng</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Sản phẩm</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Trạng thái</label>
+              <select class="form-select">
+                <option>Chờ xử lý</option>
+                <option>Đang giao</option>
+                <option>Đã giao</option>
+                <option>Đã huỷ</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Ngày tạo</label>
+              <input type="date" class="form-control">
+            </div>
+            <button class="admin-btn btn btn-primary">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Thêm/Sửa Blog -->
+  <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="blogModalLabel">Thêm/Sửa bài viết</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Tiêu đề</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Chuyên mục</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nội dung</label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Trạng thái</label>
+              <select class="form-select">
+                <option>Hiển thị</option>
+                <option>Ẩn</option>
+              </select>
+            </div>
+            <button class="admin-btn btn btn-primary">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Thêm/Sửa Danh mục -->
+  <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="categoryModalLabel">Thêm/Sửa danh mục</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Tên danh mục</label>
+              <input type="text" class="form-control" placeholder="Nhập tên danh mục">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Loại danh mục</label>
+              <select class="form-select">
+                <option>Sản phẩm</option>
+                <option>Blog</option>
+              </select>
+            </div>
+            <button class="admin-btn btn btn-primary">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Tab chuyển đổi
+    function showAdminTab(tab) {
+      document.querySelectorAll('.admin-tab').forEach(function(el) {
+        el.classList.add('d-none');
+      });
+      document.getElementById('tab-' + tab).classList.remove('d-none');
+      document.querySelectorAll('.admin-sidebar a').forEach(function(a) {
+        a.classList.remove('active');
+        if (a.getAttribute('data-tab') === tab) a.classList.add('active');
+      });
+      document.getElementById('adminTabMobile').value = tab;
+    }
+    document.querySelectorAll('.admin-sidebar a').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        showAdminTab(this.getAttribute('data-tab'));
+      });
+    });
+    document.getElementById('adminTabMobile').addEventListener('change', function() {
+      showAdminTab(this.value);
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  <script>
+    // Drag & drop sắp xếp danh mục
+    if (window.Sortable) {
+      new Sortable(document.getElementById('categoryList'), {
+        handle: '.handle',
+        animation: 150,
+        onEnd: function (evt) {
+          // TODO: Lưu lại thứ tự mới nếu cần
+          // alert('Thứ tự mới đã được thay đổi!');
+        }
+      });
+    }
+  </script>
+</body>
+</html> 

@@ -89,4 +89,6 @@
 	  });
 	}
 
+	// Đã xoá code tự động load địa chỉ tỉnh/thành/quận/huyện/phường/xã theo yêu cầu.
+
 })()

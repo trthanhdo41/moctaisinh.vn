@@ -21,7 +21,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+		<title>taisinh.vn – Nghệ thuật tái sinh từ vật liệu cũ, thủ công & cảm xúc</title>
 	</head>
 
 	<body class="home-page">
@@ -67,7 +67,7 @@
 							<div class="intro-excerpt">
 								<h1>Mỗi vật liệu cũ <span class="d-block">Một câu chuyện mới</span></h1>
 								<p class="mb-4">Chúng tôi mang đến sức sống mới cho gỗ vụn, tre cũ và vật liệu tự nhiên bị lãng quên — bằng đôi tay thủ công và tình yêu với thiên nhiên.</p>
-								<p><a href="shop.html" class="btn btn-secondary me-2">Xem Sản Phẩm</a><a href="about.html" class="btn btn-white-outline">Khám Phá Câu Chuyện</a></p>
+								<p><a href="shop.html" class="btn btn-secondary me-2">Xem Sản Phẩm</a><a href="blog.html" class="btn btn-white-outline">Khám Phá Câu Chuyện</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -89,7 +89,7 @@
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 						<h2 class="mb-4 section-title">Khi vật vô tri kể lại câu chuyện của đất.</h2>
 						<p class="mb-4">Gỗ mục, tre nứt, mảnh vụn tưởng như bỏ đi — dưới bàn tay con người, lại trở thành vật mang hồn. Mỗi sản phẩm là một lát cắt của thời gian, một lời thủ thỉ từ thiên nhiên.</p>
-						<p><a href="shop.html" class="btn">Khám phá vẻ đẹp tái sinh</a></p>
+						<p><a href="blog.html" class="btn">Khám phá vẻ đẹp tái sinh</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
@@ -213,7 +213,7 @@
 							<li>Mỗi món đồ là phiên bản duy nhất</li>
 							<li>Thân thiện với môi trường, hài hòa với thiên nhiên</li>
 						</ul>
-						<p><a href="#" class="btn">Khám phá hành trình tái sinh</a></p>
+						<p><a href="blog.html" class="btn">Khám phá hành trình tái sinh</a></p>
 					</div>
 				</div>
 			</div>
@@ -426,10 +426,9 @@
 						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">taisinh<span>.</span>vn</a></div>
 						<p class="mb-4">Cảm hứng từ Cúc Phương – nơi thiên nhiên hồi sinh và lan tỏa. Website được đồng hành & thiết kế bởi Thanh Độ, người kể chuyện của những vật liệu cũ.</p>
 						<ul class="list-unstyled custom-social">
-							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+							<li><a href="tel:0373566167" title="Gọi điện"><span class="fa fa-phone"></span></a></li>
+							<li><a href="https://zalo.me/0373566167" target="_blank" title="Zalo"><span class="fa fa-comment-dots"></span></a></li>
+							<li><a href="https://www.tiktok.com/@taisinh.vn" target="_blank" title="TikTok"><span class="fa fa-brands fa-tiktok"></span></a></li>
 						</ul>
 					</div>
 					<div class="col-lg-8">
@@ -484,6 +483,70 @@
 		</footer>
 		<!-- End Footer Section -->	
 
+		<!-- Nút nổi Call & Zalo -->
+		<style>
+		.fab-contact {
+		  position: fixed;
+		  right: 24px;
+		  bottom: 24px;
+		  z-index: 9999;
+		  display: flex;
+		  flex-direction: column;
+		  gap: 16px;
+		}
+		.fab-contact-btn {
+		  width: 56px;
+		  height: 56px;
+		  border-radius: 50%;
+		  background: #3b5d50;
+		  color: #fff;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  box-shadow: 0 4px 16px rgba(59,93,80,0.18);
+		  font-size: 28px;
+		  border: none;
+		  outline: none;
+		  cursor: pointer;
+		  transition: background 0.2s;
+		  animation: shakeFab 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+		  animation-iteration-count: infinite;
+		  animation-play-state: paused;
+		}
+		.fab-contact-btn.zalo-btn {
+		  background: #008fe5;
+		  padding: 0;
+		}
+		.fab-contact-btn.zalo-btn img {
+		  width: 32px;
+		  height: 32px;
+		}
+		@keyframes shakeFab {
+		  0% { transform: translateX(0); }
+		  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+		  20%, 40%, 60%, 80% { transform: translateX(6px); }
+		  100% { transform: translateX(0); }
+		}
+		</style>
+		<div class="fab-contact">
+		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện"><span class="fa fa-phone"></span></a>
+		  <a href="https://zalo.me/0373566167" class="fab-contact-btn zalo-btn" id="zaloFab" title="Zalo" target="_blank"><img src="images/Icon_of_Zalo.png" alt="Zalo"></a>
+		</div>
+		<script>
+		function loopShakeFab(btnId) {
+		  var btn = document.getElementById(btnId);
+		  function shake() {
+			btn.style.animationPlayState = 'running';
+			setTimeout(function() {
+			  btn.style.animationPlayState = 'paused';
+			  setTimeout(shake, 2000);
+			}, 500);
+		  }
+		  shake();
+		}
+		loopShakeFab('callFab');
+		loopShakeFab('zaloFab');
+		</script>
 
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/tiny-slider.js"></script>
