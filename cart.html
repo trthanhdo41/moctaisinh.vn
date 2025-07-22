@@ -1,10 +1,3 @@
-<!-- /*
-* Bootstrap 5
-* Template Name: Furni
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -154,15 +147,17 @@
                       <a href="shop.html" class="btn btn-outline-black btn-sm btn-block">Tiếp tục mua sắm</a>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="cart-message p-4 rounded-3" style="background: #f6f8f7; color: #3b5d50; font-size: 1.08rem; line-height: 1.7;">
-                        <strong>Thư gửi bạn đồng hành:</strong><br>
-                        Cảm ơn bạn đã lựa chọn những sản phẩm tái sinh – mỗi món đồ không chỉ là vật dụng, mà còn là một câu chuyện hồi sinh từ thiên nhiên, từ đôi tay và trái tim của người thợ. Chúng tôi tin rằng, giá trị thật sự không nằm ở giá tiền hay khuyến mãi, mà ở cảm xúc, sự sẻ chia và hành trình bền vững mà bạn cùng chúng tôi lan tỏa. <br>
-                        <em>Chúc bạn luôn tìm thấy cảm hứng và bình yên trong từng góc nhỏ của cuộc sống!</em>
+                  <section class="thankyou-card-container d-none d-md-block" style="margin: 32px 0 48px 0;">
+                    <div class="thankyou-card">
+                      <div class="thankyou-card-content">
+                        <p class="thankyou-card-logo">taisinh.vn gửi lời cảm ơn</p>
+                        <div class="thankyou-card-h6">Cảm ơn bạn đã đồng hành cùng Tái Sinh</div>
+                        <div class="thankyou-card-hover_content">
+                          <p>Mỗi đơn hàng của bạn là một sự sẻ chia, một nguồn cảm hứng để vật liệu cũ được hồi sinh thành tác phẩm mới. Chúng tôi trân trọng từng lựa chọn, từng câu chuyện mà bạn cùng chúng tôi lan tỏa. <br><em>Chúc bạn luôn tìm thấy niềm vui và cảm xúc trong từng sản phẩm thủ công của Tái Sinh!</em></p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </section>
                 </div>
                 <div class="col-md-6 pl-5">
                   <div class="row justify-content-end">
@@ -350,6 +345,97 @@
 		  20%, 40%, 60%, 80% { transform: translateX(6px); }
 		  100% { transform: translateX(0); }
 		}
+		.thankyou-card-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thankyou-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 22em;
+  max-width: 80%;
+  padding: 2em 0;
+  background: #FFF;
+  box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
+  transition: all 0.35s ease;
+}
+.thankyou-card::before, .thankyou-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: orange;
+  height: 4px;
+}
+.thankyou-card::before {
+  width: 0;
+  opacity: 0;
+  transition: opacity 0 ease, width 0 ease;
+  transition-delay: 0.5s;
+}
+.thankyou-card::after {
+  width: 100%;
+  background: white;
+  transition: width 0.5s ease;
+}
+.thankyou-card-content {
+  width: 18em;
+  max-width: 80%;
+}
+.thankyou-card-logo {
+  margin: 0 0 1em;
+  width: 10.625em;
+  transition: all 0.35s ease;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #3b5d50;
+  letter-spacing: 1px;
+}
+.thankyou-card-h6 {
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+}
+.thankyou-card-hover_content {
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(1em);
+  transition: all 0.55s ease;
+}
+.thankyou-card-hover_content p {
+  margin: 1.5em 0 0;
+  color: #6E6E70;
+  line-height: 1.4em;
+}
+.thankyou-card:hover {
+  width: 24em;
+  box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
+}
+.thankyou-card:hover::before {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease, width 0.5s ease;
+  transition-delay: 0;
+}
+.thankyou-card:hover::after {
+  width: 0;
+  opacity: 0;
+  transition: width 0 ease;
+}
+.thankyou-card:hover .thankyou-card-logo {
+  margin-bottom: 0.5em;
+}
+.thankyou-card:hover .thankyou-card-hover_content {
+  max-height: 10em;
+  transform: none;
+}
 		</style>
 		<div class="fab-contact">
 		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện"><span class="fa fa-phone"></span></a>
@@ -370,6 +456,7 @@
 		loopShakeFab('callFab');
 		loopShakeFab('zaloFab');
 		</script>
+	
 
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/tiny-slider.js"></script>

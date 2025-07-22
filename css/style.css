@@ -886,3 +886,16 @@ textarea {
   text-align: left;
   max-width: 540px;
 }
+
+@media (max-width: 767.98px) {
+  .thankyou-card-container {
+    margin-bottom: 56px !important;
+    width: 100%;
+  }
+  .thankyou-card {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 8px !important;
+    box-sizing: border-box;
+  }
+}
