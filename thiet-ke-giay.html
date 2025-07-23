@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=700, initial-scale=1.0">
+  <title>Thiết kế giấy cam kết Mộc Tái Sinh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;700&family=Lora:wght@400;700&family=Merriweather:wght@400;700&family=Oswald:wght@400;700&family=Nunito:wght@400;700&family=Quicksand:wght@400;700&family=Fira+Sans:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f7f3ed;
+      min-height: 100vh;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .paper-container {
+      width: 700px;
+      min-height: 1000px;
+      margin: 0 auto;
+      background-image: url('https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_0.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      box-shadow: 0 8px 32px rgba(80,60,30,0.12);
+      border-radius: 0;
+      padding: 56px 56px 48px 56px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0;
+    }
+    .header-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 18px;
+      margin-bottom: 8px;
+    }
+    .logo-img-wrap {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+    }
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .brand {
+      text-align: left;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #217a3b;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      width: 100%;
+      display: block;
+    }
+    .main-title {
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #217a3b;
+      margin-bottom: 18px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+    .main-title i {
+      color: #217a3b;
+      font-size: 1.5em;
+    }
+    .desc {
+      text-align: left;
+      font-size: 1.08rem;
+      color: #2d2d2d;
+      margin-bottom: 14px;
+      line-height: 1.6;
+      max-width: 100%;
+      word-break: break-word;
+    }
+    .desc.center {
+      text-align: center;
+    }
+    .desc.italic {
+      font-style: italic;
+      color: #3b5d50;
+    }
+    .desc.bold {
+      font-weight: 700;
+      color: #217a3b;
+      margin-bottom: 10px;
+    }
+    .highlight {
+      color: #217a3b;
+      font-weight: 700;
+      font-size: 1.08rem;
+    }
+    .columns {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 12px;
+    }
+    .col {
+      flex: 1 1 0;
+      min-width: 0;
+      font-size: 1.05rem;
+      color: #2d2d2d;
+      line-height: 1.6;
+    }
+    .col ul {
+      margin: 0 0 0 22px;
+      padding: 0;
+    }
+    .col ul li {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      color: #2d2d2d;
+      font-family: 'Montserrat', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .section-title {
+      color: #217a3b;
+      font-size: 1.13rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+    }
+    .section-title i {
+      font-size: 1.1em;
+      vertical-align: middle;
+      color: #217a3b;
+    }
+    .tinr-title {
+      text-align: center;
+      color: #217a3b;
+      font-size: 1.13rem;
+      font-weight: 700;
+      margin: 18px 0 6px 0;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .tinr-list {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #2d2d2d;
+      margin-bottom: 0;
+      line-height: 1.6;
+      list-style: none;
+      padding: 0;
+    }
+    .tinr-list li {
+      margin-bottom: 2px;
+    }
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 1.08rem;
+      color: #217a3b;
+      font-weight: 600;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .footer-desc {
+      text-align: center;
+      color: #444;
+      font-size: 1.01rem;
+      margin-top: 6px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .footer-icon {
+      color: #217a3b;
+      font-size: 1.3em;
+      margin: 0 6px;
+      vertical-align: middle;
+    }
+    .download-btn {
+      display: block;
+      margin: 32px auto 0 auto;
+      padding: 14px 40px;
+      background: #217a3b;
+      color: #fff;
+      font-size: 1.13rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(60,80,30,0.08);
+      transition: background 0.18s;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .download-btn:hover {
+      background: #2e5d34;
+    }
+    .brand-center-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 8px;
+      width: 100%;
+    }
+    .logo-img-nobg {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+    }
+    .footer, .footer-desc, .tinr-title, .tinr-list {
+      margin-bottom: 0;
+    }
+    .tinr-title, .tinr-list {
+      margin-top: 32px !important;
+    }
+    .paper-container {
+      min-height: 1100px;
+      height: auto;
+      padding-bottom: 60px;
+    }
+    .download-btns {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .bg-options {
+      margin: 32px auto 0 auto;
+      text-align: center;
+    }
+    .bg-options-label {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #217a3b;
+      margin-bottom: 8px;
+    }
+    .bg-thumbnails {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .bg-thumb {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      cursor: pointer;
+      transition: border 0.18s;
+    }
+    .bg-thumb:hover, .bg-thumbnails input:checked + .bg-thumb {
+      border: 2px solid #217a3b;
+    }
+    .option-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+      margin: 24px 0 18px 0;
+    }
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .option-label {
+      font-size: 1.01rem;
+      font-weight: 600;
+      color: #217a3b;
+      margin-bottom: 2px;
+    }
+    .font-select, .color-select {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid #c0c0c0;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+    .color-sample {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #e0e0e0;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    @media (max-width: 900px) {
+      .paper-container {
+        min-height: 140vw;
+        height: auto;
+        padding-bottom: 60px;
+      }
+      .columns {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .header-row {
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="paper-container" id="capture-area">
+    <div class="header-row">
+      <div class="logo-img-wrap"><img src="images/goc-cay.png" alt="Logo gốc cây" class="logo-img"></div>
+      <div class="brand-block">
+        <div class="brand">MỘC<br>TÁI SINH</div>
+      </div>
+    </div>
+    <div class="main-title"><i class="fa-solid fa-leaf"></i> CAM KẾT CỘNG ĐỒNG <i class="fa-solid fa-leaf"></i></div>
+    <div class="desc center" style="font-size:1.13rem; margin-bottom:12px;">Gỗ không chỉ để làm đồ đẹp – gỗ còn có thể gieo lại mầm sống</div>
+    <div class="desc">Từ những mảnh gỗ thừa bị bỏ lại sau mỗi lần cưa cắt, chúng tôi không muốn biến chúng thành tắc. Chúng tôi chọn đem <span class="highlight">chúng trở lại cuộc sống</span> – bằng những món đồ mộc mạc, nhỏ bé, tử tế.</div>
+    <div class="desc bold">NHƯNG HÀNH TRÌNH CỦA CHÚNG TÔI KHÔNG DỪNG LẠI Ở ĐÓ</div>
+    <div class="desc italic center" style="margin-bottom: 0px;">Tái sinh gỗ cũ – chỉ là bước đầu.</div>
+    <div class="desc italic center" style="margin-bottom: 18px;">Gieo lại cây mới – mới là điều dài lâu.</div>
+    <div class="columns">
+      <div class="col">
+        <div class="section-title"><i class="fa-solid fa-seedling"></i> MỘC TÁI SINH CAM KẾT:</div>
+        <div class="highlight" style="margin-bottom: 8px;">TRÍCH MỘT PHẦN DOANH THU ĐỂ TRỒNG LẠI CÂY XANH</div>
+        <ul>
+          <li>Khi dự án đạt được cây xanh cho các công viên đô thị, khu vui chơi công cộng, trường học…</li>
+          <li>Mọi người được hít thở không khí trong lành hơn</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="section-title"><i class="fa-solid fa-list-check"></i> CÁCH CHÚNG TÔI THỰC HIỆN</div>
+        <ul>
+          <li>Minh bạch công khai đợt trích lợi nhuận (kèm hóa đơn & hình ảnh trao tặng cây)</li>
+          <li>Kết nối với địa phương, trường học, hoặc các chiến dịch cộng đồng để trồng cây đúng chỗ – đúng người cần</li>
+          <li>Có thể mời khách hàng cùng tham gia buổi “trồng cây tái sinh” định kỳ (nếu đủ điều kiện tổ chức)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tinr-title"><i class="fa-solid fa-heart"></i> VÌ CHÚNG TÔI TIN RẰNG:</div>
+    <ul class="tinr-list">
+      <li>Mỗi món đồ bạn mua từ gỗ tái sinh – không chỉ cứu một mảnh gỗ khỏi bị lãng quên</li>
+      <li>Mà còn góp một phần xanh tươi vào cuộc sống này</li>
+    </ul>
+    <div class="footer">
+      <i class="fa-solid fa-seedling footer-icon"></i> Gỗ tái sinh – cây được trồng lại <i class="fa-solid fa-seedling footer-icon"></i>
+    </div>
+    <div class="footer-desc">Một vòng tròn tử tế<br>Từ thiên nhiên – qua bàn tay bạn – rồi trở về với thiên nhiên.</div>
+    <div class="bg-options">
+      <div class="bg-options-label">Chọn nền giấy:</div>
+      <div class="bg-thumbnails">
+        <label><input type="radio" name="bg-paper" value="bg1" checked><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_3.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg2"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_2.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg3"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_1.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg4"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_0.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg5"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg6"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_2.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg7"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg8"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_0.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg9"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/b5f92ce6-9b73-41e1-a3aa-10a7db85742f/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_2.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg10"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/b5f92ce6-9b73-41e1-a3aa-10a7db85742f/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg11"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/31aadde5-0ec4-4582-a71c-c46b65f51873/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_0.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg12"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/31aadde5-0ec4-4582-a71c-c46b65f51873/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg13"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/31aadde5-0ec4-4582-a71c-c46b65f51873/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_2.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg14"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/1aed12df-cfac-4e1b-b201-662d638cd3af/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg15"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/1aed12df-cfac-4e1b-b201-662d638cd3af/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg16"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/ef8cb561-85ba-4923-aa38-7729e7a07ec8/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_0.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg17"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/ef8cb561-85ba-4923-aa38-7729e7a07ec8/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg" class="bg-thumb"></label>
+        <label><input type="radio" name="bg-paper" value="bg18"><img src="https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/ef8cb561-85ba-4923-aa38-7729e7a07ec8/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg" class="bg-thumb"></label>
+      </div>
+    </div>
+    <div class="option-bar">
+      <div class="option-group">
+        <span class="option-label">Phông chữ:</span>
+        <select id="font-select" class="font-select">
+          <option value="Montserrat" style="font-family: 'Montserrat', Arial, sans-serif;">Montserrat</option>
+          <option value="Arial" style="font-family: Arial, sans-serif;">Arial</option>
+          <option value="Roboto" style="font-family: 'Roboto', Arial, sans-serif;">Roboto</option>
+          <option value="Lora" style="font-family: 'Lora', serif;">Lora</option>
+          <option value="Merriweather" style="font-family: 'Merriweather', serif;">Merriweather</option>
+          <option value="Oswald" style="font-family: 'Oswald', Arial, sans-serif;">Oswald</option>
+          <option value="Nunito" style="font-family: 'Nunito', Arial, sans-serif;">Nunito</option>
+          <option value="Quicksand" style="font-family: 'Quicksand', Arial, sans-serif;">Quicksand</option>
+          <option value="Fira Sans" style="font-family: 'Fira Sans', Arial, sans-serif;">Fira Sans</option>
+          <option value="Playfair Display" style="font-family: 'Playfair Display', serif;">Playfair Display</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <span class="option-label">Màu xanh:</span>
+        <select id="color-select" class="color-select">
+          <option value="#217a3b" data-sample="#217a3b"> <span class="color-sample" style="background:#217a3b;"></span> Xanh hiện tại</option>
+          <option value="#17612e" data-sample="#17612e"> <span class="color-sample" style="background:#17612e;"></span> Xanh đậm 1</option>
+          <option value="#104d24" data-sample="#104d24"> <span class="color-sample" style="background:#104d24;"></span> Xanh đậm 2</option>
+          <option value="#0a3a1a" data-sample="#0a3a1a"> <span class="color-sample" style="background:#0a3a1a;"></span> Xanh đậm 3</option>
+          <option value="#062a12" data-sample="#062a12;"></span> Xanh đậm 4</option>
+        </select>
+      </div>
+    </div>
+    <div class="download-btns">
+      <button class="download-btn" onclick="downloadImage()">Tải về JPG chất lượng cao</button>
+      <button class="download-btn" onclick="downloadPDF()">Tải về PDF</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    const bgMap = {
+      bg1: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_3.jpg',
+      bg2: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_2.jpg',
+      bg3: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_1.jpg',
+      bg4: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/381d1f2f-05a9-4d6b-9288-061b02e02b26/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_with_0.jpg',
+      bg5: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg',
+      bg6: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_2.jpg',
+      bg7: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg',
+      bg8: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/a3c3e1c2-2b1c-4189-9713-fa49509dd0f1/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_0.jpg',
+      bg9: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/b5f92ce6-9b73-41e1-a3aa-10a7db85742f/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_2.jpg',
+      bg10: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/b5f92ce6-9b73-41e1-a3aa-10a7db85742f/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg',
+      bg11: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/31aadde5-0ec4-4582-a71c-c46b65f51873/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_0.jpg',
+      bg12: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/31aadde5-0ec4-4582-a71c-c46b65f51873/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg',
+      bg13: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/31aadde5-0ec4-4582-a71c-c46b65f51873/segments/3:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_2.jpg',
+      bg14: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/1aed12df-cfac-4e1b-b201-662d638cd3af/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg',
+      bg15: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/1aed12df-cfac-4e1b-b201-662d638cd3af/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg',
+      bg16: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/ef8cb561-85ba-4923-aa38-7729e7a07ec8/segments/1:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_0.jpg',
+      bg17: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/ef8cb561-85ba-4923-aa38-7729e7a07ec8/segments/2:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_1.jpg',
+      bg18: 'https://cdn.leonardo.ai/users/e9081c47-2b0b-44d1-9e9b-5a0a2f6c6eed/generations/ef8cb561-85ba-4923-aa38-7729e7a07ec8/segments/4:4:1/Lucid_Realism_A_bright_and_clean_wood_grain_texture_paper_view_3.jpg',
+    };
+    document.querySelectorAll('input[name="bg-paper"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const paper = document.querySelector('.paper-container');
+        paper.style.backgroundImage = `url('${bgMap[this.value]}')`;
+        paper.style.backgroundSize = 'cover';
+        paper.style.backgroundPosition = 'center center';
+        paper.style.backgroundRepeat = 'no-repeat';
+      });
+    });
+    // Đặt nền mặc định khi load trang
+    document.addEventListener('DOMContentLoaded', function() {
+      const paper = document.querySelector('.paper-container');
+      paper.style.backgroundImage = `url('${bgMap.bg4}')`;
+      paper.style.backgroundSize = 'cover';
+      paper.style.backgroundPosition = 'center center';
+      paper.style.backgroundRepeat = 'no-repeat';
+      document.querySelector('input[name="bg-paper"][value="bg4"]').checked = true;
+    });
+    function downloadImage() {
+      const capture = document.getElementById('capture-area');
+      const bgOptions = capture.querySelector('.bg-options');
+      const optionBar = capture.querySelector('.option-bar');
+      const downloadBtns = capture.querySelector('.download-btns');
+      // Ẩn tạm thời mà không làm thay đổi layout
+      bgOptions.style.visibility = 'hidden';
+      bgOptions.style.position = 'absolute';
+      optionBar.style.visibility = 'hidden';
+      optionBar.style.position = 'absolute';
+      downloadBtns.style.visibility = 'hidden';
+      downloadBtns.style.position = 'absolute';
+      html2canvas(capture, { scale: 3, backgroundColor: null, useCORS: true }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'cam-ket-moc-tai-sinh.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.98);
+        link.click();
+        // Hiện lại
+        bgOptions.style.visibility = '';
+        bgOptions.style.position = '';
+        optionBar.style.visibility = '';
+        optionBar.style.position = '';
+        downloadBtns.style.visibility = '';
+        downloadBtns.style.position = '';
+      });
+    }
+    function downloadPDF() {
+      const capture = document.getElementById('capture-area');
+      const bgOptions = capture.querySelector('.bg-options');
+      const optionBar = capture.querySelector('.option-bar');
+      const downloadBtns = capture.querySelector('.download-btns');
+      bgOptions.style.visibility = 'hidden';
+      bgOptions.style.position = 'absolute';
+      optionBar.style.visibility = 'hidden';
+      optionBar.style.position = 'absolute';
+      downloadBtns.style.visibility = 'hidden';
+      downloadBtns.style.position = 'absolute';
+      html2pdf().set({
+        margin: 0,
+        filename: 'cam-ket-moc-tai-sinh.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'pt', format: [700, 1000], orientation: 'portrait' }
+      }).from(capture).save().then(() => {
+        bgOptions.style.visibility = '';
+        bgOptions.style.position = '';
+        optionBar.style.visibility = '';
+        optionBar.style.position = '';
+        downloadBtns.style.visibility = '';
+        downloadBtns.style.position = '';
+      });
+    }
+    // Font & color options
+    const fontSelect = document.getElementById('font-select');
+    const colorSelect = document.getElementById('color-select');
+    fontSelect.addEventListener('change', function() {
+      document.body.style.fontFamily = this.value + ', Arial, sans-serif';
+      document.querySelectorAll('.brand, .main-title, .section-title, .tinr-title, .footer, .footer-desc, .desc, .col, .tinr-list, .download-btn, .option-label').forEach(el => {
+        el.style.fontFamily = this.value + ', Arial, sans-serif';
+      });
+    });
+    colorSelect.addEventListener('change', function() {
+      const color = this.value;
+      document.documentElement.style.setProperty('--main-green', color);
+      document.querySelectorAll('.brand, .main-title, .section-title, .tinr-title, .footer, .desc.bold, .highlight, .option-label, .download-btn').forEach(el => {
+        el.style.color = color;
+        if (el.classList.contains('download-btn')) el.style.background = color;
+      });
+      document.querySelectorAll('.footer-icon, .main-title i, .section-title i, .tinr-title i').forEach(el => {
+        el.style.color = color;
+      });
+      // Đổi border cho thumbnail khi chọn
+      document.querySelectorAll('.bg-thumb').forEach(thumb => {
+        thumb.style.borderColor = color;
+      });
+    });
+  </script>
+</body>
+</html> 
