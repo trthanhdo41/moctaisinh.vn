@@ -777,19 +777,33 @@ textarea {
 
 @media (max-width: 991.98px) {
   .custom-navbar .navbar-collapse {
-    background: #fff !important;
+    background: #3b5d50 !important;
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     padding: 24px 0 16px 0;
     border-radius: 0 0 18px 18px;
+    width: 85vw;
+    max-width: 177px;
+    left: auto;
+    right: 0;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: center;
+  }
+  .custom-navbar .navbar-nav {
+    justify-content: center !important;
+    text-align: center !important;
+    align-items: center !important;
   }
   .custom-navbar .navbar-nav .nav-link {
-    color: #3b5d50 !important;
-    font-weight: 600;
-    line-height: 2.2;
-    font-size: 18px;
-    padding-left: 24px;
+    color: #fff !important;
+    text-align: center !important;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
-  .custom-navbar .navbar-nav .nav-link.active, .custom-navbar .navbar-nav .nav-link:focus, .custom-navbar .navbar-nav .nav-link:hover {
+  .custom-navbar .navbar-nav .nav-link.active, 
+  .custom-navbar .navbar-nav .nav-link:focus, 
+  .custom-navbar .navbar-nav .nav-link:hover {
     color: #f9bf29 !important;
     background: none;
   }
