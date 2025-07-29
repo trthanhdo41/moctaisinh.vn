@@ -91,4 +91,63 @@
 
 	// Đã xoá code tự động load địa chỉ tỉnh/thành/quận/huyện/phường/xã theo yêu cầu.
 
+	// --- Related Products Slider ---
+	function renderRelatedProducts(products) {
+	  const relatedProducts = document.getElementById('relatedProducts');
+	  if (!relatedProducts) return;
+	  relatedProducts.innerHTML = '';
+	  products.forEach(p => {
+	    const item = document.createElement('div');
+	    item.className = 'related-product-item';
+	    item.innerHTML = `
+	      <div class="card h-100 border-0 shadow-sm">
+	        <img src="${p.image}" class="card-img-top" alt="${p.name}" style="height:180px;object-fit:cover;border-radius:12px 12px 0 0;">
+	        <div class="card-body p-3">
+	          <h5 class="card-title mb-2" style="font-size:1.1rem;font-weight:600;">${p.name}</h5>
+	          <div class="card-text mb-2" style="font-size:1rem;color:#3b5d50;font-weight:500;">${formatVND(p.price)}</div>
+	          <div class="card-desc" style="font-size:0.95rem;color:#666;">${truncateText(p.description, 40)}</div>
+	        </div>
+	      </div>
+	    `;
+	    item.addEventListener('click', () => {
+	      window.location.href = `/shop/detail.html?id=${p.id}`;
+	    });
+	    relatedProducts.appendChild(item);
+	  });
+	}
+
+	function initRelatedSlider() {
+	  if (window.relatedSliderInstance) window.relatedSliderInstance.destroy();
+	  window.relatedSliderInstance = tns({
+	    container: '.related-slider',
+	    items: 4,
+	    slideBy: 1,
+	    gutter: 24,
+	    nav: false,
+	    controls: true,
+	    controlsContainer: '.related-slider-wrap',
+	    prevButton: '.related-prev',
+	    nextButton: '.related-next',
+	    mouseDrag: true,
+	    autoplay: false,
+	    speed: 400,
+	    responsive: {
+	      0: { items: 1 },
+	      576: { items: 2 },
+	      992: { items: 3 },
+	      1200: { items: 4 }
+	    }
+	  });
+	}
+
+	// Gọi khi load xong sản phẩm chính
+	function loadAndShowRelatedProducts(currentId) {
+	  fetch(`${API_BASE}/api/products`).then(res => res.json()).then(products => {
+	    // Loại bỏ sản phẩm hiện tại
+	    const related = products.filter(p => p.id !== currentId);
+	    renderRelatedProducts(related);
+	    setTimeout(initRelatedSlider, 100); // Đợi DOM render xong
+	  });
+	}
+
 })()
