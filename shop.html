@@ -464,13 +464,13 @@ async function handleProductClick(product) {
     
     setTimeout(() => {
       // Chuyển trang với dữ liệu đã có sẵn
-      window.location.href = `/shop/detail.html?id=${product.id}`;
+      window.location.href = `detail.html?id=${product.id}`;
     }, 300);
     
   } catch (error) {
     console.error('Error fetching product details:', error);
     // Vẫn chuyển trang nếu có lỗi, để trang detail tự load
-    window.location.href = `/shop/detail.html?id=${product.id}`;
+    window.location.href = `detail.html?id=${product.id}`;
   }
 }
 
