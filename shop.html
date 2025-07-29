@@ -10,10 +10,10 @@
   <meta name="keywords" content="sản phẩm mộc tái sinh, đồ gỗ tái chế, thủ công, sống xanh">
 
 		<!-- Bootstrap CSS -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="../css/tiny-slider.css" rel="stylesheet">
-		<link href="../css/style.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
 		<title>Sản phẩm | Mộc Tái Sinh</title>
 	</head>
 
@@ -23,7 +23,7 @@
 		<nav class="custom-navbar navbar navbar navbar-expand-lg navbar-dark bg-dark" arial-label="Furni navigation bar" style="background: transparent !important; position: absolute; width: 100%; z-index: 10;">
 
 			<div class="container">
-				<a class="navbar-brand" href="../index.html">moctaisinh<span>.</span>vn</a>
+				<a class="navbar-brand" href="index.html">moctaisinh<span>.</span>vn</a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -32,17 +32,17 @@
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li class="nav-item">
-							<a class="nav-link" href="../index.html">Trang chủ</a>
+							<a class="nav-link" href="index.html">Trang chủ</a>
 						</li>
-						<li class="active"><a class="nav-link" href="/shop/index.html">Sản phẩm</a></li>
-						<li><a class="nav-link" href="../about.html">Về chúng tôi</a></li>
-						<li><a class="nav-link" href="../services.html">Dịch vụ</a></li>
-						<li><a class="nav-link" href="../blog.html">Blog</a></li>
-						<li><a class="nav-link" href="../contact.html">Kết nối với chúng tôi</a></li>
+						<li class="active"><a class="nav-link" href="shop.html">Sản phẩm</a></li>
+						<li><a class="nav-link" href="about.html">Về chúng tôi</a></li>
+						<li><a class="nav-link" href="services.html">Dịch vụ</a></li>
+						<li><a class="nav-link" href="blog.html">Blog</a></li>
+						<li><a class="nav-link" href="contact.html">Kết nối với chúng tôi</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="/cart/index.html"><img src="../images/cart.svg"></a></li>
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -183,7 +183,7 @@
 </style>
 <div class="fab-contact">
   <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện"><span class="fa fa-phone"></span></a>
-  <a href="https://zalo.me/0373566167" class="fab-contact-btn zalo-btn" id="zaloFab" title="Zalo" target="_blank"><img src="../images/Icon_of_Zalo.png" alt="Zalo"></a>
+  <a href="https://zalo.me/0373566167" class="fab-contact-btn zalo-btn" id="zaloFab" title="Zalo" target="_blank"><img src="images/Icon_of_Zalo.png" alt="Zalo"></a>
 </div>
 <script>
 function loopShakeFab(btnId) {
@@ -206,13 +206,13 @@ loopShakeFab('zaloFab');
 			<div class="container relative">
 
 				<div class="sofa-img">
-					<img src="../images/sofa.png" alt="Image" class="img-fluid">
+					<img src="images/sofa.png" alt="Image" class="img-fluid">
 				</div>
 
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="../images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Đăng ký nhận tin</span></h3>
+							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Đăng ký nhận tin</span></h3>
 
 							<form action="#" class="row g-3">
 								<div class="col-auto">
@@ -305,9 +305,9 @@ loopShakeFab('zaloFab');
 		<!-- End Footer Section -->	
 
 
-			<script src="../js/bootstrap.bundle.min.js"></script>
-	<script src="../js/tiny-slider.js"></script>
-	<script src="../js/custom.js"></script>
+			<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/tiny-slider.js"></script>
+	<script src="js/custom.js"></script>
 		<script>
 const API_BASE = 'http://localhost:8080';
 let allProducts = [];
@@ -341,7 +341,7 @@ function renderProducts() {
         <h3 class="product-title clamp-2">${p.name}</h3>
         <strong class="product-price" style="display: block; margin-top: 8px; margin-bottom: 8px;">${formatVND(p.price)}</strong>
         <div class="product-desc-hover">${truncateText(p.description, 60)}</div>
-        <span class="icon-cross"><img src="../images/cross.svg" class="img-fluid"></span>
+        <span class="icon-cross"><img src="images/cross.svg" class="img-fluid"></span>
       </div>
     `;
     
