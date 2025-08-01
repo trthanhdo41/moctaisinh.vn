@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://moctaisinh.vn/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin.html
+
+# Allow all other pages
+Allow: /index.html
+Allow: /shop.html
+Allow: /detail.html
+Allow: /about.html
+Allow: /services.html
+Allow: /blog.html
+Allow: /contact.html
+Allow: /cart.html
+Allow: /checkout.html
+Allow: /thankyou.html
+
+# Crawl delay (optional)
+Crawl-delay: 1 

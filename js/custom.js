@@ -150,4 +150,50 @@
 	  });
 	}
 
+	// Update cart icon with item count
+	function updateCartIcon() {
+		const cart = JSON.parse(localStorage.getItem('cart')) || [];
+		const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+		
+		// Update cart icon in header if exists
+		const cartIcon = document.querySelector('.nav-link img[src*="cart.svg"]');
+		if (cartIcon && totalItems > 0) {
+			// Add badge to cart icon
+			let badge = cartIcon.parentElement.querySelector('.cart-badge');
+			if (!badge) {
+				badge = document.createElement('span');
+				badge.className = 'cart-badge';
+				badge.style.cssText = `
+					position: absolute;
+					top: -8px;
+					right: -8px;
+					background: #dc3545;
+					color: white;
+					border-radius: 50%;
+					width: 20px;
+					height: 20px;
+					font-size: 12px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: bold;
+				`;
+				cartIcon.parentElement.style.position = 'relative';
+				cartIcon.parentElement.appendChild(badge);
+			}
+			badge.textContent = totalItems;
+		} else if (cartIcon) {
+			// Remove badge if no items
+			const badge = cartIcon.parentElement.querySelector('.cart-badge');
+			if (badge) {
+				badge.remove();
+			}
+		}
+	}
+
+	// Initialize cart icon on page load
+	document.addEventListener('DOMContentLoaded', function() {
+		updateCartIcon();
+	});
+
 })()

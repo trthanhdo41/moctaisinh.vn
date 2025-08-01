@@ -3,18 +3,358 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
+  <meta name="author" content="Mộc Tái Sinh">
+
   <link rel="shortcut icon" href="favicon.png">
 
-  <meta name="description" content="Hoàn tất đơn hàng sản phẩm thủ công từ Mộc Tái Sinh.">
-  <meta name="keywords" content="thanh toán, đặt hàng, mộc tái sinh">
+  <meta name="description" content="Thanh toán sản phẩm gỗ tái sinh an toàn. Đồ gỗ thủ công handmade chất lượng. Giao hàng nhanh, bảo hành uy tín.">
+  <meta name="keywords" content="thanh toán gỗ tái sinh, mua đồ gỗ, sản phẩm gỗ thủ công">
+  <!-- SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta property="og:title" content="Thanh Toán | Mua Đồ Gỗ Tái Sinh - Mộc Tái Sinh">
+  <meta property="og:description" content="Thanh toán sản phẩm gỗ tái sinh an toàn. Đồ gỗ thủ công handmade chất lượng. Giao hàng nhanh, bảo hành uy tín.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moctaisinh.vn">
+  <meta property="og:site_name" content="Mộc Tái Sinh">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thanh Toán | Mua Đồ Gỗ Tái Sinh - Mộc Tái Sinh">
+  <meta name="twitter:description" content="Thanh toán sản phẩm gỗ tái sinh an toàn. Đồ gỗ thủ công handmade chất lượng. Giao hàng nhanh, bảo hành uy tín.">
+  <link rel="canonical" href="https://moctaisinh.vn/checkout.html">
+
 
 		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<title>Thanh toán | Mộc Tái Sinh</title>
+		<title>Thanh Toán | Mua Đồ Gỗ Tái Sinh - Mộc Tái Sinh</title>
+		
+		<style>
+		/* Checkout Form Styles */
+		.checkout-page .form-control {
+			border: 2px solid #e9ecef;
+			border-radius: 8px;
+			padding: 12px 16px;
+			font-size: 16px;
+			transition: all 0.3s ease;
+		}
+		
+		.checkout-page .form-control:focus {
+			border-color: #3b5d50;
+			box-shadow: 0 0 0 0.2rem rgba(59, 93, 80, 0.25);
+			background-color: #fff;
+		}
+		
+		.checkout-page .form-control.is-valid {
+			border-color: #28a745;
+			box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+		}
+		
+		.checkout-page .form-control.is-invalid {
+			border-color: #dc3545;
+			box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+		}
+		
+		.checkout-page .form-label {
+			font-weight: 600;
+			color: #3b5d50;
+			margin-bottom: 8px;
+		}
+		
+		.checkout-page .text-danger {
+			color: #dc3545 !important;
+		}
+		
+		.checkout-page .btn-black {
+			background: #3b5d50;
+			border-color: #3b5d50;
+			color: white;
+			font-weight: 600;
+			padding: 15px 30px;
+			border-radius: 8px;
+			transition: all 0.3s ease;
+		}
+		
+		.checkout-page .btn-black:hover {
+			background: #2d4a3f;
+			border-color: #2d4a3f;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(59, 93, 80, 0.3);
+		}
+		
+		.checkout-page .btn-black:disabled {
+			background: #6c757d;
+			border-color: #6c757d;
+			cursor: not-allowed;
+			transform: none;
+			box-shadow: none;
+		}
+		
+		/* General validation icon styles */
+		.input-container {
+			position: relative;
+		}
+		
+		.validation-icon {
+			position: absolute;
+			right: 12px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 18px;
+			pointer-events: none;
+			opacity: 0;
+			transition: all 0.3s ease;
+		}
+		
+		.validation-icon.valid {
+			color: #28a745;
+			opacity: 1;
+		}
+		
+
+		
+		/* Address select styling */
+		.address-select-container {
+			position: relative;
+		}
+		
+		.address-select-container select {
+			appearance: none;
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+			background-position: right 12px center;
+			background-repeat: no-repeat;
+			background-size: 16px 12px;
+			padding-right: 40px;
+		}
+		
+		/* Modern order summary styling */
+		.modern-order-summary {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			border-radius: 16px;
+			box-shadow: 0 8px 32px rgba(59, 93, 80, 0.1);
+			border: 1px solid rgba(59, 93, 80, 0.1);
+			overflow: hidden;
+			margin-bottom: 2rem;
+		}
+		
+		.order-summary-header {
+			background: linear-gradient(135deg, #3b5d50 0%, #2d4a3f 100%);
+			color: white;
+			padding: 24px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		
+		.order-summary-header-icon {
+			width: 40px;
+			height: 40px;
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+		
+		.order-summary-header h3 {
+			margin: 0;
+			font-size: 20px;
+			font-weight: 600;
+		}
+		
+		.order-summary-content {
+			padding: 32px !important;
+		}
+		
+		/* Modern form container styling */
+		.modern-form-container {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			border-radius: 16px;
+			box-shadow: 0 8px 32px rgba(59, 93, 80, 0.1);
+			border: 1px solid rgba(59, 93, 80, 0.1);
+			overflow: hidden;
+			margin-bottom: 2rem;
+		}
+		
+		.form-header {
+			background: linear-gradient(135deg, #3b5d50 0%, #2d4a3f 100%);
+			color: white;
+			padding: 24px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		
+		.form-header-icon {
+			width: 40px;
+			height: 40px;
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+		
+		.form-header h2 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: 600;
+		}
+		
+		.form-content {
+			padding: 32px;
+		}
+		
+		/* Make submit button full width */
+		.form-content .btn-block {
+			width: 100%;
+		}
+		
+		/* Disabled button styles */
+		.btn-disabled {
+			background: #6c757d !important;
+			border-color: #6c757d !important;
+			color: #fff !important;
+			cursor: not-allowed !important;
+			opacity: 0.6 !important;
+			transform: none !important;
+			box-shadow: none !important;
+		}
+		
+		.btn-disabled:hover {
+			background: #6c757d !important;
+			border-color: #6c757d !important;
+			transform: none !important;
+			box-shadow: none !important;
+		}
+		
+		/* Adjust cart message to stick closer to background */
+		.cart-message {
+			margin-bottom: 0 !important;
+			border-radius: 0 0 12px 12px !important;
+		}
+		
+		/* Remove top padding from main section */
+		.untree_co-section {
+			padding-top: 0 !important;
+		}
+		
+		/* Order items styling */
+		.order-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 16px;
+			background: #f8f9fa;
+			border-radius: 8px;
+			border-left: 4px solid #3b5d50;
+			margin-bottom: 12px;
+			transition: all 0.3s ease;
+		}
+		
+		.order-item:hover {
+			background: #f0f0f0;
+			transform: translateX(4px);
+		}
+		
+		.item-info {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		
+		.item-name {
+			font-weight: 600;
+			color: #3b5d50;
+		}
+		
+		.item-quantity {
+			background: #3b5d50;
+			color: white;
+			padding: 6px 10px;
+			border-radius: 50%;
+			font-size: 12px;
+			font-weight: 600;
+			min-width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.item-price {
+			font-weight: 600;
+			color: #10b981;
+			font-size: 16px;
+		}
+		
+		.order-total {
+			font-size: 18px;
+			font-weight: 700;
+			color: #3b5d50;
+			padding-top: 16px;
+			border-top: 2px solid #3b5d50;
+			margin-top: 16px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		/* Loading animation */
+		.loading-spinner {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border: 3px solid rgba(255,255,255,.3);
+			border-radius: 50%;
+			border-top-color: #fff;
+			animation: spin 1s ease-in-out infinite;
+		}
+		
+		@keyframes spin {
+			to { transform: rotate(360deg); }
+		}
+		
+		/* Toast notification improvements */
+		.toast-notification {
+			font-weight: 500;
+			font-size: 14px;
+			border-radius: 8px;
+			backdrop-filter: blur(10px);
+		}
+		
+		/* Responsive improvements */
+		@media (max-width: 768px) {
+			.checkout-page .form-control {
+				font-size: 16px; /* Prevent zoom on iOS */
+			}
+			
+			.checkout-page .btn-black {
+				padding: 12px 24px;
+				font-size: 16px;
+			}
+			
+			.order-summary-content,
+			.form-content {
+				padding: 20px;
+			}
+			
+			.order-summary-header,
+			.form-header {
+				padding: 20px;
+			}
+			
+			.order-summary-header h3,
+			.form-header h2 {
+				font-size: 20px;
+			}
+		}
+		</style>
 	</head>
 
 	<body class="checkout-page">
@@ -75,70 +415,112 @@
 		      </div>
 		      <div class="row">
 		        <div class="col-md-6 mb-5 mb-md-0">
-		          <h2 class="h3 mb-3 text-black">Thông tin nhận hàng</h2>
-		          <div class="p-3 p-lg-5 border bg-white">
-		            <div class="form-group mb-3">
-		              <label for="c_name" class="text-black">Họ và tên <span class="text-danger">*</span></label>
-		              <input type="text" class="form-control" id="c_name" name="c_name" placeholder="Nhập họ và tên">
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="c_phone" class="text-black">Số điện thoại <span class="text-danger">*</span></label>
-		              <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Nhập số điện thoại">
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="c_email" class="text-black">Email</label>
-		              <input type="email" class="form-control" id="c_email" name="c_email" placeholder="Nhập email (nếu có)">
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="province" class="text-black">Tỉnh/Thành phố <span class="text-danger">*</span></label>
-		              <select id="province" name="province" class="form-control" required>
-		                <option value="">Chọn tỉnh/thành phố</option>
-		              </select>
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="district" class="text-black">Quận/Huyện <span class="text-danger">*</span></label>
-		              <select id="district" name="district" class="form-control" required disabled>
-		                <option value="">Chọn quận/huyện</option>
-		              </select>
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="ward" class="text-black">Phường/Xã <span class="text-danger">*</span></label>
-		              <select id="ward" name="ward" class="form-control" required disabled>
-		                <option value="">Chọn phường/xã</option>
-		              </select>
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="c_address_detail" class="text-black">Số nhà, tên đường <span class="text-danger">*</span></label>
-		              <input type="text" class="form-control" id="c_address_detail" name="c_address_detail" placeholder="Nhập số nhà, tên đường..." required>
-		            </div>
-		            <div class="form-group mb-3">
-		              <label for="c_note" class="text-black">Ghi chú cho đơn hàng</label>
-		              <textarea class="form-control" id="c_note" name="c_note" rows="3" placeholder="Ghi chú thêm (nếu có)"></textarea>
-		            </div>
-		            <div class="form-group">
-		              <button class="btn btn-black btn-lg py-3 btn-block" type="submit">Xác nhận đặt hàng</button>
-		            </div>
-		          </div>
+          <form id="checkoutForm">
+            <div class="modern-form-container">
+              <div class="form-header">
+                <div class="form-header-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h2>Thông tin nhận hàng</h2>
+              </div>
+              <div class="form-content">
+                <div class="form-group mb-3">
+                  <label for="c_name" class="text-black">Họ và tên <span class="text-danger">*</span></label>
+                  <div class="input-container">
+                    <input type="text" class="form-control" id="c_name" name="c_name" placeholder="Nhập họ và tên">
+                    <i class="fas fa-check-circle validation-icon" id="nameValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="c_phone" class="text-black">Số điện thoại <span class="text-danger">*</span></label>
+                  <div class="input-container">
+                    <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Nhập số điện thoại" maxlength="10">
+                    <i class="fas fa-check-circle validation-icon" id="phoneValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="c_email" class="text-black">Email</label>
+                  <div class="input-container">
+                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="Nhập email (nếu có)">
+                    <i class="fas fa-check-circle validation-icon" id="emailValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="province" class="text-black">Tỉnh/Thành phố <span class="text-danger">*</span></label>
+                  <div class="input-container">
+                    <select id="province" name="province" class="form-control" required>
+                      <option value="">Chọn tỉnh/thành phố</option>
+                    </select>
+                    <i class="fas fa-check-circle validation-icon" id="provinceValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="district" class="text-black">Quận/Huyện <span class="text-danger">*</span></label>
+                  <div class="input-container">
+                    <select id="district" name="district" class="form-control" required disabled>
+                      <option value="">Chọn quận/huyện</option>
+                    </select>
+                    <i class="fas fa-check-circle validation-icon" id="districtValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="ward" class="text-black">Phường/Xã <span class="text-danger">*</span></label>
+                  <div class="input-container">
+                    <select id="ward" name="ward" class="form-control" required disabled>
+                      <option value="">Chọn phường/xã</option>
+                    </select>
+                    <i class="fas fa-check-circle validation-icon" id="wardValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="c_address_detail" class="text-black">Số nhà, tên đường <span class="text-danger">*</span></label>
+                  <div class="input-container">
+                    <input type="text" class="form-control" id="c_address_detail" name="c_address_detail" placeholder="Nhập số nhà, tên đường..." required>
+                    <i class="fas fa-check-circle validation-icon" id="addressValidationIcon"></i>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="c_note" class="text-black">Ghi chú cho đơn hàng</label>
+                  <textarea class="form-control" id="c_note" name="c_note" rows="3" placeholder="Ghi chú thêm (nếu có)"></textarea>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-disabled btn-lg py-3 btn-block" type="submit" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Xác nhận đặt hàng
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
 		        </div>
 		        <div class="col-md-6">
 		          <div class="row mb-5">
 		            <div class="col-md-12">
-		              <h3 class="text-black h4 text-uppercase mb-4">Đơn hàng của bạn</h3>
-		              <div class="p-4 border bg-white rounded-3">
-		                <div class="d-flex justify-content-between mb-2">
-		                  <span>Ngọn gió đầu mùa</span>
-		                  <span>6.200.000.000₫</span>
+		              <div class="modern-order-summary" id="orderItemsContainer">
+		                <div class="order-summary-header">
+		                  <div class="order-summary-header-icon">
+		                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		                      <path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8m-8 0a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		                    </svg>
+		                  </div>
+		                  <h3>Đơn hàng của bạn</h3>
 		                </div>
-		                <div class="d-flex justify-content-between mb-2">
-		                  <span>Ký ức nhà kho cũ</span>
-		                  <span>8.900.000.000₫</span>
+		                <div class="order-summary-content">
+		                  <!-- Sản phẩm sẽ được load từ JavaScript -->
+		                  <div class="text-center py-4">
+		                    <div class="spinner-border text-primary" role="status">
+		                      <span class="visually-hidden">Đang tải...</span>
+		                    </div>
+		                    <p class="mt-3 text-muted">Đang tải thông tin đơn hàng...</p>
+		                  </div>
 		                </div>
-		                <hr>
-		                <div class="d-flex justify-content-between mb-2">
-		                  <strong>Tổng cộng</strong>
-		                  <strong>15.100.000.000₫</strong>
-		                </div>
-		              </div>
+		            </div>
+		          </div>
+		        </div>
 		            </div>
 		          </div>
 		        </div>
@@ -146,108 +528,10 @@
 		    </div>
 		  </div>
 
-		<!-- Start Footer Section -->
-		<footer class="footer-section">
-			<div class="container relative">
-
-				<div class="sofa-img">
-					<img src="images/sofa.png" alt="Image" class="img-fluid">
-				</div>
-
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Đăng ký nhận tin</span></h3>
-
-							<form action="#" class="row g-3">
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Nhập tên của bạn">
-								</div>
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Nhập số điện thoại của bạn">
-								</div>
-								<div class="col-auto">
-									<button class="btn btn-primary">
-										<span class="fa fa-paper-plane"></span>
-									</button>
-								</div>
-							</form>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="row g-5 mb-5">
-					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">moctaisinh<span>.</span>vn</a></div>
-						<p class="mb-4">Cảm hứng từ Cúc Phương – nơi thiên nhiên hồi sinh và lan tỏa. Website được đồng hành & thiết kế bởi Thanh Độ, người kể chuyện của những vật liệu cũ.</p>
-
-						<ul class="list-unstyled custom-social">
-							<li><a href="tel:0373566167" title="Gọi điện"><span class="fa fa-phone"></span></a></li>
-							<li><a href="https://zalo.me/0373566167" target="_blank" title="Zalo"><span class="fa fa-comment-dots"></span></a></li>
-							<li><a href="https://www.tiktok.com/@moctaisinh.vn" target="_blank" title="TikTok"><span class="fa fa-brands fa-tiktok"></span></a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-8">
-						<div class="row links-wrap">
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="about.html">Về Mộc Tái Sinh</a></li>
-									<li><a href="services.html">Dịch vụ thủ công</a></li>
-									<li><a href="blog.html">Câu chuyện cảm hứng</a></li>
-									<li><a href="contact.html">Kết nối & Hợp tác</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Hỗ trợ khách hàng</a></li>
-									<li><a href="#">Kiến thức tái chế</a></li>
-									<li><a href="#">Tư vấn trực tuyến</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Tuyển dụng</a></li>
-									<li><a href="#">Đội ngũ nghệ nhân</a></li>
-									<li><a href="#">Lãnh đạo & Sứ mệnh</a></li>
-									<li><a href="#">Chính sách bảo mật</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Ngọn gió đầu mùa</a></li>
-									<li><a href="#">Ký ức nhà kho cũ</a></li>
-									<li><a href="#">Dấu lặng bên vách núi</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="border-top copyright">
-					<div class="row pt-4">
-						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">&copy; 2025 moctaisinh.vn. Cảm hứng từ Cúc Phương. Thiết kế & đồng hành bởi Thanh Độ.<br><span style="font-weight:600; color:#3b5d50;">Từ gốc – đến lá – từ tim</span><br><span style="color:#3b5d50;">Cam kết: Trích lợi nhuận trồng cây xanh, lan tỏa yêu thương, gieo mầm xanh mới.</span></p>
-						</div>
-
-						<div class="col-lg-6 text-center text-lg-end">
-							<ul class="list-unstyled d-inline-flex ms-auto">
-								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-							</ul>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</footer>
-		<!-- End Footer Section -->	
+		<!-- Footer will be loaded automatically from footer.html -->
+		<div class="footer-section">
+			<!-- Footer will be loaded automatically from footer.html -->
+		</div>	
 
 
 		<!-- Nút nổi Call & Zalo -->
@@ -262,10 +546,10 @@
 		  gap: 16px;
 		}
 		.fab-contact-btn {
-		  width: 56px;
-		  height: 56px;
-		  border-radius: 50%;
-		  background: #3b5d50;
+		  width: 60px;
+		  height: 60px;
+		  border-radius: 100%;
+		  background-color: #30C04F;
 		  color: #fff;
 		  display: flex;
 		  align-items: center;
@@ -281,11 +565,17 @@
 		  animation-play-state: paused;
 		}
 		.fab-contact-btn.zalo-btn {
-		  background: #008fe5;
+		.fab-contact-btn:hover {
+		  background-color: #2bac47;
+		  transform: scale(1.1);
+		}		  background: #008fe5;
 		  padding: 0;
 		}
 		.fab-contact-btn.zalo-btn img {
-		  width: 32px;
+		.fab-contact-btn:hover {
+		  background-color: #2bac47;
+		  transform: scale(1.1);
+		}		  width: 32px;
 		  height: 32px;
 		}
 		@keyframes shakeFab {
@@ -296,104 +586,1347 @@
 		}
 		</style>
 		<div class="fab-contact">
-		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện"><span class="fa fa-phone"></span></a>
+		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện" onclick="handleCallClick(event)"><svg xmlns="http://www.w3.org/2000/svg" width="32" viewBox="0 0 32 32" height="32" fill="none" class="svg-icon"><path stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" d="m24.8868 19.1288c-1.0274-.1308-2.036-.3815-3.0052-.7467-.7878-.29-1.6724-.1034-2.276.48-.797.8075-2.0493.9936-2.9664.3258-1.4484-1.055-2.7233-2.3295-3.7783-3.7776-.6681-.9168-.4819-2.1691.3255-2.9659.5728-.6019.7584-1.4748.4802-2.2577-.3987-.98875-.6792-2.02109-.8358-3.07557-.2043-1.03534-1.1138-1.7807-2.1694-1.77778h-3.18289c-.60654-.00074-1.18614.25037-1.60035.69334-.40152.44503-.59539 1.03943-.53345 1.63555.344 3.31056 1.47164 6.49166 3.28961 9.27986 1.64878 2.5904 3.84608 4.7872 6.43688 6.4356 2.7927 1.797 5.9636 2.9227 9.2644 3.289h.1778c.5409.0036 1.0626-.2 1.4581-.569.444-.406.6957-.9806.6935-1.5822v-3.1821c.0429-1.0763-.7171-2.0185-1.7782-2.2046z" clip-rule="evenodd"></path></svg></a>
 		  <a href="https://zalo.me/0373566167" class="fab-contact-btn zalo-btn" id="zaloFab" title="Zalo" target="_blank"><img src="images/Icon_of_Zalo.png" alt="Zalo"></a>
 		</div>
+		<script src="js/checkout-utils.js"></script>
+		<script src="js/cart-guard.js">
+      // Xử lý nút gọi điện thông minh
+      function handleCallClick(event) {
+        event.preventDefault();
+        
+        // Hiển thị popup gọi điện
+        showCallPopup();
+      }
+      
+      // Hiển thị popup gọi điện
+      function showCallPopup() {
+        // Tạo popup container
+        const popup = document.createElement('div');
+        popup.id = 'callPopup';
+        popup.style.cssText = `
+          position: fixed;
+          inset: 0;
+          z-index: 3000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0,0,0,0.5);
+          backdrop-filter: blur(4px);
+        `;
+        
+        // Tạo popup content
+        const popupContent = document.createElement('div');
+        popupContent.style.cssText = `
+          background: white;
+          border-radius: 16px;
+          padding: 32px;
+          text-align: center;
+          max-width: 400px;
+          width: 90%;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+          animation: popupSlideIn 0.3s ease-out;
+        `;
+        
+        popupContent.innerHTML = `
+          <div style="margin-bottom: 24px;">
+            <div style="width: 80px; height: 80px; background: #28a745; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" fill="white"/>
+              </svg>
+            </div>
+            <h3 style="margin: 0 0 8px; color: #333; font-size: 24px; font-weight: 600;">Gọi điện tư vấn</h3>
+            <p style="margin: 0; color: #666; font-size: 16px;">Bạn có muốn gọi điện đến hotline của chúng tôi không?</p>
+          </div>
+          
+          <div style="font-size: 28px; font-weight: 700; color: #28a745; margin-bottom: 24px; letter-spacing: 2px;">
+            0373 566 167
+          </div>
+          
+          <div style="display: flex; gap: 12px; justify-content: center;">
+            <button onclick="closeCallPopup()" style="
+              padding: 12px 24px;
+              border: 2px solid #ddd;
+              background: white;
+              color: #666;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+            " onmouseover="this.style.borderColor='#999'; this.style.color='#333'" onmouseout="this.style.borderColor='#ddd'; this.style.color='#666'">
+              Hủy
+            </button>
+            <button onclick="makeCall()" style="
+              padding: 12px 32px;
+              border: none;
+              background: #28a745;
+              color: white;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+            " onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
+              Gọi ngay
+            </button>
+          </div>
+        `;
+        
+        // Thêm CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes popupSlideIn {
+            from {
+              opacity: 0;
+              transform: scale(0.8) translateY(-20px);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+          @keyframes popupSlideOut {
+            from {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+            to {
+              opacity: 0;
+              transform: scale(0.8) translateY(-20px);
+            }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        popup.appendChild(popupContent);
+        document.body.appendChild(popup);
+        
+        // Đóng popup khi click bên ngoài
+        popup.addEventListener('click', function(e) {
+          if (e.target === popup) {
+            closeCallPopup();
+          }
+        });
+        
+        // Đóng popup khi nhấn ESC
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeCallPopup();
+          }
+        });
+      }
+      
+      // Đóng popup gọi điện
+      function closeCallPopup() {
+        const popup = document.getElementById('callPopup');
+        if (popup) {
+          popup.style.animation = 'popupSlideOut 0.2s ease-in';
+          setTimeout(() => {
+            document.body.removeChild(popup);
+          }, 200);
+        }
+      }
+      
+      // Thực hiện cuộc gọi
+      function makeCall() {
+        const phoneNumber = '0373566167';
+        
+        // Kiểm tra xem có phải mobile không
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+          // Trên mobile: gọi điện trực tiếp
+          window.location.href = 'tel:' + phoneNumber;
+        } else {
+          // Trên desktop: tạo link ẩn và click để mở ứng dụng gọi điện
+          const link = document.createElement('a');
+          link.href = 'tel:' + phoneNumber;
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
+          // Hiển thị thông báo
+          showCallNotification('Đang mở ứng dụng gọi điện...');
+        }
+        
+        closeCallPopup();
+      }
+    </script>
+		<script>
+		// Load cart data and display order
+		let checkoutCart = [];
+		let orderTotal = 0;
+		
+		function formatCurrency(num) {
+			// Định dạng số thành tiền VND
+			return Number(num).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+		}
+		
+		// Hàm parse giá từ string sang number
+		function parsePrice(priceString) {
+			if (typeof priceString === 'number') return priceString;
+			if (!priceString) return 0;
+			
+			// Loại bỏ tất cả ký tự không phải số
+			const cleanPrice = priceString.toString().replace(/[^\d]/g, '');
+			const price = parseInt(cleanPrice) || 0;
+			return price;
+		}
+		
+		document.addEventListener('DOMContentLoaded', function() {
+			// CartGuard sẽ tự động kiểm tra và bảo vệ trang
+			if (!CartGuard.checkCartAccess()) {
+				return;
+			}
+			
+			// Lấy thông tin đơn hàng từ URL
+			const orderInfo = CheckoutUtils.getOrderInfo();
+			
+			// Xử lý dựa trên loại đơn hàng
+			if (orderInfo.type === 'buynow') {
+				// Đơn hàng "Mua ngay"
+				const savedCheckoutCart = localStorage.getItem('checkoutCart');
+				if (savedCheckoutCart) {
+					checkoutCart = JSON.parse(savedCheckoutCart);
+					// Tính tổng tiền từ checkoutCart với parsePrice
+					orderTotal = checkoutCart.reduce((sum, item) => {
+						const itemPrice = parsePrice(item.price);
+						return sum + (itemPrice * item.quantity);
+					}, 0);
+					displayOrderItems();
+				} else {
+					// Không có dữ liệu checkout, chuyển hướng về shop
+					window.location.href = 'shop.html';
+					return;
+				}
+			} else if (orderInfo.type === 'cart') {
+				// Đơn hàng từ giỏ hàng
+				const savedCart = localStorage.getItem('cart');
+				if (savedCart) {
+					checkoutCart = JSON.parse(savedCart);
+					// Tính tổng tiền từ cart với parsePrice
+					orderTotal = checkoutCart.reduce((sum, item) => {
+						const itemPrice = parsePrice(item.price);
+						return sum + (itemPrice * item.quantity);
+					}, 0);
+					displayOrderItems();
+				} else {
+					// Không có gì để thanh toán
+					window.location.href = 'cart.html';
+					return;
+				}
+			} else {
+				// Thông tin đơn hàng không hợp lệ
+				window.location.href = 'shop.html';
+				return;
+			}
+			
+			// Setup form submission
+			setupCheckoutForm();
+			
+			// Setup address selection with API data
+			setupAddressSelection().catch(error => {
+				console.error('Lỗi khi setup address selection:', error);
+			});
+			
+			// Phone validation
+			setupPhoneValidation();
+			
+			// Form validation for all fields
+			setupFormValidation();
+			
+			// Setup real-time validation
+			setupRealTimeValidation();
+			
+			// Initialize submit button as disabled
+			updateSubmitButtonState(false);
+		});
+		
+		// Display order items
+		function displayOrderItems() {
+			const orderContainer = document.getElementById('orderItemsContainer');
+			if (!orderContainer) return;
+			
+			orderContainer.innerHTML = `
+				<div class="order-summary-header">
+					<div class="order-summary-header-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8m-8 0a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</div>
+					<h3>Đơn hàng của bạn</h3>
+				</div>
+				<div class="order-summary-content">
+			`;
+			
+			// Get the content container
+			const contentContainer = orderContainer.querySelector('.order-summary-content');
+			
+			checkoutCart.forEach(item => {
+				const itemDiv = document.createElement('div');
+				itemDiv.className = 'order-item';
+				
+				// Parse price để hiển thị đúng
+				const itemPrice = parsePrice(item.price);
+				const formattedPrice = formatCurrency(itemPrice);
+				
+				itemDiv.innerHTML = `
+					<div class="item-info">
+						<span class="item-name">${item.name}</span>
+						<span class="item-quantity">x${item.quantity}</span>
+					</div>
+					<span class="item-price">${formattedPrice}</span>
+				`;
+				contentContainer.appendChild(itemDiv);
+			});
+			
+			// Add VAT and total
+			const formattedTotal = formatCurrency(orderTotal);
+			contentContainer.innerHTML += `
+				<div class="order-item">
+					<span>Thuế VAT (0%)</span>
+					<span class="text-success">0₫</span>
+				</div>
+				<div class="order-total">
+					<strong>Tổng cộng</strong>
+					<strong>${formattedTotal}</strong>
+				</div>
+			`;
+		}
+		
+		// Setup checkout form
+		function setupCheckoutForm() {
+			const form = document.querySelector('form');
+			if (!form) return;
+			
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				// Kiểm tra validation trước khi submit
+				if (!validateForm()) {
+					return false;
+				}
+				
+				processOrder();
+			});
+		}
+		
+		// Validate form trước khi submit
+		function validateForm() {
+			const requiredFields = ['c_name', 'c_phone', 'province', 'district', 'ward', 'c_address_detail'];
+			let isValid = true;
+			
+			// Reset tất cả validation states
+			requiredFields.forEach(fieldId => {
+				const field = document.getElementById(fieldId);
+				const icon = document.getElementById(fieldId.replace('c_', '') + 'ValidationIcon');
+				if (field) {
+					field.classList.remove('is-invalid');
+					field.classList.remove('is-valid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+			});
+			
+			// Kiểm tra từng field
+			requiredFields.forEach(fieldId => {
+				const field = document.getElementById(fieldId);
+				const icon = document.getElementById(fieldId.replace('c_', '') + 'ValidationIcon');
+				
+				if (!field || !field.value.trim()) {
+					isValid = false;
+					if (field) {
+						field.classList.add('is-invalid');
+					}
+					if (icon) {
+						icon.className = 'fas fa-check validation-icon';
+					}
+				} else {
+					if (field) {
+						field.classList.add('is-valid');
+					}
+					if (icon) {
+						icon.className = 'fas fa-check validation-icon valid';
+					}
+				}
+			});
+			
+			// Kiểm tra số điện thoại
+			const phone = document.getElementById('c_phone').value;
+			if (phone && !isValidPhoneNumber(phone)) {
+				isValid = false;
+				const phoneField = document.getElementById('c_phone');
+				const phoneIcon = document.getElementById('phoneValidationIcon');
+				if (phoneField) {
+					phoneField.classList.add('is-invalid');
+				}
+				if (phoneIcon) {
+					phoneIcon.className = 'fas fa-check validation-icon';
+				}
+				showToast('Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại thật.', 'error');
+			}
+			
+			// Kiểm tra email nếu có
+			const email = document.getElementById('c_email').value;
+			if (email && !isValidEmail(email)) {
+				isValid = false;
+				const emailField = document.getElementById('c_email');
+				const emailIcon = document.getElementById('emailValidationIcon');
+				if (emailField) {
+					emailField.classList.add('is-invalid');
+				}
+				if (emailIcon) {
+					emailIcon.className = 'fas fa-check validation-icon';
+				}
+				showToast('Email không hợp lệ!', 'error');
+			}
+			
+			// Update submit button state
+			updateSubmitButtonState(isValid);
+			
+			if (!isValid) {
+				showToast('Vui lòng điền đầy đủ và chính xác thông tin bắt buộc!', 'error');
+			}
+			
+			return isValid;
+		}
+		
+		// Update submit button state
+		function updateSubmitButtonState(isValid) {
+			const submitBtn = document.querySelector('button[type="submit"]');
+			if (submitBtn) {
+				if (isValid) {
+					submitBtn.disabled = false;
+					submitBtn.classList.remove('btn-disabled');
+					submitBtn.classList.add('btn-black');
+				} else {
+					submitBtn.disabled = true;
+					submitBtn.classList.add('btn-disabled');
+					submitBtn.classList.remove('btn-black');
+				}
+			}
+		}
+		
+		// Real-time validation for all fields
+		function setupRealTimeValidation() {
+			const requiredFields = ['c_name', 'c_phone', 'province', 'district', 'ward', 'c_address_detail'];
+			
+			requiredFields.forEach(fieldId => {
+				const field = document.getElementById(fieldId);
+				if (field) {
+					// For select fields (province, district, ward)
+					if (field.tagName === 'SELECT') {
+						field.addEventListener('change', function() {
+							validateField(fieldId);
+							checkAllFieldsValid();
+						});
+					} else {
+						// For input fields
+						field.addEventListener('input', function() {
+							validateField(fieldId);
+							checkAllFieldsValid();
+						});
+						
+						field.addEventListener('blur', function() {
+							validateField(fieldId);
+							checkAllFieldsValid();
+						});
+					}
+				}
+			});
+			
+			// Email validation
+			const emailField = document.getElementById('c_email');
+			if (emailField) {
+				emailField.addEventListener('input', function() {
+					validateEmail();
+					checkAllFieldsValid();
+				});
+				
+				emailField.addEventListener('blur', function() {
+					validateEmail();
+					checkAllFieldsValid();
+				});
+			}
+		}
+		
+				// Validate individual field
+		function validateField(fieldId) {
+			const field = document.getElementById(fieldId);
+			const icon = document.getElementById(fieldId.replace('c_', '') + 'ValidationIcon');
+			
+			// Email không bắt buộc, nếu trống thì coi như valid
+			if (fieldId === 'c_email' && (!field || !field.value.trim())) {
+				if (field) {
+					field.classList.remove('is-valid', 'is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return true;
+			}
+			
+			// Các field khác bắt buộc
+			if (!field || !field.value.trim()) {
+				if (field) {
+					field.classList.remove('is-valid');
+					field.classList.add('is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+			
+			// Special validation for name (ít nhất 2 ký tự)
+			if (fieldId === 'c_name' && field.value.trim().length < 2) {
+				if (field) {
+					field.classList.remove('is-valid');
+					field.classList.add('is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+			
+			// Special validation for address detail (ít nhất 10 ký tự)
+			if (fieldId === 'c_address_detail' && field.value.trim().length < 10) {
+				if (field) {
+					field.classList.remove('is-valid');
+					field.classList.add('is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+			
+			// Special validation for phone
+			if (fieldId === 'c_phone' && field.value && !isValidPhoneNumber(field.value)) {
+				if (field) {
+					field.classList.remove('is-valid');
+					field.classList.add('is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+			
+			// Special validation for email
+			if (fieldId === 'c_email' && field.value.trim() && !isValidEmail(field.value)) {
+				if (field) {
+					field.classList.remove('is-valid');
+					field.classList.add('is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+			
+			// Special validation for select fields (province, district, ward)
+			if ((fieldId === 'province' || fieldId === 'district' || fieldId === 'ward') && field.value === '') {
+				if (field) {
+					field.classList.remove('is-valid');
+					field.classList.add('is-invalid');
+				}
+				if (icon) {
+					icon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+			
+			// Valid field
+			if (field) {
+				field.classList.remove('is-invalid');
+				field.classList.add('is-valid');
+			}
+			if (icon) {
+				icon.className = 'fas fa-check validation-icon valid';
+			}
+			return true;
+		}
+		
+		// Validate field and show toast on blur
+		function validateFieldWithToast(fieldId) {
+			const field = document.getElementById(fieldId);
+			const isValid = validateField(fieldId);
+			
+			// Chỉ hiển thị toast khi field có giá trị và sai
+			if (field && field.value.trim() && !isValid) {
+				let message = '';
+				
+				switch(fieldId) {
+					case 'c_name':
+						if (field.value.trim().length < 2) {
+							message = 'Họ và tên phải có ít nhất 2 ký tự!';
+						}
+						break;
+					case 'c_phone':
+						if (!isValidPhoneNumber(field.value)) {
+							message = 'Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại thật.';
+						}
+						break;
+					case 'c_address_detail':
+						if (field.value.trim().length < 10) {
+							message = 'Địa chỉ chi tiết phải có ít nhất 10 ký tự!';
+						}
+						break;
+					case 'province':
+						if (field.value === '') {
+							message = 'Vui lòng chọn Tỉnh/Thành phố!';
+						}
+						break;
+					case 'district':
+						if (field.value === '') {
+							message = 'Vui lòng chọn Quận/Huyện!';
+						}
+						break;
+					case 'ward':
+						if (field.value === '') {
+							message = 'Vui lòng chọn Phường/Xã!';
+						}
+						break;
+					case 'c_email':
+						if (field.value.trim() && !isValidEmail(field.value)) {
+							message = 'Email không hợp lệ!';
+						}
+						break;
+					default:
+						if (!field.value.trim()) {
+							message = 'Vui lòng điền đầy đủ thông tin!';
+						}
+						break;
+				}
+				
+				if (message) {
+					showToast(message, 'error');
+				}
+			}
+			
+			return isValid;
+		}
+		
+		// Validate email
+		function validateEmail() {
+			const emailField = document.getElementById('c_email');
+			const emailIcon = document.getElementById('emailValidationIcon');
+			
+			if (!emailField || !emailField.value.trim()) {
+				if (emailField) {
+					emailField.classList.remove('is-valid', 'is-invalid');
+				}
+				if (emailIcon) {
+					emailIcon.className = 'fas fa-check validation-icon';
+				}
+				return true; // Email không bắt buộc
+			}
+			
+			if (isValidEmail(emailField.value)) {
+				if (emailField) {
+					emailField.classList.remove('is-invalid');
+					emailField.classList.add('is-valid');
+				}
+				if (emailIcon) {
+					emailIcon.className = 'fas fa-check validation-icon valid';
+				}
+				return true;
+			} else {
+				if (emailField) {
+					emailField.classList.remove('is-valid');
+					emailField.classList.add('is-invalid');
+				}
+				if (emailIcon) {
+					emailIcon.className = 'fas fa-check validation-icon';
+				}
+				return false;
+			}
+		}
+		
+		// Check if all required fields are valid
+		function checkAllFieldsValid() {
+			const requiredFields = ['c_name', 'c_phone', 'province', 'district', 'ward', 'c_address_detail'];
+			let allValid = true;
+			
+			// Check required fields
+			requiredFields.forEach(fieldId => {
+				const field = document.getElementById(fieldId);
+				if (!field || !field.value.trim()) {
+					allValid = false;
+					return;
+				}
+				
+				// Special check for name length (ít nhất 2 ký tự)
+				if (fieldId === 'c_name' && field.value.trim().length < 2) {
+					allValid = false;
+					return;
+				}
+				
+				// Special check for address detail length (ít nhất 10 ký tự)
+				if (fieldId === 'c_address_detail' && field.value.trim().length < 10) {
+					allValid = false;
+					return;
+				}
+				
+				// Special check for phone format
+				if (fieldId === 'c_phone' && !isValidPhoneNumber(field.value)) {
+					allValid = false;
+					return;
+				}
+			});
+			
+			// Check email if provided
+			const email = document.getElementById('c_email').value;
+			if (email && !isValidEmail(email)) {
+				allValid = false;
+			}
+			
+			updateSubmitButtonState(allValid);
+			return allValid;
+		}
+		
+		// Process order
+		async function processOrder() {
+			// Validate form
+			if (!validateForm()) {
+				return;
+			}
+			
+			// Collect order data
+			const orderData = {
+				customer: {
+					name: document.getElementById('c_name').value,
+					phone: document.getElementById('c_phone').value,
+					email: document.getElementById('c_email').value || '',
+					province: document.getElementById('province').value,
+					district: document.getElementById('district').value,
+					ward: document.getElementById('ward').value,
+					address: document.getElementById('c_address_detail').value,
+					note: document.getElementById('c_note').value || ''
+				},
+				items: checkoutCart,
+				total: orderTotal,
+				orderDate: new Date().toISOString(),
+				orderId: generateOrderId()
+			};
+			
+			// Show loading
+			showLoading();
+			
+			try {
+				console.log('Đang gửi đơn hàng đến backend...', orderData);
+				
+				// Send to backend
+				const success = await orderManager.saveOrderToSheet(orderData);
+				
+				if (success) {
+					console.log('Đơn hàng đã được lưu thành công!');
+					
+					// Save order to localStorage for thankyou page
+					const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+					orders.push(orderData);
+					localStorage.setItem('orders', JSON.stringify(orders));
+					
+					// Clear cart
+					localStorage.removeItem('cart');
+					localStorage.removeItem('checkoutCart');
+					localStorage.removeItem('checkoutTotal');
+					
+					showToast('Đặt hàng thành công! Mã đơn hàng: ' + orderData.orderId, 'success');
+					
+					// Redirect to thank you page
+					setTimeout(() => {
+						window.location.href = 'thankyou.html?orderId=' + orderData.orderId;
+					}, 1500);
+				} else {
+					console.error('Lỗi khi lưu đơn hàng');
+					showToast('Có lỗi xảy ra khi xử lý đơn hàng. Vui lòng thử lại!', 'error');
+					hideLoading();
+				}
+			} catch (error) {
+				console.error('Lỗi khi xử lý đơn hàng:', error);
+				showToast('Có lỗi xảy ra khi xử lý đơn hàng. Vui lòng thử lại!', 'error');
+				hideLoading();
+			}
+		}
+		
+		// Generate order ID
+		function generateOrderId() {
+			const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+			let result = 'MTS';
+			for (let i = 0; i < 6; i++) {
+				result += chars.charAt(Math.floor(Math.random() * chars.length));
+			}
+			return result; // Ví dụ: MTSAB12CD
+		}
+		
+		// Show loading
+		function showLoading() {
+			const submitBtn = document.querySelector('button[type="submit"]');
+			if (submitBtn) {
+				submitBtn.innerHTML = '<span class="loading-spinner me-2"></span>Đang xử lý...';
+				submitBtn.disabled = true;
+			}
+		}
+		
+		// Hide loading
+		function hideLoading() {
+			const submitBtn = document.querySelector('button[type="submit"]');
+			if (submitBtn) {
+				submitBtn.innerHTML = 'Xác nhận đặt hàng';
+				submitBtn.disabled = false;
+			}
+		}
+		
+		// Show toast notification
+		function showToast(message, type = 'success') {
+			const toast = document.createElement('div');
+			toast.className = 'toast-notification';
+			toast.style.cssText = `
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				background: ${type === 'error' ? '#dc3545' : '#28a745'};
+				color: white;
+				padding: 15px 20px;
+				border-radius: 5px;
+				z-index: 9999;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+				transform: translateX(100%);
+				transition: transform 0.3s ease;
+			`;
+			toast.textContent = message;
+			
+			document.body.appendChild(toast);
+			
+			setTimeout(() => {
+				toast.style.transform = 'translateX(0)';
+			}, 100);
+			
+			setTimeout(() => {
+				toast.style.transform = 'translateX(100%)';
+				setTimeout(() => {
+					document.body.removeChild(toast);
+				}, 300);
+			}, 3000);
+		}
+		
+		// Phone validation
+		function setupPhoneValidation() {
+			const phoneInput = document.getElementById('c_phone');
+			const phoneIcon = document.getElementById('phoneValidationIcon');
+			if (!phoneInput) return;
+			
+			phoneInput.addEventListener('input', function() {
+				// Remove all non-numeric characters
+				this.value = this.value.replace(/[^\d]/g, '');
+				
+				// Limit to 10 digits
+				if (this.value.length > 10) {
+					this.value = this.value.slice(0, 10);
+				}
+				
+				// Real-time validation
+				validateField('c_phone');
+				checkAllFieldsValid();
+			});
+			
+			phoneInput.addEventListener('blur', function() {
+				validateFieldWithToast('c_phone');
+				checkAllFieldsValid();
+			});
+		}
+		
+		// Form validation for all fields
+		function setupFormValidation() {
+			const form = document.querySelector('form');
+			if (!form) return;
+			
+			// Name validation
+			const nameInput = document.getElementById('c_name');
+			const nameIcon = document.getElementById('nameValidationIcon');
+			if (nameInput) {
+				nameInput.addEventListener('input', function() {
+					validateField('c_name');
+					checkAllFieldsValid();
+				});
+				
+				nameInput.addEventListener('blur', function() {
+					validateFieldWithToast('c_name');
+					checkAllFieldsValid();
+				});
+			}
+			
+			// Email validation
+			const emailInput = document.getElementById('c_email');
+			const emailIcon = document.getElementById('emailValidationIcon');
+			if (emailInput) {
+				emailInput.addEventListener('input', function() {
+					validateEmail();
+					checkAllFieldsValid();
+				});
+				
+				emailInput.addEventListener('blur', function() {
+					validateFieldWithToast('c_email');
+					checkAllFieldsValid();
+				});
+			}
+			
+			// Address validation
+			const addressInput = document.getElementById('c_address_detail');
+			const addressIcon = document.getElementById('addressValidationIcon');
+			if (addressInput) {
+				addressInput.addEventListener('input', function() {
+					validateField('c_address_detail');
+					checkAllFieldsValid();
+				});
+				
+				addressInput.addEventListener('blur', function() {
+					validateFieldWithToast('c_address_detail');
+					checkAllFieldsValid();
+				});
+			}
+			
+			// Province validation
+			const provinceSelect = document.getElementById('province');
+			const provinceIcon = document.getElementById('provinceValidationIcon');
+			if (provinceSelect) {
+				provinceSelect.addEventListener('change', function() {
+					validateFieldWithToast('province');
+					checkAllFieldsValid();
+				});
+				
+				provinceSelect.addEventListener('blur', function() {
+					validateFieldWithToast('province');
+					checkAllFieldsValid();
+				});
+			}
+			
+			// District validation
+			const districtSelect = document.getElementById('district');
+			const districtIcon = document.getElementById('districtValidationIcon');
+			if (districtSelect) {
+				districtSelect.addEventListener('change', function() {
+					validateFieldWithToast('district');
+					checkAllFieldsValid();
+				});
+				
+				districtSelect.addEventListener('blur', function() {
+					validateFieldWithToast('district');
+					checkAllFieldsValid();
+				});
+			}
+			
+			// Ward validation
+			const wardSelect = document.getElementById('ward');
+			const wardIcon = document.getElementById('wardValidationIcon');
+			if (wardSelect) {
+				wardSelect.addEventListener('change', function() {
+					validateFieldWithToast('ward');
+					checkAllFieldsValid();
+				});
+				
+				wardSelect.addEventListener('blur', function() {
+					validateFieldWithToast('ward');
+					checkAllFieldsValid();
+				});
+			}
+		}
+		
+		// Email validation helper
+		function isValidEmail(email) {
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return emailRegex.test(email);
+		}
+		
+		// Validate phone number (Vietnamese format)
+		function isValidPhoneNumber(phone) {
+			// Remove all non-numeric characters
+			const cleanPhone = phone.replace(/[^\d]/g, '');
+			
+			// Vietnamese phone number patterns
+			const patterns = [
+				/^0[3|5|7|8|9][0-9]{8}$/, // Mobile numbers: 03x, 05x, 07x, 08x, 09x
+				/^0[2|4|6][0-9]{8}$/, // Landline numbers: 02x, 04x, 06x
+				/^0[1][0-9]{8}$/, // Special numbers: 01x
+			];
+			
+			// Check if phone matches any pattern
+			return patterns.some(pattern => pattern.test(cleanPhone));
+		}
+		
+		// Setup address selection with API data
+		let provincesData = null;
+		
+		async function setupAddressSelection() {
+			const provinceSelect = document.getElementById('province');
+			const districtSelect = document.getElementById('district');
+			const wardSelect = document.getElementById('ward');
+			if (!provinceSelect || !districtSelect || !wardSelect) return;
+			
+			try {
+				// Load provinces data from JSON file
+				const response = await fetch('js/provinces_full.json');
+				if (!response.ok) {
+					throw new Error('Không thể tải dữ liệu tỉnh thành');
+				}
+				provincesData = await response.json();
+				
+				// Load provinces
+				provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành phố</option>';
+				provincesData.forEach(province => {
+					const opt = document.createElement('option');
+					opt.value = province.code.toString();
+					opt.textContent = province.name;
+					provinceSelect.appendChild(opt);
+				});
+
+				// Province change handler
+				provinceSelect.addEventListener('change', function() {
+					districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+					wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+					wardSelect.disabled = true;
+					
+					if (!this.value) {
+						districtSelect.disabled = true;
+						// Trigger validation
+						validateFieldWithToast('province');
+						validateFieldWithToast('district');
+						validateFieldWithToast('ward');
+						checkAllFieldsValid();
+						return;
+					}
+					
+					districtSelect.disabled = false;
+					
+					// Load districts for selected province
+					loadDistricts(this.value, districtSelect);
+					
+					// Trigger validation
+					validateFieldWithToast('province');
+					validateFieldWithToast('district');
+					validateFieldWithToast('ward');
+					checkAllFieldsValid();
+				});
+
+				// District change handler
+				districtSelect.addEventListener('change', function() {
+					wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+					
+					if (!this.value) {
+						wardSelect.disabled = true;
+						// Trigger validation
+						validateFieldWithToast('district');
+						validateFieldWithToast('ward');
+						checkAllFieldsValid();
+						return;
+					}
+					
+					wardSelect.disabled = false;
+					
+					// Load wards for selected district
+					loadWards(this.value, wardSelect);
+					
+					// Trigger validation
+					validateFieldWithToast('district');
+					validateFieldWithToast('ward');
+					checkAllFieldsValid();
+				});
+				
+			} catch (error) {
+				console.error('Lỗi khi tải dữ liệu tỉnh thành:', error);
+				// Fallback to static data if API fails
+				loadStaticProvinces();
+			}
+		}
+		
+		// Fallback function with static data
+		function loadStaticProvinces() {
+			const provinceSelect = document.getElementById('province');
+			const districtSelect = document.getElementById('district');
+			const wardSelect = document.getElementById('ward');
+			
+			const provinces = [
+				{ code: '01', name: 'Hà Nội' },
+				{ code: '95', name: 'TP. Hồ Chí Minh' },
+				{ code: '49', name: 'Đà Nẵng' },
+				{ code: '33', name: 'Hải Phòng' },
+				{ code: '92', name: 'Cần Thơ' },
+				{ code: '75', name: 'Bình Dương' },
+				{ code: '77', name: 'Đồng Nai' }
+			];
+			
+			provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành phố</option>';
+			provinces.forEach(province => {
+				const opt = document.createElement('option');
+				opt.value = province.code;
+				opt.textContent = province.name;
+				provinceSelect.appendChild(opt);
+			});
+		}
+		
+		// Load districts for a province
+		function loadDistricts(provinceCode, districtSelect) {
+			if (!provincesData) {
+				// Fallback to static data if API data is not available
+				loadStaticDistricts(provinceCode, districtSelect);
+				return;
+			}
+			
+			// Find the selected province
+			const province = provincesData.find(p => p.code.toString() === provinceCode);
+			if (!province || !province.districts) {
+				districtSelect.innerHTML = '<option value="">Không có dữ liệu</option>';
+				return;
+			}
+			
+			// Load districts from API data
+			districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+			province.districts.forEach(district => {
+				const opt = document.createElement('option');
+				opt.value = district.code.toString();
+				opt.textContent = district.name;
+				districtSelect.appendChild(opt);
+			});
+		}
+		
+		// Fallback function for districts
+		function loadStaticDistricts(provinceCode, districtSelect) {
+			const districtsData = {
+				'01': [ // Hà Nội
+					{ code: '001', name: 'Ba Đình' },
+					{ code: '002', name: 'Hoàn Kiếm' },
+					{ code: '003', name: 'Hai Bà Trưng' },
+					{ code: '004', name: 'Đống Đa' },
+					{ code: '005', name: 'Tây Hồ' },
+					{ code: '006', name: 'Cầu Giấy' },
+					{ code: '007', name: 'Thanh Xuân' },
+					{ code: '008', name: 'Hoàng Mai' },
+					{ code: '009', name: 'Long Biên' },
+					{ code: '010', name: 'Nam Từ Liêm' },
+					{ code: '011', name: 'Bắc Từ Liêm' },
+					{ code: '012', name: 'Hà Đông' }
+				],
+				'95': [ // TP. Hồ Chí Minh
+					{ code: '001', name: 'Quận 1' },
+					{ code: '002', name: 'Quận 2' },
+					{ code: '003', name: 'Quận 3' },
+					{ code: '004', name: 'Quận 4' },
+					{ code: '005', name: 'Quận 5' },
+					{ code: '006', name: 'Quận 6' },
+					{ code: '007', name: 'Quận 7' },
+					{ code: '008', name: 'Quận 8' },
+					{ code: '009', name: 'Quận 9' },
+					{ code: '010', name: 'Quận 10' },
+					{ code: '011', name: 'Quận 11' },
+					{ code: '012', name: 'Quận 12' }
+				],
+				'49': [ // Đà Nẵng
+					{ code: '001', name: 'Quận Hải Châu' },
+					{ code: '002', name: 'Quận Thanh Khê' },
+					{ code: '003', name: 'Quận Sơn Trà' },
+					{ code: '004', name: 'Quận Ngũ Hành Sơn' },
+					{ code: '005', name: 'Quận Liên Chiểu' },
+					{ code: '006', name: 'Quận Cẩm Lệ' },
+					{ code: '007', name: 'Huyện Hòa Vang' }
+				]
+			};
+			
+			const districts = districtsData[provinceCode] || [];
+			districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+			districts.forEach(district => {
+				const opt = document.createElement('option');
+				opt.value = district.code;
+				opt.textContent = district.name;
+				districtSelect.appendChild(opt);
+			});
+		}
+		
+		// Load wards for a district
+		function loadWards(districtCode, wardSelect) {
+			if (!provincesData) {
+				// Fallback to static data if API data is not available
+				loadStaticWards(districtCode, wardSelect);
+				return;
+			}
+			
+			// Find the selected district in all provinces
+			let selectedDistrict = null;
+			for (const province of provincesData) {
+				if (province.districts) {
+					selectedDistrict = province.districts.find(d => d.code.toString() === districtCode);
+					if (selectedDistrict) break;
+				}
+			}
+			
+			if (!selectedDistrict || !selectedDistrict.wards) {
+				wardSelect.innerHTML = '<option value="">Không có dữ liệu</option>';
+				return;
+			}
+			
+			// Load wards from API data
+			wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+			selectedDistrict.wards.forEach(ward => {
+				const opt = document.createElement('option');
+				opt.value = ward.code.toString();
+				opt.textContent = ward.name;
+				wardSelect.appendChild(opt);
+			});
+		}
+		
+		// Fallback function for wards
+		function loadStaticWards(districtCode, wardSelect) {
+			const wardsData = {
+				'001': [ // Ba Đình - Hà Nội
+					{ code: '00001', name: 'Phường Phúc Xá' },
+					{ code: '00004', name: 'Phường Trúc Bạch' },
+					{ code: '00006', name: 'Phường Vĩnh Phúc' },
+					{ code: '00007', name: 'Phường Cống Vị' },
+					{ code: '00008', name: 'Phường Liễu Giai' },
+					{ code: '00010', name: 'Phường Nguyễn Trung Trực' },
+					{ code: '00013', name: 'Phường Quán Thánh' },
+					{ code: '00016', name: 'Phường Ngọc Hà' },
+					{ code: '00019', name: 'Phường Điện Biên' },
+					{ code: '00022', name: 'Phường Đội Cấn' },
+					{ code: '00025', name: 'Phường Ngọc Khánh' },
+					{ code: '00028', name: 'Phường Kim Mã' },
+					{ code: '00031', name: 'Phường Giảng Võ' },
+					{ code: '00034', name: 'Phường Thành Công' }
+				],
+				'002': [ // Hoàn Kiếm - Hà Nội
+					{ code: '00037', name: 'Phường Phúc Tân' },
+					{ code: '00040', name: 'Phường Đồng Xuân' },
+					{ code: '00043', name: 'Phường Hàng Mã' },
+					{ code: '00046', name: 'Phường Hàng Buồm' },
+					{ code: '00049', name: 'Phường Hàng Đào' },
+					{ code: '00052', name: 'Phường Hàng Bồ' },
+					{ code: '00055', name: 'Phường Cửa Đông' },
+					{ code: '00058', name: 'Phường Lý Thái Tổ' },
+					{ code: '00061', name: 'Phường Hàng Bạc' },
+					{ code: '00064', name: 'Phường Hàng Gai' },
+					{ code: '00067', name: 'Phường Chương Dương' },
+					{ code: '00070', name: 'Phường Hàng Trống' },
+					{ code: '00073', name: 'Phường Cửa Nam' },
+					{ code: '00076', name: 'Phường Hàng Bông' },
+					{ code: '00079', name: 'Phường Tràng Tiền' },
+					{ code: '00082', name: 'Phường Trần Hưng Đạo' },
+					{ code: '00085', name: 'Phường Phan Chu Trinh' },
+					{ code: '00088', name: 'Phường Hàng Bài' }
+				]
+			};
+			
+			const wards = wardsData[districtCode] || [
+				{ code: '001', name: 'Phường 1' },
+				{ code: '002', name: 'Phường 2' },
+				{ code: '003', name: 'Phường 3' },
+				{ code: '004', name: 'Phường 4' },
+				{ code: '005', name: 'Phường 5' },
+				{ code: '006', name: 'Phường 6' },
+				{ code: '007', name: 'Phường 7' },
+				{ code: '008', name: 'Phường 8' },
+				{ code: '009', name: 'Phường 9' },
+				{ code: '010', name: 'Phường 10' }
+			];
+			
+			wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+			wards.forEach(ward => {
+				const opt = document.createElement('option');
+				opt.value = ward.code;
+				opt.textContent = ward.name;
+				wardSelect.appendChild(opt);
+			});
+		}
+		</script>
+
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/custom.js"></script>
 		<script>
 		function loopShakeFab(btnId) {
 		  var btn = document.getElementById(btnId);
-		  function shake() {
-			btn.style.animationPlayState = 'running';
-			setTimeout(function() {
-			  btn.style.animationPlayState = 'paused';
-			  setTimeout(shake, 2000);
-			}, 500);
+		  if (!btn) return;
+		  
+		  // Thêm CSS animation cho hiệu ứng xoay và lắc
+		  btn.style.cssText += `
+			animation: modernShake 3s ease-in-out infinite;
+			transform-origin: center;
+		  `;
+		  
+		  // Tạo keyframes cho hiệu ứng hiện đại
+		  if (!document.getElementById('modernShakeKeyframes')) {
+			const style = document.createElement('style');
+			style.id = 'modernShakeKeyframes';
+			style.textContent = `
+			  @keyframes modernShake {
+				0%, 100% { 
+				  transform: rotate(0deg) scale(1); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+				10% { 
+				  transform: rotate(-5deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				20% { 
+				  transform: rotate(5deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				30% { 
+				  transform: rotate(-3deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				40% { 
+				  transform: rotate(3deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				50% { 
+				  transform: rotate(-2deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				60% { 
+				  transform: rotate(2deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				70% { 
+				  transform: rotate(-1deg) scale(1.02); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+				80% { 
+				  transform: rotate(1deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				90% { 
+				  transform: rotate(0deg) scale(1.02); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+			  }
+			`;
+			document.head.appendChild(style);
 		  }
-		  shake();
+		  
+		  // Thêm hiệu ứng hover
+		  btn.addEventListener('mouseenter', function() {
+			this.style.animationPlayState = 'paused';
+			this.style.transform = 'scale(1.2) rotate(5deg)';
+			this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+		  });
+		  
+		  btn.addEventListener('mouseleave', function() {
+			this.style.animationPlayState = 'running';
+			this.style.transform = '';
+			this.style.boxShadow = '';
+		  });
 		}
 		loopShakeFab('callFab');
 		loopShakeFab('zaloFab');
 		</script>
-
-			<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/tiny-slider.js"></script>
-	<script src="js/custom.js"></script>
-		<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const provinceSelect = document.getElementById('province');
-  const districtSelect = document.getElementById('district');
-  const wardSelect = document.getElementById('ward');
-  if (!provinceSelect || !districtSelect || !wardSelect) return;
-  provinceSelect.innerHTML = '<option value="">Đang tải danh sách...</option>';
-  fetch('https://vn-public-apis.fpo.vn/provinces/getAll?limit=-1')
-    .then(res => res.json())
-    .then(data => {
-      provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành phố</option>';
-      data.data.forEach(province => {
-        const opt = document.createElement('option');
-        opt.value = province.code;
-        opt.textContent = province.name_with_type;
-        provinceSelect.appendChild(opt);
-      });
-    })
-    .catch(err => {
-      provinceSelect.innerHTML = '<option value="">Không tải được dữ liệu</option>';
-      console.error('Lỗi fetch tỉnh/thành:', err);
-    });
-
-  provinceSelect.addEventListener('change', function() {
-    districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
-    wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
-    wardSelect.disabled = true;
-    if (!this.value) {
-      districtSelect.disabled = true;
-      return;
-    }
-    districtSelect.disabled = false;
-    districtSelect.innerHTML = '<option value="">Đang tải...</option>';
-    fetch(`https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=${this.value}`)
-      .then(res => res.json())
-      .then(data => {
-        districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
-        data.data.forEach(district => {
-          const opt = document.createElement('option');
-          opt.value = district.code;
-          opt.textContent = district.name_with_type;
-          districtSelect.appendChild(opt);
-        });
-      })
-      .catch(err => {
-        districtSelect.innerHTML = '<option value="">Không tải được dữ liệu</option>';
-        console.error('Lỗi fetch quận/huyện:', err);
-      });
-  });
-
-  districtSelect.addEventListener('change', function() {
-    wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
-    if (!this.value) {
-      wardSelect.disabled = true;
-      return;
-    }
-    wardSelect.disabled = false;
-    wardSelect.innerHTML = '<option value="">Đang tải...</option>';
-    fetch(`https://vn-public-apis.fpo.vn/wards/getByDistrict?districtCode=${this.value}`)
-      .then(res => res.json())
-      .then(data => {
-        wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
-        data.data.forEach(ward => {
-          const opt = document.createElement('option');
-          opt.value = ward.code;
-          opt.textContent = ward.name_with_type;
-          wardSelect.appendChild(opt);
-        });
-      })
-      .catch(err => {
-        wardSelect.innerHTML = '<option value="">Không tải được dữ liệu</option>';
-        console.error('Lỗi fetch phường/xã:', err);
-      });
-  });
-});
-</script>
+		    <script src="js/address-converter.js"></script>
+    <script src="js/order-manager.js"></script>
+		<script src="js/footer-loader.js"></script>
 	</body>
 
 </html>

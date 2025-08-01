@@ -3,18 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
+  <meta name="author" content="Mộc Tái Sinh">
+
   <link rel="shortcut icon" href="favicon.png">
 
-  <meta name="description" content="Cảm ơn bạn đã đồng hành cùng Mộc Tái Sinh lan tỏa giá trị sống xanh.">
-  <meta name="keywords" content="cảm ơn, đơn hàng thành công, mộc tái sinh">
+  <meta name="description" content="Cảm ơn bạn đã đặt hàng sản phẩm gỗ tái sinh. Chúng tôi sẽ giao hàng sớm nhất. Đồ gỗ thủ công chất lượng cao.">
+  <meta name="keywords" content="đặt hàng thành công, gỗ tái sinh, đồ gỗ thủ công">
+  <!-- SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta property="og:title" content="Cảm Ơn | Đặt Hàng Thành Công - Mộc Tái Sinh">
+  <meta property="og:description" content="Cảm ơn bạn đã đặt hàng sản phẩm gỗ tái sinh. Chúng tôi sẽ giao hàng sớm nhất. Đồ gỗ thủ công chất lượng cao.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moctaisinh.vn">
+  <meta property="og:site_name" content="Mộc Tái Sinh">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cảm Ơn | Đặt Hàng Thành Công - Mộc Tái Sinh">
+  <meta name="twitter:description" content="Cảm ơn bạn đã đặt hàng sản phẩm gỗ tái sinh. Chúng tôi sẽ giao hàng sớm nhất. Đồ gỗ thủ công chất lượng cao.">
+  <link rel="canonical" href="https://moctaisinh.vn/thankyou.html">
+
 
 		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<title>Cảm ơn | Mộc Tái Sinh</title>
+		<link href="css/thankyou.css" rel="stylesheet">
+		<title>Cảm Ơn | Đặt Hàng Thành Công - Mộc Tái Sinh</title>
 	</head>
 
 	<body class="thankyou-page">
@@ -66,126 +81,134 @@
 
 		
 
-		<div class="untree_co-section">
+		<div class="untree_co-section" style="padding: 2rem 0 4rem 0;">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-center pt-5">
-          <span class="display-3 thankyou-icon text-primary">
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check mb-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-              <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-            </svg>
-          </span>
-          <h2 class="display-3 text-black">Cảm ơn bạn!</h2>
-          <p class="lead mb-5">Đơn hàng của bạn đã được ghi nhận thành công. Chúng tôi sẽ liên hệ xác nhận và gửi sản phẩm đến bạn trong thời gian sớm nhất.</p>
-          <p><a href="shop.html" class="btn btn-sm btn-outline-black">Quay lại cửa hàng</a></p>
+        <div class="col-md-12 text-center">
+
+          
+          <!-- Order Information -->
+          <div class="order-info mt-5" id="orderInfo" style="display: none;">
+            <div class="modern-order-card">
+              <div class="order-header">
+                <div class="order-header-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3>Thông tin đơn hàng</h3>
+              </div>
+              
+              <div class="order-content">
+                <div class="order-section">
+                  <h4 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Thông tin đơn hàng
+                  </h4>
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <span class="info-label">Mã đơn hàng:</span>
+                      <span class="info-value" id="orderId"></span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Ngày đặt:</span>
+                      <span class="info-value" id="orderDate"></span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Tổng tiền:</span>
+                      <span class="info-value total-amount" id="orderTotal"></span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="order-section">
+                  <h4 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Thông tin khách hàng
+                  </h4>
+                  <div class="customer-info" id="customerInfo">
+                    <!-- Customer info will be populated here -->
+                  </div>
+                </div>
+                
+                <div class="order-section">
+                  <h4 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8m-8 0a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Sản phẩm đã đặt
+                  </h4>
+                  <div class="order-items" id="orderItems">
+                    <!-- Order items will be populated here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-4">
+            <div class="button-group">
+              <a href="shop.html" class="btn btn-sm btn-outline-black me-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8m-8 0a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Quay lại cửa hàng
+              </a>
+              
+              <!-- Dropdown cho xuất hóa đơn -->
+              <div class="dropdown d-inline-block">
+                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="invoiceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Xuất hóa đơn
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="invoiceDropdown">
+                  <li><a class="dropdown-item" href="#" onclick="exportInvoicePDF()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Xuất PDF
+                  </a></li>
+                  <li><a class="dropdown-item" href="#" onclick="exportInvoiceExcel()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                      <path d="M3 3h18v18H3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9 21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Xuất Excel
+                  </a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#" onclick="printInvoice()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                      <path d="M6 9V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    In hóa đơn
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-		<!-- Start Footer Section -->
-		<footer class="footer-section">
-			<div class="container relative">
-
-				<div class="sofa-img">
-					<img src="images/sofa.png" alt="Image" class="img-fluid">
-				</div>
-
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Đăng ký nhận tin</span></h3>
-
-							<form action="#" class="row g-3">
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Nhập tên của bạn">
-								</div>
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Nhập số điện thoại của bạn">
-								</div>
-								<div class="col-auto">
-									<button class="btn btn-primary">
-										<span class="fa fa-paper-plane"></span>
-									</button>
-								</div>
-							</form>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="row g-5 mb-5">
-					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">moctaisinh<span>.</span>vn</a></div>
-						<p class="mb-4">Cảm hứng từ Cúc Phương – nơi thiên nhiên hồi sinh và lan tỏa. Website được đồng hành & thiết kế bởi Thanh Độ, người kể chuyện của những vật liệu cũ.</p>
-
-						<ul class="list-unstyled custom-social">
-							<li><a href="tel:0373566167" title="Gọi điện"><span class="fa fa-phone"></span></a></li>
-							<li><a href="https://zalo.me/0373566167" target="_blank" title="Zalo"><span class="fa fa-comment-dots"></span></a></li>
-							<li><a href="https://www.tiktok.com/@taisinh.vn" target="_blank" title="TikTok"><span class="fa fa-brands fa-tiktok"></span></a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-8">
-						<div class="row links-wrap">
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="about.html">Về Mộc Tái Sinh</a></li>
-									<li><a href="services.html">Dịch vụ thủ công</a></li>
-									<li><a href="blog.html">Câu chuyện cảm hứng</a></li>
-									<li><a href="contact.html">Kết nối & Hợp tác</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Hỗ trợ khách hàng</a></li>
-									<li><a href="#">Kiến thức tái chế</a></li>
-									<li><a href="#">Tư vấn trực tuyến</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Tuyển dụng</a></li>
-									<li><a href="#">Đội ngũ nghệ nhân</a></li>
-									<li><a href="#">Lãnh đạo & Sứ mệnh</a></li>
-									<li><a href="#">Chính sách bảo mật</a></li>
-								</ul>
-							</div>
-
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Ngọn gió đầu mùa</a></li>
-									<li><a href="#">Ký ức nhà kho cũ</a></li>
-									<li><a href="#">Dấu lặng bên vách núi</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="border-top copyright">
-					<div class="row pt-4">
-						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">&copy; 2025 moctaisinh.vn. Cảm hứng từ Cúc Phương. Thiết kế & đồng hành bởi Thanh Độ.<br><span style="font-weight:600; color:#3b5d50;">Từ gốc – đến lá – từ tim</span><br><span style="color:#3b5d50;">Cam kết: Trích lợi nhuận trồng cây xanh, lan tỏa yêu thương, gieo mầm xanh mới.</span></p>
-						</div>
-
-						<div class="col-lg-6 text-center text-lg-end">
-							<ul class="list-unstyled d-inline-flex ms-auto">
-								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-							</ul>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</footer>
-		<!-- End Footer Section -->	
+		<!-- Footer will be loaded automatically from footer.html -->
+		<div class="footer-section">
+			<!-- Footer will be loaded automatically from footer.html -->
+		</div>	
 
 
 		<!-- Nút nổi Call & Zalo -->
@@ -200,10 +223,10 @@
 		  gap: 16px;
 		}
 		.fab-contact-btn {
-		  width: 56px;
-		  height: 56px;
-		  border-radius: 50%;
-		  background: #3b5d50;
+		  width: 60px;
+		  height: 60px;
+		  border-radius: 100%;
+		  background-color: #30C04F;
 		  color: #fff;
 		  display: flex;
 		  align-items: center;
@@ -219,11 +242,17 @@
 		  animation-play-state: paused;
 		}
 		.fab-contact-btn.zalo-btn {
-		  background: #008fe5;
+		.fab-contact-btn:hover {
+		  background-color: #2bac47;
+		  transform: scale(1.1);
+		}		  background: #008fe5;
 		  padding: 0;
 		}
 		.fab-contact-btn.zalo-btn img {
-		  width: 32px;
+		.fab-contact-btn:hover {
+		  background-color: #2bac47;
+		  transform: scale(1.1);
+		}		  width: 32px;
 		  height: 32px;
 		}
 		@keyframes shakeFab {
@@ -234,28 +263,688 @@
 		}
 		</style>
 		<div class="fab-contact">
-		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện"><span class="fa fa-phone"></span></a>
+		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện" onclick="handleCallClick(event)"><svg xmlns="http://www.w3.org/2000/svg" width="32" viewBox="0 0 32 32" height="32" fill="none" class="svg-icon"><path stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" d="m24.8868 19.1288c-1.0274-.1308-2.036-.3815-3.0052-.7467-.7878-.29-1.6724-.1034-2.276.48-.797.8075-2.0493.9936-2.9664.3258-1.4484-1.055-2.7233-2.3295-3.7783-3.7776-.6681-.9168-.4819-2.1691.3255-2.9659.5728-.6019.7584-1.4748.4802-2.2577-.3987-.98875-.6792-2.02109-.8358-3.07557-.2043-1.03534-1.1138-1.7807-2.1694-1.77778h-3.18289c-.60654-.00074-1.18614.25037-1.60035.69334-.40152.44503-.59539 1.03943-.53345 1.63555.344 3.31056 1.47164 6.49166 3.28961 9.27986 1.64878 2.5904 3.84608 4.7872 6.43688 6.4356 2.7927 1.797 5.9636 2.9227 9.2644 3.289h.1778c.5409.0036 1.0626-.2 1.4581-.569.444-.406.6957-.9806.6935-1.5822v-3.1821c.0429-1.0763-.7171-2.0185-1.7782-2.2046z" clip-rule="evenodd"></path></svg></a>
 		  <a href="https://zalo.me/0373566167" class="fab-contact-btn zalo-btn" id="zaloFab" title="Zalo" target="_blank"><img src="images/Icon_of_Zalo.png" alt="Zalo"></a>
 		</div>
 		<script>
 		function loopShakeFab(btnId) {
 		  var btn = document.getElementById(btnId);
-		  function shake() {
-			btn.style.animationPlayState = 'running';
-			setTimeout(function() {
-			  btn.style.animationPlayState = 'paused';
-			  setTimeout(shake, 2000);
-			}, 500);
+		  if (!btn) return;
+		  
+		  // Thêm CSS animation cho hiệu ứng xoay và lắc
+		  btn.style.cssText += `
+			animation: modernShake 3s ease-in-out infinite;
+			transform-origin: center;
+		  `;
+		  
+		  // Tạo keyframes cho hiệu ứng hiện đại
+		  if (!document.getElementById('modernShakeKeyframes')) {
+			const style = document.createElement('style');
+			style.id = 'modernShakeKeyframes';
+			style.textContent = `
+			  @keyframes modernShake {
+				0%, 100% { 
+				  transform: rotate(0deg) scale(1); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+				10% { 
+				  transform: rotate(-5deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				20% { 
+				  transform: rotate(5deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				30% { 
+				  transform: rotate(-3deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				40% { 
+				  transform: rotate(3deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				50% { 
+				  transform: rotate(-2deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				60% { 
+				  transform: rotate(2deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				70% { 
+				  transform: rotate(-1deg) scale(1.02); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+				80% { 
+				  transform: rotate(1deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				90% { 
+				  transform: rotate(0deg) scale(1.02); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+			  }
+			`;
+			document.head.appendChild(style);
 		  }
-		  shake();
+		  
+		  // Thêm hiệu ứng hover
+		  btn.addEventListener('mouseenter', function() {
+			this.style.animationPlayState = 'paused';
+			this.style.transform = 'scale(1.2) rotate(5deg)';
+			this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+		  });
+		  
+		  btn.addEventListener('mouseleave', function() {
+			this.style.animationPlayState = 'running';
+			this.style.transform = '';
+			this.style.boxShadow = '';
+		  });
 		}
 		loopShakeFab('callFab');
 		loopShakeFab('zaloFab');
-		</script>
+		
+      // Xử lý nút gọi điện thông minh
+      function handleCallClick(event) {
+        event.preventDefault();
+        
+        // Hiển thị popup gọi điện
+        showCallPopup();
+      }
+      
+      // Hiển thị popup gọi điện
+      function showCallPopup() {
+        // Tạo popup container
+        const popup = document.createElement('div');
+        popup.id = 'callPopup';
+        popup.style.cssText = `
+          position: fixed;
+          inset: 0;
+          z-index: 3000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0,0,0,0.5);
+          backdrop-filter: blur(4px);
+        `;
+        
+        // Tạo popup content
+        const popupContent = document.createElement('div');
+        popupContent.style.cssText = `
+          background: white;
+          border-radius: 16px;
+          padding: 32px;
+          text-align: center;
+          max-width: 400px;
+          width: 90%;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+          animation: popupSlideIn 0.3s ease-out;
+        `;
+        
+        popupContent.innerHTML = `
+          <div style="margin-bottom: 24px;">
+            <div style="width: 80px; height: 80px; background: #28a745; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" fill="white"/>
+              </svg>
+            </div>
+            <h3 style="margin: 0 0 8px; color: #333; font-size: 24px; font-weight: 600;">Gọi điện tư vấn</h3>
+            <p style="margin: 0; color: #666; font-size: 16px;">Bạn có muốn gọi điện đến hotline của chúng tôi không?</p>
+          </div>
+          
+          <div style="font-size: 28px; font-weight: 700; color: #28a745; margin-bottom: 24px; letter-spacing: 2px;">
+            0373 566 167
+          </div>
+          
+          <div style="display: flex; gap: 12px; justify-content: center;">
+            <button onclick="closeCallPopup()" style="
+              padding: 12px 24px;
+              border: 2px solid #ddd;
+              background: white;
+              color: #666;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+            " onmouseover="this.style.borderColor='#999'; this.style.color='#333'" onmouseout="this.style.borderColor='#ddd'; this.style.color='#666'">
+              Hủy
+            </button>
+            <button onclick="makeCall()" style="
+              padding: 12px 32px;
+              border: none;
+              background: #28a745;
+              color: white;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+            " onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
+              Gọi ngay
+            </button>
+          </div>
+        `;
+        
+        // Thêm CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes popupSlideIn {
+            from {
+              opacity: 0;
+              transform: scale(0.8) translateY(-20px);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+          @keyframes popupSlideOut {
+            from {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+            to {
+              opacity: 0;
+              transform: scale(0.8) translateY(-20px);
+            }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        popup.appendChild(popupContent);
+        document.body.appendChild(popup);
+        
+        // Đóng popup khi click bên ngoài
+        popup.addEventListener('click', function(e) {
+          if (e.target === popup) {
+            closeCallPopup();
+          }
+        });
+        
+        // Đóng popup khi nhấn ESC
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeCallPopup();
+          }
+        });
+      }
+      
+      // Đóng popup gọi điện
+      function closeCallPopup() {
+        const popup = document.getElementById('callPopup');
+        if (popup) {
+          popup.style.animation = 'popupSlideOut 0.2s ease-in';
+          setTimeout(() => {
+            document.body.removeChild(popup);
+          }, 200);
+        }
+      }
+      
+      // Thực hiện cuộc gọi
+      function makeCall() {
+        const phoneNumber = '0373566167';
+        
+        // Kiểm tra xem có phải mobile không
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+          // Trên mobile: gọi điện trực tiếp
+          window.location.href = 'tel:' + phoneNumber;
+        } else {
+          // Trên desktop: tạo link ẩn và click để mở ứng dụng gọi điện
+          const link = document.createElement('a');
+          link.href = 'tel:' + phoneNumber;
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
+          // Hiển thị thông báo
+          showCallNotification('Đang mở ứng dụng gọi điện...');
+        }
+        
+        closeCallPopup();
+      }
+    </script>
 
 			<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/custom.js"></script>
+	
+	<script src="js/checkout-utils.js"></script>
+		<script src="js/cart-guard.js"></script>
+	<script>
+		// Format currency function
+		function formatCurrency(num) {
+			if (typeof num === 'string') {
+				// Remove all non-digit characters
+				num = num.replace(/[^\d]/g, '');
+			}
+			num = parseInt(num) || 0;
+			return num.toLocaleString('vi-VN') + '₫';
+		}
+		
+		// Load and display order information
+		document.addEventListener('DOMContentLoaded', function() {
+			// CartGuard sẽ tự động kiểm tra và bảo vệ trang
+			// Chỉ tiếp tục nếu CartGuard cho phép
+			if (!CartGuard.checkOrderAccess()) {
+				return;
+			}
+			
+			// Get order ID from URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const orderId = urlParams.get('orderId');
+			
+			// Load orders from localStorage
+			const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+			const currentOrder = orders.find(order => order.orderId === orderId);
+			
+			if (currentOrder) {
+				displayOrderInfo(currentOrder);
+			}
+		});
+		
+		// Display order information
+		function displayOrderInfo(order) {
+			// Show order info section
+			document.getElementById('orderInfo').style.display = 'block';
+			
+			// Set order details
+			document.getElementById('orderId').textContent = order.orderId;
+			document.getElementById('orderDate').textContent = new Date(order.orderDate).toLocaleDateString('vi-VN');
+			document.getElementById('orderTotal').textContent = formatCurrency(order.total);
+			
+			// Gọi webhook sau khi hiển thị thông tin đơn hàng
+			sendWebhookNotification(order);
+			
+			// Set customer info with clear structure
+			const customer = order.customer;
+			document.getElementById('customerInfo').innerHTML = `
+				<div class="customer-details">
+					<div class="customer-item">
+						<span class="customer-label">Họ và tên:</span>
+						<span class="customer-value">${customer.name}</span>
+					</div>
+					<div class="customer-item">
+						<span class="customer-label">Số điện thoại:</span>
+						<span class="customer-value">${customer.phone}</span>
+					</div>
+					<div class="customer-item">
+						<span class="customer-label">Email:</span>
+						<span class="customer-value">${customer.email || 'Không có'}</span>
+					</div>
+					<div class="customer-item">
+						<span class="customer-label">Địa chỉ:</span>
+						<span class="customer-value">${customer.address}</span>
+					</div>
+					${customer.note ? `
+					<div class="customer-item note-item">
+						<span class="customer-label">Ghi chú:</span>
+						<span class="customer-value note">${customer.note}</span>
+					</div>
+					` : ''}
+				</div>
+			`;
+			
+			// Display order items with better structure
+			const orderItemsContainer = document.getElementById('orderItems');
+			orderItemsContainer.innerHTML = '';
+			
+			order.items.forEach(item => {
+				const itemDiv = document.createElement('div');
+				itemDiv.className = 'order-item';
+				itemDiv.innerHTML = `
+					<div class="item-info">
+						<span class="item-name">${item.name}</span>
+						<span class="item-quantity">x${item.quantity}</span>
+					</div>
+					<span class="item-price">${formatCurrency(item.price)}</span>
+				`;
+				orderItemsContainer.appendChild(itemDiv);
+			});
+		}
+
+		// Format tiền tệ
+		function formatCurrency(amount) {
+			return new Intl.NumberFormat('vi-VN', {
+				style: 'currency',
+				currency: 'VND'
+			}).format(amount);
+		}
+
+		// Lấy dữ liệu đơn hàng hiện tại
+		function getCurrentOrder() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const orderId = urlParams.get('orderId');
+			const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+			const currentOrder = orders.find(order => order.orderId === orderId);
+
+			if (!currentOrder) {
+				alert('Không tìm thấy thông tin đơn hàng!');
+				return null;
+			}
+
+			return currentOrder;
+		}
+
+		// Hiển thị loading state cho dropdown
+		function showLoadingState(action) {
+			const dropdownBtn = document.getElementById('invoiceDropdown');
+			const originalText = dropdownBtn.innerHTML;
+			
+			dropdownBtn.innerHTML = `
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; animation: spin 1s linear infinite;">
+					<path d="M12 2v6m0 0l3-3m-3 3l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				Đang ${action}...
+			`;
+			dropdownBtn.disabled = true;
+			
+			return originalText;
+		}
+
+		// Reset loading state
+		function resetLoadingState(originalText) {
+			const dropdownBtn = document.getElementById('invoiceDropdown');
+			dropdownBtn.innerHTML = originalText;
+			dropdownBtn.disabled = false;
+		}
+
+		// Xuất hóa đơn PDF
+		async function exportInvoicePDF() {
+			const currentOrder = getCurrentOrder();
+			if (!currentOrder) return;
+
+			const originalText = showLoadingState('tạo PDF');
+
+			try {
+				const success = await invoiceExporter.generatePDF(currentOrder);
+				
+				if (success) {
+					showSuccessToast('Đã xuất hóa đơn PDF thành công!');
+				} else {
+					showErrorToast('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại!');
+				}
+			} catch (error) {
+				console.error('Lỗi xuất PDF:', error);
+				showErrorToast('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại!');
+			} finally {
+				resetLoadingState(originalText);
+			}
+		}
+
+		// Xuất hóa đơn Excel
+		async function exportInvoiceExcel() {
+			const currentOrder = getCurrentOrder();
+			if (!currentOrder) return;
+
+			const originalText = showLoadingState('tạo Excel');
+
+			try {
+				const success = await invoiceExporter.generateExcel(currentOrder);
+				
+				if (success) {
+					showSuccessToast('Đã xuất hóa đơn Excel thành công!');
+				} else {
+					showErrorToast('Có lỗi xảy ra khi tạo Excel. Vui lòng thử lại!');
+				}
+			} catch (error) {
+				console.error('Lỗi xuất Excel:', error);
+				showErrorToast('Có lỗi xảy ra khi tạo Excel. Vui lòng thử lại!');
+			} finally {
+				resetLoadingState(originalText);
+			}
+		}
+
+		// In hóa đơn
+		function printInvoice() {
+			const currentOrder = getCurrentOrder();
+			if (!currentOrder) return;
+
+			const originalText = showLoadingState('chuẩn bị in');
+
+			try {
+				const success = invoiceExporter.printInvoice(currentOrder);
+				
+				if (success) {
+					showSuccessToast('Đã mở cửa sổ in hóa đơn!');
+				} else {
+					showErrorToast('Có lỗi xảy ra khi in. Vui lòng thử lại!');
+				}
+			} catch (error) {
+				console.error('Lỗi in hóa đơn:', error);
+				showErrorToast('Có lỗi xảy ra khi in. Vui lòng thử lại!');
+			} finally {
+				resetLoadingState(originalText);
+			}
+		}
+
+		// Hiển thị thông báo thành công
+		function showSuccessToast(message) {
+			const toast = document.createElement('div');
+			toast.className = 'webhook-toast success';
+			toast.innerHTML = `
+				<div class="toast-content">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<div class="toast-text">
+						<span class="toast-title">${message}</span>
+					</div>
+				</div>
+			`;
+			
+			document.body.appendChild(toast);
+			
+			setTimeout(() => {
+				toast.classList.add('show');
+			}, 100);
+			
+			setTimeout(() => {
+				toast.classList.remove('show');
+				setTimeout(() => {
+					document.body.removeChild(toast);
+				}, 300);
+			}, 4000);
+		}
+
+		// Hiển thị thông báo lỗi
+		function showErrorToast(message) {
+			const toast = document.createElement('div');
+			toast.className = 'webhook-toast error';
+			toast.innerHTML = `
+				<div class="toast-content">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<div class="toast-text">
+						<span class="toast-title">${message}</span>
+					</div>
+				</div>
+			`;
+			
+			document.body.appendChild(toast);
+			
+			setTimeout(() => {
+				toast.classList.add('show');
+			}, 100);
+			
+			setTimeout(() => {
+				toast.classList.remove('show');
+				setTimeout(() => {
+					document.body.removeChild(toast);
+				}, 300);
+			}, 4000);
+		}
+
+		// Gửi thông báo webhook cho đơn hàng
+		async function sendWebhookNotification(orderData) {
+			try {
+				// Chuyển đổi mã số địa danh thành tên
+				await addressConverter.waitForReady();
+				const convertedOrderData = addressConverter.convertOrderAddress(orderData);
+				
+				// Gọi cả webhook test và production song song
+				const testWebhookUrl = 'https://2ada7f.n8nvps.site/webhook-test/new-order';
+				const productionWebhookUrl = 'https://2ada7f.n8nvps.site/webhook/new-order';
+				const adminTestWebhookUrl = 'https://2ada7f.n8nvps.site/webhook-test/admin-notification';
+				const adminProductionWebhookUrl = 'https://2ada7f.n8nvps.site/webhook/admin-notification';
+				
+				// Dữ liệu gửi đến webhook n8n
+				const webhookData = {
+					orderId: convertedOrderData.orderId,
+					orderDate: new Date().toLocaleString('vi-VN'),
+					customer: {
+						name: convertedOrderData.customer.name,
+						phone: convertedOrderData.customer.phone,
+						email: convertedOrderData.customer.email || '',
+						address: convertedOrderData.customer.address,
+						province: convertedOrderData.customer.province,
+						district: convertedOrderData.customer.district,
+						ward: convertedOrderData.customer.ward,
+						note: convertedOrderData.customer.note || ''
+					},
+					items: convertedOrderData.items,
+					total: convertedOrderData.total,
+					status: 'Chờ xử lý',
+					// Thêm thông tin cho n8n workflow
+					notificationType: 'new_order',
+					timestamp: new Date().toISOString(),
+					source: 'thankyou_page'
+				};
+				
+				// Gọi webhook cho khách hàng (test + production)
+				const customerPromises = [
+					sendSingleWebhook(testWebhookUrl, webhookData, 'CUSTOMER_TEST'),
+					sendSingleWebhook(productionWebhookUrl, webhookData, 'CUSTOMER_PRODUCTION')
+				];
+				
+				// Gọi webhook cho admin (group Zalo) - cả test và production
+				const adminWebhookData = {
+					...webhookData,
+					notificationType: 'admin_group_notification',
+					// Tạo message đơn giản hơn để tránh lỗi
+					adminMessage: `🆕 ĐƠN HÀNG MỚI: ${convertedOrderData.orderId}
+
+👤 THÔNG TIN KHÁCH HÀNG:
+• Họ và tên: ${convertedOrderData.customer?.name || 'Không có'}
+• Số điện thoại: ${convertedOrderData.customer?.phone || 'Không có'}
+• Email: ${convertedOrderData.customer?.email || 'Không có'}
+
+📍 ĐỊA CHỈ GIAO HÀNG:
+• Địa chỉ: ${convertedOrderData.customer?.address || 'Không có'}
+• Phường/Xã: ${convertedOrderData.customer?.ward || 'Không có'}
+• Quận/Huyện: ${convertedOrderData.customer?.district || 'Không có'}
+• Tỉnh/Thành: ${convertedOrderData.customer?.province || 'Không có'}
+
+🛒 SẢN PHẨM ĐÃ ĐẶT:
+${(convertedOrderData.items || []).map(item => `• ${item.name || 'Sản phẩm'} (x${item.quantity || 1})`).join('\n')}
+
+💰 TỔNG TIỀN: ${convertedOrderData.total || '0'} VND
+
+📝 GHI CHÚ: ${convertedOrderData.customer?.note || 'Không có'}
+
+📅 Thời gian đặt: ${new Date().toLocaleString('vi-VN')}
+
+---
+Trạng thái: Chờ xử lý
+Nguồn: Website Mộc Tái Sinh`
+				};
+				
+				const adminPromises = [
+					sendSingleWebhook(adminTestWebhookUrl, adminWebhookData, 'ADMIN_TEST'),
+					sendSingleWebhook(adminProductionWebhookUrl, adminWebhookData, 'ADMIN_PRODUCTION')
+				];
+				
+				// Đợi tất cả webhook hoàn thành
+				const allPromises = [...customerPromises, ...adminPromises];
+				const results = await Promise.allSettled(allPromises);
+				
+				// Kiểm tra kết quả
+				let customerSuccessCount = 0;
+				let adminSuccessCount = 0;
+				
+				results.forEach((result, index) => {
+					if (index < 2) {
+						// Customer webhooks
+						if (result.status === 'fulfilled' && result.value) {
+							customerSuccessCount++;
+						}
+					} else {
+						// Admin webhooks
+						if (result.status === 'fulfilled' && result.value) {
+							adminSuccessCount++;
+						}
+					}
+				});
+				
+				// Hiển thị thông báo chỉ cho khách hàng
+				if (customerSuccessCount > 0) {
+					showWebhookSuccess();
+				}
+				
+			} catch (error) {
+				// Silent fail - không hiển thị lỗi cho user
+			}
+		}
+		
+		// Gửi một webhook đơn lẻ
+		async function sendSingleWebhook(webhookUrl, webhookData, webhookType) {
+			try {
+				const response = await fetch(webhookUrl, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(webhookData)
+				});
+
+				return response.ok;
+			} catch (error) {
+				return false;
+			}
+		}
+
+		// Hiển thị thông báo thành công
+		function showWebhookSuccess() {
+			// Tạo toast notification
+			const toast = document.createElement('div');
+			toast.className = 'webhook-toast success';
+			toast.innerHTML = `
+				<div class="toast-content">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<div class="toast-text">
+						<span class="toast-title">Đã gửi thông báo xác nhận đơn hàng!</span>
+					</div>
+				</div>
+			`;
+			
+			document.body.appendChild(toast);
+			
+			// Hiển thị toast
+			setTimeout(() => {
+				toast.classList.add('show');
+			}, 100);
+			
+			// Tự động ẩn sau 6 giây (lâu hơn để đọc thông tin)
+			setTimeout(() => {
+				toast.classList.remove('show');
+				setTimeout(() => {
+					document.body.removeChild(toast);
+				}, 300);
+			}, 6000);
+		}
+	</script>
+	
+
+	
+	<script src="js/address-converter.js"></script>
+	<script src="js/invoice-exporter.js"></script>
+	<script src="js/footer-loader.js"></script>
 	</body>
 
 </html>
