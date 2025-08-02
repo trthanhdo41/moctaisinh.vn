@@ -235,10 +235,7 @@
 	transform: translateX(4px);
 }
 
-.dropdown-divider {
-	margin: 8px 0;
-	border-color: #e9ecef;
-}
+
 
 /* Animation */
 .modern-order-card {
@@ -383,6 +380,22 @@
 		width: 90%;
 		max-width: 300px;
 	}
+}
+
+/* Fix dropdown hover issue */
+.dropdown-menu {
+	z-index: 1000;
+}
+
+.dropdown-item:hover {
+	background: #f8f9fa;
+	color: #3b5d50;
+	transform: none;
+}
+
+.dropdown-item:active {
+	background: #e9ecef;
+	color: #3b5d50;
 }
 
 /* Hero Section Styles */

@@ -172,13 +172,6 @@
                   Xuất hóa đơn
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="invoiceDropdown">
-                  <li><a class="dropdown-item" href="#" onclick="exportInvoicePDF()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Xuất PDF
-                  </a></li>
                   <li><a class="dropdown-item" href="#" onclick="exportInvoiceExcel()">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
                       <path d="M3 3h18v18H3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -187,7 +180,6 @@
                     </svg>
                     Xuất Excel
                   </a></li>
-                  <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#" onclick="printInvoice()">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
                       <path d="M6 9V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -652,28 +644,7 @@
 			dropdownBtn.disabled = false;
 		}
 
-		// Xuất hóa đơn PDF
-		async function exportInvoicePDF() {
-			const currentOrder = getCurrentOrder();
-			if (!currentOrder) return;
 
-			const originalText = showLoadingState('tạo PDF');
-
-			try {
-				const success = await invoiceExporter.generatePDF(currentOrder);
-				
-				if (success) {
-					showSuccessToast('Đã xuất hóa đơn PDF thành công!');
-				} else {
-					showErrorToast('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại!');
-				}
-			} catch (error) {
-				console.error('Lỗi xuất PDF:', error);
-				showErrorToast('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại!');
-			} finally {
-				resetLoadingState(originalText);
-			}
-		}
 
 		// Xuất hóa đơn Excel
 		async function exportInvoiceExcel() {
