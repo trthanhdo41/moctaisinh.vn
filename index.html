@@ -1,614 +1,931 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Độ AI - GPT Pro Max 🤖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Mộc Tái Sinh">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #121212;
-            background: linear-gradient(
-                135deg,
-                #121212 25%,
-                #1a1a1a 25%,
-                #1a1a1a 50%,
-                #121212 50%,
-                #121212 75%,
-                #1a1a1a 75%,
-                #1a1a1a
-            );
-            background-size: 40px 40px;
-            animation: move 4s linear infinite;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+  <link rel="shortcut icon" href="favicon.png">
 
-        @keyframes move {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 40px 40px;
-            }
-        }
+  <meta name="description" content="Mộc Tái Sinh chuyên sản xuất đồ gỗ thủ công từ vật liệu tái chế. Sản phẩm gỗ handmade, đồ gỗ mộc, gỗ tái sinh chất lượng cao. Bảo vệ môi trường, sống xanh từ gốc.">
+  <meta name="keywords" content="mộc tái sinh, gỗ tái chế, đồ gỗ thủ công, sản phẩm gỗ handmade, gỗ mộc, tái chế gỗ, đồ gỗ Việt Nam, gỗ thủ công mỹ nghệ">
+  <!-- SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta property="og:title" content="Mộc Tái Sinh - Sản Phẩm Gỗ Thủ Công Tái Chế | Đồ Gỗ Handmade Việt Nam">
+  <meta property="og:description" content="Mộc Tái Sinh chuyên sản xuất đồ gỗ thủ công từ vật liệu tái chế. Sản phẩm gỗ handmade, đồ gỗ mộc, gỗ tái sinh chất lượng cao. Bảo vệ môi trường, sống xanh từ gốc.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moctaisinh.vn">
+  <meta property="og:site_name" content="Mộc Tái Sinh">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mộc Tái Sinh - Sản Phẩm Gỗ Thủ Công Tái Chế | Đồ Gỗ Handmade Việt Nam">
+  <meta name="twitter:description" content="Mộc Tái Sinh chuyên sản xuất đồ gỗ thủ công từ vật liệu tái chế. Sản phẩm gỗ handmade, đồ gỗ mộc, gỗ tái sinh chất lượng cao. Bảo vệ môi trường, sống xanh từ gốc.">
+  <link rel="canonical" href="https://moctaisinh.vn/index.html">
 
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-        }
 
-        .ai-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 8px 20px;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/heygen-responsive.css" rel="stylesheet">
+		<title>Mộc Tái Sinh - Sản Phẩm Gỗ Thủ Công Tái Chế | Đồ Gỗ Handmade Việt Nam</title>
+	</head>
 
-        .main-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            color: white;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
-        }
+	<body class="home-page">
 
-        .subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-lg navbar-dark bg-dark" arial-label="Furni navigation bar" style="background: transparent !important; position: absolute; width: 100%; z-index: 10;">
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+			<div class="container">
+				<a class="navbar-brand" href="index.html">moctaisinh<span>.</span>vn</a>
 
-        /* Video Section */
-        .video-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-        .video-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-        }
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Trang chủ</a>
+						</li>
+						<li><a class="nav-link" href="shop.html">Sản phẩm</a></li>
+						<li><a class="nav-link" href="about.html">Về chúng tôi</a></li>
+						<li><a class="nav-link" href="services.html">Dịch vụ</a></li>
+						<li><a class="nav-link" href="blog.html">Blog</a></li>
+						<li><a class="nav-link" href="contact.html">Kết nối với chúng tôi</a></li>
+					</ul>
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+				
+		</nav>
+		<!-- End Header/Navigation -->
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 16px;
-        }
+		<!-- Start Hero Section -->
+			<div class="hero" style="min-height:520px;background:#6b8f7e url('images/Leonardo_Phoenix_10_A_conceptual_ecothemed_background_featurin_2.jpg') no-repeat center/cover;display:flex;align-items:center;justify-content:center;position:relative;">
+				<div class="hero-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(30,40,40,0.45);z-index:1;"></div>
+				<div class="container d-flex flex-column align-items-center justify-content-center text-center" style="min-height:520px; margin-top: 50px; position:relative; z-index:2;">
+					<h1 class="mb-3" style="color:#fff;font-size:3.7rem;font-weight:700;line-height:1.15; margin-top: 130px;">Mỗi vật liệu cũ<br><span style="font-size:2.65rem;font-weight:600;">Một câu chuyện mới</span></h1>
+					<p class="mb-3" style="font-size:1.08rem;max-width:800px;margin:0 auto;">Chúng tôi mang đến sức sống mới cho gỗ vụn, tre cũ và vật liệu tự nhiên bị lãng quên bằng đôi tay thủ công và tình yêu với thiên nhiên.</p>
+					<p class="mb-4" style="font-size:1.05rem;font-style:italic;">Từ gốc – đến lá – từ tim</p>
+					<div class="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 mt-3">
+						<a href="shop.html" class="btn btn-secondary mb-2 mb-sm-0 me-0 me-sm-2" style="margin-bottom:7px;">Xem Sản Phẩm</a>
+						<a href="blog.html" class="btn btn-white-outline">Khám Phá Câu Chuyện</a>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
 
-        /* Buttons */
-        .button-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
+		<!-- Start Product Section -->
+		<div class="product-section">
+			<div class="container">
+				<div class="row">
 
-        .btn {
-            padding: 16px 32px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-        }
+					<!-- Start Column 1 -->
+					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+						<h2 class="mb-4 section-title">Khi vật vô tri kể lại câu chuyện của đất.</h2>
+						<p class="mb-4"><b>Triết lý:</b> Tái sinh vẻ đẹp cho những gì bị bỏ quên – mỗi sản phẩm là một cuộc đời mới.<br>Gỗ mục, tre nứt, mảnh vụn tưởng như bỏ đi — dưới bàn tay con người, lại trở thành vật mang hồn. Mỗi sản phẩm là một lát cắt của thời gian, một lời thủ thỉ từ thiên nhiên.</p>
+						<p><a href="blog.html" class="btn">Khám phá vẻ đẹp mộc tái sinh</a></p>
+					</div> 
+					<!-- End Column 1 -->
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
+					<!-- Dynamic Products Section -->
+					<div id="homeProductsContainer" class="col-md-12 col-lg-9">
+						<div class="row" id="homeProductsRow">
+							<!-- Loading state -->
+							<div id="homeProductsLoading" class="col-12 text-center py-5">
+								<div class="spinner-border text-primary" role="status">
+									<span class="visually-hidden">Đang tải sản phẩm...</span>
+								</div>
+								<p class="mt-3 text-muted">Đang tải sản phẩm từ bộ sưu tập...</p>
+							</div>
+							<!-- Products will be loaded here -->
+						</div>
+					</div>
+					<!-- End Dynamic Products Section -->
 
-        .btn:hover::before {
-            left: 100%;
-        }
+				</div>
+			</div>
+		</div>
+		<!-- End Product Section -->
 
-        .btn-primary {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-        }
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-6">
+						<h2 class="section-title">Vì sao bạn sẽ yêu những gì chúng tôi làm?</h2>
+						<p></p>
+						<div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<span style="font-size:2rem;">🌱</span>
+									</div>
+									<h3>Hồi sinh từ thiên nhiên</h3>
+									<p>Mỗi sản phẩm là kết quả của hành trình tái sinh — từ gỗ vụn, tre cũ, đến vật mang linh hồn mới.</p>
+								</div>
+							</div>
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<span style="font-size:2rem;">🧵</span>
+									</div>
+									<h3>Thủ công từng chi tiết</h3>
+									<p>Không dây chuyền, không đại trà. Chúng tôi tin vào đôi tay người thợ và sự tinh tế trong từng vết đục, đường mài.</p>
+								</div>
+							</div>
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<span style="font-size:2rem;">💬</span>
+									</div>
+									<h3>Lắng nghe như một người bạn</h3>
+									<p>Mỗi sản phẩm có thể được cá nhân hóa theo câu chuyện của bạn. Chúng tôi đồng hành để lắng nghe và kể lại.</p>
+								</div>
+							</div>
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<span style="font-size:2rem;">🌏</span>
+									</div>
+									<h3>Trân quý trái đất này</h3>
+									<p>Không hóa chất, không rác thải mới. Mỗi lựa chọn của bạn là một cái gật đầu với tự nhiên.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img id="why-choose-img" src="images/anh-trang-tri/Lucid_Realism_A_cozy_minimalist_living_room_decorated_with_han_1_79eebc7d-6d22-412d-8222-c9982b80fe37.jpg" alt="Vì sao bạn sẽ yêu Mộc Tái Sinh" class="img-fluid" style="transition: opacity 0.8s ease-in-out;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
-        }
+		<!-- Start We Help Section -->
+		<div class="we-help-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 mb-5 mb-lg-0">
+						<div class="imgs-grid">
+							<div class="grid grid-1">
+								<img id="grid-img-1" src="images/anh-trang-tri/Lucid_Realism_A_warm_family_dining_setup_featuring_ecofriendly_2_18e77e59-dca6-4061-be58-d266381f1e3a.jpg" alt="Sản phẩm gỗ tái sinh - Mộc Tái Sinh" style="transition: opacity 0.8s ease-in-out;">
+							</div>
+							<div class="grid grid-2">
+								<img id="grid-img-2" src="images/anh-trang-tri/Lucid_Realism_A_warm_and_inviting_wooden_bookshelf_with_a_dist_2_d8b08991-7b22-45ec-ba36-fca4f72f57cd.jpg" alt="Đồ gỗ thủ công handmade - Mộc Tái Sinh" style="transition: opacity 0.8s ease-in-out;">
+							</div>
+							<div class="grid grid-3">
+								<img id="grid-img-3" src="images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_3_e1556bb7-5008-4832-8cad-5a236b2cf953.jpg" alt="Gỗ mộc tái chế - Mộc Tái Sinh" style="transition: opacity 0.8s ease-in-out;">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 ps-lg-5">
+						<h2 class="section-title mb-4">Mang thiên nhiên trở lại không gian sống của bạn</h2>
+						<p>Từ những mảnh gỗ thừa, tre cũ hay đồ vật bỏ đi, chúng tôi tạo nên những sản phẩm thủ công đầy cảm xúc.<br>Không chỉ là nội thất – đó là những câu chuyện được kể bằng chất liệu tự nhiên, thô mộc và chân thành.</p>
+						<ul class="list-unstyled custom-list my-4">
+							<li>Gỗ tái chế 100%, không hóa chất độc hại</li>
+							<li>Thiết kế mộc mạc, chạm đến cảm xúc</li>
+							<li>Mỗi món đồ là phiên bản duy nhất</li>
+							<li>Thân thiện với môi trường, hài hòa với thiên nhiên</li>
+						</ul>
+						<p><a href="blog.html" class="btn">Khám phá hành trình mộc tái sinh</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End We Help Section -->
 
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin: 60px 0;
-        }
+
+
+		<!-- Start Testimonial Slider -->
+		<div class="testimonial-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 mx-auto text-center">
+						<h2 class="section-title">Cảm nhận từ những người yêu thiên nhiên</h2>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="testimonial-slider-wrap text-center">
+							<div id="testimonial-nav">
+								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+							</div>
+							<div class="testimonial-slider">
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>“Tôi từng nghĩ những mảnh gỗ vụn chỉ là rác thải. Nhưng khi chạm vào sản phẩm của Mộc Tái Sinh, tôi cảm nhận được hơi thở của rừng, của thời gian và cả bàn tay người thợ. Mỗi món đồ như một người bạn kể chuyện, khiến homestay của tôi trở nên ấm áp và có hồn hơn bao giờ hết.”</p>
+												</blockquote>
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="images/person_1.jpg" alt="Lan Phương" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">Lan Phương</h3>
+													<span class="position d-block mb-3">Chủ homestay "Nhà Trong Rừng"</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>“Tôi đã từng làm việc với nhiều nghệ nhân, nhưng ở Mộc Tái Sinh, tôi thấy được sự trân trọng từng vết nứt, từng thớ gỗ. Đó không chỉ là sản phẩm, mà là ký ức, là linh hồn của thiên nhiên được hồi sinh. Tôi thực sự xúc động khi thấy khách hàng của mình lặng người trước vẻ đẹp mộc mạc ấy.”</p>
+												</blockquote>
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="images/person_2.jpg" alt="Minh Quân" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">Minh Quân</h3>
+													<span class="position d-block mb-3">Nghệ nhân thiết kế không gian xanh</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>“Tôi chọn Mộc Tái Sinh cho dự án cộng đồng vì tin rằng mỗi vật liệu cũ đều xứng đáng có một cuộc đời mới. Những sản phẩm ở đây không chỉ đẹp, mà còn truyền cảm hứng sống xanh, sống chậm và biết ơn thiên nhiên. Đó là điều mà tôi muốn lan tỏa đến mọi người.”</p>
+												</blockquote>
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="images/person_3.jpg" alt="Thu Hà" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">Thu Hà</h3>
+													<span class="position d-block mb-3">Nhà sáng lập dự án "Sống Xanh Từ Gỗ"</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Testimonial Slider -->
+
+		<!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-6">
+						<h2 class="section-title">Hành trình mộc tái sinh – Câu chuyện cảm hứng</h2>
+					</div>
+					<div class="col-md-6 text-start text-md-end">
+						<a href="#" class="more">Xem tất cả bài viết</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Từ gỗ vụn đến tác phẩm nghệ thuật</a></h3>
+								<div class="meta">
+									<span>Chuyện nghề &amp; cảm xúc</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Gặp gỡ người thợ kể chuyện bằng tre</a></h3>
+								<div class="meta">
+									<span>Con người &amp; thiên nhiên</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Ký ức của vật liệu cũ</a></h3>
+								<div class="meta">
+									<span>Cảm hứng sống xanh</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Blog Section -->	
+
+		<!-- Start Footer Section -->
+		<div class="footer-section">
+			<!-- Footer sẽ được load tự động từ footer.html -->
+		</div>
+		<!-- End Footer Section -->	
+
+		<!-- Nút nổi Call & Zalo -->
+		<style>
+		.fab-contact {
+		  position: fixed;
+		  right: 24px;
+		  bottom: 24px;
+		  z-index: 9999;
+		  display: flex;
+		  flex-direction: column;
+		  gap: 16px;
+		}
+		.fab-contact-btn {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  width: 60px;
+		  height: 60px;
+		  border-radius: 100%;
+		  border: none;
+		  background-color: #30C04F;
+		  color: #fff;
+		  cursor: pointer;
+		  transition: background 0.2s;
+		  animation: shakeFab 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+		  animation-iteration-count: infinite;
+		  animation-play-state: paused;
+		}
+		.fab-contact-btn:hover {
+		  background-color: #2bac47;
+		  transform: scale(1.1);
+		}
+		
+		.fab-contact-btn.zalo-btn {
+		  background: #008fe5;
+		  padding: 0;
+		}
+		.fab-contact-btn.zalo-btn img {
+		  width: 32px;
+		  height: 32px;
+		}
+		.fab-contact-btn.heygen-btn {
+		  padding: 0;
+		  overflow: hidden;
+		  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+		.fab-contact-btn.heygen-btn:hover {
+		  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+		}
+		.fab-contact-btn.heygen-btn img {
+		  width: 100%;
+		  height: 100%;
+		  object-fit: cover;
+		  border-radius: 50%;
+		}
+		@keyframes shakeFab {
+		  0% { transform: translateX(0); }
+		  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+		  20%, 40%, 60%, 80% { transform: translateX(6px); }
+		  100% { transform: translateX(0); }
+		}
+		</style>
+		<div class="fab-contact">
+		  <a href="#" class="fab-contact-btn heygen-btn" id="heygenFab" title="Gọi với AI" onclick="toggleHeyGen(); return false;">
+		    <img draggable="false" src="images/chamsockhachhang.png" alt="Chăm sóc khách hàng">
+		  </a>
+		  <a href="tel:0373566167" class="fab-contact-btn" id="callFab" title="Gọi điện" onclick="handleCallClick(event)">
+		    <svg xmlns="http://www.w3.org/2000/svg" width="32" viewBox="0 0 32 32" height="32" fill="none" class="svg-icon"><path stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" d="m24.8868 19.1288c-1.0274-.1308-2.036-.3815-3.0052-.7467-.7878-.29-1.6724-.1034-2.276.48-.797.8075-2.0493.9936-2.9664.3258-1.4484-1.055-2.7233-2.3295-3.7783-3.7776-.6681-.9168-.4819-2.1691.3255-2.9659.5728-.6019.7584-1.4748.4802-2.2577-.3987-.98875-.6792-2.02109-.8358-3.07557-.2043-1.03534-1.1138-1.7807-2.1694-1.77778h-3.18289c-.60654-.00074-1.18614.25037-1.60035.69334-.40152.44503-.59539 1.03943-.53345 1.63555.344 3.31056 1.47164 6.49166 3.28961 9.27986 1.64878 2.5904 3.84608 4.7872 6.43688 6.4356 2.7927 1.797 5.9636 2.9227 9.2644 3.289h.1778c.5409.0036 1.0626-.2 1.4581-.569.444-.406.6957-.9806.6935-1.5822v-3.1821c.0429-1.0763-.7171-2.0185-1.7782-2.2046z" clip-rule="evenodd"></path></svg>
+		  </a>
+		  <a href="https://zalo.me/0373566167" class="fab-contact-btn zalo-btn" id="zaloFab" title="Zalo" target="_blank"><img src="images/Icon_of_Zalo.png" alt="Zalo"></a>
+		</div>
+		<script>
+		function loopShakeFab(btnId) {
+		  var btn = document.getElementById(btnId);
+		  if (!btn) return;
+		  
+		  // Thêm CSS animation cho hiệu ứng xoay và lắc
+		  btn.style.cssText += `
+			animation: modernShake 3s ease-in-out infinite;
+			transform-origin: center;
+		  `;
+		  
+		  // Tạo keyframes cho hiệu ứng hiện đại
+		  if (!document.getElementById('modernShakeKeyframes')) {
+			const style = document.createElement('style');
+			style.id = 'modernShakeKeyframes';
+			style.textContent = `
+			  @keyframes modernShake {
+				0%, 100% { 
+				  transform: rotate(0deg) scale(1); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+				10% { 
+				  transform: rotate(-5deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				20% { 
+				  transform: rotate(5deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				30% { 
+				  transform: rotate(-3deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				40% { 
+				  transform: rotate(3deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				50% { 
+				  transform: rotate(-2deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				60% { 
+				  transform: rotate(2deg) scale(1.1); 
+				  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+				}
+				70% { 
+				  transform: rotate(-1deg) scale(1.02); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+				80% { 
+				  transform: rotate(1deg) scale(1.05); 
+				  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+				}
+				90% { 
+				  transform: rotate(0deg) scale(1.02); 
+				  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				}
+			  }
+			`;
+			document.head.appendChild(style);
+		  }
+		  
+		  // Thêm hiệu ứng hover
+		  btn.addEventListener('mouseenter', function() {
+			this.style.animationPlayState = 'paused';
+			this.style.transform = 'scale(1.2) rotate(5deg)';
+			this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+		  });
+		  
+		  btn.addEventListener('mouseleave', function() {
+			this.style.animationPlayState = 'running';
+			this.style.transform = '';
+			this.style.boxShadow = '';
+		  });
+		}
+		loopShakeFab('callFab');
+		loopShakeFab('zaloFab');
+		loopShakeFab('heygenFab');
+		
+      // Xử lý nút gọi điện thông minh
+      function handleCallClick(event) {
+        event.preventDefault();
         
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .feature-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .feature-desc {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-        }
-
-        .pricing-box {
-            margin-top: 25px;
-            color: #a8edea;
-            font-weight: 600;
-            font-size: 16px;
-            text-align: center;
-            padding: 12px;
-            background: rgba(168, 237, 234, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(168, 237, 234, 0.3);
-        }
-
-        /* Description Section */
-        .description-section {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 50px;
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .description-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #fff, #ffd89b, #19547b);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientMove 4s ease-in-out infinite;
-        }
-
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .description-text {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header {
-                padding: 40px 20px 30px;
-            }
-
-            .video-section {
-                padding: 25px;
-            }
-
-            .button-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-
-            .description-section {
-                padding: 30px 25px;
-            }
-
-            .feature-card {
-                padding: 25px;
-            }
-        }
-
-        /* More Info Section */
-        .more-info-section {
-            margin: 40px 0;
-        }
+        // Hiển thị popup gọi điện
+        showCallPopup();
+      }
+      
+      // Hiển thị popup gọi điện
+      function showCallPopup() {
+        // Tạo popup container
+        const popup = document.createElement('div');
+        popup.id = 'callPopup';
+        popup.style.cssText = `
+          position: fixed;
+          inset: 0;
+          z-index: 3000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0,0,0,0.5);
+          backdrop-filter: blur(4px);
+        `;
         
-        .more-info-toggle {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        // Tạo popup content
+        const popupContent = document.createElement('div');
+        popupContent.style.cssText = `
+          background: white;
+          border-radius: 16px;
+          padding: 32px;
+          text-align: center;
+          max-width: 400px;
+          width: 90%;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+          animation: popupSlideIn 0.3s ease-out;
+        `;
         
-        .btn-more-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px 30px;
-            color: white;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .btn-more-info:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        #more-info-arrow {
-            transition: transform 0.3s ease;
-            font-size: 14px;
-        }
-        
-        .arrow-rotated {
-            transform: rotate(180deg);
-        }
-
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <div class="header">
-        <div class="ai-badge">🔥 AI thế hệ mới</div>
-        <h1 class="main-title">Độ AI - GPT Pro Max</h1>
-        <p class="subtitle">AI thế hệ mới siêu mạnh, vượt trội hơn ChatGPT! 🧠⚡</p>
-    </div>
-
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Video Section -->
-        <div class="video-section">
-            <div class="video-container">
-                <iframe src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19DaGFpcl9TaXR0aW5nX3B1Ymxp%0D%0AYyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzkyZGU3%0D%0AOWU1MzNhODQyMWJiODZkYTYzYTBlNWViMTJmXzU3MDEwL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJu%0D%0AZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjMyOTU3Mjc4ZDJm%0D%0AZTRkYjc5MDBiZTA5ZGE1MGM5ZWIwIiwidXNlcm5hbWUiOiI3YjBjZjBmZjU4YWM0YjBjOWZmNzAw%0D%0AZDRjMTU5NzIwNCJ9&inIFrame=1" 
-                        allow="microphone" 
-                        title="Độ AI Demo">
-                </iframe>
+        popupContent.innerHTML = `
+          <div style="margin-bottom: 24px;">
+            <div style="width: 80px; height: 80px; background: #28a745; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" fill="white"/>
+              </svg>
             </div>
-            
-            <div class="button-group">
-                <button class="btn btn-primary" onclick="focusOnHeyGenChat()">
-                    🎯 Xem thử Độ AI hoạt động
-                </button>
-            </div>
-        </div>
-
-        <!-- AI Services Grid -->
-        <div class="services-section">
-            <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 50px;">🚀 4 Gói AI Siêu Mạnh của Độ AI - GPT Pro Max</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">💬</span>
-                    <h3 class="feature-title">AI Agent Chăm Sóc Khách Hàng Zalo 24/7</h3>
-                    <p class="feature-desc">
-                        🤖 <strong>Thay thế hoàn toàn nhân viên CSKH:</strong> AI thông minh có thể hiểu và xử lý đa dạng định dạng input<br><br>
-                        🎯 <strong>Hiểu được:</strong> Âm thanh, văn bản, hình ảnh, video từ khách hàng<br><br>
-                        💬 <strong>Trả lời bằng:</strong> Văn bản thông minh, hình ảnh phù hợp, video hướng dẫn như người thật<br><br>
-                        📱 <strong>Tích hợp:</strong> Tự động hoạt động 24/7 trên Zalo và Facebook Fanpage, không bao giờ nghỉ<br><br>
-                        ⚡ <strong>Ưu điểm:</strong> Phản hồi tức thì, nhất quán, không cảm xúc, tiết kiệm 90% chi phí nhân sự
-                    </p>
-                    <div class="pricing-box">💰 Liên hệ - Chỉ vài bát phở trên Landmark 81</div>
-                </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">📱</span>
-                    <h3 class="feature-title">AI Auto Post Fanpage Facebook</h3>
-                    <p class="feature-desc">
-                        🔗 <strong>Auto từ link báo:</strong> Chỉ cần paste link báo, AI tự động tạo post viral với nội dung hấp dẫn<br><br>
-                        ✍️ <strong>Tạo nội dung thông minh:</strong> AI viết caption, thêm hashtag trending, emoji phù hợp tự động<br><br>
-                        📊 <strong>Quản lý đa fanpage:</strong> Đồng thời quản lý hàng chục fanpage, đăng bài theo lịch thông minh<br><br>
-                        🎯 <strong>Tối ưu engagement:</strong> AI phân tích thời gian vàng, nội dung viral để tăng tương tác<br><br>
-                        🚀 <strong>Tự động hoàn toàn:</strong> Set & forget - AI làm việc 24/7 không cần can thiệp
-                    </p>
-                    <div class="pricing-box">💰 Liên hệ - Chỉ vài bát phở trên Landmark 81</div>
-                </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">🎬</span>
-                    <h3 class="feature-title">AI YouTube Comment & Reply</h3>
-                    <p class="feature-desc">
-                        🎬 <strong>Auto comment video:</strong> AI tự động comment video YouTube theo kịch bản được thiết lập sẵn<br><br>
-                        💬 <strong>Reply thông minh:</strong> Tự động trả lời bình luận khán giả với nội dung phù hợp và tự nhiên<br><br>
-                        📈 <strong>Tăng engagement:</strong> Boost tương tác, tăng view, cải thiện thuật toán YouTube ranking<br><br>
-                        🎯 <strong>Targeting thông minh:</strong> AI chọn video phù hợp để comment, tránh spam và bị ban<br><br>
-                        ⏰ <strong>Lên lịch linh hoạt:</strong> Đặt thời gian comment, frequency để trông tự nhiên nhất
-                    </p>
-                    <div class="pricing-box">💰 Liên hệ - Chỉ vài bát phở trên Landmark 81</div>
-                </div>
-                
-                <div class="feature-card">
-                    <span class="feature-icon">📺</span>
-                    <h3 class="feature-title">AI Livestream 24/7 Đa Nền Tảng</h3>
-                    <p class="feature-desc">
-                        🔴 <strong>Thay thế KOL/KOC:</strong> AI avatar livestream 24/7 không mệt mỏi, thay thế hoàn toàn influencer<br><br>
-                        🌐 <strong>Đa nền tảng:</strong> Đồng thời livestream TikTok, Facebook, YouTube, Shopee Live, Lazada Live<br><br>
-                        🛒 <strong>Bán hàng tự động:</strong> AI giới thiệu sản phẩm, trả lời câu hỏi, xử lý đơn hàng real-time<br><br>
-                        💬 <strong>Tương tác thông minh:</strong> Đọc và phản hồi comment viewer tự nhiên như người thật<br><br>
-                        📊 <strong>Lên lịch thông minh:</strong> AI phân tích golden time để tăng view và conversion rate
-                    </p>
-                    <div class="pricing-box">💰 Liên hệ - Chỉ vài bát phở trên Landmark 81</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- More Info Section -->
-        <div class="more-info-section">
-            <div class="more-info-toggle">
-                <button class="btn-more-info" onclick="toggleMoreInfo()">
-                    <span id="more-info-text">📋 Tìm hiểu thêm về Độ AI - GPT Pro Max</span>
-                    <span id="more-info-arrow">▼</span>
-                </button>
-            </div>
-            
-            <!-- Description Section (Initially Hidden) -->
-            <div class="description-section" id="description-content" style="display: none;">
-                <h2 class="description-title">Về Độ AI - GPT Pro Max</h2>
-                <p class="description-text">
-                    <strong>Độ AI - GPT Pro Max</strong> là AI thế hệ mới vượt trội, mạnh mẽ hơn ChatGPT! 
-                    <br><br>
-                    🎥 <strong>Streaming Video AI Real-time:</strong> Công nghệ độc quyền cho phép AI xuất hiện dưới dạng avatar 3D sống động, tương tác qua video real-time với độ trễ cực thấp (< 200ms). Khách hàng có thể nói chuyện trực tiếp với AI như với người thật qua camera và micro.
-                    <br><br>
-                    🧠 <strong>Xử lý đa phương tiện:</strong> GPT Pro Max có thể hiểu sâu, phản hồi nhanh và xử lý đồng thời văn bản, hình ảnh, âm thanh, video. Công nghệ neural network tiên tiến giúp AI hiểu ngữ cảnh phức tạp và đưa ra phản hồi chính xác như con người.
-                    <br><br>
-                    ⚡ <strong>Tự động hóa thông minh:</strong> Từ chăm sóc khách hàng 24/7, auto post fanpage, YouTube marketing đến AI livestream thay thế KOL - GPT Pro Max tự động hóa toàn bộ quy trình với độ chính xác 99.8%.
-                    <br><br>
-                    🔥 <strong>Công nghệ tiên tiến:</strong> Tích hợp Machine Learning, Deep Learning, Computer Vision và Natural Language Processing để tạo ra trải nghiệm AI hoàn hảo nhất. Hỗ trợ 50+ ngôn ngữ, xử lý 1 triệu request/giây, uptime 99.9%.
-                    <br><br>
-                    🚀 <strong>Ứng dụng thực tế:</strong> Đã được 10,000+ doanh nghiệp tin dùng, tăng doanh thu trung bình 300%, giảm chi phí vận hành 70%, tự động hóa 95% quy trình chăm sóc khách hàng.
-                    <br><br>
-                    📞 <strong>Liên hệ ngay:</strong><br>
-                    📱 <strong>Zalo/SĐT:</strong> 0888889805<br>
-                    📧 <strong>Email:</strong> trrthanhdo41@gmail.com<br>
-                    💰 <strong>Báo giá:</strong> Chỉ vài bát phở trên Landmark 81
-                    <br><br>
-                    💫 <em>"Không chỉ là AI text, mà là Video AI thật - GPT Pro Max streaming real-time!"</em>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>© 2025 Độ AI - GPT Pro Max - Powered by Advanced AI Technology 🚀</p>
-    </div>
-
-    <script>
-        // Focus on HeyGen chat function
-        function focusOnHeyGenChat() {
-            // Get the iframe
-            const iframe = document.querySelector('iframe');
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            
-            // Visual feedback
-            btn.innerHTML = '🎯 Đang khởi động AI...';
-            btn.style.transform = 'scale(0.95)';
-            
-            // Scroll to video section and focus
-            iframe.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
-            
-            // Highlight the iframe
-            iframe.style.border = '3px solid #ff6b6b';
-            iframe.style.borderRadius = '15px';
-            iframe.style.boxShadow = '0 0 30px rgba(255, 107, 107, 0.5)';
-            
-            setTimeout(() => {
-                btn.innerHTML = '💬 Hãy gọi với AI trong khung video!';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.transform = 'scale(1)';
-                    // Remove highlight after some time
-                    iframe.style.border = 'none';
-                    iframe.style.boxShadow = 'none';
-                }, 4000);
-            }, 1500);
-        }
-
-        // Toggle more info function
-        function toggleMoreInfo() {
-            const content = document.getElementById('description-content');
-            const arrow = document.getElementById('more-info-arrow');
-            const text = document.getElementById('more-info-text');
-            
-            if (content.style.display === 'none') {
-                // Show content
-                content.style.display = 'block';
-                content.style.opacity = '0';
-                content.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    content.style.transition = 'all 0.5s ease';
-                    content.style.opacity = '1';
-                    content.style.transform = 'translateY(0)';
-                }, 10);
-                
-                arrow.classList.add('arrow-rotated');
-                text.textContent = '📋 Thu gọn thông tin';
-            } else {
-                // Hide content
-                content.style.transition = 'all 0.3s ease';
-                content.style.opacity = '0';
-                content.style.transform = 'translateY(-20px)';
-                
-                setTimeout(() => {
-                    content.style.display = 'none';
-                }, 300);
-                
-                arrow.classList.remove('arrow-rotated');
-                text.textContent = '📋 Tìm hiểu thêm về Độ AI - GPT Pro Max';
+            <h3 style="margin: 0 0 8px; color: #333; font-size: 24px; font-weight: 600;">Gọi điện tư vấn</h3>
+            <p style="margin: 0; color: #666; font-size: 16px;">Bạn có muốn gọi điện đến hotline của chúng tôi không?</p>
+          </div>
+          
+          <div style="font-size: 28px; font-weight: 700; color: #28a745; margin-bottom: 24px; letter-spacing: 2px;">
+            0373 566 167
+          </div>
+          
+          <div style="display: flex; gap: 12px; justify-content: center;">
+            <button onclick="closeCallPopup()" style="
+              padding: 12px 24px;
+              border: 2px solid #ddd;
+              background: white;
+              color: #666;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+            " onmouseover="this.style.borderColor='#999'; this.style.color='#333'" onmouseout="this.style.borderColor='#ddd'; this.style.color='#666'">
+              Hủy
+            </button>
+            <button onclick="makeCall()" style="
+              padding: 12px 32px;
+              border: none;
+              background: #28a745;
+              color: white;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+            " onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
+              Gọi ngay
+            </button>
+          </div>
+        `;
+        
+        // Thêm CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes popupSlideIn {
+            from {
+              opacity: 0;
+              transform: scale(0.8) translateY(-20px);
             }
-        }
-
-        // Add scroll animations
-        function handleScroll() {
-            const elements = document.querySelectorAll('.feature-card, .video-section, .description-section');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-
-        // Initialize scroll animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.feature-card, .video-section, .description-section');
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(50px)';
-                element.style.transition = 'all 0.6s ease';
-            });
-            
-            handleScroll();
+            to {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          }
+          @keyframes popupSlideOut {
+            from {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+            to {
+              opacity: 0;
+              transform: scale(0.8) translateY(-20px);
+            }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        popup.appendChild(popupContent);
+        document.body.appendChild(popup);
+        
+        // Đóng popup khi click bên ngoài
+        popup.addEventListener('click', function(e) {
+          if (e.target === popup) {
+            closeCallPopup();
+          }
         });
-
-        window.addEventListener('scroll', handleScroll);
-
-        // Easter egg: Konami code
-        let konamiCode = [];
-        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
-
-        document.addEventListener('keydown', (e) => {
-            konamiCode.push(e.code);
-            
-            if (konamiCode.length > konamiSequence.length) {
-                konamiCode.shift();
-            }
-            
-            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-                // Easter egg activated!
-                document.body.style.filter = 'hue-rotate(180deg)';
-                setTimeout(() => {
-                    document.body.style.filter = 'none';
-                }, 3000);
-                
-                alert('🎉 Bạn đã mở khóa chế độ bí mật của Độ AI! 🤖✨');
-                konamiCode = [];
-            }
+        
+        // Đóng popup khi nhấn ESC
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeCallPopup();
+          }
         });
+      }
+      
+      // Đóng popup gọi điện
+      function closeCallPopup() {
+        const popup = document.getElementById('callPopup');
+        if (popup) {
+          popup.style.animation = 'popupSlideOut 0.2s ease-in';
+          setTimeout(() => {
+            document.body.removeChild(popup);
+          }, 200);
+        }
+      }
+      
+      // Thực hiện cuộc gọi
+      function makeCall() {
+        const phoneNumber = '0373566167';
+        
+        // Kiểm tra xem có phải mobile không
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+          // Trên mobile: gọi điện trực tiếp
+          window.location.href = 'tel:' + phoneNumber;
+        } else {
+          // Trên desktop: tạo link ẩn và click để mở ứng dụng gọi điện
+          const link = document.createElement('a');
+          link.href = 'tel:' + phoneNumber;
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
+          // Hiển thị thông báo
+          showCallNotification('Đang mở ứng dụng gọi điện...');
+        }
+        
+        closeCallPopup();
+      }
+      
+      // Điều khiển HeyGen widget
+      function toggleHeyGen() {
+        const heygenWidget = document.getElementById('heygen-streaming-embed');
+        if (heygenWidget) {
+          if (heygenWidget.classList.contains('show')) {
+            closeHeyGen();
+          } else {
+            openHeyGen();
+          }
+        }
+      }
+      
+      function openHeyGen() {
+        const heygenWidget = document.getElementById('heygen-streaming-embed');
+        if (heygenWidget) {
+          heygenWidget.classList.add('show');
+        }
+      }
+      
+      function closeHeyGen() {
+        const heygenWidget = document.getElementById('heygen-streaming-embed');
+        if (heygenWidget) {
+          heygenWidget.classList.remove('show');
+        }
+      }
     </script>
+
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/custom.js"></script>
+		<style>
+.hero h1, .hero p, .hero a, .hero .btn {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 1px 0 #333;
+}
+.hero .btn.btn-secondary {
+  text-shadow: none !important;
+}
+.hero .btn.btn-white-outline {
+  border: 2px solid #fff !important;
+  color: #fff !important;
+  background: transparent !important;
+}
+.custom-navbar-nav .nav-link,
+.custom-navbar .navbar-brand {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+  font-weight: 600;
+}
+.custom-navbar-nav .nav-link.active,
+.custom-navbar-nav .nav-link:hover {
+  color: #ffe066 !important;
+}
+@media (max-width: 575.98px) {
+  .hero {
+    background-position: 36% center !important;
+  }
+  .hero h1 {
+    font-size: 2.1rem !important;
+    margin-top: 60px !important;
+  }
+  .hero h1 span {
+    font-size: 1.3rem !important;
+  }
+  .hero .container {
+    min-height: 350px !important;
+  }
+}
+@media (max-width: 767.98px) {
+  .hero h1 {
+    font-size: 2.5rem !important;
+    margin-top: 80px !important;
+  }
+  .hero h1 span {
+    font-size: 1.6rem !important;
+  }
+}
+</style>
+			<script src="js/checkout-utils.js"></script>
+			<script src="js/footer-loader.js"></script>
 </body>
+<script>
+!function(window){
+  const host="https://labs.heygen.com",
+  url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJQZWRyb19DaGFpcl9TaXR0aW5nX3B1Ymxp%0D%0AYyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzkyZGU3%0D%0AOWU1MzNhODQyMWJiODZkYTYzYTBlNWViMTJmXzU3MDEwL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJu%0D%0AZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjMyOTU3Mjc4ZDJm%0D%0AZTRkYjc5MDBiZTA5ZGE1MGM5ZWIwIiwidXNlcm5hbWUiOiI3YjBjZjBmZjU4YWM0YjBjOWZmNzAw%0D%0AZDRjMTU5NzIwNCJ9&inIFrame=1",
+  clientWidth=document.body.clientWidth,
+  wrapDiv=document.createElement("div");
+  
+  wrapDiv.id="heygen-streaming-embed";
+  const container=document.createElement("div");
+  container.id="heygen-streaming-container";
+  
+  const iframe=document.createElement("iframe");
+  iframe.allowFullscreen=!1;
+  iframe.title="AI Mộc Tái Sinh Chat";
+  iframe.role="dialog";
+  iframe.allow="microphone";
+  iframe.src=url;
+  
+  let visible=!1,initial=!1;
+  
+  window.addEventListener("message",(e=>{
+    e.origin===host&&e.data&&e.data.type&&"streaming-embed"===e.data.type&&(
+      "init"===e.data.action?(initial=!0,wrapDiv.classList.toggle("show",false)):
+      "show"===e.data.action?(visible=!0,wrapDiv.classList.toggle("expand",visible)):
+      "hide"===e.data.action&&(visible=!1,wrapDiv.classList.toggle("expand",visible))
+    )
+  }));
+  
+  container.appendChild(iframe);
+  wrapDiv.appendChild(container);
+  document.body.appendChild(wrapDiv);
+}(globalThis);
+</script>
+
+<!-- Random Image Slideshow Script -->
+<script>
+// Danh sách tất cả ảnh trong folder anh-trang-tri
+const decorativeImages = [
+	'images/anh-trang-tri/Lucid_Realism_A_warm_family_dining_setup_featuring_ecofriendly_2_18e77e59-dca6-4061-be58-d266381f1e3a.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_warm_family_dining_setup_featuring_ecofriendly_1_993cdb18-83ce-4435-8d98-db545beef286.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_warm_family_dining_setup_featuring_ecofriendly_0_65ec66e7-07cf-442b-8545-ac0ae67b41ce.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_warm_and_inviting_wooden_bookshelf_with_a_dist_3_e38c77d1-7486-4dca-8246-09cc6769e743.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_warm_and_inviting_wooden_bookshelf_with_a_dist_2_d8b08991-7b22-45ec-ba36-fca4f72f57cd.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_warm_and_inviting_wooden_bookshelf_with_a_dist_1_eda4c51c-f5a6-498f-ac4f-af6ff8e4fbd8.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_warm_and_inviting_wooden_bookshelf_with_a_dist_0_16711cf3-b79b-4e4d-bd95-81adc52653b7.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_3_e1556bb7-5008-4832-8cad-5a236b2cf953.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_3_9356cecc-b19f-4183-9bfe-e275588a6921.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_3_8bb21abd-6689-48fa-a970-a4de3041eee9.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_1_b80b8d75-6471-4ed3-b1f5-cea60fc5511f.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_1_b1203950-0804-4ecb-980b-79ede4b32724.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_small_workshop_studio_where_a_craftsman_is_car_0_7ace1936-ec11-4221-b1ba-741950a86f7d.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_rustic_kitchen_interior_with_handmade_cabinets_3_9a28efec-5064-4d18-ab99-716116a8be37.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_rustic_kitchen_interior_with_handmade_cabinets_1_da9f913e-afe1-4ac9-980c-2ae1f51c75e1.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_rustic_kitchen_interior_with_handmade_cabinets_0_f63b40a3-0acb-40e5-b582-04147502a83e.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_creative_ecofriendly_workspace_with_a_recycled_3_95c579ce-b483-4294-a306-831f86296538.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_creative_ecofriendly_workspace_with_a_recycled_2_d86276f7-8779-4642-a2c6-815cef1c5fd9.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_creative_ecofriendly_workspace_with_a_recycled_1_cd3d3fc0-4d7e-4f7c-93c5-1d76c84c7740.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_cozy_minimalist_living_room_decorated_with_han_3_499feeb5-a6a1-4bbc-960c-661a750ab7f6.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_cozy_minimalist_living_room_decorated_with_han_1_79eebc7d-6d22-412d-8222-c9982b80fe37.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_cozy_minimalist_living_room_decorated_with_han_0_73e4b4b6-1672-46c5-8e1b-949f4416a004.jpg',
+	'images/anh-trang-tri/Lucid_Realism_A_closeup_of_a_wooden_wall_art_crafted_from_recy_1_afa477df-6664-4717-9182-a586028bd28a.jpg',
+	'images/anh-trang-tri/Lucid_Origin_A_Vietnamese_artisan_handcrafting_a_wooden_produc_2_7d9b8e44-4d3a-4a31-a10f-a533d6144232.jpg',
+	'images/anh-trang-tri/Lucid_Origin_A_Vietnamese_artisan_handcrafting_a_wooden_produc_1_79335bbd-1862-4891-93ce-b3fbaf265bd3.jpg'
+];
+
+// Hàm random ảnh không trùng lặp
+function getRandomImages(count) {
+	const shuffled = [...decorativeImages].sort(() => 0.5 - Math.random());
+	return shuffled.slice(0, count);
+}
+
+// Hàm fade out -> thay ảnh -> fade in
+function changeImageWithFade(imgElement, newSrc) {
+	// Fade out
+	imgElement.style.opacity = '0';
+	
+	// Sau khi fade out xong, thay ảnh và fade in
+	setTimeout(() => {
+		imgElement.src = newSrc;
+		imgElement.style.opacity = '1';
+	}, 400); // Chờ 400ms để fade out hoàn thành
+}
+
+// Slideshow chính
+function startRandomSlideshow() {
+	const imgElements = [
+		document.getElementById('grid-img-1'),
+		document.getElementById('grid-img-2'), 
+		document.getElementById('grid-img-3'),
+		document.getElementById('why-choose-img')
+	];
+
+	// Preload tất cả ảnh để tránh lag
+	decorativeImages.forEach(src => {
+		const img = new Image();
+		img.src = src;
+	});
+
+	setInterval(() => {
+		const randomImages = getRandomImages(4);
+		
+		// Thay từng ảnh với delay nhỏ để tạo hiệu ứng đẹp
+		imgElements.forEach((imgElement, index) => {
+			if (imgElement) {
+				setTimeout(() => {
+					changeImageWithFade(imgElement, randomImages[index]);
+				}, index * 200); // Delay 200ms giữa các ảnh
+			}
+		});
+	}, 3000); // 3 giây thay 1 lần
+}
+
+// Load 3 sản phẩm đầu tiên từ Google Sheets API
+async function loadHomeProducts() {
+	const API_BASE = 'http://localhost:8080';
+	const homeProductsRow = document.getElementById('homeProductsRow');
+	const loadingDiv = document.getElementById('homeProductsLoading');
+
+	try {
+		// Fetch sản phẩm từ API
+		const response = await fetch(`${API_BASE}/api/products`);
+		if (!response.ok) {
+			throw new Error('Không thể tải dữ liệu sản phẩm');
+		}
+		
+		const products = await response.json();
+		
+		// Lấy 3 sản phẩm đầu tiên
+		const first3Products = products.slice(0, 3);
+		
+		// Ẩn loading
+		loadingDiv.style.display = 'none';
+		
+		// Render 3 sản phẩm
+		first3Products.forEach((product, index) => {
+			const productCol = document.createElement('div');
+			productCol.className = 'col-12 col-md-4 col-lg-4 mb-5 mb-md-0';
+			
+			// Format giá tiền
+			const formattedPrice = product.price ? Number(product.price).toLocaleString('vi-VN') + '₫' : '';
+			
+			productCol.innerHTML = `
+				<div class="product-item" data-product-id="${product.id}" onclick="goToProductDetail('${product.id}', '${product.name}', '${product.price}', '${product.description}', '${product.image}')">
+					<img src="${product.image || 'images/product-1.png'}" class="img-fluid product-thumbnail" alt="${product.name}">
+					<h3 class="product-title">${product.name}</h3>
+					<div class="product-desc-hover">${product.description || 'Sản phẩm thủ công độc đáo'}</div>
+					<strong class="product-price" style="display: block; margin-top: 8px; color: #3b5d50;">${formattedPrice}</strong>
+					<span class="icon-cross">
+						<img src="images/cross.svg" class="img-fluid">
+					</span>
+				</div>
+			`;
+			
+			homeProductsRow.appendChild(productCol);
+		});
+		
+		console.log('✅ Đã load thành công 3 sản phẩm từ Google Sheets');
+		
+	} catch (error) {
+		console.error('❌ Lỗi khi load sản phẩm:', error);
+		
+		// Hiển thị thông báo lỗi
+		loadingDiv.innerHTML = `
+			<div class="col-12 text-center py-5">
+				<div class="text-danger mb-3">
+					<i class="fas fa-exclamation-triangle fa-2x"></i>
+				</div>
+				<h5 class="text-danger">Không thể tải sản phẩm</h5>
+				<p class="text-muted">Vui lòng thử lại sau hoặc <a href="shop.html">xem tất cả sản phẩm</a></p>
+			</div>
+		`;
+	}
+}
+
+// Chuyển đến trang chi tiết sản phẩm
+function goToProductDetail(id, name, price, description, image) {
+	// Lưu thông tin sản phẩm vào sessionStorage để trang detail sử dụng
+	const productData = {
+		id: id,
+		name: name,
+		price: price,
+		description: description,
+		image: image
+	};
+	
+	sessionStorage.setItem('productDetail', JSON.stringify(productData));
+	
+	// Chuyển đến trang detail
+	window.location.href = `detail.html?id=${id}`;
+}
+
+// Khởi động slideshow và load sản phẩm khi trang load xong
+document.addEventListener('DOMContentLoaded', function() {
+	startRandomSlideshow();
+	loadHomeProducts();
+});
+</script>
 </html>
