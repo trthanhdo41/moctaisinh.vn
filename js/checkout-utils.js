@@ -2,7 +2,6 @@
  * Checkout Utils - Xử lý URL checkout an toàn
  * Tạo URL checkout với thông tin đơn hàng cụ thể
  */
-
 class CheckoutUtils {
     /**
      * Tạo URL checkout cho "Mua ngay"
@@ -13,7 +12,6 @@ class CheckoutUtils {
         const sessionId = this.generateSessionId();
         return `checkout.html?type=buynow&id=${productId}&session=${sessionId}`;
     }
-
     /**
      * Tạo URL checkout cho giỏ hàng
      * @returns {string} URL checkout hợp lệ
@@ -22,7 +20,6 @@ class CheckoutUtils {
         const sessionId = this.generateSessionId();
         return `checkout.html?type=cart&id=${sessionId}`;
     }
-
     /**
      * Tạo session ID duy nhất
      * @returns {string} Session ID
@@ -32,7 +29,6 @@ class CheckoutUtils {
         const random = Math.random().toString(36).substring(2, 15);
         return `${timestamp}-${random}`;
     }
-
     /**
      * Lấy thông tin đơn hàng từ URL
      * @returns {object} Thông tin đơn hàng
@@ -45,7 +41,6 @@ class CheckoutUtils {
             session: urlParams.get('session')
         };
     }
-
     /**
      * Kiểm tra URL checkout có hợp lệ không
      * @returns {boolean} True nếu hợp lệ
@@ -54,7 +49,6 @@ class CheckoutUtils {
         const orderInfo = this.getOrderInfo();
         return orderInfo.type && orderInfo.id;
     }
-
     /**
      * Chuyển hướng đến checkout với thông tin đơn hàng
      * @param {string} type - Loại đơn hàng ('buynow' hoặc 'cart')
@@ -67,13 +61,10 @@ class CheckoutUtils {
         } else if (type === 'cart') {
             url = this.createCartCheckoutUrl();
         } else {
-            console.error('Thông tin checkout không hợp lệ');
             return;
         }
-        
         window.location.href = url;
     }
-
     /**
      * Lưu thông tin session cho checkout
      * @param {string} type - Loại đơn hàng
@@ -86,10 +77,8 @@ class CheckoutUtils {
             timestamp: Date.now(),
             sessionId: this.generateSessionId()
         };
-        
         localStorage.setItem('checkoutSession', JSON.stringify(sessionData));
     }
-
     /**
      * Lấy thông tin session checkout
      * @returns {object|null} Thông tin session
@@ -98,18 +87,15 @@ class CheckoutUtils {
         try {
             return JSON.parse(localStorage.getItem('checkoutSession') || 'null');
         } catch (error) {
-            console.error('Lỗi đọc checkout session:', error);
             return null;
         }
     }
-
     /**
      * Xóa thông tin session checkout
      */
     static clearCheckoutSession() {
         localStorage.removeItem('checkoutSession');
     }
-
     /**
      * Kiểm tra session có hết hạn không (30 phút)
      * @param {object} session - Thông tin session
@@ -117,14 +103,10 @@ class CheckoutUtils {
      */
     static isSessionExpired(session) {
         if (!session || !session.timestamp) return true;
-        
         const now = Date.now();
         const sessionAge = now - session.timestamp;
         const maxAge = 30 * 60 * 1000; // 30 phút
-        
         return sessionAge > maxAge;
     }
 }
-
-// Export cho sử dụng global
 window.CheckoutUtils = CheckoutUtils; 

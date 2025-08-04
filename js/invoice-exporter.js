@@ -1,4 +1,3 @@
-// Invoice Exporter - Hệ thống xuất hóa đơn (Excel & Print)
 class InvoiceExporter {
     constructor() {
         this.companyInfo = {
@@ -10,35 +9,18 @@ class InvoiceExporter {
             taxCode: '0123456789'
         };
     }
-
-
-
-    // Tạo hóa đơn Excel
     async generateExcel(orderData) {
         try {
-            // Kiểm tra xem có thư viện SheetJS không
             if (typeof window.XLSX === 'undefined') {
                 await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js');
-                
-                // Đợi một chút để thư viện được khởi tạo
                 await new Promise(resolve => setTimeout(resolve, 1000));
             }
-
-            // Kiểm tra lại sau khi load
             if (typeof window.XLSX === 'undefined') {
                 throw new Error('Không thể tải thư viện SheetJS');
             }
-
-            // Tạo workbook
             const wb = window.XLSX.utils.book_new();
-            
-            // Dữ liệu hóa đơn
             const invoiceData = this.prepareExcelData(orderData);
-            
-            // Tạo worksheet
             const ws = window.XLSX.utils.aoa_to_sheet(invoiceData);
-            
-            // Thiết lập style cho worksheet
             ws['!cols'] = [
                 { width: 15 }, // Cột A
                 { width: 40 }, // Cột B
@@ -46,70 +28,45 @@ class InvoiceExporter {
                 { width: 20 }, // Cột D
                 { width: 20 }  // Cột E
             ];
-
-            // Thêm worksheet vào workbook
             window.XLSX.utils.book_append_sheet(wb, ws, 'Hóa đơn');
-
-            // Xuất file
             const fileName = `hoa-don-${orderData.orderId}-${new Date().toISOString().split('T')[0]}.xlsx`;
             window.XLSX.writeFile(wb, fileName);
-
             return true;
         } catch (error) {
-            console.error('Lỗi tạo Excel:', error);
             return false;
         }
     }
-
-    // In hóa đơn
     printInvoice(orderData) {
         try {
-            // Tạo cửa sổ in mới
             const printWindow = window.open('', '_blank', 'width=800,height=600');
-            
-            // Tạo nội dung HTML cho in
             const printContent = this.generatePrintHTML(orderData);
-            
             printWindow.document.write(printContent);
             printWindow.document.close();
-            
-            // Đợi tải xong rồi in
             printWindow.onload = function() {
                 printWindow.print();
                 printWindow.close();
             };
-
             return true;
         } catch (error) {
-            console.error('Lỗi in hóa đơn:', error);
             return false;
         }
     }
-
-    // Load script từ CDN
     loadScript(src) {
         return new Promise((resolve, reject) => {
-            // Kiểm tra xem script đã được load chưa
             const existingScript = document.querySelector(`script[src="${src}"]`);
             if (existingScript) {
                 resolve();
                 return;
             }
-
             const script = document.createElement('script');
             script.src = src;
             script.onload = () => {
-                // Đợi thêm một chút để thư viện được khởi tạo hoàn toàn
                 setTimeout(resolve, 500);
             };
             script.onerror = reject;
             document.head.appendChild(script);
         });
     }
-
-
-
-    // Chuẩn bị dữ liệu cho Excel
     prepareExcelData(orderData) {
         const data = [
             ['MỘC TÁI SINH'],
@@ -138,8 +95,6 @@ class InvoiceExporter {
             ['Chi tiết sản phẩm:'],
             ['STT', 'Tên sản phẩm', 'Số lượng', 'Đơn giá', 'Thành tiền']
         ];
-
-        // Thêm sản phẩm
         orderData.items.forEach((item, index) => {
             data.push([
                 index + 1,
@@ -149,8 +104,6 @@ class InvoiceExporter {
                 item.price * item.quantity
             ]);
         });
-
-        // Thêm tổng tiền
         data.push(['']);
         data.push(['Tổng tiền hàng:', '', '', '', orderData.total]);
         data.push(['Thuế VAT (0%):', '', '', '', 0]);
@@ -168,11 +121,8 @@ class InvoiceExporter {
         data.push(['']);
         data.push(['Cảm ơn quý khách đã tin tưởng và lựa chọn Mộc Tái Sinh!']);
         data.push(['Ngày xuất hóa đơn:', new Date().toLocaleDateString('vi-VN')]);
-
         return data;
     }
-
-    // Tạo HTML cho in
     generatePrintHTML(orderData) {
         return `
         <!DOCTYPE html>
@@ -382,7 +332,6 @@ class InvoiceExporter {
                     font-size: 10px;
                     line-height: 1.4;
                 }
-
                 .print-btn {
                     position: fixed;
                     top: 20px;
@@ -402,7 +351,6 @@ class InvoiceExporter {
         </head>
         <body>
             <button class="print-btn no-print" onclick="window.print()">🖨️ In hóa đơn</button>
-            
             <div class="invoice-container">
                 <div class="header">
                     <div class="company-name">Mộc Tái Sinh</div>
@@ -413,9 +361,7 @@ class InvoiceExporter {
                         <strong>Website:</strong> moctaisinh.vn | <strong>MST:</strong> 0123456789
                     </div>
                 </div>
-                
                 <div class="invoice-title">Hóa Đơn Bán Hàng</div>
-                
                 <div class="invoice-meta">
                     <div>
                         <strong>Số hóa đơn:</strong> <span class="invoice-number">${orderData.orderId}</span>
@@ -424,7 +370,6 @@ class InvoiceExporter {
                         <strong>Ngày:</strong> ${new Date(orderData.orderDate).toLocaleDateString('vi-VN')}
                     </div>
                 </div>
-                
                 <div class="section">
                     <div class="section-title">Thông tin khách hàng</div>
                     <div class="info-grid">
@@ -452,7 +397,6 @@ class InvoiceExporter {
                         ` : ''}
                     </div>
                 </div>
-                
                 <div class="section">
                     <div class="section-title">Chi tiết sản phẩm</div>
                     <table>
@@ -478,7 +422,6 @@ class InvoiceExporter {
                         </tbody>
                     </table>
                 </div>
-                
                 <div class="summary-section">
                     <div class="summary-row">
                         <div class="summary-label">Tổng tiền hàng:</div>
@@ -493,14 +436,12 @@ class InvoiceExporter {
                         <div class="summary-value">${this.formatCurrency(orderData.total)}</div>
                     </div>
                 </div>
-                
                 <div class="payment-info">
                     <h4>📋 Thông tin thanh toán</h4>
                     <p><strong>Phương thức thanh toán:</strong> Thanh toán khi nhận hàng (COD)</p>
                     <p><strong>Thời gian giao hàng dự kiến:</strong> 3-5 ngày làm việc</p>
                     <p><strong>Điều kiện giao hàng:</strong> Giao hàng toàn quốc, kiểm tra hàng trước khi thanh toán</p>
                 </div>
-                
                 <div class="terms-section">
                     <h4>📋 Điều khoản & Chính sách</h4>
                     <ul>
@@ -511,11 +452,9 @@ class InvoiceExporter {
                         <li>Sản phẩm được làm thủ công từ vật liệu tái chế, có thể có sự khác biệt nhỏ về màu sắc và kết cấu</li>
                     </ul>
                 </div>
-                
                 <div class="company-motto">
                     "Từ những vật liệu tưởng chừng bỏ đi, chúng tôi thổi hồn vào gỗ vụn, tre cũ, mảnh vỡ thiên nhiên bằng đôi tay thủ công và tình yêu với đất mẹ."
                 </div>
-                
                 <div class="footer">
                     <p><strong>Cảm ơn quý khách đã tin tưởng Mộc Tái Sinh!</strong></p>
                     <p>Ngày xuất: ${new Date().toLocaleDateString('vi-VN')}</p>
@@ -525,8 +464,6 @@ class InvoiceExporter {
         </html>
         `;
     }
-
-    // Format tiền tệ
     formatCurrency(amount) {
         return new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -534,6 +471,4 @@ class InvoiceExporter {
         }).format(amount);
     }
 }
-
-// Khởi tạo instance
 const invoiceExporter = new InvoiceExporter(); 

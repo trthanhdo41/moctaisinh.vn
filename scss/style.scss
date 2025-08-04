@@ -4,11 +4,7 @@
 * Author URI: https://untree.co/
 * License: https://creativecommons.org/licenses/by/3.0/
 */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-
-// Create SCSS variables
 $white: #ffffff;
 $black: #000000;
 $primary: #3b5d50;
@@ -22,14 +18,11 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
-
 $font-family: "Inter", sans-serif;
-
 body {
 	overflow-x: hidden;
 	position: relative;
 }
-
 body {
 	font-family: $font-family;
 	font-weight: 400;
@@ -38,7 +31,6 @@ body {
 	font-size: 14px;
 	background-color: $lighter;
 }
-
 a {
 	text-decoration: none;
 	transition: .3s all ease;
@@ -52,7 +44,6 @@ a {
 		font-weight: 600;
 	}
 }
-
 .custom-navbar {
 	background: $primary!important;
 	padding-top: 20px;
@@ -130,8 +121,6 @@ a {
 		}
 	}
 }
-
-// Hero 
 .hero {
 	background: $primary;
 	padding: calc(4rem - 30px) 0 0rem 0;
@@ -141,9 +130,7 @@ a {
 	@media (min-width: $lg) {
 		padding: calc(8rem - 30px) 0 8rem 0;
 	}
-	
 	.intro-excerpt {
-		
 		position: relative;
 		z-index: 4;
 		@media (min-width: $lg) {
@@ -154,7 +141,6 @@ a {
 		font-weight: 700;
 		color: $white;
 		margin-bottom: 30px;
-
 		@media (min-width: $xxl) {
 			font-size: 54px;
 		}
@@ -175,7 +161,6 @@ a {
 			@media (min-width: $md) {
 				right: 0px;
 				left: -100px;
-
 			}
 			@media (min-width: $lg) {
 				left: 0px;
@@ -186,10 +171,8 @@ a {
 			@media (min-width: $xl) {
 				left: 0px;
 				top: -80px;
-		
 				right: -100px;
 			}
-			
 		}
 		&:after {
 			content: "";
@@ -207,8 +190,6 @@ a {
 		}
 	}
 }
-
-// Button 
 .btn {
 	font-weight: 600;
 	padding: 12px 30px;
@@ -252,14 +233,11 @@ a {
 		}
 	}
 }
-
-// Product Section
 .section-title {
 	color: $dark;
 }
 .product-section {
 	padding: 7rem 0;
-
 	.product-item {
 		text-align: center;
 		text-decoration: none;
@@ -267,7 +245,6 @@ a {
 		position: relative;
 		padding-bottom: 50px;
 		cursor: pointer;
-
 		.product-thumbnail {
 			margin-bottom: 30px;
 			position: relative;
@@ -334,12 +311,8 @@ a {
 		}
 	}
 }
-
-
-// Why Choose us section
 .why-choose-section {
 	padding: 7rem 0;
-
 	.img-wrap {
 		position: relative;
 		&:before {
@@ -358,14 +331,12 @@ a {
 		}
 	}
 }
-
 .feature {
 	margin-bottom: 30px;
 	.icon {
 		display: inline-block;
 		position: relative;
 		margin-bottom: 20px;
-
 		&:before {
 			content: "";
 			width: 33px;
@@ -376,7 +347,6 @@ a {
 			right: -8px;
 			bottom: 0;
 		}
-
 	}
 	h3 {
 		font-size: 14px;
@@ -388,10 +358,8 @@ a {
 		color: $body_color;
 	}
 }
-
 .we-help-section {
 	padding: 7rem 0;
-
 	.imgs-grid {
 		display: grid;
 		grid-template-columns: repeat(27, 1fr);
@@ -427,11 +395,9 @@ a {
 				grid-row: 6 / span 27;
 				padding-top: 20px;
 			}
-
 		}
 	}
 }	
-
 .custom-list {
 	width: 100%;
 	li {
@@ -493,14 +459,11 @@ a {
 		}
 	}
 }
-
-// Testimonial Section
 .testimonial-section {
 	padding: 3rem 0 7rem 0;
 }
 .testimonial-slider-wrap {
 	position: relative;
-
 	.tns-inner {
 		padding-top: 30px;
 	}
@@ -528,7 +491,6 @@ a {
 					margin-bottom: 0;
 				}
 			}
-
 		}
 	}
 	#testimonial-nav {
@@ -575,13 +537,11 @@ a {
 			width: 0!important;
 			height: 7px!important;
 			margin: 2px;
-
 			&:active, &:focus, &:hover {
 				outline: none;
 				box-shadow: none;
 				background: none;
 			}
-
 			&:before {
 				display: block;
 				width: 7px;
@@ -602,8 +562,6 @@ a {
 		}
 	}
 }
-
-// Blog Section
 .before-footer-section {
 	padding: 7rem 0 12rem 0!important;
 }
@@ -646,8 +604,6 @@ a {
 		}
 	}
 }
-
-// Footer Section
 .footer-section {
 	padding: 80px 0;
 	background: $white;
@@ -703,7 +659,6 @@ a {
 			border-radius: 10px!important;
 		}
 	}
-
 	.sofa-img {
 		position: absolute;
 		top: -200px;
@@ -713,7 +668,6 @@ a {
 			max-width: 380px;
 		}
 	}
-
 	.links-wrap {
 		margin-top: 0px;
 		@media (min-width: $lg) {
@@ -759,15 +713,10 @@ a {
 			font-size: 14px!important;
 		}
 	}
-
 }
-
-
 .untree_co-section {
 	padding: 7rem 0;
 }
-
-
 .form-control {
 	height: 50px;
 	border-radius: 10px;
@@ -791,10 +740,8 @@ a {
 		font-size: 14px;
 	}
 }
-
 .service {
 	line-height: 1.5;
-
 	.service-icon {
 		border-radius: 10px;
 		flex: 0 0 50px;
@@ -806,12 +753,9 @@ a {
 		color: $white;
 	}
 }
-
 textarea {
 	height: auto!important;
 }
-
-
 .site-blocks-table {
 	overflow: auto;
 	.product-thumbnail {
@@ -845,7 +789,6 @@ textarea {
 			}
 		}
 	}
-
 	.btn {
 		background: none!important;
 		color: $black;
@@ -853,7 +796,6 @@ textarea {
 		height: auto!important;
 	}
 }
-
 .site-block-order-table {
 	th {
 		border-top: none!important;
@@ -863,14 +805,11 @@ textarea {
 		color: $black;
 	}
 }
-
-
 .couponcode-wrap {
 	input {
 		border-radius: 10px!important;
 	}
 	.btn {
-
 	}
 }
 .text-primary {
@@ -884,7 +823,6 @@ textarea {
 		content: "";
 		width: 50px;
 		height: 50px;
-		
 		border-radius: 50%;
 		background:rgba($primary, .2);
 	}

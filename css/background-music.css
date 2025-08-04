@@ -1,0 +1,8 @@
+/* Background Music Player Styles - Hidden Mode */
+.background-music-player {
+  display: none !important;
+}
+/* Hide audio element */
+#background-audio {
+  display: none;
+} 

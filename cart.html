@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Mộc Tái Sinh">
-
   <link rel="shortcut icon" href="favicon.png">
-
   <meta name="description" content="Giỏ hàng sản phẩm gỗ tái sinh. Mua đồ gỗ thủ công handmade chất lượng cao. Giao hàng toàn quốc, thanh toán an toàn.">
   <meta name="keywords" content="giỏ hàng gỗ tái sinh, mua đồ gỗ, sản phẩm gỗ thủ công, đồ gỗ handmade">
   <!-- SEO Meta Tags -->
@@ -21,8 +19,6 @@
   <meta name="twitter:title" content="Giỏ Hàng | Mua Sản Phẩm Gỗ Tái Sinh - Mộc Tái Sinh">
   <meta name="twitter:description" content="Giỏ hàng sản phẩm gỗ tái sinh. Mua đồ gỗ thủ công handmade chất lượng cao. Giao hàng toàn quốc, thanh toán an toàn.">
   <link rel="canonical" href="https://moctaisinh.vn/cart.html">
-
-
 		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -30,19 +26,14 @@
 		<link href="css/style.css" rel="stylesheet">
 		<title>Giỏ Hàng | Mua Sản Phẩm Gỗ Tái Sinh - Mộc Tái Sinh</title>
 	</head>
-
 	<body class="cart-page">
-
 		<!-- Start Header/Navigation -->
 		<nav class="custom-navbar navbar navbar navbar-expand-lg navbar-dark bg-dark" arial-label="Furni navigation bar" style="background: transparent !important; position: absolute; width: 100%; z-index: 10;">
-
 			<div class="container">
 				<a class="navbar-brand" href="index.html">moctaisinh<span>.</span>vn</a>
-
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
@@ -52,16 +43,13 @@
 						<li><a class="nav-link" href="blog.html">Blog</a></li>
 						<li><a class="nav-link" href="contact.html">Kết nối với chúng tôi</a></li>
 					</ul>
-
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
-				
 		</nav>
 		<!-- End Header/Navigation -->
-
 		<!-- Start Hero Section -->
 			<div class="hero" style="background: url('../images/hero-bg.jpg') center center/cover no-repeat; position: relative; min-height: 180px; padding: 2.5rem 0 2.5rem 0;">
 				<div style="position: absolute; inset: 0; background: rgba(59,93,80,0.78); z-index: 1;"></div>
@@ -77,9 +65,6 @@
 				</div>
 			</div>
 		<!-- End Hero Section -->
-
-		
-
 		<div class="untree_co-section before-footer-section">
             <div class="container">
               <div class="row mb-5">
@@ -114,7 +99,6 @@
                   </div>
                 </form>
               </div>
-        
               <div class="row">
                 <div class="col-md-6" id="cartActions">
                   <div class="row mb-5">
@@ -168,7 +152,6 @@
                           <strong class="text-black" id="total">0₫</strong>
                         </div>
                       </div>
-        
                       <div class="row">
                         <div class="col-md-12">
                           <button class="btn btn-success btn-lg py-3 btn-block" onclick="proceedToCheckout()" style="background: #28a745; border-color: #28a745;">
@@ -182,7 +165,6 @@
               </div>
             </div>
           </div>
-		
 		<!-- Related Products Section -->
 		<div class="related-products">
 			<div class="container">
@@ -194,12 +176,10 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Footer will be loaded automatically from footer.html -->
 		<div class="footer-section">
 			<!-- Footer will be loaded automatically from footer.html -->
 		</div>	
-
 		<!-- Toast Notification -->
 		<div id="toast" class="toast-notification" style="display: none;">
 			<div class="toast-content">
@@ -207,7 +187,6 @@
 				<span class="toast-message"></span>
 			</div>
 		</div>
-		
 		<!-- Delete Confirmation Modal -->
 		<div id="deleteModal" class="modal-overlay" style="display: none;">
 			<div class="modal-content">
@@ -224,7 +203,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Nút nổi Call & Zalo -->
 		<style>
 		.fab-contact {
@@ -256,7 +234,6 @@
 		  background-color: #2bac47;
 		  transform: scale(1.1);
 		}
-		
 		.fab-contact-btn.zalo-btn {
 		  background: #008fe5;
 		  padding: 0;
@@ -365,7 +342,6 @@
   max-height: 10em;
   transform: none;
 }
-		
 		/* Toast Notification Styles */
 		.toast-notification {
 			position: fixed;
@@ -381,26 +357,21 @@
 			transition: transform 0.3s ease;
 			max-width: 300px;
 		}
-		
 		.toast-notification.show {
 			transform: translateX(0);
 		}
-		
 		.toast-content {
 			display: flex;
 			align-items: center;
 			gap: 10px;
 		}
-		
 		.toast-icon {
 			font-size: 18px;
 		}
-		
 		.toast-message {
 			font-size: 14px;
 			font-weight: 500;
 		}
-		
 		/* Modal Styles */
 		.modal-overlay {
 			position: fixed;
@@ -414,7 +385,6 @@
 			align-items: center;
 			justify-content: center;
 		}
-		
 		.modal-content {
 			background: white;
 			border-radius: 8px;
@@ -423,7 +393,6 @@
 			width: 90%;
 			animation: modalSlideIn 0.3s ease;
 		}
-		
 		@keyframes modalSlideIn {
 			from {
 				opacity: 0;
@@ -434,7 +403,6 @@
 				transform: translateY(0);
 			}
 		}
-		
 		.modal-header {
 			padding: 20px 20px 0 20px;
 			display: flex;
@@ -442,13 +410,11 @@
 			align-items: center;
 			border-bottom: 1px solid #eee;
 		}
-		
 		.modal-header h5 {
 			margin: 0;
 			color: #333;
 			font-weight: 600;
 		}
-		
 		.close-btn {
 			background: none;
 			border: none;
@@ -462,46 +428,38 @@
 			align-items: center;
 			justify-content: center;
 		}
-		
 		.close-btn:hover {
 			color: #333;
 		}
-		
 		.modal-body {
 			padding: 20px;
 		}
-		
 		.modal-body p {
 			margin: 0;
 			color: #666;
 			font-size: 16px;
 		}
-		
 		.modal-footer {
 			padding: 0 20px 20px 20px;
 			display: flex;
 			gap: 10px;
 			justify-content: flex-end;
 		}
-		
 		/* Empty Cart Styles */
 		.empty-cart-icon {
 			margin-bottom: 30px;
 		}
-		
 		.empty-cart-icon i {
 			font-size: 80px;
 			color: #ddd;
 			opacity: 0.6;
 		}
-		
 		.empty-cart-title {
 			font-size: 28px;
 			font-weight: 600;
 			color: #333;
 			margin-bottom: 15px;
 		}
-		
 		.empty-cart-desc {
 			font-size: 16px;
 			color: #666;
@@ -511,7 +469,6 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
-		
 		.empty-cart-btn {
 			padding: 15px 30px;
 			font-size: 16px;
@@ -520,12 +477,10 @@
 			transition: all 0.3s ease;
 			box-shadow: 0 4px 12px rgba(59, 93, 80, 0.2);
 		}
-		
 		.empty-cart-btn:hover {
 			transform: translateY(-2px);
 			box-shadow: 0 6px 20px rgba(59, 93, 80, 0.3);
 		}
-		
 		/* Cart Table Improvements */
 		.site-blocks-table {
 			background: white;
@@ -535,60 +490,49 @@
 			border: 1px solid #f0f0f0;
 			overflow-x: auto;
 		}
-		
 		@media (max-width: 768px) {
 			.site-blocks-table {
 				margin: 0 -15px;
 				border-radius: 0;
 			}
-			
 			.site-blocks-table .table {
 				font-size: 14px;
 			}
-			
 			.site-blocks-table .table thead th,
 			.site-blocks-table .table tbody td {
 				padding: 12px 8px;
 			}
-			
 			.product-thumbnail img {
 				width: 60px;
 				height: 60px;
 				object-fit: cover;
 			}
-			
 			.product-name h2 {
 				font-size: 14px;
 			}
-			
 			/* Fix price display on mobile */
 			.site-blocks-table .table tbody td:nth-child(3) {
 				font-weight: 600;
 				color: #3b5d50;
 				font-size: 13px;
 			}
-			
 			.quantity-container {
 				max-width: 100px !important;
 			}
-			
 			.quantity-container .btn {
 				padding: 6px 8px;
 				min-width: 30px;
 				font-size: 12px;
 			}
-			
 			.quantity-container .form-control {
 				padding: 6px 8px;
 				min-width: 40px;
 				font-size: 12px;
 			}
 		}
-		
 		.site-blocks-table .table {
 			margin-bottom: 0;
 		}
-		
 		.site-blocks-table .table thead th {
 			background: #f8f9fa;
 			border: none;
@@ -599,28 +543,23 @@
 			text-transform: uppercase;
 			letter-spacing: 0.5px;
 		}
-		
 		.site-blocks-table .table tbody td {
 			border: none;
 			border-bottom: 1px solid #f0f0f0;
 			padding: 20px 15px;
 			vertical-align: middle;
 		}
-		
 		.site-blocks-table .table tbody tr:hover {
 			background: #f8f9fa;
 		}
-		
 		.product-thumbnail img {
 			border-radius: 8px;
 			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 			transition: transform 0.2s ease;
 		}
-		
 		.product-thumbnail img:hover {
 			transform: scale(1.05);
 		}
-		
 		.product-name h2 {
 			font-size: 16px;
 			font-weight: 600;
@@ -628,7 +567,6 @@
 			margin: 0;
 			line-height: 1.4;
 		}
-		
 		.quantity-container {
 			border-radius: 8px;
 			overflow: hidden;
@@ -639,7 +577,6 @@
 			width: 120px;
 			margin: 0 auto;
 		}
-		
 		.quantity-container .btn {
 			border: none;
 			padding: 8px 12px;
@@ -649,12 +586,10 @@
 			color: #333;
 			min-width: 40px;
 		}
-		
 		.quantity-container .btn:hover {
 			background: #3b5d50;
 			color: white;
 		}
-		
 		.quantity-container .form-control {
 			border: none;
 			font-weight: 600;
@@ -664,27 +599,23 @@
 			min-width: 60px;
 			font-size: 14px;
 		}
-		
 		.quantity-container .form-control:focus {
 			box-shadow: none;
 			border-color: #3b5d50;
 			background: white;
 		}
-		
 		/* Button hover effects */
 		.btn-outline-primary:hover {
 			background-color: #007bff !important;
 			border-color: #007bff !important;
 			color: white !important;
 		}
-		
 		.btn-success:hover {
 			background-color: #218838 !important;
 			border-color: #1e7e34 !important;
 			transform: translateY(-1px);
 			box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
 		}
-		
 		.btn-danger {
 			background-color: #dc3545 !important;
 			border-color: #dc3545 !important;
@@ -693,7 +624,6 @@
 			visibility: visible !important;
 			opacity: 1 !important;
 		}
-		
 		/* Specific styling for delete button in cart table */
 		.site-blocks-table .btn-danger {
 			background-color: #dc3545 !important;
@@ -707,19 +637,16 @@
 			padding: 0 !important;
 			border-radius: 4px !important;
 		}
-		
 		.site-blocks-table .btn-danger i {
 			color: white !important;
 			font-size: 14px !important;
 		}
-		
 		.btn-danger:hover {
 			background-color: #c82333 !important;
 			border-color: #bd2130 !important;
 			transform: translateY(-1px);
 			box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
 		}
-		
 		/* Related Products Section */
 		.related-products {
 			padding: 80px 0;
@@ -727,7 +654,6 @@
 			display: block !important;
 			visibility: visible !important;
 		}
-		
 		.section-title {
 			text-align: center;
 			font-size: 2.5rem;
@@ -735,12 +661,10 @@
 			color: #3b5d50;
 			margin-bottom: 50px;
 		}
-		
 		.related-slider-wrap {
 			position: relative;
 			overflow: hidden;
 		}
-		
 		.related-slider {
 			display: flex;
 			gap: 20px;
@@ -749,11 +673,9 @@
 			scrollbar-width: none;
 			-ms-overflow-style: none;
 		}
-		
 		.related-slider::-webkit-scrollbar {
 			display: none;
 		}
-		
 		.related-product-item {
 			flex: 0 0 280px;
 			background: white;
@@ -764,7 +686,6 @@
 			position: relative;
 			overflow: hidden;
 		}
-		
 		.related-product-thumbnail {
 			width: 100%;
 			height: 200px;
@@ -772,7 +693,6 @@
 			border-radius: 8px;
 			margin-bottom: 15px;
 		}
-		
 		.related-product-title {
 			font-size: 1.1rem;
 			font-weight: 600;
@@ -781,7 +701,6 @@
 			line-height: 1.3;
 			text-align: center;
 		}
-		
 		.related-product-price {
 			font-size: 1.2rem;
 			font-weight: 700;
@@ -789,7 +708,6 @@
 			margin-bottom: 10px;
 			text-align: center;
 		}
-		
 		.related-product-desc {
 			font-size: 0.9rem;
 			color: #666;
@@ -797,7 +715,6 @@
 			margin-bottom: 15px;
 			text-align: center;
 		}
-		
 		/* Responsive for thank you card */
 		@media (max-width: 768px) {
 			.thankyou-card {
@@ -805,31 +722,25 @@
 				max-width: 100%;
 				padding: 2em 1em;
 			}
-			
 			.thankyou-card-content {
 				width: 100%;
 				max-width: 100%;
 			}
-			
 			.thankyou-card-logo {
 				width: 100%;
 				font-size: 1.2em;
 			}
-			
 			.thankyou-card-h6 {
 				font-size: 0.9em;
 			}
-			
 			/* Fix order summary alignment on mobile */
 			.col-md-6.pl-5 {
 				padding-left: 15px !important;
 				padding-right: 15px !important;
 			}
-			
 			.col-md-7 {
 				width: 100% !important;
 			}
-			
 			/* Hide STT column on mobile to save space */
 			.site-blocks-table .table thead th:first-child,
 			.site-blocks-table .table tbody td:first-child {
@@ -847,14 +758,10 @@
 		function loopShakeFab(btnId) {
 		  var btn = document.getElementById(btnId);
 		  if (!btn) return;
-		  
-		  // Thêm CSS animation cho hiệu ứng xoay và lắc
 		  btn.style.cssText += `
 			animation: modernShake 3s ease-in-out infinite;
 			transform-origin: center;
 		  `;
-		  
-		  // Tạo keyframes cho hiệu ứng hiện đại
 		  if (!document.getElementById('modernShakeKeyframes')) {
 			const style = document.createElement('style');
 			style.id = 'modernShakeKeyframes';
@@ -904,14 +811,11 @@
 			`;
 			document.head.appendChild(style);
 		  }
-		  
-		  // Thêm hiệu ứng hover
 		  btn.addEventListener('mouseenter', function() {
 			this.style.animationPlayState = 'paused';
 			this.style.transform = 'scale(1.2) rotate(5deg)';
 			this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
 		  });
-		  
 		  btn.addEventListener('mouseleave', function() {
 			this.style.animationPlayState = 'running';
 			this.style.transform = '';
@@ -920,18 +824,11 @@
 		}
 		loopShakeFab('callFab');
 		loopShakeFab('zaloFab');
-		
-      // Xử lý nút gọi điện thông minh
       function handleCallClick(event) {
         event.preventDefault();
-        
-        // Hiển thị popup gọi điện
         showCallPopup();
       }
-      
-      // Hiển thị popup gọi điện
       function showCallPopup() {
-        // Tạo popup container
         const popup = document.createElement('div');
         popup.id = 'callPopup';
         popup.style.cssText = `
@@ -944,8 +841,6 @@
           background: rgba(0,0,0,0.5);
           backdrop-filter: blur(4px);
         `;
-        
-        // Tạo popup content
         const popupContent = document.createElement('div');
         popupContent.style.cssText = `
           background: white;
@@ -957,7 +852,6 @@
           box-shadow: 0 20px 60px rgba(0,0,0,0.3);
           animation: popupSlideIn 0.3s ease-out;
         `;
-        
         popupContent.innerHTML = `
           <div style="margin-bottom: 24px;">
             <div style="width: 80px; height: 80px; background: #28a745; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
@@ -968,11 +862,9 @@
             <h3 style="margin: 0 0 8px; color: #333; font-size: 24px; font-weight: 600;">Gọi điện tư vấn</h3>
             <p style="margin: 0; color: #666; font-size: 16px;">Bạn có muốn gọi điện đến hotline của chúng tôi không?</p>
           </div>
-          
           <div style="font-size: 28px; font-weight: 700; color: #28a745; margin-bottom: 24px; letter-spacing: 2px;">
             0373 566 167
           </div>
-          
           <div style="display: flex; gap: 12px; justify-content: center;">
             <button onclick="closeCallPopup()" style="
               padding: 12px 24px;
@@ -1002,8 +894,6 @@
             </button>
           </div>
         `;
-        
-        // Thêm CSS animation
         const style = document.createElement('style');
         style.textContent = `
           @keyframes popupSlideIn {
@@ -1028,26 +918,19 @@
           }
         `;
         document.head.appendChild(style);
-        
         popup.appendChild(popupContent);
         document.body.appendChild(popup);
-        
-        // Đóng popup khi click bên ngoài
         popup.addEventListener('click', function(e) {
           if (e.target === popup) {
             closeCallPopup();
           }
         });
-        
-        // Đóng popup khi nhấn ESC
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape') {
             closeCallPopup();
           }
         });
       }
-      
-      // Đóng popup gọi điện
       function closeCallPopup() {
         const popup = document.getElementById('callPopup');
         if (popup) {
@@ -1057,112 +940,70 @@
           }, 200);
         }
       }
-      
-      // Thực hiện cuộc gọi
       function makeCall() {
         const phoneNumber = '0373566167';
-        
-        // Kiểm tra xem có phải mobile không
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
         if (isMobile) {
-          // Trên mobile: gọi điện trực tiếp
           window.location.href = 'tel:' + phoneNumber;
         } else {
-          // Trên desktop: tạo link ẩn và click để mở ứng dụng gọi điện
           const link = document.createElement('a');
           link.href = 'tel:' + phoneNumber;
           link.style.display = 'none';
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          
-          // Hiển thị thông báo
           showCallNotification('Đang mở ứng dụng gọi điện...');
         }
-        
         closeCallPopup();
       }
     </script>
-	
-
 			<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/custom.js"></script>
-	
 	<script>
-		// Cart functionality
 		let cart = [];
-		
-		// Load cart from localStorage
 		function loadCart() {
 			cart = JSON.parse(localStorage.getItem('cart')) || [];
 			renderCart();
 			loadRelatedProducts();
 		}
-		
-		// Load and display related products
 		function loadRelatedProducts() {
-			console.log('Loading related products...');
-			
-			// Real products from API
 			fetch('http://localhost:8080/api/products')
 				.then(response => {
-					console.log('API Response:', response);
 					return response.json();
 				})
 				.then(data => {
-					console.log('API Data:', data);
-					
 					if (data && data.length > 0) {
 						const products = data;
 						const relatedProductsContainer = document.getElementById('relatedProducts');
-						
 						if (!relatedProductsContainer) {
-							console.error('Related products container not found');
 							return;
 						}
-						
-						console.log('Found', products.length, 'real products');
 						relatedProductsContainer.innerHTML = '';
-						
-						// Show ALL real products from sheet
 						products.forEach((product, index) => {
-							console.log('Product', index + 1, ':', product);
-							
 							const productItem = document.createElement('div');
 							productItem.className = 'related-product-item';
 							productItem.onclick = () => window.location.href = `detail.html?id=${product.id}`;
-							
 							productItem.innerHTML = `
 								<img src="${product.image || 'images/product-1.png'}" alt="${product.name}" class="related-product-thumbnail">
 								<h3 class="related-product-title">${product.name}</h3>
-								<div class="related-product-price">${product.price}₫</div>
+								<div class="related-product-price">${formatVND(product.price)}</div>
 								<div class="related-product-desc">${product.description || 'Sản phẩm thủ công độc đáo'}</div>
 							`;
-							
 							relatedProductsContainer.appendChild(productItem);
 						});
-						
-						// Initialize auto-scroll slider
 						initRelatedSlider();
 					} else {
-						console.log('No real products found, using fallback');
 						loadSampleProducts();
 					}
 				})
 				.catch(error => {
-					console.error('Error loading related products:', error);
-					// Fallback to sample products if API fails
 					loadSampleProducts();
 				});
 		}
-		
-		// Fallback function - show loading message
 		function loadSampleProducts() {
 			const relatedProductsContainer = document.getElementById('relatedProducts');
 			if (!relatedProductsContainer) return;
-			
 			relatedProductsContainer.innerHTML = `
 				<div class="text-center py-4">
 					<div class="spinner-border text-primary" role="status">
@@ -1172,36 +1013,26 @@
 				</div>
 			`;
 		}
-	
-	// Initialize auto-scroll slider for related products
 	function initRelatedSlider() {
 		const slider = document.querySelector('.related-slider');
 		if (!slider) return;
-		
 		let scrollSpeed = 2;
 		let direction = 1; // 1 = forward, -1 = backward
 		let autoScrollInterval = setInterval(() => {
 			slider.scrollLeft += scrollSpeed * direction;
-			
-			// Change direction when reaching end or beginning
 			if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
 				direction = -1; // Go backward
 			} else if (slider.scrollLeft <= 0) {
 				direction = 1; // Go forward
 			}
 		}, 25);
-		
-
 	}
-		
-		// Render cart items
 		function renderCart() {
 			const cartItems = document.getElementById('cartItems');
 			const cartTable = document.getElementById('cartTable');
 			const emptyCart = document.getElementById('emptyCart');
 			const orderSummary = document.querySelector('.col-md-6.pl-5');
 			const cartActions = document.getElementById('cartActions');
-			
 			if (cart.length === 0) {
 				cartTable.style.display = 'none';
 				emptyCart.style.display = 'block';
@@ -1214,7 +1045,6 @@
 				updateTotal(0);
 				return;
 			}
-			
 			cartTable.style.display = 'table';
 			emptyCart.style.display = 'none';
 			if (orderSummary) {
@@ -1223,9 +1053,7 @@
 			if (cartActions) {
 				cartActions.style.display = 'block';
 			}
-			
 			cartItems.innerHTML = '';
-			
 			cart.forEach((item, index) => {
 				const row = document.createElement('tr');
 				row.innerHTML = `
@@ -1244,7 +1072,7 @@
 							</a>
 						</h2>
 					</td>
-					<td>${item.price}</td>
+					<td>${formatVND(item.price)}</td>
 					<td>
 						<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
 							<div class="input-group-prepend">
@@ -1266,11 +1094,8 @@
 				`;
 				cartItems.appendChild(row);
 			});
-			
 			updateTotal();
 		}
-		
-		// Change quantity
 		function changeQuantity(index, delta) {
 			if (cart[index]) {
 				cart[index].quantity = Math.max(1, cart[index].quantity + delta);
@@ -1279,36 +1104,25 @@
 				updateCartIcon(); // Update cart icon
 			}
 		}
-		
-		// Update quantity from input
 		function updateQuantity(index, value) {
 			if (cart[index]) {
-				// Only allow numbers
 				const numericValue = value.replace(/[^\d]/g, '');
 				const newQuantity = Math.max(1, Math.min(99, parseInt(numericValue) || 1));
-				
-				// Update the input value to show the validated number
 				const input = event.target;
 				if (input) {
 					input.value = newQuantity;
 				}
-				
 				cart[index].quantity = newQuantity;
 				localStorage.setItem('cart', JSON.stringify(cart));
 				renderCart();
 				updateCartIcon(); // Update cart icon
 			}
 		}
-		
-		// Show toast notification
 		function showToast(message, type = 'success') {
 			const toast = document.getElementById('toast');
 			const messageEl = toast.querySelector('.toast-message');
 			const icon = toast.querySelector('.toast-icon');
-			
 			messageEl.textContent = message;
-			
-			// Set icon based on type
 			if (type === 'success') {
 				icon.className = 'fas fa-check-circle toast-icon';
 				toast.style.background = '#28a745';
@@ -1320,14 +1134,10 @@
 				toast.style.background = '#ffc107';
 				toast.style.color = '#212529';
 			}
-			
-			// Show toast
 			toast.style.display = 'block';
 			setTimeout(() => {
 				toast.classList.add('show');
 			}, 10);
-			
-			// Hide toast after 3 seconds
 			setTimeout(() => {
 				toast.classList.remove('show');
 				setTimeout(() => {
@@ -1335,22 +1145,15 @@
 				}, 300);
 			}, 3000);
 		}
-		
 		let itemToDelete = null;
-		
-		// Show delete confirmation modal
 		function removeItem(index) {
 			itemToDelete = index;
 			document.getElementById('deleteModal').style.display = 'flex';
 		}
-		
-		// Close delete modal
 		function closeDeleteModal() {
 			document.getElementById('deleteModal').style.display = 'none';
 			itemToDelete = null;
 		}
-		
-		// Confirm delete action
 		function confirmDelete() {
 			if (itemToDelete !== null) {
 				const itemName = cart[itemToDelete].name;
@@ -1362,48 +1165,34 @@
 				closeDeleteModal();
 			}
 		}
-		
-		// Update total
 		function updateTotal() {
 			const total = cart.reduce((sum, item) => {
-				// Parse price từ string sang number an toàn
 				const priceStr = item.price ? item.price.toString().replace(/[^\d]/g, '') : '0';
 				const price = parseInt(priceStr) || 0;
 				return sum + (price * item.quantity);
 			}, 0);
-			
 			const formattedTotal = formatVND(total);
 			document.getElementById('subtotal').textContent = formattedTotal;
-			document.getElementById('vat').textContent = '0₫'; // Thuế VAT = 0đ
+			document.getElementById('vat').textContent = formatVND(0); // Thuế VAT = 0đ
 			document.getElementById('total').textContent = formattedTotal; // Tổng = Tạm tính (vì VAT = 0đ)
 		}
-		
-		// Format VND
 		function formatVND(amount) {
 			return new Intl.NumberFormat('vi-VN', {
 				style: 'currency',
 				currency: 'VND'
 			}).format(amount);
 		}
-		
-		// Calculate subtotal for a single item
 		function calculateSubtotal(price, quantity) {
-			// Parse price từ string sang number an toàn
 			const priceStr = price ? price.toString().replace(/[^\d]/g, '') : '0';
 			const priceNum = parseInt(priceStr) || 0;
 			const total = priceNum * quantity;
 			return formatVND(total);
 		}
-		
-		// Update cart icon with item count
 		function updateCartIcon() {
 			const cart = JSON.parse(localStorage.getItem('cart')) || [];
 			const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-			
-			// Update cart icon in header if exists
 			const cartIcon = document.querySelector('.nav-link img[src*="cart.svg"]');
 			if (cartIcon && totalItems > 0) {
-				// Add badge to cart icon
 				let badge = cartIcon.parentElement.querySelector('.cart-badge');
 				if (!badge) {
 					badge = document.createElement('span');
@@ -1427,40 +1216,28 @@
 					cartIcon.parentElement.style.position = 'relative';
 					cartIcon.parentElement.appendChild(badge);
 				}
-				
-				// Format badge text to prevent overflow
 				let badgeText = totalItems.toString();
 				if (totalItems > 99) {
 					badgeText = '99+';
 				}
 				badge.textContent = badgeText;
 			} else if (cartIcon) {
-				// Remove badge if no items
 				const badge = cartIcon.parentElement.querySelector('.cart-badge');
 				if (badge) {
 					badge.remove();
 				}
 			}
 		}
-		
-		// Proceed to checkout function
 		function proceedToCheckout() {
 			if (cart.length === 0) {
 				showToast('Giỏ hàng trống! Vui lòng thêm sản phẩm trước khi thanh toán.');
 				return;
 			}
-			
-			// Save cart data to localStorage for checkout page
 			localStorage.setItem('checkoutCart', JSON.stringify(cart));
 			localStorage.setItem('checkoutTotal', document.getElementById('total').textContent);
-			
-			// Redirect to checkout page
 			CheckoutUtils.redirectToCheckout('cart');
 		}
-		
-		// Show toast notification
 		function showToast(message) {
-			// Create toast element
 			const toast = document.createElement('div');
 			toast.className = 'toast-notification';
 			toast.style.cssText = `
@@ -1477,15 +1254,10 @@
 				transition: transform 0.3s ease;
 			`;
 			toast.textContent = message;
-			
 			document.body.appendChild(toast);
-			
-			// Show toast
 			setTimeout(() => {
 				toast.style.transform = 'translateX(0)';
 			}, 100);
-			
-			// Hide toast after 3 seconds
 			setTimeout(() => {
 				toast.style.transform = 'translateX(100%)';
 				setTimeout(() => {
@@ -1493,12 +1265,8 @@
 				}, 300);
 			}, 3000);
 		}
-		
-		// Initialize cart when page loads
 		document.addEventListener('DOMContentLoaded', function() {
 			loadCart();
-			
-			// Prevent form submission
 			const form = document.querySelector('form');
 			if (form) {
 				form.addEventListener('submit', function(e) {
@@ -1506,18 +1274,13 @@
 					return false;
 				});
 			}
-			
-			// Close modal when clicking outside
 			document.getElementById('deleteModal').addEventListener('click', function(e) {
 				if (e.target === this) {
 					closeDeleteModal();
 				}
 			});
-			
-			// Prevent non-numeric input in quantity fields
 			document.addEventListener('input', function(e) {
 				if (e.target.classList.contains('quantity-amount')) {
-					// Only allow numbers
 					e.target.value = e.target.value.replace(/[^\d]/g, '');
 				}
 			});
@@ -1525,6 +1288,8 @@
 	</script>
 			<script src="js/checkout-utils.js"></script>
 			<script src="js/footer-loader.js"></script>
+		<script src="js/counter-animation.js"></script>
+		<link href="css/background-music.css" rel="stylesheet">
+		<script src="js/background-music.js"></script>
 </body>
-
 </html>

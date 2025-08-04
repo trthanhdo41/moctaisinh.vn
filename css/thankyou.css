@@ -1,5 +1,4 @@
 /* CSS riêng cho trang Thank You - Mộc Tái Sinh */
-
 /* Modern Order Card Styles */
 .modern-order-card {
 	background: rgba(255, 255, 255, 0.95);
@@ -11,7 +10,6 @@
 	margin: 0 auto;
 	max-width: 800px;
 }
-
 .order-header {
 	background: linear-gradient(135deg, #3b5d50, #2d4a3f);
 	color: white;
@@ -20,7 +18,6 @@
 	align-items: center;
 	gap: 16px;
 }
-
 .order-header-icon {
 	display: flex;
 	align-items: center;
@@ -31,25 +28,20 @@
 	border-radius: 12px;
 	color: white;
 }
-
 .order-header h3 {
 	margin: 0;
 	font-size: 24px;
 	font-weight: 600;
 }
-
 .order-content {
 	padding: 32px;
 }
-
 .order-section {
 	margin-bottom: 32px;
 }
-
 .order-section:last-child {
 	margin-bottom: 0;
 }
-
 .section-title {
 	display: flex;
 	align-items: center;
@@ -61,17 +53,14 @@
 	padding-bottom: 12px;
 	border-bottom: 2px solid #f0f0f0;
 }
-
 .section-title svg {
 	color: #3b5d50;
 }
-
 .info-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	gap: 16px;
 }
-
 .info-item {
 	display: flex;
 	justify-content: space-between;
@@ -81,33 +70,27 @@
 	border-radius: 8px;
 	border-left: 4px solid #3b5d50;
 }
-
 .info-label {
 	font-weight: 500;
 	color: #6b7280;
 }
-
 .info-value {
 	font-weight: 600;
 	color: #3b5d50;
 }
-
 .total-amount {
 	color: #10b981 !important;
 	font-size: 18px;
 }
-
 .customer-details {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 16px;
 	text-align: left;
 }
-
 .customer-item.note-item {
 	grid-column: 1 / -1;
 }
-
 .customer-item {
 	display: flex;
 	flex-direction: column;
@@ -117,7 +100,6 @@
 	border-radius: 8px;
 	border-left: 4px solid #3b5d50;
 }
-
 .customer-label {
 	font-size: 14px;
 	font-weight: 500;
@@ -125,24 +107,20 @@
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
-
 .customer-value {
 	font-size: 16px;
 	font-weight: 600;
 	color: #3b5d50;
 }
-
 .customer-value.note {
 	font-style: italic;
 	color: #f59e0b;
 }
-
 .order-items {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 }
-
 .order-item {
 	display: flex;
 	justify-content: space-between;
@@ -153,23 +131,19 @@
 	border-left: 4px solid #3b5d50;
 	transition: all 0.3s ease;
 }
-
 .order-item:hover {
 	background: #f0f0f0;
 	transform: translateX(4px);
 }
-
 .item-info {
 	display: flex;
 	align-items: center;
 	gap: 8px;
 }
-
 .item-name {
 	font-weight: 600;
 	color: #3b5d50;
 }
-
 .item-quantity {
 	background: #3b5d50;
 	color: white;
@@ -183,13 +157,11 @@
 	align-items: center;
 	justify-content: center;
 }
-
 .item-price {
 	font-weight: 600;
 	color: #10b981;
 	font-size: 16px;
 }
-
 /* Button Group Styles */
 .button-group {
 	display: flex;
@@ -197,7 +169,6 @@
 	gap: 16px;
 	flex-wrap: wrap;
 }
-
 .button-group .btn {
 	display: inline-flex;
 	align-items: center;
@@ -205,12 +176,10 @@
 	min-width: 160px;
 	transition: all 0.3s ease;
 }
-
 .button-group .btn:hover {
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 /* Dropdown Styles */
 .dropdown-menu {
 	border-radius: 12px;
@@ -218,7 +187,6 @@
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	padding: 8px 0;
 }
-
 .dropdown-item {
 	padding: 12px 20px;
 	display: flex;
@@ -228,20 +196,15 @@
 	border-radius: 8px;
 	margin: 0 8px;
 }
-
 .dropdown-item:hover {
 	background: #f8f9fa;
 	color: #3b5d50;
 	transform: translateX(4px);
 }
-
-
-
 /* Animation */
 .modern-order-card {
 	animation: slideInUp 0.6s ease-out;
 }
-
 @keyframes slideInUp {
 	from {
 		opacity: 0;
@@ -252,7 +215,6 @@
 		transform: translateY(0);
 	}
 }
-
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -261,7 +223,6 @@
 		transform: rotate(360deg);
 	}
 }
-
 /* Toast notification styles */
 .webhook-toast {
 	position: fixed;
@@ -278,100 +239,81 @@
 	opacity: 0;
 	transition: all 0.3s ease;
 }
-
 .webhook-toast.show {
 	transform: translateX(0);
 	opacity: 1;
 }
-
 .webhook-toast.success {
 	border-left: 4px solid #28a745;
 	background: #f8fff9;
 }
-
 .webhook-toast.error {
 	border-left: 4px solid #dc3545;
 	background: #fff8f8;
 }
-
 .webhook-toast.error svg {
 	color: #dc3545;
 }
-
 .toast-content {
 	display: flex;
 	align-items: flex-start;
 	gap: 12px;
 }
-
 .toast-content svg {
 	color: #28a745;
 	flex-shrink: 0;
 	margin-top: 2px;
 }
-
 .toast-text {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 }
-
 .toast-title {
 	font-weight: 600;
 	color: #333;
 }
-
 .toast-subtitle {
 	font-size: 12px;
 	color: #666;
 }
-
 /* Responsive Design */
 @media (max-width: 768px) {
 	.order-content {
 		padding: 20px;
 	}
-
 	.order-header {
 		padding: 20px;
 	}
-
 	.order-header h3 {
 		font-size: 20px;
 	}
-
 	.info-grid {
 		grid-template-columns: 1fr;
 	}
-
 	.customer-details {
 		grid-template-columns: 1fr;
 	}
-
 	.order-item {
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 8px;
 	}
-
 	.item-info {
 		width: 100%;
 		justify-content: space-between;
 	}
 }
-
 /* Responsive for buttons */
 @media (max-width: 576px) {
 	.button-group {
 		flex-direction: column;
 		align-items: center;
 	}
-
 	.button-group .btn {
 		width: 100%;
 		max-width: 280px;
 	}
-
 	.dropdown-menu {
 		position: fixed !important;
 		top: 50% !important;
@@ -381,23 +323,19 @@
 		max-width: 300px;
 	}
 }
-
 /* Fix dropdown hover issue */
 .dropdown-menu {
 	z-index: 1000;
 }
-
 .dropdown-item:hover {
 	background: #f8f9fa;
 	color: #3b5d50;
 	transform: none;
 }
-
 .dropdown-item:active {
 	background: #e9ecef;
 	color: #3b5d50;
 }
-
 /* Hero Section Styles */
 .hero {
 	background: url('../images/hero-bg.jpg') center center/cover no-repeat;
@@ -405,7 +343,6 @@
 	min-height: 180px;
 	padding: 2.5rem 0 2.5rem 0;
 }
-
 .hero::before {
 	content: '';
 	position: absolute;
@@ -413,25 +350,21 @@
 	background: rgba(59,93,80,0.78);
 	z-index: 1;
 }
-
 .hero .container {
 	position: relative;
 	z-index: 2;
 }
-
 .hero .intro-excerpt h1 {
 	color: white;
 	font-size: 2.5rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
 }
-
 .hero .intro-excerpt p {
 	color: rgba(255, 255, 255, 0.9);
 	font-size: 1.1rem;
 	line-height: 1.6;
 }
-
 /* Navigation Styles */
 .custom-navbar {
 	background: transparent !important;
@@ -439,36 +372,29 @@
 	width: 100%;
 	z-index: 10;
 }
-
 .navbar-brand {
 	font-weight: 700;
 	color: white !important;
 }
-
 .navbar-brand span {
 	color: #3b5d50;
 }
-
 .custom-navbar-nav .nav-link {
 	color: rgba(255, 255, 255, 0.9) !important;
 	font-weight: 500;
 	transition: color 0.3s ease;
 }
-
 .custom-navbar-nav .nav-link:hover {
 	color: white !important;
 }
-
 /* Footer Section */
 .footer-section {
 	margin-top: 4rem;
 }
-
 /* Loading Animation */
 .loading-spinner {
 	animation: spin 1s linear infinite;
 }
-
 /* Print Styles */
 @media print {
 	.navbar,
@@ -477,26 +403,21 @@
 	.webhook-toast {
 		display: none !important;
 	}
-
 	.modern-order-card {
 		box-shadow: none;
 		border: 1px solid #ddd;
 	}
-
 	.hero {
 		background: none !important;
 		min-height: auto;
 		padding: 1rem 0;
 	}
-
 	.hero::before {
 		display: none;
 	}
-
 	.hero .intro-excerpt h1 {
 		color: #333;
 	}
-
 	.hero .intro-excerpt p {
 		color: #666;
 	}

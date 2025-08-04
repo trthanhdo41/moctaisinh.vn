@@ -1,46 +1,74 @@
 <!-- Start Footer Section -->
 <footer class="footer-section">
 	<div class="container relative">
-
-		<div class="sofa-img">
-			<img src="images/sofa.png" alt="Image" class="img-fluid">
-		</div>
-
-		<div class="row">
-			<div class="col-lg-8">
-				<div class="subscription-form">
-					<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Đăng ký nhận tin</span></h3>
-
-					<form action="#" class="row g-3">
-						<div class="col-auto">
-							<input type="text" class="form-control" placeholder="Nhập tên của bạn">
+		<!-- Newsletter Section with Enhanced Design -->
+		<div class="row mb-5">
+			<div class="col-lg-8 mx-auto text-center">
+				<div class="subscription-form" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+					<h3 class="d-flex align-items-center justify-content-center mb-4" style="color: #3b5d50; font-weight: 600;">
+						<span class="me-2"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid" style="width: 24px;"></span>
+						<span>Đăng ký nhận tin & câu chuyện cảm hứng</span>
+					</h3>
+					<p class="text-muted mb-4" style="font-size: 0.95rem;">Nhận những câu chuyện về hành trình tái sinh, tips sống xanh và ưu đãi đặc biệt</p>
+					<form id="subscriptionForm" action="#" method="POST" class="row g-3 justify-content-center">
+						<div class="col-md-4">
+							<input type="text" class="form-control" id="subscriptionName" name="subscriptionName" placeholder="Nhập tên của bạn" style="border-radius: 8px; border: 1px solid #dee2e6;" required>
 						</div>
-						<div class="col-auto">
-							<input type="text" class="form-control" placeholder="Nhập số điện thoại của bạn">
+						<div class="col-md-4">
+							<input type="text" class="form-control" id="subscriptionPhone" name="subscriptionPhone" placeholder="Nhập số điện thoại của bạn" style="border-radius: 8px; border: 1px solid #dee2e6;" required>
 						</div>
-						<div class="col-auto">
-							<button class="btn btn-primary">
+						<div class="col-md-2">
+							<button type="submit" class="btn btn-primary w-100" style="border-radius: 8px; background: #3b5d50; border: none; padding: 0.75rem;">
 								<span class="fa fa-paper-plane"></span>
 							</button>
 						</div>
 					</form>
-
 				</div>
 			</div>
 		</div>
-
+		<!-- Quick Stats Section -->
+		<div class="row mb-5">
+			<div class="col-12">
+				<div class="text-center" style="background: linear-gradient(rgba(59, 93, 80, 0.85), rgb(44 74 63 / 41%)), url('https://www.shutterstock.com/shutterstock/videos/3429496049/thumb/1.jpg?ip=x480'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 2rem 2rem; border-radius: 15px; color: white; display: flex; align-items: center; justify-content: center; min-height: 200px;">
+					<div class="row w-100" style="align-items: center;">
+						<div class="col-md-3 col-6 mb-3" style="margin-bottom: 0 !important;">
+							<div class="stat-item d-flex flex-column align-items-center justify-content-center" style="height: 120px;">
+								<h4 id="counter1" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff !important; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1;">0+</h4>
+								<p style="margin: 0; font-size: 0.9rem; color: #ffffff !important; font-weight: 600; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.2;">Sản phẩm tái sinh</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-6 mb-3" style="margin-bottom: 0 !important;">
+							<div class="stat-item d-flex flex-column align-items-center justify-content-center" style="height: 120px;">
+								<h4 id="counter2" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff !important; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1;">0+</h4>
+								<p style="margin: 0; font-size: 0.9rem; color: #ffffff !important; font-weight: 600; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.2;">Khách hàng hài lòng</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-6 mb-3" style="margin-bottom: 0 !important;">
+							<div class="stat-item d-flex flex-column align-items-center justify-content-center" style="height: 120px;">
+								<h4 id="counter3" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff !important; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1;">0+</h4>
+								<p style="margin: 0; font-size: 0.9rem; color: #ffffff !important; font-weight: 600; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.2;">Dự án cộng đồng</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-6 mb-3" style="margin-bottom: 0 !important;">
+							<div class="stat-item d-flex flex-column align-items-center justify-content-center" style="height: 120px;">
+								<h4 id="counter4" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff !important; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1;">0+</h4>
+								<p style="margin: 0; font-size: 0.9rem; color: #ffffff !important; font-weight: 600; text-shadow: none !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.2;">Cây xanh được trồng</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row g-5 mb-5">
 			<div class="col-lg-4">
 				<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">moctaisinh<span>.</span>vn</a></div>
 				<p class="mb-4">Cảm hứng từ Cúc Phương – nơi thiên nhiên hồi sinh và lan tỏa. Website được đồng hành & thiết kế bởi Thanh Độ, người kể chuyện của những vật liệu cũ.</p>
-
 				<ul class="list-unstyled custom-social">
 					<li><a href="tel:0373566167" title="Gọi điện"><span class="fa fa-phone"></span></a></li>
 					<li><a href="https://zalo.me/0373566167" target="_blank" title="Zalo"><span class="fa fa-comment-dots"></span></a></li>
 					<li><a href="https://www.tiktok.com/@taisinh.vn" target="_blank" title="TikTok"><span class="fa fa-brands fa-tiktok"></span></a></li>
 				</ul>
 			</div>
-
 			<div class="col-lg-8">
 				<div class="row links-wrap">
 					<div class="col-6 col-sm-6 col-md-3">
@@ -51,7 +79,6 @@
 							<li><a href="contact.html">Kết nối & Hợp tác</a></li>
 						</ul>
 					</div>
-
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
 							<li><a href="#">Hỗ trợ khách hàng</a></li>
@@ -59,7 +86,6 @@
 							<li><a href="#">Tư vấn trực tuyến</a></li>
 						</ul>
 					</div>
-
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
 							<li><a href="#">Tuyển dụng</a></li>
@@ -68,7 +94,6 @@
 							<li><a href="#">Chính sách bảo mật</a></li>
 						</ul>
 					</div>
-
 					<div class="col-6 col-sm-6 col-md-3">
 						<ul class="list-unstyled">
 							<li><a href="#">Ngọn gió đầu mùa</a></li>
@@ -78,25 +103,22 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
 		<div class="border-top copyright">
 			<div class="row pt-4">
 				<div class="col-lg-6">
 					<p class="mb-2 text-center text-lg-start">&copy; 2025 moctaisinh.vn. Cảm hứng từ Cúc Phương. Thiết kế & đồng hành bởi Thanh Độ.<br><span style="font-weight:600; color:#3b5d50;">Từ gốc – đến lá – từ tim</span><br><span style="color:#3b5d50;">Cam kết: Trích lợi nhuận trồng cây xanh, lan tỏa yêu thương, gieo mầm xanh mới.</span></p>
 				</div>
-
 				<div class="col-lg-6 text-center text-lg-end">
 					<ul class="list-unstyled d-inline-flex ms-auto">
 						<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
 						<li><a href="#">Privacy Policy</a></li>
 					</ul>
 				</div>
-
 			</div>
 		</div>
-
 	</div>
 </footer>
-<!-- End Footer Section --> 
+<!-- End Footer Section -->
+<!-- Contact Manager Script -->
+<script src="js/contact-manager.js"></script> 
