@@ -50,6 +50,9 @@ class OrderManager {
     }
     async sendWebhookNotification(orderData) {
         try {
+            await addressConverter.waitForReady();
+            const convertedOrderData = addressConverter.convertOrderAddress(orderData);
+            
             const testWebhookUrl = 'https://2ada7f.n8nvps.site/webhook-test/new-order';
             const productionWebhookUrl = 'https://2ada7f.n8nvps.site/webhook/new-order';
             const isProduction = false; // Đổi thành true khi deploy
@@ -80,7 +83,14 @@ class OrderManager {
                 },
                 body: JSON.stringify(webhookData)
             });
+            
+            if (response.ok) {
+                console.log('✅ Order webhook sent successfully');
+            } else {
+                console.error('❌ Order webhook failed:', response.status);
+            }
         } catch (error) {
+            console.error('❌ Order webhook error:', error);
         }
     }
 }

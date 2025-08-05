@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="vi">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +15,11 @@
       --main-white: #fff;
       --main-silver: #e0e0e0;
     }
-    body { background: var(--main-white); }
+
+    body {
+      background: var(--main-white);
+    }
+
     .admin-sidebar {
       background: var(--main-blue);
       color: #fff;
@@ -25,11 +30,15 @@
       top: 0;
       width: 220px;
       z-index: 1040;
-      transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+      transition: transform 0.4s cubic-bezier(.4, 2, .6, 1);
       transform: translateX(0);
-      box-shadow: 2px 0 8px rgba(126,200,227,0.08);
+      box-shadow: 2px 0 8px rgba(126, 200, 227, 0.08);
     }
-    .admin-sidebar.closed { transform: translateX(-100%); }
+
+    .admin-sidebar.closed {
+      transform: translateX(-100%);
+    }
+
     .admin-sidebar h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -41,8 +50,16 @@
       box-shadow: none;
       border: none;
     }
-    .admin-sidebar ul { list-style: none; padding: 0; }
-    .admin-sidebar li { margin-bottom: 18px; }
+
+    .admin-sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .admin-sidebar li {
+      margin-bottom: 18px;
+    }
+
     .admin-sidebar a {
       color: #fff;
       font-weight: 500;
@@ -51,45 +68,67 @@
       border-radius: 8px;
       transition: background 0.2s;
     }
-    .admin-sidebar a.active, .admin-sidebar a:hover {
+
+    .admin-sidebar a.active,
+    .admin-sidebar a:hover {
       background: var(--main-blue-dark);
       text-decoration: none;
       color: #fff;
     }
+
     .admin-sidebar a,
     .admin-sidebar a:active,
     .admin-sidebar a:focus,
     .admin-sidebar a:hover {
       text-decoration: none !important;
     }
+
     .admin-content {
       padding: 40px 32px;
       margin-left: 220px;
-      transition: margin-left 0.4s cubic-bezier(.4,2,.6,1);
+      transition: margin-left 0.4s cubic-bezier(.4, 2, .6, 1);
       min-height: 100vh;
       background: var(--main-white);
     }
-    .sidebar-closed .admin-content { margin-left: 0; }
-    .admin-table th, .admin-table td { vertical-align: middle; }
+
+    .sidebar-closed .admin-content {
+      margin-left: 0;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      vertical-align: middle;
+    }
+
     .admin-table th {
       background: var(--main-blue);
       color: #fff;
       border-bottom: 2px solid var(--main-silver);
     }
-    .admin-table tr { background: var(--main-white); }
-    .admin-table tr:nth-child(even) { background: #f5fafd; }
-    .admin-table th, .admin-table td {
+
+    .admin-table tr {
+      background: var(--main-white);
+    }
+
+    .admin-table tr:nth-child(even) {
+      background: #f5fafd;
+    }
+
+    .admin-table th,
+    .admin-table td {
       max-width: 180px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       border-color: var(--main-silver);
     }
+
     .admin-table td:nth-child(4) {
       white-space: normal;
       word-break: break-word;
       max-width: 250px;
     }
+
     .admin-table td img {
       max-width: 60px;
       max-height: 60px;
@@ -97,12 +136,14 @@
       background: var(--main-silver);
       border-radius: 6px;
     }
+
     .admin-section-title {
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 24px;
       color: var(--main-blue-dark);
     }
+
     .admin-btn {
       border-radius: 8px;
       padding: 8px 18px;
@@ -112,46 +153,71 @@
       border: none;
       transition: background 0.2s;
     }
-    .admin-btn:hover, .admin-btn:focus {
+
+    .admin-btn:hover,
+    .admin-btn:focus {
       background: var(--main-blue-dark);
       color: #fff;
     }
+
     .admin-btn.btn-danger {
       background: #e74c3c;
       color: #fff;
       border: none;
     }
-    .admin-btn.btn-danger:hover, .admin-btn.btn-danger:focus {
+
+    .admin-btn.btn-danger:hover,
+    .admin-btn.btn-danger:focus {
       background: #c0392b;
       color: #fff;
     }
-    .admin-btn + .admin-btn { margin-left: 8px; }
+
+    .admin-btn+.admin-btn {
+      margin-left: 8px;
+    }
+
     .modal-header {
       background: var(--main-blue);
       color: #fff;
       border-bottom: 1px solid var(--main-silver);
     }
-    .form-label { font-weight: 500; color: var(--main-blue-dark); }
-    .form-control, .form-select {
+
+    .form-label {
+      font-weight: 500;
+      color: var(--main-blue-dark);
+    }
+
+    .form-control,
+    .form-select {
       border-radius: 8px;
       border: 1px solid var(--main-silver);
       background: var(--main-white);
       color: #222;
     }
-    .form-control:focus, .form-select:focus {
+
+    .form-control:focus,
+    .form-select:focus {
       border-color: var(--main-blue);
       box-shadow: 0 0 0 2px #b3e0ff33;
     }
+
     /* Highlight required fields */
-    .form-control:invalid, .form-select:invalid {
+    .form-control:invalid,
+    .form-select:invalid {
       border-color: #dc3545;
       box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
     }
-    .form-control:invalid:focus, .form-select:invalid:focus {
+
+    .form-control:invalid:focus,
+    .form-select:invalid:focus {
       border-color: #dc3545;
       box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
     }
-    .admin-nav-mobile { display: none; }
+
+    .admin-nav-mobile {
+      display: none;
+    }
+
     .sidebar-toggle-btn {
       position: fixed;
       top: 18px;
@@ -167,10 +233,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 8px rgba(126,200,227,0.08);
+      box-shadow: 0 2px 8px rgba(126, 200, 227, 0.08);
       transition: background 0.2s;
     }
-    .sidebar-toggle-btn:hover { background: var(--main-blue-dark); }
+
+    .sidebar-toggle-btn:hover {
+      background: var(--main-blue-dark);
+    }
+
     .sticky-toolbar {
       position: sticky;
       top: 0;
@@ -180,74 +250,199 @@
       padding-bottom: 8px;
       border-bottom: 1px solid var(--main-silver);
     }
+
     .pagination .page-link {
       color: var(--main-blue-dark);
       border: 1px solid var(--main-silver);
       background: var(--main-white);
     }
+
     .pagination .page-item.active .page-link {
       background: var(--main-blue-dark);
       color: #fff;
       border-color: var(--main-blue-dark);
     }
+
     @media (max-width: 1200px) {
-      .admin-sidebar { width: 180px; }
-      .admin-content { margin-left: 180px; }
+      .admin-sidebar {
+        width: 180px;
+      }
+
+      .admin-content {
+        margin-left: 180px;
+      }
     }
+
     @media (max-width: 1024px) {
-      .admin-sidebar { width: 160px; padding: 12px 0; }
-      .admin-content { margin-left: 160px; padding: 18px 4px; }
-      .admin-section-title { font-size: 1.1rem; }
-      .admin-btn, .admin-btn.btn-success, .admin-btn.btn-danger { padding: 7px 12px; font-size: 1rem; }
-      .form-control, .form-select { font-size: 1rem; }
-      .modal-dialog { max-width: 95vw; }
-      .modal-content { font-size: 1rem; }
-      .sticky-toolbar { top: 0; }
-      .admin-table th, .admin-table td { font-size: 0.98rem; }
-      .admin-table { font-size: 0.98rem; }
-      .admin-table-wrapper { overflow-x: auto; }
+      .admin-sidebar {
+        width: 160px;
+        padding: 12px 0;
+      }
+
+      .admin-content {
+        margin-left: 160px;
+        padding: 18px 4px;
+      }
+
+      .admin-section-title {
+        font-size: 1.1rem;
+      }
+
+      .admin-btn,
+      .admin-btn.btn-success,
+      .admin-btn.btn-danger {
+        padding: 7px 12px;
+        font-size: 1rem;
+      }
+
+      .form-control,
+      .form-select {
+        font-size: 1rem;
+      }
+
+      .modal-dialog {
+        max-width: 95vw;
+      }
+
+      .modal-content {
+        font-size: 1rem;
+      }
+
+      .sticky-toolbar {
+        top: 0;
+      }
+
+      .admin-table th,
+      .admin-table td {
+        font-size: 0.98rem;
+      }
+
+      .admin-table {
+        font-size: 0.98rem;
+      }
+
+      .admin-table-wrapper {
+        overflow-x: auto;
+      }
     }
+
     @media (max-width: 834px) {
-      .admin-sidebar { width: 120px; padding: 8px 0; }
-      .admin-content { margin-left: 120px; padding: 10px 2px; }
-      .admin-section-title { font-size: 1rem; }
-      .admin-btn, .admin-btn.btn-success, .admin-btn.btn-danger { padding: 6px 8px; font-size: 0.95rem; }
-      .form-control, .form-select { font-size: 0.95rem; }
-      .modal-dialog { max-width: 99vw; }
-      .modal-content { font-size: 0.95rem; }
-      .sticky-toolbar { top: 0; }
-      .admin-table th, .admin-table td { font-size: 0.95rem; }
-      .admin-table { font-size: 0.95rem; }
+      .admin-sidebar {
+        width: 120px;
+        padding: 8px 0;
+      }
+
+      .admin-content {
+        margin-left: 120px;
+        padding: 10px 2px;
+      }
+
+      .admin-section-title {
+        font-size: 1rem;
+      }
+
+      .admin-btn,
+      .admin-btn.btn-success,
+      .admin-btn.btn-danger {
+        padding: 6px 8px;
+        font-size: 0.95rem;
+      }
+
+      .form-control,
+      .form-select {
+        font-size: 0.95rem;
+      }
+
+      .modal-dialog {
+        max-width: 99vw;
+      }
+
+      .modal-content {
+        font-size: 0.95rem;
+      }
+
+      .sticky-toolbar {
+        top: 0;
+      }
+
+      .admin-table th,
+      .admin-table td {
+        font-size: 0.95rem;
+      }
+
+      .admin-table {
+        font-size: 0.95rem;
+      }
     }
+
     /* Toast đẹp hơn, hiệu ứng trượt phải vào, bo góc, icon */
     .custom-toast {
       min-width: 240px;
       margin-bottom: 12px;
       border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
       display: flex;
       align-items: center;
       padding: 12px 18px;
       font-size: 1rem;
       position: relative;
-      animation: slideInRight 0.5s cubic-bezier(.4,2,.6,1) both;
+      animation: slideInRight 0.5s cubic-bezier(.4, 2, .6, 1) both;
       opacity: 1;
       transition: opacity 0.7s;
     }
+
     .custom-toast.fade-out {
       opacity: 0;
       pointer-events: none;
       transition: opacity 1s;
     }
+
     @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(100px); }
-      to { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .toast-success { background: #e6f9ed; color: #1a7f37; border-left: 6px solid #1a7f37; }
-    .toast-error { background: #ffeaea; color: #d32f2f; border-left: 6px solid #d32f2f; }
-    .toast-warning { background: #fffbe6; color: #bfa100; border-left: 6px solid #bfa100; }
-    .custom-toast .toast-icon { font-size: 1.3em; margin-right: 12px; }
-    .custom-toast .toast-close { position: absolute; right: 10px; top: 10px; background: none; border: none; color: inherit; font-size: 1.1em; cursor: pointer; }
+
+    .toast-success {
+      background: #e6f9ed;
+      color: #1a7f37;
+      border-left: 6px solid #1a7f37;
+    }
+
+    .toast-error {
+      background: #ffeaea;
+      color: #d32f2f;
+      border-left: 6px solid #d32f2f;
+    }
+
+    .toast-warning {
+      background: #fffbe6;
+      color: #bfa100;
+      border-left: 6px solid #bfa100;
+    }
+
+    .custom-toast .toast-icon {
+      font-size: 1.3em;
+      margin-right: 12px;
+    }
+
+    .custom-toast .toast-close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
     .sticky-toolbar {
       position: sticky;
       top: 0;
@@ -256,20 +451,25 @@
       padding-top: 8px;
       padding-bottom: 8px;
     }
+
     .admin-btn.btn-cancel {
       background: var(--main-blue);
       color: #fff;
       border: none;
     }
-    .admin-btn.btn-cancel:hover, .admin-btn.btn-cancel:focus {
+
+    .admin-btn.btn-cancel:hover,
+    .admin-btn.btn-cancel:focus {
       background: var(--main-blue-dark);
       color: #fff;
     }
+
     .admin-btn.btn-sm {
       min-width: 64px;
       padding: 6px 14px;
       font-size: 1rem;
     }
+
     .admin-form-btn-full {
       width: 100%;
       min-width: 120px;
@@ -278,6 +478,7 @@
       border-radius: 8px;
       margin-top: 8px;
     }
+
     /* Auto-resize textarea */
     #productImage {
       resize: vertical;
@@ -289,19 +490,23 @@
       width: 100%;
       overflow-y: auto;
     }
+
     /* Auto-expand textarea on input */
     #productImage:focus {
       min-height: 300px;
     }
+
     /* Modal wider for better UX */
     #productModal .modal-dialog {
       max-width: 1200px;
     }
+
     /* Two column layout for product form */
     .product-form-row {
       display: flex;
       gap: 32px;
     }
+
     .product-form-col {
       flex: 1;
       min-width: 0;
@@ -309,7 +514,11 @@
       flex-direction: column;
       gap: 18px;
     }
-    .product-form-col .mb-3 { margin-bottom: 0 !important; }
+
+    .product-form-col .mb-3 {
+      margin-bottom: 0 !important;
+    }
+
     .product-form-col-right {
       display: flex;
       flex-direction: column;
@@ -317,10 +526,11 @@
       height: 100%;
       justify-content: stretch;
     }
+
     .product-form-col-right .mb-3 {
       background: #f8fbff;
       border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(126,200,227,0.07);
+      box-shadow: 0 2px 10px rgba(126, 200, 227, 0.07);
       border: 1.5px solid #e0f0fa;
       padding: 18px 16px 10px 16px;
       display: flex;
@@ -329,6 +539,7 @@
       width: 100%;
       flex: 1 1 0;
     }
+
     .product-form-col-right label.form-label {
       font-weight: 600;
       color: #3b5d50;
@@ -338,22 +549,27 @@
       gap: 6px;
       font-size: 1.05rem;
     }
+
     .product-form-col-right label[for="productStory"]::before {
-      content: '\f02d'; /* fa-book-open */
+      content: '\f02d';
+      /* fa-book-open */
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       color: #7EC8E3;
       margin-right: 6px;
       font-size: 1.1em;
     }
+
     .product-form-col-right label[for="productImage"]::before {
-      content: '\f03e'; /* fa-image */
+      content: '\f03e';
+      /* fa-image */
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       color: #7EC8E3;
       margin-right: 6px;
       font-size: 1.1em;
     }
+
     #productStory {
       background: #fff;
       border-radius: 8px;
@@ -366,6 +582,7 @@
       margin-bottom: 0;
       width: 100%;
     }
+
     #productImage {
       background: #fff;
       border-radius: 8px;
@@ -378,42 +595,77 @@
       margin-bottom: 0;
       width: 100%;
     }
-    #productStory:focus, #productImage:focus {
+
+    #productStory:focus,
+    #productImage:focus {
       border-color: #7EC8E3;
       box-shadow: 0 0 0 2px #b6e6fa;
     }
+
     @media (max-width: 900px) {
-      .product-form-row, .product-form-col-right { flex-direction: column; gap: 0; }
+
+      .product-form-row,
+      .product-form-col-right {
+        flex-direction: column;
+        gap: 0;
+      }
     }
+
     .product-form-row-2 {
       display: flex;
       gap: 18px;
       margin-top: 0;
     }
-    .product-form-row-2 > .mb-3 { flex: 1; margin-bottom: 0 !important; }
-    #productDescription { min-height: 120px; height: 140px; resize: vertical; }
-    #productStory, #productImage { min-height: 120px; height: 120px; resize: vertical; }
-    @media (max-width: 900px) {
-      #productModal .modal-dialog { max-width: 98vw; }
-      .product-form-row, .product-form-row-2 { flex-direction: column; gap: 0; }
+
+    .product-form-row-2>.mb-3 {
+      flex: 1;
+      margin-bottom: 0 !important;
     }
+
+    #productDescription {
+      min-height: 120px;
+      height: 140px;
+      resize: vertical;
+    }
+
+    #productStory,
+    #productImage {
+      min-height: 120px;
+      height: 120px;
+      resize: vertical;
+    }
+
+    @media (max-width: 900px) {
+      #productModal .modal-dialog {
+        max-width: 98vw;
+      }
+
+      .product-form-row,
+      .product-form-row-2 {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
     .product-form-row-2 {
       display: flex;
       gap: 18px;
       margin-top: 0;
     }
-    .product-form-row-2 > .mb-3 {
+
+    .product-form-row-2>.mb-3 {
       flex: 1;
       margin-bottom: 0 !important;
       background: #f8fbff;
       border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(126,200,227,0.07);
+      box-shadow: 0 2px 10px rgba(126, 200, 227, 0.07);
       border: 1.5px solid #e0f0fa;
       padding: 18px 16px 10px 16px;
       display: flex;
       flex-direction: column;
       min-width: 0;
     }
+
     .product-form-row-2 label.form-label {
       font-weight: 600;
       color: #3b5d50;
@@ -423,22 +675,27 @@
       gap: 6px;
       font-size: 1.05rem;
     }
+
     .product-form-row-2 label[for="productStory"]::before {
-      content: '\f02d'; /* fa-book-open */
+      content: '\f02d';
+      /* fa-book-open */
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       color: #7EC8E3;
       margin-right: 6px;
       font-size: 1.1em;
     }
+
     .product-form-row-2 label[for="productImage"]::before {
-      content: '\f03e'; /* fa-image */
+      content: '\f03e';
+      /* fa-image */
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       color: #7EC8E3;
       margin-right: 6px;
       font-size: 1.1em;
     }
+
     #productStory {
       background: #fff;
       border-radius: 8px;
@@ -449,6 +706,7 @@
       height: 240px;
       margin-bottom: 0;
     }
+
     #productImage {
       background: #fff;
       border-radius: 8px;
@@ -459,13 +717,20 @@
       height: 140px;
       margin-bottom: 0;
     }
-    #productStory:focus, #productImage:focus {
+
+    #productStory:focus,
+    #productImage:focus {
       border-color: #7EC8E3;
       box-shadow: 0 0 0 2px #b6e6fa;
     }
+
     @media (max-width: 900px) {
-      .product-form-row-2 { flex-direction: column; gap: 0; }
+      .product-form-row-2 {
+        flex-direction: column;
+        gap: 0;
+      }
     }
+
     /* Image Gallery Styles - Giống như trong detail */
     .image-gallery-container {
       margin-top: 15px;
@@ -475,18 +740,21 @@
       background: #fafbfc;
       min-height: 200px;
     }
+
     .image-gallery-preview {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
       margin-bottom: 20px;
     }
+
     .image-preview-item {
       position: relative;
       display: inline-block;
       text-align: center;
       margin: 0;
     }
+
     .image-preview-item img {
       width: 100px;
       height: 100px;
@@ -497,17 +765,20 @@
       transition: all 0.3s ease;
       background: #fff;
     }
+
     .image-preview-item img:hover {
       border-color: #7EC8E3;
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(126,200,227,0.2);
+      box-shadow: 0 4px 12px rgba(126, 200, 227, 0.2);
     }
+
     .image-preview-item .image-label {
       font-size: 0.85rem;
       color: #3b5d50;
       margin-top: 5px;
       font-weight: 500;
     }
+
     .image-remove-btn {
       position: absolute;
       top: -8px;
@@ -524,24 +795,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 6px rgba(220,53,69,0.3);
+      box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
       transition: all 0.2s ease;
+      z-index: 10;
     }
+
     .image-remove-btn:hover {
       background: #c82333;
       transform: scale(1.1);
     }
+
     .image-gallery-empty {
       text-align: center;
       color: #6c757d;
       font-style: italic;
       padding: 40px 20px;
     }
+
     .image-gallery-empty i {
       font-size: 2rem;
       margin-bottom: 10px;
       color: #dee2e6;
     }
+
     .image-gallery-warning {
       text-align: center;
       color: #856404;
@@ -552,11 +828,13 @@
       margin-top: 15px;
       font-size: 0.9rem;
     }
+
     .image-gallery-warning i {
       font-size: 1.5rem;
       margin-bottom: 8px;
       color: #f39c12;
     }
+
     /* Image Modal Styles */
     .image-modal {
       display: none;
@@ -566,11 +844,12 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(5px);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
+
     .modal-image-content {
       position: relative;
       margin: auto;
@@ -581,15 +860,17 @@
       padding: 20px;
       cursor: pointer;
     }
+
     .modal-image {
       max-width: 90%;
       max-height: 80%;
       object-fit: contain;
       border-radius: 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       transform-origin: center center;
     }
+
     .modal-close {
       position: absolute;
       top: 20px;
@@ -598,7 +879,7 @@
       font-size: 35px;
       font-weight: bold;
       cursor: pointer;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       border: none;
       border-radius: 50%;
       width: 50px;
@@ -608,10 +889,12 @@
       justify-content: center;
       transition: all 0.3s ease;
     }
+
     .modal-close:hover {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0, 0, 0, 0.8);
       transform: scale(1.1);
     }
+
     .modal-controls {
       position: absolute;
       bottom: 30px;
@@ -621,8 +904,9 @@
       gap: 15px;
       z-index: 10001;
     }
+
     .control-btn {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0, 0, 0, 0.8);
       color: #fff;
       border: none;
       border-radius: 50%;
@@ -634,18 +918,21 @@
       align-items: center;
       justify-content: center;
       transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       transform: scale(1);
     }
+
     .control-btn:hover {
-      background: rgba(0,0,0,0.95);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
       transform: scale(1.1);
     }
+
     .control-btn:active {
       transform: scale(0.95);
       transition: transform 0.1s ease;
     }
+
     /* Thumbnail Gallery in Modal */
     .modal-thumbnails {
       position: absolute;
@@ -658,10 +945,11 @@
       max-width: 80%;
       overflow-x: auto;
       padding: 10px;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0, 0, 0, 0.3);
       border-radius: 20px;
       backdrop-filter: blur(10px);
     }
+
     .modal-thumbnail {
       width: 60px;
       height: 60px;
@@ -673,28 +961,34 @@
       opacity: 0.7;
       transform: scale(1);
     }
+
     .modal-thumbnail:hover {
       opacity: 1;
       transform: scale(1.1);
     }
+
     .modal-thumbnail.active {
       border-color: #fff;
       opacity: 1;
-      box-shadow: 0 2px 8px rgba(255,255,255,0.3);
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
     }
+
     /* Responsive */
     @media (max-width: 768px) {
       .image-gallery-preview {
         gap: 10px;
       }
+
       .image-preview-item img {
         width: 80px;
         height: 80px;
       }
+
       .modal-image {
         max-width: 95%;
         max-height: 70%;
       }
+
       .modal-close {
         top: 10px;
         right: 15px;
@@ -705,8 +999,10 @@
     }
   </style>
 </head>
+
 <body>
-  <div id="globalLoading" style="display:none;position:fixed;z-index:20000;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);align-items:center;justify-content:center;">
+  <div id="globalLoading"
+    style="display:none;position:fixed;z-index:20000;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);align-items:center;justify-content:center;">
     <div style="display:flex;flex-direction:column;align-items:center;">
       <div class="spinner-border text-info" style="width:3rem;height:3rem;" role="status"></div>
       <div style="margin-top:12px;font-weight:500;color:#3b5d50;">Chờ chút nhé...</div>
@@ -715,30 +1011,31 @@
   <div class="container-fluid">
     <!-- Toast thông báo -->
     <div id="toastContainer" style="position: fixed; top: 24px; right: 24px; z-index: 9999;"></div>
-      <!-- Image Modal for Gallery -->
-  <div id="imageModal" class="image-modal">
-    <div class="modal-image-content">
-      <span class="modal-close" onclick="closeImageModal()">&times;</span>
-      <img class="modal-image" id="modalImage" alt="Product Image">
-      <div class="modal-thumbnails" id="modalThumbnails"></div>
-      <div class="modal-controls">
-        <button class="control-btn" onclick="zoomOut()" title="Thu nhỏ">
-          <i class="fas fa-search-minus"></i>
-        </button>
-        <button class="control-btn" onclick="resetZoom()" title="Vị trí mặc định">
-          <i class="fas fa-undo"></i>
-        </button>
-        <button class="control-btn" onclick="zoomIn()" title="Phóng to">
-          <i class="fas fa-search-plus"></i>
-        </button>
+    <!-- Image Modal for Gallery -->
+    <div id="imageModal" class="image-modal">
+      <div class="modal-image-content">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-image" id="modalImage" alt="Product Image">
+        <div class="modal-thumbnails" id="modalThumbnails"></div>
+        <div class="modal-controls">
+          <button class="control-btn" onclick="zoomOut()" title="Thu nhỏ">
+            <i class="fas fa-search-minus"></i>
+          </button>
+          <button class="control-btn" onclick="resetZoom()" title="Vị trí mặc định">
+            <i class="fas fa-undo"></i>
+          </button>
+          <button class="control-btn" onclick="zoomIn()" title="Phóng to">
+            <i class="fas fa-search-plus"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
     <div class="row">
       <nav class="col-lg-2 admin-sidebar d-none d-lg-block">
         <h2>Admin Panel</h2>
         <ul>
           <li><a href="#products" class="active" data-tab="products">Quản lý sản phẩm</a></li>
+          <li><a href="#orders" data-tab="orders">Quản lý đơn hàng</a></li>
           <li><a href="#blogs" data-tab="blogs">Quản lý blog</a></li>
         </ul>
       </nav>
@@ -746,6 +1043,8 @@
         <div class="admin-nav-mobile mb-3">
           <select class="form-select" id="adminTabMobile">
             <option value="products">Quản lý sản phẩm</option>
+            <option value="orders">Quản lý đơn hàng</option>
+            <option value="blogs">Quản lý blog</option>
           </select>
         </div>
         <div id="tab-products" class="admin-tab">
@@ -754,31 +1053,72 @@
             <span id="productCount" style="font-size:1rem;font-weight:400;color:#3b5d50;"></span>
           </div>
           <div class="sticky-toolbar d-flex align-items-center justify-content-between mb-3">
-            <button class="admin-btn btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#productModal" id="btnAddProduct">+ Thêm sản phẩm</button>
+            <button class="admin-btn btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#productModal"
+              id="btnAddProduct">+ Thêm sản phẩm</button>
             <button class="admin-btn btn btn-success mb-3" id="productCountBtn">Tổng: 0 sản phẩm</button>
           </div>
           <div class="mb-3 d-flex align-items-center" style="gap:12px;">
-            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm theo tên, giá, mô tả..." style="max-width:320px;">
+            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm theo tên, giá, mô tả..."
+              style="max-width:320px;">
           </div>
           <div class="admin-table-wrapper">
             <table class="table admin-table" id="productsTable">
-            <thead>
-              <tr>
+              <thead>
+                <tr>
                   <th style="cursor:pointer;" onclick="sortTable('id')">ID <span id="sortIcon-id"></span></th>
-                  <th style="cursor:pointer;" onclick="sortTable('name')">Tên sản phẩm <span id="sortIcon-name"></span></th>
+                  <th style="cursor:pointer;" onclick="sortTable('name')">Tên sản phẩm <span id="sortIcon-name"></span>
+                  </th>
                   <th style="cursor:pointer;" onclick="sortTable('price')">Giá <span id="sortIcon-price"></span></th>
-                  <th style="cursor:pointer;" onclick="sortTable('description')">Mô tả <span id="sortIcon-description"></span></th>
+                  <th style="cursor:pointer;" onclick="sortTable('description')">Mô tả <span
+                      id="sortIcon-description"></span></th>
                   <th>Ảnh</th>
-                <th>Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
                 <!-- Sản phẩm sẽ được render ở đây bằng JS -->
-            </tbody>
-          </table>
+              </tbody>
+            </table>
           </div>
           <nav>
             <ul class="pagination" id="pagination" style="justify-content:center;"></ul>
+          </nav>
+        </div>
+        <div id="tab-orders" class="admin-tab d-none">
+          <div class="admin-section-title d-flex align-items-center justify-content-between">
+            <span>Quản lý đơn hàng</span>
+          </div>
+          <div class="sticky-toolbar d-flex align-items-center justify-content-between mb-3">
+            <button class="admin-btn btn-sm" id="btnRefreshOrders">
+              <i class="fas fa-redo"></i> Làm mới
+            </button>
+            <button class="admin-btn btn-sm" id="orderCountBtn">Tổng: 0 đơn hàng</button>
+          </div>
+          <div class="mb-3 d-flex align-items-center" style="gap:12px;">
+            <input type="text" class="form-control" id="searchOrderInput" placeholder="Tìm kiếm theo mã đơn hàng, tên khách hàng, SĐT..."
+              style="max-width:320px;">
+          </div>
+          <div class="admin-table-wrapper">
+            <table class="table admin-table" id="ordersTable">
+              <thead>
+                <tr>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('id')">Mã đơn hàng <span id="sortOrderIcon-id"></span></th>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('date')">Ngày đặt <span id="sortOrderIcon-date"></span></th>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('customerName')">Khách hàng <span id="sortOrderIcon-customerName"></span></th>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('customerPhone')">Số điện thoại <span id="sortOrderIcon-customerPhone"></span></th>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('customerAddress')">Địa chỉ <span id="sortOrderIcon-customerAddress"></span></th>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('total')">Tổng tiền <span id="sortOrderIcon-total"></span></th>
+                  <th style="cursor:pointer;" onclick="sortOrderTable('status')">Trạng thái <span id="sortOrderIcon-status"></span></th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Đơn hàng sẽ được render ở đây bằng JS -->
+              </tbody>
+            </table>
+          </div>
+          <nav>
+            <ul class="pagination" id="orderPagination" style="justify-content:center;"></ul>
           </nav>
         </div>
         <div id="tab-blogs" class="admin-tab d-none">
@@ -787,24 +1127,31 @@
             <button class="admin-btn btn-sm" id="blogCountBtn" style="pointer-events:auto;">Tổng: 0 bài viết</button>
           </div>
           <div class="sticky-toolbar d-flex align-items-center justify-content-between mb-3">
-            <button class="admin-btn btn-sm" data-bs-toggle="modal" data-bs-target="#blogModal" id="btnAddBlog">+ Thêm bài viết</button>
-            <input type="text" class="form-control" id="searchBlogInput" placeholder="Tìm kiếm tiêu đề, mô tả..." style="max-width:320px;">
+            <button class="admin-btn btn-sm" data-bs-toggle="modal" data-bs-target="#blogModal" id="btnAddBlog">+ Thêm
+              bài viết</button>
+            <input type="text" class="form-control" id="searchBlogInput" placeholder="Tìm kiếm tiêu đề, mô tả..."
+              style="max-width:320px;">
           </div>
           <div class="admin-table-wrapper">
             <table class="table admin-table" id="blogsTable">
-            <thead>
-              <tr>
+              <thead>
+                <tr>
                   <th style="cursor:pointer;" onclick="sortBlogTable('id')">ID <span id="sortBlogIcon-id"></span></th>
-                  <th style="cursor:pointer;" onclick="sortBlogTable('title')">Tiêu đề <span id="sortBlogIcon-title"></span></th>
-                  <th style="cursor:pointer;" onclick="sortBlogTable('content')">Nội dung <span id="sortBlogIcon-content"></span></th>
-                  <th style="cursor:pointer;" onclick="sortBlogTable('author')">Tác giả <span id="sortBlogIcon-author"></span></th>
-                  <th style="cursor:pointer;" onclick="sortBlogTable('date')">Ngày <span id="sortBlogIcon-date"></span></th>
-                <th>Thao tác</th>
-              </tr>
-            </thead>
+                  <th style="cursor:pointer;" onclick="sortBlogTable('title')">Tiêu đề <span
+                      id="sortBlogIcon-title"></span></th>
+                  <th style="cursor:pointer;" onclick="sortBlogTable('content')">Nội dung <span
+                      id="sortBlogIcon-content"></span></th>
+                  <th style="cursor:pointer;" onclick="sortBlogTable('author')">Tác giả <span
+                      id="sortBlogIcon-author"></span></th>
+                  <th style="cursor:pointer;" onclick="sortBlogTable('date')">Ngày <span id="sortBlogIcon-date"></span>
+                  </th>
+                  <th>Ảnh</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
               <tbody></tbody>
-          </table>
-        </div>
+            </table>
+          </div>
           <nav>
             <ul class="pagination" id="blogPagination" style="justify-content:center;"></ul>
           </nav>
@@ -834,7 +1181,8 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Giá *</label>
-                  <input type="text" class="form-control" id="productPrice" required inputmode="numeric" placeholder="000.000₫">
+                  <input type="text" class="form-control" id="productPrice" required inputmode="numeric"
+                    placeholder="000.000₫">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Mô tả *</label>
@@ -842,15 +1190,18 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Chất liệu *</label>
-                  <input type="text" class="form-control" id="productMaterial" required placeholder="Ví dụ: Gỗ sồi, Tre già, Vải bố...">
+                  <input type="text" class="form-control" id="productMaterial" required
+                    placeholder="Ví dụ: Gỗ sồi, Tre già, Vải bố...">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Kích thước *</label>
-                  <input type="text" class="form-control" id="productSize" required placeholder="Ví dụ: 120×60cm, 80×40×45cm...">
+                  <input type="text" class="form-control" id="productSize" required
+                    placeholder="Ví dụ: 120×60cm, 80×40×45cm...">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Trọng lượng *</label>
-                  <input type="text" class="form-control" id="productWeight" required placeholder="Ví dụ: 8.5kg, 12kg...">
+                  <input type="text" class="form-control" id="productWeight" required
+                    placeholder="Ví dụ: 8.5kg, 12kg...">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tình trạng</label>
@@ -864,20 +1215,26 @@
               <div class="product-form-col product-form-col-right">
                 <div class="mb-3" style="width:100%;flex:1;">
                   <label class="form-label" for="productFeatures">Đặc điểm nổi bật * (mỗi dòng 1 đặc điểm)</label>
-                  <textarea class="form-control" id="productFeatures" rows="4" required placeholder="Làm thủ công 100% từ tre già tự nhiên&#10;Thiết kế độc bản, không trùng lặp&#10;Bảo hành 2 năm, bảo trì trọn đời&#10;Vận chuyển miễn phí toàn quốc"></textarea>
+                  <textarea class="form-control" id="productFeatures" rows="4" required
+                    placeholder="Làm thủ công 100% từ tre già tự nhiên&#10;Thiết kế độc bản, không trùng lặp&#10;Bảo hành 2 năm, bảo trì trọn đời&#10;Vận chuyển miễn phí toàn quốc"></textarea>
                 </div>
                 <div class="mb-3" style="width:100%;flex:1;">
                   <label class="form-label" for="productStory">Câu chuyện đằng sau sản phẩm *</label>
-                  <textarea class="form-control" id="productStory" rows="8" required placeholder="Kể câu chuyện về nguồn gốc, quá trình làm ra sản phẩm, ý nghĩa văn hóa..."></textarea>
+                  <textarea class="form-control" id="productStory" rows="8" required
+                    placeholder="Kể câu chuyện về nguồn gốc, quá trình làm ra sản phẩm, ý nghĩa văn hóa..."></textarea>
                 </div>
                 <div class="mb-3" style="width:100%;flex:1;">
-                  <label class="form-label" for="productImage">Ảnh sản phẩm * (URL, mỗi dòng 1 link, tối đa 4 ảnh)</label>
+                  <label class="form-label" for="productImage">Ảnh sản phẩm * (URL, mỗi dòng 1 link, tối đa 4
+                    ảnh)</label>
                   <div class="mb-2">
-                    <a href="https://imgbb.com/" target="_blank" style="color: #007bff; text-decoration: underline; font-size: 0.9rem;">
+                    <a href="https://imgbb.com/" target="_blank"
+                      style="color: #007bff; text-decoration: underline; font-size: 0.9rem;">
                       📷 Bấm vào đây để lấy URL ảnh
                     </a>
                   </div>
-                  <textarea class="form-control" id="productImage" rows="4" required placeholder="https://...jpg&#10;https://...png&#10;https://...webp" style="min-height: 120px;"></textarea>
+                  <textarea class="form-control" id="productImage" rows="4" required
+                    placeholder="https://...jpg&#10;https://...png&#10;https://...webp"
+                    style="min-height: 120px;"></textarea>
                   <!-- Image Gallery Preview -->
                   <div class="image-gallery-container">
                     <div class="image-gallery-preview" id="imageGalleryPreview">
@@ -917,9 +1274,9 @@
   </div>
   <!-- Modal Thêm/Sửa Blog -->
   <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="background:var(--main-blue);color:#fff;">
           <h5 class="modal-title" id="blogModalLabel">Thêm/Sửa bài viết</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -930,21 +1287,48 @@
               <label class="form-label">ID</label>
               <input type="text" class="form-control" id="blogId" readonly>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Tiêu đề</label>
-              <input type="text" class="form-control" id="blogTitle" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Nội dung</label>
-              <textarea class="form-control" id="blogContent"></textarea>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Tác giả</label>
-              <input type="text" class="form-control" id="blogAuthor">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Ngày</label>
-              <input type="text" class="form-control" id="blogDate" readonly>
+            <div class="product-form-row">
+              <div class="product-form-col">
+                <div class="mb-3">
+                  <label class="form-label">Tiêu đề *</label>
+                  <input type="text" class="form-control" id="blogTitle" required placeholder="Nhập tiêu đề bài viết...">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Tác giả *</label>
+                  <input type="text" class="form-control" id="blogAuthor" required placeholder="Tên tác giả...">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Ngày đăng</label>
+                  <input type="text" class="form-control" id="blogDate" readonly>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Ảnh đại diện * (URL)</label>
+                  <div class="mb-2">
+                    <a href="https://imgbb.com/" target="_blank"
+                      style="color: #007bff; text-decoration: underline; font-size: 0.9rem;">
+                      📷 Bấm vào đây để lấy URL ảnh
+                    </a>
+                  </div>
+                  <input type="url" class="form-control" id="blogImage" required placeholder="https://...jpg">
+                  <!-- Image Gallery Preview -->
+                  <div class="image-gallery-container">
+                    <div class="image-gallery-preview" id="blogImageGalleryPreview">
+                      <div class="image-gallery-empty">
+                        <i class="fas fa-image"></i>
+                        <div>Chưa có ảnh nào</div>
+                        <small>Nhập URL ảnh vào ô bên trên để xem preview (tối đa 1 ảnh)</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="product-form-col product-form-col-right">
+                <div class="mb-3" style="width:100%;flex:1;">
+                  <label class="form-label" for="blogContent">Nội dung bài viết *</label>
+                  <textarea class="form-control" id="blogContent" rows="25" required
+                    placeholder="Nhập nội dung bài viết..."></textarea>
+                </div>
+              </div>
             </div>
             <button class="admin-btn btn-sm admin-form-btn-full" type="submit">Lưu</button>
           </form>
@@ -953,7 +1337,8 @@
     </div>
   </div>
   <!-- Modal xác nhận xoá blog -->
-  <div class="modal fade" id="deleteBlogConfirmModal" tabindex="-1" aria-labelledby="deleteBlogConfirmLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteBlogConfirmModal" tabindex="-1" aria-labelledby="deleteBlogConfirmLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header" style="background:var(--main-blue);color:#fff;">
@@ -962,7 +1347,7 @@
         </div>
         <div class="modal-body">
           Bạn có chắc chắn muốn xoá bài viết này không?
-            </div>
+        </div>
         <div class="modal-footer">
           <button type="button" class="admin-btn btn-cancel btn-sm" data-bs-dismiss="modal">Huỷ</button>
           <button type="button" class="admin-btn btn-danger btn-sm" id="btnConfirmDeleteBlog">Xoá</button>
@@ -970,7 +1355,138 @@
       </div>
     </div>
   </div>
+  
+  <!-- Modal chi tiết đơn hàng -->
+  <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-labelledby="orderDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background:var(--main-blue);color:#fff;">
+          <h5 class="modal-title" id="orderDetailModalLabel">Chi tiết đơn hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="fw-bold text-primary mb-3">Thông tin đơn hàng</h6>
+              <table class="table table-borderless">
+                <tr>
+                  <td class="fw-bold">Mã đơn hàng:</td>
+                  <td id="orderDetailId"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Ngày đặt:</td>
+                  <td id="orderDetailDate"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Trạng thái:</td>
+                  <td><span id="orderDetailStatus" class="badge"></span></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Tổng tiền:</td>
+                  <td id="orderDetailTotal" class="fw-bold text-success"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold text-primary mb-3">Thông tin khách hàng</h6>
+              <table class="table table-borderless">
+                <tr>
+                  <td class="fw-bold">Họ tên:</td>
+                  <td id="orderDetailName"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Số điện thoại:</td>
+                  <td id="orderDetailPhone"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Email:</td>
+                  <td id="orderDetailEmail"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          <div class="row mt-3">
+            <div class="col-12">
+              <h6 class="fw-bold text-primary mb-3">Địa chỉ giao hàng</h6>
+              <table class="table table-borderless">
+                <tr>
+                  <td class="fw-bold">Địa chỉ:</td>
+                  <td id="orderDetailAddress"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Tỉnh/Thành:</td>
+                  <td id="orderDetailProvince"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Quận/Huyện:</td>
+                  <td id="orderDetailDistrict"></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">Phường/Xã:</td>
+                  <td id="orderDetailWard"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          <div class="row mt-3">
+            <div class="col-12">
+              <h6 class="fw-bold text-primary mb-3">Sản phẩm đã đặt</h6>
+              <div class="bg-light p-3 rounded">
+                <p id="orderDetailItems" class="mb-0"></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row mt-3">
+            <div class="col-12">
+              <h6 class="fw-bold text-primary mb-3">Ghi chú</h6>
+              <div class="bg-light p-3 rounded">
+                <p id="orderDetailNote" class="mb-0"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="admin-btn btn-cancel btn-sm" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal cập nhật trạng thái đơn hàng -->
+  <div class="modal fade" id="orderStatusModal" tabindex="-1" aria-labelledby="orderStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background:var(--main-blue);color:#fff;">
+          <h5 class="modal-title" id="orderStatusModalLabel">Cập nhật trạng thái đơn hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="orderStatusForm">
+            <div class="mb-3">
+              <label class="form-label fw-bold">Mã đơn hàng:</label>
+              <p id="orderStatusId" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+              <label for="orderStatusSelect" class="form-label fw-bold">Trạng thái mới:</label>
+              <select class="form-select" id="orderStatusSelect" required>
+                <option value="Chờ xử lý">Chờ xử lý</option>
+                <option value="Đang xử lý">Đang xử lý</option>
+                <option value="Đã xử lý">Đã xử lý</option>
+                <option value="Đã hủy">Đã hủy</option>
+              </select>
+            </div>
+            <button type="submit" class="admin-btn btn-sm admin-form-btn-full">Cập nhật</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/admin-manager.js"></script>
   <script>
     const API_BASE = 'http://localhost:8080';
     function formatVND(number) {
@@ -991,23 +1507,23 @@
       setTimeout(() => { toast.remove(); }, 4000);
     }
     function showAdminTab(tab) {
-      document.querySelectorAll('.admin-tab').forEach(function(el) {
+      document.querySelectorAll('.admin-tab').forEach(function (el) {
         el.classList.add('d-none');
       });
       document.getElementById('tab-' + tab).classList.remove('d-none');
-      document.querySelectorAll('.admin-sidebar a').forEach(function(a) {
+      document.querySelectorAll('.admin-sidebar a').forEach(function (a) {
         a.classList.remove('active');
         if (a.getAttribute('data-tab') === tab) a.classList.add('active');
       });
       document.getElementById('adminTabMobile').value = tab;
     }
-    document.querySelectorAll('.admin-sidebar a').forEach(function(a) {
-      a.addEventListener('click', function(e) {
+    document.querySelectorAll('.admin-sidebar a').forEach(function (a) {
+      a.addEventListener('click', function (e) {
         e.preventDefault();
         showAdminTab(this.getAttribute('data-tab'));
       });
     });
-    document.getElementById('adminTabMobile').addEventListener('change', function() {
+    document.getElementById('adminTabMobile').addEventListener('change', function () {
       showAdminTab(this.value);
     });
     const productsTableBody = document.querySelector('#productsTable tbody');
@@ -1019,7 +1535,7 @@
     function renderProductCount() {
       document.getElementById('productCountBtn').innerText = `Tổng: ${products.length} sản phẩm`;
     }
-    document.getElementById('searchInput').addEventListener('input', function() {
+    document.getElementById('searchInput').addEventListener('input', function () {
       const q = this.value.trim().toLowerCase();
       filteredProducts = products.filter(p =>
         p.name.toLowerCase().includes(q) ||
@@ -1031,7 +1547,7 @@
       renderPagination();
       renderProductCount();
     });
-    window.sortTable = function(key) {
+    window.sortTable = function (key) {
       if (currentSort.key === key) currentSort.asc = !currentSort.asc;
       else { currentSort.key = key; currentSort.asc = true; }
       filteredProducts.sort((a, b) => {
@@ -1045,8 +1561,8 @@
       renderProducts();
     };
     function renderSortIcons() {
-      ['id','name','price','description'].forEach(k => {
-        document.getElementById('sortIcon-'+k).innerText = (currentSort.key===k) ? (currentSort.asc?'▲':'▼') : '';
+      ['id', 'name', 'price', 'description'].forEach(k => {
+        document.getElementById('sortIcon-' + k).innerText = (currentSort.key === k) ? (currentSort.asc ? '▲' : '▼') : '';
       });
     }
     function renderPagination() {
@@ -1058,7 +1574,7 @@
         const li = document.createElement('li');
         li.className = 'page-item' + (i === currentPage ? ' active' : '');
         li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.onclick = function(e) {
+        li.onclick = function (e) {
           e.preventDefault();
           currentPage = i;
           renderProducts();
@@ -1074,7 +1590,7 @@
       const tbody = productsTableBody;
       tbody.innerHTML = '';
       let data = filteredProducts;
-      const start = (currentPage-1)*pageSize;
+      const start = (currentPage - 1) * pageSize;
       const end = start + pageSize;
       data = data.slice(start, end);
       data.forEach((p, idx) => {
@@ -1086,8 +1602,8 @@
           <td>${p.description}</td>
           <td><img src="${p.image}" alt="" style="max-width:60px;max-height:60px;cursor:pointer;" onclick="showImageModal('${p.image}')"></td>
           <td>
-            <button class="admin-btn btn-sm" onclick="editProduct(${products.findIndex(x=>x.id===p.id)})">Sửa</button>
-            <button class="admin-btn btn-danger btn-sm" onclick="deleteProduct(${products.findIndex(x=>x.id===p.id)})">Xoá</button>
+            <button class="admin-btn btn-sm" onclick="editProduct(${products.findIndex(x => x.id === p.id)})">Sửa</button>
+            <button class="admin-btn btn-danger btn-sm" onclick="deleteProduct(${products.findIndex(x => x.id === p.id)})">Xoá</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1106,14 +1622,14 @@
       renderProductCount();
       showGlobalLoading(false);
     }
-    document.getElementById('btnAddProduct').onclick = function() {
+    document.getElementById('btnAddProduct').onclick = function () {
       document.getElementById('productForm').reset();
       document.getElementById('productRowIndex').value = '';
       document.getElementById('productModalLabel').innerText = 'Thêm sản phẩm';
       document.getElementById('productIdGroup').style.display = 'none';
       updateImageGallery(); // Cập nhật gallery khi thêm
     };
-    window.editProduct = function(idx) {
+    window.editProduct = function (idx) {
       const p = products[idx];
       document.getElementById('productId').value = p.id;
       document.getElementById('productName').value = p.name;
@@ -1143,8 +1659,8 @@
             <button type="button" class="image-remove-btn" onclick="removeImage(${idx})" title="Xóa ảnh này">
               <i class="fas fa-times"></i>
             </button>
-            <img src="${url}" alt="Preview ${idx+1}" onclick="showImageModal('${url}', ${idx})">
-            <div class="image-label">Ảnh ${idx+1}</div>
+            <img src="${url}" alt="Preview ${idx + 1}" onclick="showImageModal('${url}', ${idx})">
+            <div class="image-label">Ảnh ${idx + 1}</div>
           </div>
         `).join('');
       } else {
@@ -1227,12 +1743,12 @@
       return true;
     }
     let deleteIdx = null;
-    window.deleteProduct = function(idx) {
+    window.deleteProduct = function (idx) {
       deleteIdx = idx;
       var modal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
       modal.show();
     };
-    document.getElementById('btnConfirmDelete').onclick = async function() {
+    document.getElementById('btnConfirmDelete').onclick = async function () {
       if (deleteIdx !== null) {
         const rowIndex = deleteIdx + 2;
         showGlobalLoading(true);
@@ -1250,7 +1766,7 @@
       }
     };
     const priceInput = document.getElementById('productPrice');
-    priceInput.addEventListener('input', function(e) {
+    priceInput.addEventListener('input', function (e) {
       let value = this.value.replace(/\D/g, ''); // chỉ lấy số
       let selectionStart = this.selectionStart;
       let oldLength = this.value.length;
@@ -1262,11 +1778,11 @@
         this.value = '';
       }
     });
-    priceInput.addEventListener('blur', function() {
+    priceInput.addEventListener('blur', function () {
       if (!this.value) this.value = '';
       else if (!/₫$/.test(this.value)) this.value += '₫';
     });
-    document.getElementById('productForm').onsubmit = async function(e) {
+    document.getElementById('productForm').onsubmit = async function (e) {
       e.preventDefault();
       if (!validateProductForm()) return;
       const btn = this.querySelector('button[type="submit"]');
@@ -1320,7 +1836,7 @@
     };
     const imageInput = document.getElementById('productImage');
     const imageGalleryPreview = document.getElementById('imageGalleryPreview');
-    imageInput.addEventListener('input', function() {
+    imageInput.addEventListener('input', function () {
       this.style.height = 'auto';
       const newHeight = Math.max(250, this.scrollHeight + 30);
       this.style.height = Math.min(newHeight, 500) + 'px';
@@ -1334,8 +1850,8 @@
             <button type="button" class="image-remove-btn" onclick="removeImage(${idx})" title="Xóa ảnh này">
               <i class="fas fa-times"></i>
             </button>
-            <img src="${url}" alt="Preview ${idx+1}" onclick="showImageModal('${url}', ${idx})">
-            <div class="image-label">Ảnh ${idx+1}</div>
+            <img src="${url}" alt="Preview ${idx + 1}" onclick="showImageModal('${url}', ${idx})">
+            <div class="image-label">Ảnh ${idx + 1}</div>
           </div>
         `).join('');
         if (urls.length > 4) {
@@ -1357,7 +1873,7 @@
         `;
       }
     }
-    window.removeImage = function(index) {
+    window.removeImage = function (index) {
       const textarea = document.getElementById('productImage');
       const urls = textarea.value.split(/\n/).map(s => s.trim()).filter(Boolean);
       if (index >= 0 && index < urls.length) {
@@ -1369,7 +1885,7 @@
     };
     let currentImageIndex = 0;
     let allImageUrls = [];
-    window.switchImage = function(index) {
+    window.switchImage = function (index) {
       if (index >= 0 && index < allImageUrls.length && index !== currentImageIndex) {
         currentImageIndex = index;
         const modalImg = document.getElementById('modalImage');
@@ -1394,7 +1910,7 @@
         });
       }
     }
-    window.closeImageModal = function() {
+    window.closeImageModal = function () {
       const modal = document.getElementById('imageModal');
       modal.style.opacity = '0';
       setTimeout(() => {
@@ -1408,7 +1924,7 @@
     }
     let currentZoom = 1;
     let isZooming = false;
-    window.zoomIn = function() {
+    window.zoomIn = function () {
       if (isZooming) return; // Tránh spam click
       isZooming = true;
       currentZoom = Math.min(currentZoom * 1.2, 3);
@@ -1425,7 +1941,7 @@
         isZooming = false;
       }, 300);
     }
-    window.zoomOut = function() {
+    window.zoomOut = function () {
       if (isZooming) return; // Tránh spam click
       isZooming = true;
       currentZoom = Math.max(currentZoom / 1.2, 0.5);
@@ -1442,7 +1958,7 @@
         isZooming = false;
       }, 300);
     }
-    window.resetZoom = function() {
+    window.resetZoom = function () {
       if (isZooming) return; // Tránh spam click
       isZooming = true;
       currentZoom = 1;
@@ -1459,7 +1975,7 @@
         isZooming = false;
       }, 300);
     }
-    window.showImageModal = function(url, index = 0) {
+    window.showImageModal = function (url, index = 0) {
       const textarea = document.getElementById('productImage');
       allImageUrls = textarea.value.split(/\n/).map(s => s.trim()).filter(Boolean);
       currentImageIndex = index;
@@ -1471,7 +1987,7 @@
       modalImg.style.transform = 'scale(1)';
       if (allImageUrls.length > 1) {
         modalThumbnails.innerHTML = allImageUrls.map((imgUrl, idx) => `
-          <img src="${imgUrl}" alt="Thumbnail ${idx+1}" 
+          <img src="${imgUrl}" alt="Thumbnail ${idx + 1}" 
                class="modal-thumbnail ${idx === currentImageIndex ? 'active' : ''}"
                onclick="switchImage(${idx})">
         `).join('');
@@ -1490,19 +2006,23 @@
         bootstrap.Modal.getInstance(productModalEl).hide();
       }
     }
-    document.getElementById('imageModal').addEventListener('click', function(e) {
+
+
+    document.getElementById('imageModal').addEventListener('click', function (e) {
       if (e.target === this || e.target.classList.contains('modal-image-content')) {
         closeImageModal();
       }
     });
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && document.getElementById('imageModal').style.display === 'block') {
         closeImageModal();
       }
     });
-    document.getElementById('productCountBtn').onclick = function() {
+    document.getElementById('productCountBtn').onclick = function () {
       document.getElementById('productsTable').scrollIntoView({ behavior: 'smooth' });
     };
+
+
     let blogs = [];
     let blogCurrentPage = 1;
     const blogPageSize = 10;
@@ -1535,20 +2055,22 @@
           return 0;
         });
       }
-      const start = (blogCurrentPage-1)*blogPageSize;
+      const start = (blogCurrentPage - 1) * blogPageSize;
       const end = start + blogPageSize;
       data = data.slice(start, end);
       data.forEach((b, idx) => {
         const tr = document.createElement('tr');
+        const displayContent = (b.content || '').length > 100 ? (b.content || '').substring(0, 100) + '...' : (b.content || '');
         tr.innerHTML = `
           <td>${b.id}</td>
           <td>${b.title}</td>
-          <td>${b.content}</td>
+          <td>${displayContent}</td>
           <td>${b.author}</td>
           <td>${b.date || ''}</td>
+          <td>${b.image ? `<img src="${b.image}" alt="${b.title}" style="width:50px;height:50px;object-fit:cover;border-radius:4px;">` : '<span class="text-muted">Không có ảnh</span>'}</td>
           <td>
-            <button class="admin-btn btn-sm" onclick="editBlog(${blogs.findIndex(x=>x.id===b.id)})">Sửa</button>
-            <button class="admin-btn btn-danger btn-sm" onclick="deleteBlog(${blogs.findIndex(x=>x.id===b.id)})">Xoá</button>
+            <button class="admin-btn btn-sm" onclick="editBlog(${idx})">Sửa</button>
+            <button class="admin-btn btn-danger btn-sm" onclick="deleteBlog(${idx})">Xoá</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1557,8 +2079,8 @@
       renderBlogSortIcons();
     }
     function renderBlogSortIcons() {
-      ['id','title','content','author','date'].forEach(k => {
-        document.getElementById('sortBlogIcon-'+k).innerText = (blogCurrentSort.key===k) ? (blogCurrentSort.asc?'▲':'▼') : '';
+      ['id', 'title', 'content', 'author', 'date'].forEach(k => {
+        document.getElementById('sortBlogIcon-' + k).innerText = (blogCurrentSort.key === k) ? (blogCurrentSort.asc ? '▲' : '▼') : '';
       });
     }
     function renderBlogPagination() {
@@ -1570,7 +2092,7 @@
         const li = document.createElement('li');
         li.className = 'page-item' + (i === blogCurrentPage ? ' active' : '');
         li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.onclick = function(e) {
+        li.onclick = function (e) {
           e.preventDefault();
           blogCurrentPage = i;
           renderBlogs();
@@ -1582,47 +2104,127 @@
         pag.appendChild(li);
       }
     }
-    document.getElementById('searchBlogInput').addEventListener('input', function() {
+    document.getElementById('searchBlogInput').addEventListener('input', function () {
       const q = this.value.trim().toLowerCase();
       blogs = allBlogs.filter(b =>
         b.title.toLowerCase().includes(q) ||
-        b.description.toLowerCase().includes(q)
+        (b.content || '').toLowerCase().includes(q) ||
+        (b.author || '').toLowerCase().includes(q)
       );
       blogCurrentPage = 1;
       renderBlogs();
       renderBlogPagination();
       renderBlogCount();
     });
-    document.getElementById('btnAddBlog').onclick = function() {
+    // Blog image preview
+    document.getElementById('blogImage').addEventListener('input', function() {
+      const imageUrl = this.value.trim();
+      const preview = document.getElementById('blogImageGalleryPreview');
+      
+      if (imageUrl) {
+        preview.innerHTML = `
+          <div class="image-preview-item">
+            <img src="${imageUrl}" alt="Blog Image" onerror="this.style.display='none'">
+            <button type="button" class="image-remove-btn" onclick="clearBlogImage()" title="Xóa ảnh">
+              ×
+            </button>
+          </div>
+        `;
+      } else {
+        preview.innerHTML = `
+          <div class="image-gallery-empty">
+            <i class="fas fa-image"></i>
+            <div>Chưa có ảnh nào</div>
+            <small>Nhập URL ảnh vào ô bên trên để xem preview (tối đa 1 ảnh)</small>
+          </div>
+        `;
+      }
+    });
+
+    document.getElementById('btnAddBlog').onclick = function () {
       document.getElementById('blogForm').reset();
       document.getElementById('blogRowIndex').value = '';
+      document.getElementById('blogId').value = '';
+
+      // Ẩn field ID khi thêm mới
+      document.getElementById('blogIdGroup').style.display = 'none';
       document.getElementById('blogModalLabel').innerText = 'Thêm bài viết';
+      // Ẩn preview ảnh
+      document.getElementById('blogImageGalleryPreview').innerHTML = `
+        <div class="image-gallery-empty">
+          <i class="fas fa-image"></i>
+          <div>Chưa có ảnh nào</div>
+          <small>Nhập URL ảnh vào ô bên trên để xem preview (tối đa 1 ảnh)</small>
+        </div>
+      `;
       const today = new Date();
       const yyyy = today.getFullYear();
       const mm = String(today.getMonth() + 1).padStart(2, '0');
       const dd = String(today.getDate()).padStart(2, '0');
       document.getElementById('blogDate').value = `${yyyy}-${mm}-${dd}`;
     };
-    window.editBlog = function(idx) {
+    window.editBlog = function (idx) {
       const b = blogs[idx];
+      document.getElementById('blogId').value = b.id;
       document.getElementById('blogTitle').value = b.title;
       document.getElementById('blogContent').value = b.content;
       document.getElementById('blogAuthor').value = b.author;
       document.getElementById('blogDate').value = b.date || '';
-      document.getElementById('blogRowIndex').value = idx + 2;
+      document.getElementById('blogImage').value = b.image || '';
+
+      // Hiển thị field ID khi edit
+      document.getElementById('blogIdGroup').style.display = 'block';
+      // Tìm index thực tế trong allBlogs
+      const realIndex = allBlogs.findIndex(x => x.id === b.id);
+      document.getElementById('blogRowIndex').value = realIndex + 2;
       document.getElementById('blogModalLabel').innerText = 'Sửa bài viết';
+      // Hiển thị preview ảnh nếu có
+      const preview = document.getElementById('blogImageGalleryPreview');
+      if (b.image) {
+        preview.innerHTML = `
+          <div class="image-preview-item">
+            <img src="${b.image}" alt="Blog Image" onerror="this.style.display='none'">
+            <button type="button" class="image-remove-btn" onclick="clearBlogImage()" title="Xóa ảnh">
+              ×
+            </button>
+          </div>
+        `;
+      } else {
+        preview.innerHTML = `
+          <div class="image-gallery-empty">
+            <i class="fas fa-image"></i>
+            <div>Chưa có ảnh nào</div>
+            <small>Nhập URL ảnh vào ô bên trên để xem preview (tối đa 1 ảnh)</small>
+          </div>
+        `;
+      }
       var modal = new bootstrap.Modal(document.getElementById('blogModal'));
       modal.show();
     };
     let blogDeleteIdx = null;
-    window.deleteBlog = function(idx) {
+    window.deleteBlog = function (idx) {
       blogDeleteIdx = idx;
       var modal = new bootstrap.Modal(document.getElementById('deleteBlogConfirmModal'));
       modal.show();
     };
-    document.getElementById('btnConfirmDeleteBlog').onclick = async function() {
+    // Hàm xóa ảnh blog
+    window.clearBlogImage = function() {
+      document.getElementById('blogImage').value = '';
+      document.getElementById('blogImageGalleryPreview').innerHTML = `
+        <div class="image-gallery-empty">
+          <i class="fas fa-image"></i>
+          <div>Chưa có ảnh nào</div>
+          <small>Nhập URL ảnh vào ô bên trên để xem preview (tối đa 1 ảnh)</small>
+        </div>
+      `;
+    };
+
+    document.getElementById('btnConfirmDeleteBlog').onclick = async function () {
       if (blogDeleteIdx !== null) {
-        const rowIndex = blogDeleteIdx + 2;
+        const b = blogs[blogDeleteIdx];
+        // Tìm index thực tế trong allBlogs
+        const realIndex = allBlogs.findIndex(x => x.id === b.id);
+        const rowIndex = realIndex + 2;
         showGlobalLoading(true);
         try {
           await fetch(`${API_BASE}/api/blogs/${rowIndex}`, { method: 'DELETE' });
@@ -1641,7 +2243,7 @@
       const title = document.getElementById('blogTitle').value.trim();
       const content = document.getElementById('blogContent').value.trim();
       const author = document.getElementById('blogAuthor').value.trim();
-      const date = document.getElementById('blogDate').value.trim();
+      const image = document.getElementById('blogImage').value.trim();
       if (!title) {
         showToast('Tiêu đề không được để trống!', 'warning');
         return false;
@@ -1654,13 +2256,13 @@
         showToast('Tác giả không được để trống!', 'warning');
         return false;
       }
-      if (!date) {
-        showToast('Ngày không được để trống!', 'warning');
+      if (!image) {
+        showToast('Ảnh đại diện không được để trống!', 'warning');
         return false;
       }
       return true;
     }
-    document.getElementById('blogForm').onsubmit = async function(e) {
+    document.getElementById('blogForm').onsubmit = async function (e) {
       e.preventDefault();
       if (!validateBlogForm()) return;
       const btn = this.querySelector('button[type="submit"]');
@@ -1668,10 +2270,13 @@
       showGlobalLoading(true);
       const rowIndex = document.getElementById('blogRowIndex').value;
       let blog = {
+        id: document.getElementById('blogId').value || '',
         title: document.getElementById('blogTitle').value,
         content: document.getElementById('blogContent').value,
         author: document.getElementById('blogAuthor').value,
-        date: document.getElementById('blogDate').value
+        date: document.getElementById('blogDate').value,
+        image: document.getElementById('blogImage').value,
+
       };
       try {
         if (rowIndex) {
@@ -1700,10 +2305,220 @@
       showGlobalLoading(false);
     };
     document.querySelector('a[data-tab="blogs"]').addEventListener('click', fetchBlogs);
+    
+    // Quản lý đơn hàng - Đồng bộ với quản lý sản phẩm
+    const ordersTableBody = document.querySelector('#ordersTable tbody');
+    let orders = [];
+    let filteredOrders = [];
+    let orderCurrentPage = 1;
+    const orderPageSize = 10;
+    let orderCurrentSort = { key: '', asc: true };
+
+    function renderOrderCount() {
+      document.getElementById('orderCountBtn').innerText = `Tổng: ${orders.length} đơn hàng`;
+    }
+
+    document.getElementById('searchOrderInput').addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      filteredOrders = orders.filter(o =>
+        (o.id || '').toLowerCase().includes(q) ||
+        (o.customerName || '').toLowerCase().includes(q) ||
+        (o.customerPhone || '').toLowerCase().includes(q) ||
+        (o.customerAddress || '').toLowerCase().includes(q)
+      );
+      orderCurrentPage = 1;
+      renderOrders();
+      renderOrderPagination();
+      renderOrderCount();
+    });
+
+    window.sortOrderTable = function (key) {
+      if (orderCurrentSort.key === key) orderCurrentSort.asc = !orderCurrentSort.asc;
+      else { orderCurrentSort.key = key; orderCurrentSort.asc = true; }
+      filteredOrders.sort((a, b) => {
+        let va = a[key], vb = b[key];
+        if (key === 'total') { va = Number(va) || 0; vb = Number(vb) || 0; }
+        if (key === 'date') { va = va || ''; vb = vb || ''; }
+        if (va < vb) return orderCurrentSort.asc ? -1 : 1;
+        if (va > vb) return orderCurrentSort.asc ? 1 : -1;
+        return 0;
+      });
+      renderOrderSortIcons();
+      renderOrders();
+    };
+
+    function renderOrderSortIcons() {
+      ['id', 'date', 'customerName', 'customerPhone', 'customerAddress', 'total', 'status'].forEach(k => {
+        document.getElementById('sortOrderIcon-' + k).innerText = (orderCurrentSort.key === k) ? (orderCurrentSort.asc ? '▲' : '▼') : '';
+      });
+    }
+
+    function renderOrderPagination() {
+      const totalPages = Math.ceil(filteredOrders.length / orderPageSize);
+      const pag = document.getElementById('orderPagination');
+      pag.innerHTML = '';
+      if (totalPages <= 1) return;
+      for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.className = 'page-item' + (i === orderCurrentPage ? ' active' : '');
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.onclick = function (e) {
+          e.preventDefault();
+          orderCurrentPage = i;
+          renderOrders();
+          renderOrderPagination();
+          setTimeout(() => {
+            document.getElementById('ordersTable').scrollIntoView({ behavior: 'smooth' });
+          }, 50);
+        };
+        pag.appendChild(li);
+      }
+    }
+
+    function renderOrders() {
+      const tbody = ordersTableBody;
+      tbody.innerHTML = '';
+      let data = filteredOrders;
+      const start = (orderCurrentPage - 1) * orderPageSize;
+      const end = start + orderPageSize;
+      data = data.slice(start, end);
+      data.forEach((order, idx) => {
+        const tr = document.createElement('tr');
+        const statusClass = getStatusClass(order.status || 'Chờ xử lý');
+        tr.innerHTML = `
+          <td><strong>${order.id || 'N/A'}</strong></td>
+          <td>${order.date || 'N/A'}</td>
+          <td>${order.customerName || 'N/A'}</td>
+          <td>${order.customerPhone || 'N/A'}</td>
+          <td>${order.customerAddress || 'N/A'}</td>
+          <td><strong>${formatVND(order.total || 0)}</strong></td>
+          <td><span class="badge ${statusClass}">${order.status || 'Chờ xử lý'}</span></td>
+          <td>
+            <button class="admin-btn btn-sm" onclick="viewOrderDetail(${orders.findIndex(x => x.id === order.id)})" title="Xem chi tiết">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button class="admin-btn btn-warning btn-sm" onclick="updateOrderStatus(${orders.findIndex(x => x.id === order.id)})" title="Cập nhật trạng thái">
+              <i class="fas fa-edit"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      renderOrderCount();
+      renderOrderSortIcons();
+    }
+
+    function getStatusClass(status) {
+      switch(status) {
+        case 'Đã xử lý': return 'bg-success';
+        case 'Đang xử lý': return 'bg-warning';
+        case 'Đã hủy': return 'bg-danger';
+        default: return 'bg-secondary';
+      }
+    }
+
+    async function fetchOrders() {
+      showGlobalLoading(true);
+      try {
+        const res = await fetch(`${API_BASE}/api/orders`);
+        orders = await res.json();
+        filteredOrders = orders.slice();
+        orderCurrentPage = 1;
+        renderOrders();
+        renderOrderPagination();
+        renderOrderCount();
+      } catch (e) {
+        showToast('Không thể tải danh sách đơn hàng!', 'danger');
+      }
+      showGlobalLoading(false);
+    }
+
+
+
+    window.viewOrderDetail = function(idx) {
+      const order = orders[idx];
+      if (!order) return;
+      
+      document.getElementById('orderDetailId').textContent = order.id || 'N/A';
+      document.getElementById('orderDetailDate').textContent = order.date || 'N/A';
+      document.getElementById('orderDetailName').textContent = order.customerName || 'N/A';
+      document.getElementById('orderDetailPhone').textContent = order.customerPhone || 'N/A';
+      document.getElementById('orderDetailEmail').textContent = order.customerEmail || 'N/A';
+      document.getElementById('orderDetailAddress').textContent = order.customerAddress || 'N/A';
+      document.getElementById('orderDetailProvince').textContent = order.customerProvince || 'N/A';
+      document.getElementById('orderDetailDistrict').textContent = order.customerDistrict || 'N/A';
+      document.getElementById('orderDetailWard').textContent = order.customerWard || 'N/A';
+      
+      // Hiển thị danh sách sản phẩm từ cột items
+      let itemsText = 'Không có sản phẩm';
+      if (order.items && order.items.length > 0) {
+                    itemsText = order.items.map(item => 
+              `${item.productName || 'Sản phẩm'}`
+            ).join('\n');
+      } else if (order.items && typeof order.items === 'string' && order.items.trim() !== '') {
+        // Nếu items là string, hiển thị trực tiếp
+        itemsText = order.items;
+      }
+      document.getElementById('orderDetailItems').textContent = itemsText;
+      
+      document.getElementById('orderDetailTotal').textContent = formatVND(order.total || 0);
+      document.getElementById('orderDetailNote').textContent = order.note || 'Không có ghi chú';
+      document.getElementById('orderDetailStatus').textContent = order.status || 'Chờ xử lý';
+      document.getElementById('orderDetailStatus').className = `badge ${getStatusClass(order.status || 'Chờ xử lý')}`;
+      
+      const modal = new bootstrap.Modal(document.getElementById('orderDetailModal'));
+      modal.show();
+    };
+
+    window.updateOrderStatus = function(idx) {
+      const order = orders[idx];
+      if (!order) return;
+      
+      document.getElementById('orderStatusId').textContent = order.id || 'N/A';
+      document.getElementById('orderStatusSelect').value = order.status || 'Chờ xử lý';
+      
+      const modal = new bootstrap.Modal(document.getElementById('orderStatusModal'));
+      modal.show();
+    };
+
+    document.getElementById('btnRefreshOrders').onclick = fetchOrders;
+
+    document.getElementById('orderStatusForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const orderId = document.getElementById('orderStatusId').textContent;
+      const newStatus = document.getElementById('orderStatusSelect').value;
+      
+      showGlobalLoading(true);
+      try {
+        const orderIndex = orders.findIndex(o => o.id === orderId);
+        if (orderIndex === -1) {
+          showToast('Không tìm thấy đơn hàng!', 'danger');
+          return;
+        }
+        
+        const rowIndex = orderIndex + 2;
+        await fetch(`${API_BASE}/api/orders/${rowIndex}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        
+        showToast('Cập nhật trạng thái thành công!');
+        bootstrap.Modal.getInstance(document.getElementById('orderStatusModal')).hide();
+        fetchOrders();
+      } catch (e) {
+        showToast('Cập nhật trạng thái thất bại!', 'danger');
+      }
+      showGlobalLoading(false);
+    };
+
+    document.querySelector('a[data-tab="orders"]').addEventListener('click', fetchOrders);
+    
     fetchProducts();
-    function showGlobalLoading(show=true) {
+    function showGlobalLoading(show = true) {
       document.getElementById('globalLoading').style.display = show ? 'flex' : 'none';
     }
   </script>
 </body>
-</html> 
+
+</html>

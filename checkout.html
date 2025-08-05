@@ -1109,6 +1109,14 @@
 					localStorage.removeItem('cart');
 					localStorage.removeItem('checkoutCart');
 					localStorage.removeItem('checkoutTotal');
+					
+					// Gửi webhook notification
+					try {
+						await orderManager.sendWebhookNotification(orderData);
+					} catch (webhookError) {
+						console.error('Webhook notification failed:', webhookError);
+					}
+					
 					showToast('Đặt hàng thành công! Mã đơn hàng: ' + orderData.orderId, 'success');
 					setTimeout(() => {
 						window.location.href = 'thankyou.html?orderId=' + orderData.orderId;
