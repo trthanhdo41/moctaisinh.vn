@@ -2452,9 +2452,9 @@
       // Hiển thị danh sách sản phẩm từ cột items
       let itemsText = 'Không có sản phẩm';
       if (order.items && order.items.length > 0) {
-                    itemsText = order.items.map(item => 
-              `${item.productName || 'Sản phẩm'}`
-            ).join('\n');
+        itemsText = order.items.map(item => 
+          `${item.productName || 'Sản phẩm'} (x${item.quantity || 1})`
+        ).join('\n');
       } else if (order.items && typeof order.items === 'string' && order.items.trim() !== '') {
         // Nếu items là string, hiển thị trực tiếp
         itemsText = order.items;
