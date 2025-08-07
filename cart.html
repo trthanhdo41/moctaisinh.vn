@@ -192,14 +192,36 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5>Xác nhận xóa</h5>
-					<button type="button" class="close-btn" onclick="closeDeleteModal()">&times;</button>
+					<button type="button" class="close-btn" onclick="closeDeleteModal()">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
 				</div>
 				<div class="modal-body">
-					<p>Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?</p>
+					<div style="margin-bottom: 24px;">
+						<div style="width: 72px; height: 72px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3 6H5H21M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+					</div>
+					<p style="font-size: 18px; color: #1a1a1a; margin-bottom: 8px; font-weight: 600;">Bạn có chắc muốn xóa sản phẩm này?</p>
+					<p style="font-size: 15px; color: #6b7280; margin: 0; line-height: 1.5;">Hành động này không thể hoàn tác và sản phẩm sẽ bị xóa vĩnh viễn khỏi giỏ hàng.</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
-					<button type="button" class="btn btn-danger" onclick="confirmDelete()">Xóa</button>
+					<button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+							<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						Hủy
+					</button>
+					<button type="button" class="btn btn-danger" onclick="confirmDelete()">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+							<path d="M3 6H5H21M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						Xóa
+					</button>
 				</div>
 			</div>
 		</div>
@@ -372,78 +394,137 @@
 			font-size: 14px;
 			font-weight: 500;
 		}
-		/* Modal Styles */
+		/* Modern Modal Styles */
 		.modal-overlay {
 			position: fixed;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(0, 0, 0, 0.5);
+			background: rgba(0, 0, 0, 0.4);
+			backdrop-filter: blur(8px);
 			z-index: 10001;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
 		.modal-content {
-			background: white;
-			border-radius: 8px;
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+			background: rgba(255, 255, 255, 0.95);
+			border-radius: 24px;
+			box-shadow: 
+				0 25px 50px -12px rgba(0, 0, 0, 0.25),
+				0 0 0 1px rgba(255, 255, 255, 0.1);
 			max-width: 400px;
 			width: 90%;
-			animation: modalSlideIn 0.3s ease;
+			animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			backdrop-filter: blur(20px);
+			border: 1px solid rgba(255, 255, 255, 0.2);
 		}
 		@keyframes modalSlideIn {
 			from {
 				opacity: 0;
-				transform: translateY(-20px);
+				transform: scale(0.9) translateY(-40px);
 			}
 			to {
 				opacity: 1;
-				transform: translateY(0);
+				transform: scale(1) translateY(0);
 			}
 		}
 		.modal-header {
-			padding: 20px 20px 0 20px;
+			padding: 28px 28px 0 28px;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			border-bottom: 1px solid #eee;
+			border-bottom-width: 0px;
+
 		}
 		.modal-header h5 {
 			margin: 0;
-			color: #333;
+			color: #1a1a1a;
 			font-weight: 600;
+			font-size: 20px;
+			letter-spacing: -0.02em;
 		}
 		.close-btn {
-			background: none;
+			background: rgba(0, 0, 0, 0.04);
 			border: none;
-			font-size: 24px;
-			color: #999;
+			font-size: 18px;
+			color: #666;
 			cursor: pointer;
-			padding: 0;
-			width: 30px;
-			height: 30px;
+			padding: 10px;
+			width: 40px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			border-radius: 12px;
+			transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 		}
 		.close-btn:hover {
+			background: rgba(0, 0, 0, 0.08);
 			color: #333;
+			transform: scale(1.05);
 		}
 		.modal-body {
-			padding: 20px;
+			padding: 28px;
+			text-align: center;
 		}
 		.modal-body p {
 			margin: 0;
-			color: #666;
+			color: #4a4a4a;
 			font-size: 16px;
+			line-height: 1.6;
+			font-weight: 400;
 		}
 		.modal-footer {
-			padding: 0 20px 20px 20px;
 			display: flex;
-			gap: 10px;
-			justify-content: flex-end;
+			gap: 16px;
+			justify-content: center;
+		}
+		.modal-footer .btn {
+			padding: 14px 28px;
+			font-weight: 500;
+			border-radius: 12px;
+			transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+			min-width: 120px;
+			font-size: 15px;
+			border: none;
+			position: relative;
+			overflow: hidden;
+		}
+		.modal-footer .btn::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+			transition: left 0.5s;
+		}
+		.modal-footer .btn:hover::before {
+			left: 100%;
+		}
+		.modal-footer .btn-secondary {
+			background: rgba(0, 0, 0, 0.04);
+			color: #666;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+		}
+		.modal-footer .btn-secondary:hover {
+			background: rgba(0, 0, 0, 0.08);
+			color: #333;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+		}
+		.modal-footer .btn-danger {
+			background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+			color: white;
+			box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+		}
+		.modal-footer .btn-danger:hover {
+			background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
 		}
 		/* Empty Cart Styles */
 		.empty-cart-icon {
@@ -503,9 +584,10 @@
 				padding: 12px 8px;
 			}
 			.product-thumbnail img {
-				width: 60px;
-				height: 60px;
-				object-fit: cover;
+				width: 60px !important;
+				height: 60px !important;
+				object-fit: cover !important;
+				border-radius: 8px !important;
 			}
 			.product-name h2 {
 				font-size: 14px;
@@ -553,7 +635,10 @@
 			background: #f8f9fa;
 		}
 		.product-thumbnail img {
-			border-radius: 8px;
+			width: 80px !important;
+			height: 80px !important;
+			object-fit: cover !important;
+			border-radius: 12px !important;
 			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 			transition: transform 0.2s ease;
 		}
@@ -687,10 +772,10 @@
 			overflow: hidden;
 		}
 		.related-product-thumbnail {
-			width: 100%;
-			height: 200px;
-			object-fit: cover;
-			border-radius: 8px;
+			width: 100% !important;
+			height: 200px !important;
+			object-fit: cover !important;
+			border-radius: 12px !important;
 			margin-bottom: 15px;
 		}
 		.related-product-title {
@@ -1016,16 +1101,39 @@
 	function initRelatedSlider() {
 		const slider = document.querySelector('.related-slider');
 		if (!slider) return;
+		
 		let scrollSpeed = 2;
 		let direction = 1; // 1 = forward, -1 = backward
-		let autoScrollInterval = setInterval(() => {
-			slider.scrollLeft += scrollSpeed * direction;
-			if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
-				direction = -1; // Go backward
-			} else if (slider.scrollLeft <= 0) {
-				direction = 1; // Go forward
+		let autoScrollInterval = null;
+		let isPaused = false;
+
+		function startAutoScroll() {
+			if (autoScrollInterval) {
+				clearInterval(autoScrollInterval);
 			}
-		}, 25);
+			autoScrollInterval = setInterval(() => {
+				if (!isPaused) {
+					slider.scrollLeft += scrollSpeed * direction;
+					if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
+						direction = -1; // Go backward
+					} else if (slider.scrollLeft <= 0) {
+						direction = 1; // Go forward
+					}
+				}
+			}, 25);
+		}
+
+		// Bắt đầu auto scroll
+		startAutoScroll();
+
+		// Thêm tính năng pause khi hover
+		slider.addEventListener('mouseenter', () => {
+			isPaused = true;
+		});
+
+		slider.addEventListener('mouseleave', () => {
+			isPaused = false;
+		});
 	}
 		function renderCart() {
 			const cartItems = document.getElementById('cartItems');

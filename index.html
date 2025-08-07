@@ -891,6 +891,36 @@
 			color: #ffe066 !important;
 		}
 
+		/* Cố định ảnh sản phẩm thành hình vuông để đẹp mắt */
+		.product-item .product-thumbnail {
+			width: 280px !important;
+			height: 280px !important;
+			object-fit: cover !important;
+			border-radius: 18px !important;
+		}
+
+		/* Bỏ margin-bottom để sản phẩm không cách xa nhau */
+		.product-item {
+			margin-bottom: 0 !important;
+		}
+
+		#homeProductsRow .col-4 {
+			margin-bottom: 0 !important;
+		}
+
+		/* Ẩn giá khi chưa hover */
+		.product-item .product-price {
+			opacity: 0 !important;
+			visibility: hidden !important;
+			transition: all 0.3s ease !important;
+		}
+
+		/* Hiển thị giá khi hover */
+		.product-item:hover .product-price {
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+
 		@media (max-width: 575.98px) {
 			.hero {
 				background-position: 36% center !important;

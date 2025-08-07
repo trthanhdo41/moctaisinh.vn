@@ -449,7 +449,7 @@
 			num = parseInt(num) || 0;
 			return num.toLocaleString('vi-VN') + '₫';
 		}
-		document.addEventListener('DOMContentLoaded', function() {
+		document.addEventListener('DOMContentLoaded', async function() {
 			if (!CartGuard.checkOrderAccess()) {
 				return;
 			}
@@ -458,16 +458,21 @@
 			const orders = JSON.parse(localStorage.getItem('orders') || '[]');
 			const currentOrder = orders.find(order => order.orderId === orderId);
 			if (currentOrder) {
-				displayOrderInfo(currentOrder);
+				await displayOrderInfo(currentOrder);
 			}
 		});
-		function displayOrderInfo(order) {
+		async function displayOrderInfo(order) {
 			document.getElementById('orderInfo').style.display = 'block';
 			document.getElementById('orderId').textContent = order.orderId;
 			document.getElementById('orderDate').textContent = new Date(order.orderDate).toLocaleDateString('vi-VN');
 			document.getElementById('orderTotal').textContent = formatCurrency(order.total);
 			sendWebhookNotification(order);
-			const customer = order.customer;
+			
+			// Chờ addressConverter sẵn sàng và convert địa chỉ
+			await addressConverter.waitForReady();
+			const convertedOrder = addressConverter.convertOrderAddress(order);
+			const customer = convertedOrder.customer;
+			
 			document.getElementById('customerInfo').innerHTML = `
 				<div class="customer-details">
 					<div class="customer-item">
@@ -484,7 +489,7 @@
 					</div>
 					<div class="customer-item">
 						<span class="customer-label">Địa chỉ:</span>
-						<span class="customer-value">${customer.address}</span>
+						<span class="customer-value">${addressConverter.getFullAddress(customer)}</span>
 					</div>
 					${customer.note ? `
 					<div class="customer-item note-item">

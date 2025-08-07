@@ -25,6 +25,65 @@
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<title>Dịch Vụ Gỗ Thủ Công | Sản Xuất Đồ Gỗ Tái Sinh - Mộc Tái Sinh</title>
+		<style>
+		/* Cố định ảnh sản phẩm thành hình vuông để đẹp mắt */
+		.product-item .product-thumbnail {
+			width: 280px !important;
+			height: 280px !important;
+			object-fit: cover !important;
+			border-radius: 18px !important;
+		}
+
+		/* Ẩn giá khi chưa hover */
+		.product-item .product-price {
+			opacity: 0 !important;
+			visibility: hidden !important;
+			transition: all 0.3s ease !important;
+		}
+
+		/* Hiển thị giá khi hover */
+		.product-item:hover .product-price {
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+
+		/* Bỏ margin-bottom để sản phẩm không cách xa nhau */
+		.product-item {
+			margin-bottom: 0 !important;
+		}
+
+		#servicesProductsRow .col-4 {
+			margin-bottom: 0 !important;
+		}
+
+		/* Responsive cho mobile */
+		@media (max-width: 767.98px) {
+			/* Giảm width thừa */
+			.container {
+				padding-left: 15px !important;
+				padding-right: 15px !important;
+			}
+
+			/* Căn giữa 2 nút trên mobile */
+			.hero .intro-excerpt .d-flex {
+				justify-content: center !important;
+				align-items: center !important;
+				text-align: center !important;
+			}
+
+			.hero .intro-excerpt .btn {
+				width: 100% !important;
+				max-width: 280px !important;
+				margin: 5px auto !important;
+			}
+
+			/* Căn giữa text */
+			.hero .intro-excerpt h1,
+			.hero .intro-excerpt p {
+				text-align: center !important;
+			}
+		}
+		</style>
 	</head>
 	<body>
 		<!-- Start Header/Navigation -->
@@ -58,7 +117,7 @@
 			<div class="container" style="position: relative; z-index: 2;">
 				<div class="row justify-content-center">
 					<div class="col-lg-8 text-center">
-						<div class="intro-excerpt">
+						<div class="intro-excerpt" style="margin-top: 100px;">
 							<h1>Dịch vụ thủ công & sáng tạo từ vật liệu mộc tái sinh</h1>
 							<p class="mb-4">Chúng tôi nhận thiết kế, chế tác sản phẩm thủ công từ gỗ vụn, tre cũ, vật liệu tự nhiên bị lãng quên — theo yêu cầu cá nhân, doanh nghiệp, dự án cộng đồng. Mỗi sản phẩm là một hành trình sáng tạo, lắng nghe và kể lại câu chuyện của bạn.</p>
 							<div class="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 mt-3">
