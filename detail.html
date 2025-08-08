@@ -292,6 +292,10 @@
             color: #2f2f2f;
             margin-bottom: 50px;
         }
+        
+        .related-products .section-title {
+            color: #000 !important;
+        }
         /* Breadcrumb */
         .breadcrumb-section {
             padding: 10px 0;
@@ -495,8 +499,21 @@
           position: relative;
           overflow: hidden;
         }
-        .related-prev, .related-next {
+        .related-prev, .related-next,
+        .recently-prev, .recently-next {
           display: none !important;
+        }
+        
+        /* Recently Viewed Products Styles */
+        .recently-viewed-products {
+          margin-top: 40px;
+          margin-bottom: 40px;
+        }
+        
+        .recently-viewed-products .section-title {
+          color: #000 !important;
+          font-weight: 600;
+          margin-bottom: 30px;
         }
         /* CSS chính xác từ trang shop với font size nhỏ */
         .product-thumbnail { 
@@ -545,6 +562,11 @@
           line-height: 1.4;
           margin-bottom: 15px;
           text-align: center;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
         .product-item .icon-cross {
           display: none !important;
@@ -702,6 +724,20 @@
             </p>
         </div>
     </div>
+    <!-- Recently Viewed Products Section -->
+    <div class="recently-viewed-products" id="recentlyViewedSection" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Sản phẩm vừa xem</h2>
+            <div class="related-slider-wrap position-relative">
+                <div class="related-slider" id="recentlyViewedProducts">
+                    <!-- Sản phẩm vừa xem sẽ được render bằng JS -->
+                </div>
+                <button class="recently-prev" aria-label="Trước"><i class="fas fa-chevron-left"></i></button>
+                <button class="recently-next" aria-label="Sau"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Related Products Section -->
     <div class="related-products">
         <div class="container">
@@ -1000,6 +1036,10 @@
                 productSection.style.transform = 'translateY(0)';
             }, 100);
             loadAndShowRelatedProducts(product.id);
+            
+            // Thêm sản phẩm vào recently viewed và hiển thị section
+            addToRecentlyViewed(product);
+            loadAndShowRecentlyViewed();
         }
         function displayImages(product) {
             const mainImage = document.getElementById('mainImage');
@@ -1069,7 +1109,7 @@
                 });
                 initRelatedSlider();
                 function initRelatedSlider() {
-                    const slider = document.querySelector('.related-slider');
+                    const slider = document.querySelector('#relatedProducts');
                     if (!slider) return;
                     
                     let scrollSpeed = 2;
@@ -1079,18 +1119,33 @@
 
                     function startAutoScroll() {
                         if (autoScrollInterval) {
-                            clearInterval(autoScrollInterval);
+                            cancelAnimationFrame(autoScrollInterval);
                         }
-                        autoScrollInterval = setInterval(() => {
-                            if (!isPaused) {
-                                slider.scrollLeft += scrollSpeed * direction;
-                                if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
-                                    direction = -1; // Go backward
-                                } else if (slider.scrollLeft <= 0) {
-                                    direction = 1; // Go forward
+                        
+                        let lastTime = 0;
+                        const targetFPS = 40; // 40 FPS
+                        const frameTime = 1000 / targetFPS;
+                        
+                        function animate() {
+                            const currentTime = Date.now();
+                            if (currentTime - lastTime >= frameTime) {
+                                if (!isPaused) {
+                                    const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                                    
+                                    if (slider.scrollLeft >= maxScrollLeft) {
+                                        direction = -1; // Scroll backward
+                                    } else if (slider.scrollLeft <= 0) {
+                                        direction = 1; // Scroll forward
+                                    }
+                                    
+                                    slider.scrollLeft += scrollSpeed * direction;
                                 }
+                                lastTime = currentTime;
                             }
-                        }, 25);
+                            autoScrollInterval = requestAnimationFrame(animate);
+                        }
+                        
+                        autoScrollInterval = requestAnimationFrame(animate);
                     }
 
                     // Bắt đầu auto scroll
@@ -1112,6 +1167,142 @@
                 }
             }
         }
+
+        // Recently Viewed Products Management
+        function addToRecentlyViewed(product) {
+            const STORAGE_KEY = 'recentlyViewedProducts';
+            const MAX_ITEMS = 7;
+            
+            // Lấy danh sách hiện tại từ localStorage
+            let recentlyViewed = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            
+            // Loại bỏ sản phẩm này nếu đã tồn tại (để tránh trùng lặp)
+            recentlyViewed = recentlyViewed.filter(item => item.id !== product.id);
+            
+            // Thêm sản phẩm mới vào đầu danh sách
+            recentlyViewed.unshift({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                description: product.description,
+                viewedAt: new Date().toISOString()
+            });
+            
+            // Giới hạn số lượng
+            if (recentlyViewed.length > MAX_ITEMS) {
+                recentlyViewed = recentlyViewed.slice(0, MAX_ITEMS);
+            }
+            
+            // Lưu lại vào localStorage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(recentlyViewed));
+        }
+
+        function getRecentlyViewed() {
+            const STORAGE_KEY = 'recentlyViewedProducts';
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        }
+
+        function loadAndShowRecentlyViewed() {
+            const recentlyViewed = getRecentlyViewed();
+            const MIN_ITEMS_TO_SHOW = 3;
+            
+            // Chỉ hiển thị section khi có ít nhất 3 sản phẩm
+            const section = document.getElementById('recentlyViewedSection');
+            if (!section) return;
+            
+            if (recentlyViewed.length < MIN_ITEMS_TO_SHOW) {
+                section.style.display = 'none';
+                return;
+            }
+            
+            // Hiển thị section và render sản phẩm
+            section.style.display = 'block';
+            
+            const container = document.getElementById('recentlyViewedProducts');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            // Loại bỏ sản phẩm hiện tại khỏi danh sách hiển thị
+            const currentProductId = currentProduct ? currentProduct.id : null;
+            const productsToShow = recentlyViewed.filter(product => product.id !== currentProductId);
+            
+            productsToShow.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'related-product-item';
+                productDiv.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="related-product-thumbnail">
+                    <h3 class="related-product-title">${product.name}</h3>
+                    <div class="related-product-price">${formatPrice(product.price)}</div>
+                    <div class="related-product-desc">${product.description || 'Sản phẩm thủ công độc đáo'}</div>
+                `;
+                productDiv.addEventListener('click', () => {
+                    window.location.href = `detail.html?id=${product.id}`;
+                });
+                container.appendChild(productDiv);
+            });
+            
+            // Initialize slider cho recently viewed
+            initRecentlyViewedSlider();
+        }
+
+        function initRecentlyViewedSlider() {
+            const slider = document.querySelector('#recentlyViewedProducts');
+            if (!slider) return;
+            
+            let scrollSpeed = 1.5;
+            let direction = 1; // 1 = forward, -1 = backward
+            let autoScrollInterval = null;
+            let isPaused = false;
+
+            function startAutoScroll() {
+                if (autoScrollInterval) {
+                    cancelAnimationFrame(autoScrollInterval);
+                }
+                
+                // Delay start để tránh conflict với related products
+                setTimeout(() => {
+                    let lastTime = 0;
+                    const targetFPS = 40; // 40 FPS
+                    const frameTime = 1000 / targetFPS;
+                    
+                    function animate() {
+                        const currentTime = Date.now();
+                        if (currentTime - lastTime >= frameTime) {
+                            if (!isPaused) {
+                                const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                                
+                                if (slider.scrollLeft >= maxScrollLeft) {
+                                    direction = -1; // Scroll backward
+                                } else if (slider.scrollLeft <= 0) {
+                                    direction = 1; // Scroll forward
+                                }
+                                
+                                slider.scrollLeft += scrollSpeed * direction;
+                            }
+                            lastTime = currentTime;
+                        }
+                        autoScrollInterval = requestAnimationFrame(animate);
+                    }
+                    
+                    autoScrollInterval = requestAnimationFrame(animate);
+                }, 1500); // Delay 1.5 giây
+            }
+
+            // Pause auto-scroll on hover
+            slider.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
+
+            // Start auto-scroll with delay
+            startAutoScroll();
+        }
+
         function showError(message) {
             document.getElementById('productTitle').textContent = 'Lỗi';
             document.getElementById('productDescription').textContent = message;

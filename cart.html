@@ -165,6 +165,22 @@
               </div>
             </div>
           </div>
+		<!-- Recently Viewed Products Section -->
+		<div class="recently-viewed-products" id="recentlyViewedSection" style="display: none;">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="section-title text-center mb-5">Sản phẩm vừa xem</h2>
+						<div class="related-slider-wrap">
+							<div class="related-slider" id="recentlyViewedProducts">
+								<!-- Recently viewed products will be loaded here -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Related Products Section -->
 		<div class="related-products">
 			<div class="container">
@@ -176,6 +192,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- Footer will be loaded automatically from footer.html -->
 		<div class="footer-section">
 			<!-- Footer will be loaded automatically from footer.html -->
@@ -562,6 +579,108 @@
 			transform: translateY(-2px);
 			box-shadow: 0 6px 20px rgba(59, 93, 80, 0.3);
 		}
+
+		/* Recently Viewed Products Styles */
+		.recently-viewed-products {
+			margin-top: 40px;
+			margin-bottom: 0px;
+			padding: 40px 0;
+			background: #f8f9fa;
+		}
+
+		.recently-viewed-products .section-title {
+			color: #000 !important;
+			font-weight: 600;
+			margin-bottom: 30px;
+		}
+
+		.related-slider-wrap {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.related-slider {
+			display: flex;
+			gap: 20px;
+			overflow-x: auto;
+			scroll-behavior: smooth;
+			padding: 0 10px;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+		}
+
+		.related-slider::-webkit-scrollbar {
+			display: none;
+		}
+
+		.related-product-item {
+			min-width: 280px;
+			flex: 0 0 280px;
+			background: white;
+			border-radius: 15px;
+			padding: 20px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+			transition: all 0.3s ease;
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.related-product-item:hover {
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.related-product-item .product-thumbnail {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+			border-radius: 10px;
+			margin-bottom: 15px;
+		}
+
+		.related-product-item .product-info {
+			padding: 10px 0;
+		}
+
+		.related-product-item .product-title {
+			font-size: 16px;
+			font-weight: 600;
+			color: #333;
+			margin-bottom: 8px;
+			line-height: 1.3;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
+		.related-product-item .product-price {
+			font-size: 18px;
+			font-weight: 700;
+			color: #28a745 !important;
+			margin-bottom: 8px;
+		}
+
+		.related-product-item .product-description {
+			font-size: 14px;
+			color: #666 !important;
+			line-height: 1.4;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			margin-bottom: 0;
+		}
+
+		@media (max-width: 768px) {
+			.related-product-item {
+				min-width: 240px;
+				flex: 0 0 240px;
+			}
+		}
 		/* Cart Table Improvements */
 		.site-blocks-table {
 			background: white;
@@ -745,6 +864,10 @@
 			font-weight: 700;
 			color: #3b5d50;
 			margin-bottom: 50px;
+		}
+		
+		.related-products .section-title {
+			color: #000 !important;
 		}
 		.related-slider-wrap {
 			position: relative;
@@ -1099,7 +1222,7 @@
 			`;
 		}
 	function initRelatedSlider() {
-		const slider = document.querySelector('.related-slider');
+		const slider = document.querySelector('#relatedProducts');
 		if (!slider) return;
 		
 		let scrollSpeed = 2;
@@ -1109,18 +1232,33 @@
 
 		function startAutoScroll() {
 			if (autoScrollInterval) {
-				clearInterval(autoScrollInterval);
+				cancelAnimationFrame(autoScrollInterval);
 			}
-			autoScrollInterval = setInterval(() => {
-				if (!isPaused) {
-					slider.scrollLeft += scrollSpeed * direction;
-					if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
-						direction = -1; // Go backward
-					} else if (slider.scrollLeft <= 0) {
-						direction = 1; // Go forward
+			
+			let lastTime = 0;
+			const targetFPS = 40; // 40 FPS
+			const frameTime = 1000 / targetFPS;
+			
+			function animate() {
+				const currentTime = Date.now();
+				if (currentTime - lastTime >= frameTime) {
+					if (!isPaused) {
+						const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+						
+						if (slider.scrollLeft >= maxScrollLeft) {
+							direction = -1; // Scroll backward
+						} else if (slider.scrollLeft <= 0) {
+							direction = 1; // Scroll forward
+						}
+						
+						slider.scrollLeft += scrollSpeed * direction;
 					}
+					lastTime = currentTime;
 				}
-			}, 25);
+				autoScrollInterval = requestAnimationFrame(animate);
+			}
+			
+			autoScrollInterval = requestAnimationFrame(animate);
 		}
 
 		// Bắt đầu auto scroll
@@ -1373,8 +1511,105 @@
 				}, 300);
 			}, 3000);
 		}
+
+		// Recently Viewed Products Functions
+		function getRecentlyViewed() {
+			return JSON.parse(localStorage.getItem('recentlyViewedProducts')) || [];
+		}
+
+		function loadAndShowRecentlyViewed() {
+			const recentlyViewed = getRecentlyViewed();
+			const recentlyViewedSection = document.getElementById('recentlyViewedSection');
+			const recentlyViewedContainer = document.getElementById('recentlyViewedProducts');
+
+			if (recentlyViewed.length >= 3) {
+				recentlyViewedSection.style.display = 'block';
+				
+				recentlyViewedContainer.innerHTML = '';
+				
+				recentlyViewed.forEach(product => {
+					const productElement = document.createElement('a');
+					productElement.href = `detail.html?id=${product.id}`;
+					productElement.className = 'related-product-item';
+					productElement.innerHTML = `
+						<img src="${product.image}" alt="${product.name}" class="product-thumbnail">
+						<div class="product-info text-center">
+							<h5 class="product-title">${product.name}</h5>
+							<p class="product-price text-success fw-bold">${formatVND(product.price)}</p>
+							<p class="product-description text-muted">${product.description || 'Sản phẩm chất lượng cao được làm thủ công từ gỗ tự nhiên.'}</p>
+						</div>
+					`;
+					recentlyViewedContainer.appendChild(productElement);
+				});
+
+				// Initialize auto-scroll for recently viewed
+				initRecentlyViewedSlider();
+			} else {
+				recentlyViewedSection.style.display = 'none';
+			}
+		}
+
+		function initRecentlyViewedSlider() {
+			const slider = document.querySelector('#recentlyViewedProducts');
+			if (!slider) return;
+			
+			let scrollSpeed = 1.5;
+			let direction = 1; // 1 = forward, -1 = backward
+			let autoScrollInterval = null;
+			let isPaused = false;
+
+			function startAutoScroll() {
+				if (autoScrollInterval) {
+					cancelAnimationFrame(autoScrollInterval);
+				}
+				
+				// Delay start để tránh conflict
+				setTimeout(() => {
+					let lastTime = 0;
+					const targetFPS = 40; // 40 FPS
+					const frameTime = 1000 / targetFPS;
+					
+					function animate() {
+						const currentTime = Date.now();
+						if (currentTime - lastTime >= frameTime) {
+							if (!isPaused) {
+								const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+								
+								if (slider.scrollLeft >= maxScrollLeft) {
+									direction = -1; // Scroll backward
+								} else if (slider.scrollLeft <= 0) {
+									direction = 1; // Scroll forward
+								}
+								
+								slider.scrollLeft += scrollSpeed * direction;
+							}
+							lastTime = currentTime;
+						}
+						autoScrollInterval = requestAnimationFrame(animate);
+					}
+					
+					autoScrollInterval = requestAnimationFrame(animate);
+				}, 1000); // Delay 1 giây
+			}
+
+			// Pause auto-scroll on hover
+			slider.addEventListener('mouseenter', () => {
+				isPaused = true;
+			});
+
+			slider.addEventListener('mouseleave', () => {
+				isPaused = false;
+			});
+
+			// Start auto-scroll with delay
+			startAutoScroll();
+		}
+
 		document.addEventListener('DOMContentLoaded', function() {
+			updateCartIcon();
 			loadCart();
+			loadAndShowRecentlyViewed(); // Load recently viewed products
+			
 			const form = document.querySelector('form');
 			if (form) {
 				form.addEventListener('submit', function(e) {

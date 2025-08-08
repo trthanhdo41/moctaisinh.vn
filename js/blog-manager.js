@@ -6,10 +6,16 @@ class BlogManager {
     this.blogLoading = null;
     this.allBlogs = [];
     this.currentIndex = 0;
-    this.pageSize = 9; // Show 9 blogs by default
+    this.pageSize = this.getPageSize(); // Responsive page size
     this.loadMoreBtn = null;
     this.loadMoreSection = null;
+    this.remainingCountSpan = null;
     this.init();
+  }
+
+  getPageSize() {
+    // Show more blogs on desktop, fewer on mobile
+    return window.innerWidth <= 768 ? 6 : 9;
   }
 
   init() {
@@ -17,9 +23,8 @@ class BlogManager {
     this.loadingDiv = document.getElementById("blogPostsLoading");
     this.blogLoading = document.getElementById("blogLoading");
     this.loadMoreSection = document.getElementById("loadMoreSection");
-    this.loadMoreBtn = this.loadMoreSection
-      ? this.loadMoreSection.querySelector("button")
-      : null;
+    this.loadMoreBtn = document.getElementById("loadMoreBtn");
+    this.remainingCountSpan = document.getElementById("remainingCount");
 
     if (this.blogPostsContainer) {
       this.loadBlogPosts();
@@ -31,6 +36,19 @@ class BlogManager {
         this.loadMore();
       });
     }
+
+    // Update pageSize on window resize
+    window.addEventListener("resize", () => {
+      const newPageSize = this.getPageSize();
+      if (newPageSize !== this.pageSize) {
+        this.pageSize = newPageSize;
+        // Re-render if we have blogs loaded
+        if (this.allBlogs.length > 0) {
+          this.currentIndex = Math.min(this.pageSize, this.allBlogs.length);
+          this.renderBlogPosts();
+        }
+      }
+    });
   }
 
   async loadBlogPosts() {
@@ -200,6 +218,12 @@ class BlogManager {
     if (this.loadMoreSection) {
       if (this.currentIndex < this.allBlogs.length) {
         this.loadMoreSection.style.display = "block";
+        
+        // Update remaining count
+        const remainingCount = this.allBlogs.length - this.currentIndex;
+        if (this.remainingCountSpan) {
+          this.remainingCountSpan.textContent = remainingCount;
+        }
       } else {
         this.loadMoreSection.style.display = "none";
       }
@@ -212,10 +236,8 @@ class BlogManager {
     }
 
     setTimeout(() => {
-      this.currentIndex = Math.min(
-        this.currentIndex + this.pageSize,
-        this.allBlogs.length
-      );
+      // Show all remaining blogs at once
+      this.currentIndex = this.allBlogs.length;
       this.renderBlogPosts();
 
       if (this.blogLoading) {
