@@ -8,6 +8,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- Iconify script removed -->
   <script>
     // Chặn truy cập nếu chưa đăng nhập: chuyển sang login.html
     (function(){
@@ -1046,6 +1047,7 @@
         <h2>Admin Panel</h2>
         <ul>
           <li><a href="#products" class="active" data-tab="products">Quản lý sản phẩm</a></li>
+          <li><a href="#categories" data-tab="categories">Quản lý danh mục</a></li>
           <li><a href="#orders" data-tab="orders">Quản lý đơn hàng</a></li>
           <li><a href="#blogs" data-tab="blogs">Quản lý blog</a></li>
           <li><a href="#" id="adminLogoutBtn">Đăng xuất</a></li>
@@ -1055,6 +1057,7 @@
         <div class="admin-nav-mobile mb-3">
           <select class="form-select" id="adminTabMobile">
             <option value="products">Quản lý sản phẩm</option>
+            <option value="categories">Quản lý danh mục</option>
             <option value="orders">Quản lý đơn hàng</option>
             <option value="blogs">Quản lý blog</option>
           </select>
@@ -1092,10 +1095,38 @@
               </tbody>
             </table>
           </div>
-          <nav>
-            <ul class="pagination" id="pagination" style="justify-content:center;"></ul>
-          </nav>
+          <!-- Pagination removed - show all products -->
         </div>
+        
+        <!-- Tab Quản lý danh mục -->
+        <div id="tab-categories" class="admin-tab d-none">
+          <div class="admin-section-title d-flex align-items-center justify-content-between">
+            <span>Quản lý danh mục</span>
+          </div>
+          <div class="sticky-toolbar d-flex align-items-center justify-content-between mb-3">
+            <button class="admin-btn btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#categoryModal" id="btnAddCategory">+ Thêm danh mục</button>
+            <button class="admin-btn btn btn-success mb-3" id="categoryCountBtn">Tổng: 0 danh mục</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table admin-table" id="categoriesTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tên danh mục</th>
+                  <th>Mô tả</th>
+                                      <!-- Icon column removed -->
+                  <th>Trạng thái</th>
+                  <th>Thứ tự</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Categories sẽ được load bằng JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
         <div id="tab-orders" class="admin-tab d-none">
           <div class="admin-section-title d-flex align-items-center justify-content-between">
             <span>Quản lý đơn hàng</span>
@@ -1129,9 +1160,7 @@
               </tbody>
             </table>
           </div>
-          <nav>
-            <ul class="pagination" id="orderPagination" style="justify-content:center;"></ul>
-          </nav>
+          <!-- Pagination removed - show all orders -->
         </div>
         <div id="tab-blogs" class="admin-tab d-none">
           <div class="admin-section-title d-flex align-items-center justify-content-between">
@@ -1164,9 +1193,7 @@
               <tbody></tbody>
             </table>
           </div>
-          <nav>
-            <ul class="pagination" id="blogPagination" style="justify-content:center;"></ul>
-          </nav>
+          <!-- Pagination removed - show all blogs -->
         </div>
       </div>
     </div>
@@ -1214,6 +1241,12 @@
                   <label class="form-label">Trọng lượng *</label>
                   <input type="text" class="form-control" id="productWeight" required
                     placeholder="Ví dụ: 8.5kg, 12kg...">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Danh mục</label>
+                  <select class="form-control" id="productCategory">
+                    <option value="">-- Chọn danh mục --</option>
+                  </select>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tình trạng</label>
@@ -1502,11 +1535,24 @@
   <script>
 
 
-    // Xử lý nút đăng xuất
-    document.getElementById('adminLogoutBtn').addEventListener('click', function(e){
-      e.preventDefault();
-      localStorage.removeItem('mts_admin_logged_in');
-      window.location.href = 'index.html';
+    // Hàm đăng xuất global
+    window.performLogout = function() {
+      if (confirm('Bạn có chắc muốn đăng xuất?')) {
+        localStorage.removeItem('mts_admin_logged_in');
+        alert('Đã đăng xuất thành công!');
+        window.location.href = 'index.html';
+      }
+    };
+
+    // Xử lý nút đăng xuất - đảm bảo DOM đã load
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutBtn = document.getElementById('adminLogoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          performLogout();
+        });
+      }
     });
 
     // Chặn mọi thao tác ghi nếu chưa đăng nhập
@@ -1560,8 +1606,7 @@
     const productsTableBody = document.querySelector('#productsTable tbody');
     let products = [];
     let filteredProducts = [];
-    let currentPage = 1;
-    const pageSize = 10;
+    // Pagination removed - show all products
     let currentSort = { key: '', asc: true };
     function renderProductCount() {
       document.getElementById('productCountBtn').innerText = `Tổng: ${products.length} sản phẩm`;
@@ -1575,7 +1620,6 @@
       );
       currentPage = 1;
       renderProducts();
-      renderPagination();
       renderProductCount();
     });
     window.sortTable = function (key) {
@@ -1596,34 +1640,11 @@
         document.getElementById('sortIcon-' + k).innerText = (currentSort.key === k) ? (currentSort.asc ? '▲' : '▼') : '';
       });
     }
-    function renderPagination() {
-      const totalPages = Math.ceil(products.length / pageSize);
-      const pag = document.getElementById('pagination');
-      pag.innerHTML = '';
-      if (totalPages <= 1) return;
-      for (let i = 1; i <= totalPages; i++) {
-        const li = document.createElement('li');
-        li.className = 'page-item' + (i === currentPage ? ' active' : '');
-        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.onclick = function (e) {
-          e.preventDefault();
-          currentPage = i;
-          renderProducts();
-          renderPagination();
-          setTimeout(() => {
-            document.getElementById('productsTable').scrollIntoView({ behavior: 'smooth' });
-          }, 50);
-        };
-        pag.appendChild(li);
-      }
-    }
+    // renderPagination removed - show all products
     function renderProducts() {
       const tbody = productsTableBody;
       tbody.innerHTML = '';
-      let data = filteredProducts;
-      const start = (currentPage - 1) * pageSize;
-      const end = start + pageSize;
-      data = data.slice(start, end);
+      let data = filteredProducts; // Show all products without pagination
       data.forEach((p, idx) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -1649,7 +1670,6 @@
       filteredProducts = products.slice();
       currentPage = 1;
       renderProducts();
-      renderPagination();
       renderProductCount();
       showGlobalLoading(false);
     }
@@ -1670,6 +1690,7 @@
       document.getElementById('productSize').value = p.size || '';
       document.getElementById('productWeight').value = p.weight || '';
       document.getElementById('productStatus').value = p.status || 'Còn hàng';
+      document.getElementById('productCategory').value = p.categoryId || '';
       document.getElementById('productFeatures').value = p.features || '';
       document.getElementById('productStory').value = p.story || '';
       const imagesValue = (p.images || p.image || '').replace(/,/g, '\n');
@@ -1838,7 +1859,8 @@
         features: document.getElementById('productFeatures').value,
         story: document.getElementById('productStory').value,
         image: imagesArr[0] || '', // ảnh đại diện
-        images: imagesStr // CHUỖI, không phải mảng
+        images: imagesStr, // CHUỖI, không phải mảng
+        categoryId: document.getElementById('productCategory').value
       };
       try {
         if (rowIndex) {
@@ -2057,8 +2079,7 @@
 
 
     let blogs = [];
-    let blogCurrentPage = 1;
-    const blogPageSize = 10;
+    // Blog pagination removed - show all blogs
     let blogCurrentSort = { key: '', asc: true };
     let allBlogs = [];
     async function fetchBlogs() {
@@ -2068,7 +2089,6 @@
       blogs = allBlogs.slice();
       blogCurrentPage = 1;
       renderBlogs();
-      renderBlogPagination();
       renderBlogCount();
       showGlobalLoading(false);
     }
@@ -2088,9 +2108,7 @@
           return 0;
         });
       }
-      const start = (blogCurrentPage - 1) * blogPageSize;
-      const end = start + blogPageSize;
-      data = data.slice(start, end);
+      // Show all blogs without pagination
       data.forEach((b, idx) => {
         const tr = document.createElement('tr');
         const displayContent = (b.content || '').length > 100 ? (b.content || '').substring(0, 100) + '...' : (b.content || '');
@@ -2116,27 +2134,6 @@
         document.getElementById('sortBlogIcon-' + k).innerText = (blogCurrentSort.key === k) ? (blogCurrentSort.asc ? '▲' : '▼') : '';
       });
     }
-    function renderBlogPagination() {
-      const totalPages = Math.ceil(blogs.length / blogPageSize);
-      const pag = document.getElementById('blogPagination');
-      pag.innerHTML = '';
-      if (totalPages <= 1) return;
-      for (let i = 1; i <= totalPages; i++) {
-        const li = document.createElement('li');
-        li.className = 'page-item' + (i === blogCurrentPage ? ' active' : '');
-        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.onclick = function (e) {
-          e.preventDefault();
-          blogCurrentPage = i;
-          renderBlogs();
-          renderBlogPagination();
-          setTimeout(() => {
-            document.getElementById('blogsTable').scrollIntoView({ behavior: 'smooth' });
-          }, 50);
-        };
-        pag.appendChild(li);
-      }
-    }
     document.getElementById('searchBlogInput').addEventListener('input', function () {
       const q = this.value.trim().toLowerCase();
       blogs = allBlogs.filter(b =>
@@ -2146,7 +2143,6 @@
       );
       blogCurrentPage = 1;
       renderBlogs();
-      renderBlogPagination();
       renderBlogCount();
     });
     // Blog image preview
@@ -2345,8 +2341,7 @@
     const ordersTableBody = document.querySelector('#ordersTable tbody');
     let orders = [];
     let filteredOrders = [];
-    let orderCurrentPage = 1;
-    const orderPageSize = 10;
+    // Order pagination removed - show all orders
     let orderCurrentSort = { key: '', asc: true };
 
     function renderOrderCount() {
@@ -2363,7 +2358,6 @@
       );
       orderCurrentPage = 1;
       renderOrders();
-      renderOrderPagination();
       renderOrderCount();
     });
 
@@ -2372,8 +2366,16 @@
       else { orderCurrentSort.key = key; orderCurrentSort.asc = true; }
       filteredOrders.sort((a, b) => {
         let va = a[key], vb = b[key];
-        if (key === 'total') { va = Number(va) || 0; vb = Number(vb) || 0; }
-        if (key === 'date') { va = va || ''; vb = vb || ''; }
+        
+        if (key === 'total') { 
+          va = Number(va) || 0; 
+          vb = Number(vb) || 0; 
+        } else if (key === 'date') {
+          // Chuyển đổi string ngày thành Date object để so sánh đúng
+          va = va ? new Date(convertDateString(va)) : new Date(0);
+          vb = vb ? new Date(convertDateString(vb)) : new Date(0);
+        }
+        
         if (va < vb) return orderCurrentSort.asc ? -1 : 1;
         if (va > vb) return orderCurrentSort.asc ? 1 : -1;
         return 0;
@@ -2382,41 +2384,30 @@
       renderOrders();
     };
 
+    // Hàm chuyển đổi format ngày từ dd/mm/yyyy hh:mm:ss sang format chuẩn
+    function convertDateString(dateStr) {
+      if (!dateStr) return '';
+      // Format: "00:39:04 6/8/2025" -> "6/8/2025 00:39:04"
+      const parts = dateStr.split(' ');
+      if (parts.length >= 2) {
+        const time = parts[0];
+        const date = parts[1];
+        return `${date} ${time}`;
+      }
+      return dateStr;
+    }
+
     function renderOrderSortIcons() {
       ['id', 'date', 'customerName', 'customerPhone', 'customerAddress', 'total', 'status'].forEach(k => {
         document.getElementById('sortOrderIcon-' + k).innerText = (orderCurrentSort.key === k) ? (orderCurrentSort.asc ? '▲' : '▼') : '';
       });
     }
 
-    function renderOrderPagination() {
-      const totalPages = Math.ceil(filteredOrders.length / orderPageSize);
-      const pag = document.getElementById('orderPagination');
-      pag.innerHTML = '';
-      if (totalPages <= 1) return;
-      for (let i = 1; i <= totalPages; i++) {
-        const li = document.createElement('li');
-        li.className = 'page-item' + (i === orderCurrentPage ? ' active' : '');
-        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.onclick = function (e) {
-          e.preventDefault();
-          orderCurrentPage = i;
-          renderOrders();
-          renderOrderPagination();
-          setTimeout(() => {
-            document.getElementById('ordersTable').scrollIntoView({ behavior: 'smooth' });
-          }, 50);
-        };
-        pag.appendChild(li);
-      }
-    }
-
     function renderOrders() {
       const tbody = ordersTableBody;
       tbody.innerHTML = '';
       let data = filteredOrders;
-      const start = (orderCurrentPage - 1) * orderPageSize;
-      const end = start + orderPageSize;
-      data = data.slice(start, end);
+      // Show all orders without pagination
       data.forEach((order, idx) => {
         const tr = document.createElement('tr');
         const statusClass = getStatusClass(order.status || 'Chờ xử lý');
@@ -2460,7 +2451,6 @@
         filteredOrders = orders.slice();
         orderCurrentPage = 1;
         renderOrders();
-        renderOrderPagination();
         renderOrderCount();
       } catch (e) {
         showToast('Không thể tải danh sách đơn hàng!', 'danger');
@@ -2554,7 +2544,270 @@
     function showGlobalLoading(show = true) {
       document.getElementById('globalLoading').style.display = show ? 'flex' : 'none';
     }
+
+    // Categories Management
+    let categories = [];
+    let categoryDeleteIdx = null;
+
+    window.editCategory = function(index) {
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+      const category = categories[index];
+      document.getElementById('categoryModalLabel').textContent = 'Sửa danh mục';
+      document.getElementById('categoryId').value = category.id;
+      document.getElementById('categoryName').value = category.name;
+      document.getElementById('categoryDescription').value = category.description;
+              // Icon field removed
+      document.getElementById('categoryStatus').value = category.status;
+      document.getElementById('categoryDisplayOrder').value = category.displayOrder;
+      document.getElementById('categoryRowIndex').value = index + 2;
+      document.getElementById('categoryIdGroup').style.display = 'block';
+      
+      // Icon preview logic removed
+      
+      var modal = new bootstrap.Modal(document.getElementById('categoryModal'));
+      modal.show();
+    };
+
+    window.deleteCategory = function(idx) {
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+      categoryDeleteIdx = idx;
+      var modal = new bootstrap.Modal(document.getElementById('deleteCategoryConfirmModal'));
+      modal.show();
+    };
+
+    document.getElementById('btnAddCategory').onclick = function() {
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+      document.getElementById('categoryModalLabel').textContent = 'Thêm danh mục mới';
+      document.getElementById('categoryForm').reset();
+      document.getElementById('categoryRowIndex').value = '';
+      document.getElementById('categoryIdGroup').style.display = 'none';
+      
+      // Auto-suggest next display order
+      const categories = window.categories || [];
+      const maxOrder = Math.max(0, ...categories.map(c => c.displayOrder || 0));
+      document.getElementById('categoryDisplayOrder').value = maxOrder + 1;
+      
+      // Icon reset logic removed
+    };
+
+    // Modern Icon Picker Functions
+    // Icon picker functions removed
+    
+    // Icon picker events removed
+    
+    // Icon selection handlers removed
+    
+    // Icon category tabs removed
+
+    // Filter chips removed
+
+    // Category form submit handler - moved to end of file
+    setTimeout(() => {
+      const categoryForm = document.getElementById('categoryForm');
+      if (categoryForm) {
+        categoryForm.onsubmit = async function(e) {
+          e.preventDefault();
+          if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+      
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      showGlobalLoading(true);
+      const rowIndex = document.getElementById('categoryRowIndex').value;
+      
+      // Validation
+      const name = document.getElementById('categoryName').value.trim();
+      const description = document.getElementById('categoryDescription').value.trim();
+      // Icon validation removed
+      
+      if (!name) {
+        showToast('Tên danh mục không được để trống!', 'warning');
+        btn.disabled = false;
+        showGlobalLoading(false);
+        return;
+      }
+      
+      if (!description) {
+        showToast('Mô tả danh mục không được để trống!', 'warning');
+        btn.disabled = false;
+        showGlobalLoading(false);
+        return;
+      }
+      
+      // Icon validation removed
+      
+      let category = {
+        name: name,
+        description: description,
+        status: document.getElementById('categoryStatus').value,
+        displayOrder: parseInt(document.getElementById('categoryDisplayOrder').value) || 0
+      };
+      
+      console.log('Saving category:', category); // Debug
+      
+      try {
+        let response;
+        if (rowIndex) {
+          category.id = document.getElementById('categoryId').value;
+          response = await fetch(`${API_BASE}/api/categories/${rowIndex}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(category)
+          });
+          if (response.ok) {
+            showToast('Cập nhật danh mục thành công!');
+          } else {
+            throw new Error('Cập nhật thất bại');
+          }
+        } else {
+          response = await fetch(`${API_BASE}/api/categories`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(category)
+          });
+          if (response.ok) {
+            showToast('Thêm danh mục thành công!');
+          } else {
+            throw new Error('Thêm mới thất bại');
+          }
+        }
+        var modal = bootstrap.Modal.getInstance(document.getElementById('categoryModal'));
+        modal.hide();
+        window.adminManager.fetchCategories();
+        // Reload categories for product form
+        window.adminManager.loadCategoriesForForm();
+      } catch (error) {
+        console.error('Category save error:', error);
+        showToast('Lỗi: ' + error.message, 'danger');
+        } finally {
+          btn.disabled = false;
+          showGlobalLoading(false);
+        }
+        };
+      } else {
+        console.error('categoryForm not found after timeout!');
+      }
+    }, 100);
+
+    // Use setTimeout to ensure DOM is ready for delete button
+    setTimeout(() => {
+      const deleteBtn = document.getElementById('btnConfirmDeleteCategory');
+      if (deleteBtn) {
+        console.log('Delete button found, attaching event handler');
+        deleteBtn.onclick = async function() {
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+      console.log('Delete button clicked. categoryDeleteIdx:', window.categoryDeleteIdx);
+      
+      if (window.categoryDeleteIdx !== null && window.categoryDeleteIdx !== undefined) {
+        const rowIndex = window.categoryDeleteIdx + 2;
+        console.log('Deleting category at row index:', rowIndex);
+        showGlobalLoading(true);
+        
+        try {
+          console.log('Sending DELETE request to:', `${API_BASE}/api/categories/${rowIndex}`);
+          const response = await fetch(`${API_BASE}/api/categories/${rowIndex}`, { 
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          console.log('Delete response:', response.status, response.statusText);
+          
+          if (response.ok) {
+            showToast('Xóa danh mục thành công!');
+            window.adminManager.fetchCategories();
+            window.adminManager.loadCategoriesForForm(); // Reload dropdown in product form
+          } else {
+            const errorText = await response.text();
+            console.error('Delete failed with response:', errorText);
+            throw new Error(`Delete failed: ${response.status}`);
+          }
+        } catch (e) {
+          console.error('Delete error:', e);
+          showToast('Xóa danh mục thất bại!', 'danger');
+        }
+        
+        window.categoryDeleteIdx = null;
+        var modal = bootstrap.Modal.getInstance(document.getElementById('deleteCategoryConfirmModal'));
+        modal.hide();
+        showGlobalLoading(false);
+      } else {
+        console.error('No category selected for deletion');
+        showToast('Không có danh mục nào được chọn để xóa!', 'danger');
+      }
+        };
+      } else {
+        console.error('Delete button not found!');
+      }
+    }, 200);
+
   </script>
+
+  <style>
+          /* Icon-related CSS removed */
+  </style>
+
+  <!-- Modal Thêm/Sửa Danh mục -->
+  <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background:var(--main-blue);color:#fff;">
+          <h5 class="modal-title" id="categoryModalLabel">Thêm danh mục mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="categoryForm">
+            <input type="hidden" id="categoryRowIndex">
+            <div class="mb-3" id="categoryIdGroup" style="display:none;">
+              <label class="form-label">ID</label>
+              <input type="text" class="form-control" id="categoryId" readonly>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tên danh mục *</label>
+              <input type="text" class="form-control" id="categoryName" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mô tả *</label>
+              <textarea class="form-control" id="categoryDescription" rows="3" placeholder="Mô tả ngắn gọn về danh mục này (vd: Các sản phẩm nội thất phòng khách)" required></textarea>
+            </div>
+            <!-- Icon field removed as requested -->
+            <div class="mb-3">
+              <label class="form-label">Trạng thái</label>
+              <select class="form-select" id="categoryStatus" required>
+                <option value="active">Hoạt động</option>
+                <option value="inactive">Tạm dừng</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Thứ tự hiển thị</label>
+              <input type="number" class="form-control" id="categoryDisplayOrder" value="0">
+              <small class="text-muted">Số thứ tự hiển thị (0 = hiển thị đầu tiên)</small>
+            </div>
+            <button type="submit" class="admin-btn btn-sm admin-form-btn-full">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Xác nhận xóa danh mục -->
+  <div class="modal fade" id="deleteCategoryConfirmModal" tabindex="-1" aria-labelledby="deleteCategoryConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteCategoryConfirmModalLabel">Xác nhận xoá danh mục</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc chắn muốn xoá danh mục này không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="admin-btn btn-cancel btn-sm" data-bs-dismiss="modal">Huỷ</button>
+          <button type="button" class="admin-btn btn-danger btn-sm" id="btnConfirmDeleteCategory">Xoá</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

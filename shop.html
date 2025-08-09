@@ -1016,7 +1016,7 @@
 		</div>
 		<!-- Start Load More Section -->
 		<div class="container mt-2 mb-4 text-center">
-			<button class="btn btn-secondary px-5 py-3" id="loadMoreBtn" style="font-size: 1.1rem; border-radius: 30px; box-shadow: 0 2px 16px rgba(59,93,80,0.08);">
+			<button class="btn btn-secondary px-5 py-3 load-more-btn" id="loadMoreBtn" style="font-size: 1.1rem; border-radius: 30px; box-shadow: 0 2px 16px rgba(59,93,80,0.08); transition: all 0.3s ease;">
 				Xem thêm <span id="remainingCount">0</span> sản phẩm <i class="fas fa-chevron-down ms-2"></i>
 			</button>
 		</div>
@@ -1346,13 +1346,22 @@ function getRandomTags() {
   const shuffled = allTags.sort(() => 0.5 - Math.random());
   return shuffled.slice(0, 2).join('');
 }
-function renderProducts() {
+function renderProducts(animate = false) {
   productSection.innerHTML = '';
   for (let i = 0; i < currentIndex; i++) {
     const p = filteredProducts[i];
     if (!p) continue;
     const col = document.createElement('div');
             col.className = 'col-6 col-md-4 col-lg-2-4 mb-5';
+    
+    // Set initial animation state nếu cần animate
+    if (animate) {
+      col.style.opacity = '0';
+      col.style.transform = 'translateY(50px) scale(0.9)';
+      col.style.filter = 'blur(8px)';
+      col.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+    }
+    
     col.innerHTML = `
       <div class="product-item" data-product-id="${p.id}">
         <img src="${p.image}" class="img-fluid product-thumbnail">
@@ -1384,6 +1393,31 @@ function renderProducts() {
     });
     productSection.appendChild(col);
   }
+  
+  // Animate products nếu cần
+  if (animate) {
+    // Trigger reflow
+    void document.body.offsetHeight;
+    
+    // Animate từng sản phẩm với stagger
+    const allCols = productSection.querySelectorAll('.col-6.col-md-4.col-lg-2-4');
+    allCols.forEach((col, index) => {
+      setTimeout(() => {
+        col.style.opacity = '1';
+        col.style.transform = 'translateY(0) scale(1)';
+        col.style.filter = 'blur(0)';
+        
+        // Bounce effect nhẹ
+        setTimeout(() => {
+          col.style.transform = 'translateY(-10px) scale(1.02)';
+          setTimeout(() => {
+            col.style.transform = 'translateY(0) scale(1)';
+          }, 200);
+        }, 400);
+        
+      }, index * 100); // Stagger 100ms cho mỗi item
+    });
+  }
   // Cập nhật số lượng sản phẩm còn lại
   const remainingCount = filteredProducts.length - currentIndex;
   if (remainingCountSpan) {
@@ -1409,12 +1443,22 @@ async function fetchProducts() {
     filteredProducts = [...allProducts];
     pageSize = getPageSize(); // Cập nhật pageSize
     currentIndex = Math.min(pageSize, filteredProducts.length);
-    renderProducts();
+    
+    // Delay để tạo cảm giác loading chân thực
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    showShopLoading(false);
+    
+    // Render với animation
+    renderProducts(true);
+    
+    // Bỏ welcome message - không cần thiết
+    
   } catch (e) {
+    showShopLoading(false);
     productSection.innerHTML = '<div class="text-danger">Không thể tải sản phẩm. Vui lòng thử lại sau.</div>';
     loadMoreBtn.style.display = 'none';
   }
-  showShopLoading(false);
 }
 function searchProducts() {
   const searchTerm = searchInput.value.toLowerCase().trim();
@@ -1428,7 +1472,7 @@ function searchProducts() {
   sortProducts();
   pageSize = getPageSize(); // Cập nhật pageSize
   currentIndex = Math.min(pageSize, filteredProducts.length);
-  renderProducts();
+  renderProducts(false); // Không animate cho search
 }
 function sortProducts(sortValue) {
   switch(sortValue) {
@@ -1467,7 +1511,7 @@ sortButtons.forEach(btn => {
     sortProducts(sortValue);
     pageSize = getPageSize(); // Cập nhật pageSize
     currentIndex = Math.min(pageSize, filteredProducts.length);
-    renderProducts();
+    renderProducts(false); // Không animate cho sort
   });
 });
 // Cập nhật pageSize khi resize window
@@ -1477,19 +1521,159 @@ window.addEventListener('resize', function() {
     pageSize = newPageSize;
     // Re-render với pageSize mới
     currentIndex = Math.min(pageSize, filteredProducts.length);
-    renderProducts();
+    renderProducts(false); // Không animate cho resize
   }
 });
 
 loadMoreBtn.addEventListener('click', function() {
-  showShopLoading(true);
+  const btn = this;
+  const originalHTML = btn.innerHTML;
+  const remainingProducts = filteredProducts.length - currentIndex;
+  const startIndex = currentIndex;
+  
+  // Show loading state in button với progress bar
+  btn.disabled = true;
+  btn.style.position = 'relative';
+  btn.style.overflow = 'hidden';
+  
+  // Tạo progress bar
+  const progressBar = document.createElement('div');
+  progressBar.className = 'progress-bar-glow';
+  progressBar.style.cssText = `
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b5d50, #5a8b7a);
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+  `;
+  btn.appendChild(progressBar);
+  
+  btn.innerHTML = `
+    <div style="position: relative; z-index: 20;">
+      <span class="spinner-border spinner-border-sm me-2" role="status" style="animation: spin 0.75s linear infinite;"></span>
+      Đang tải thêm ${remainingProducts} sản phẩm...
+      <div style="font-size: 0.8rem; margin-top: 4px; opacity: 0.8;">Vui lòng chờ trong giây lát</div>
+    </div>
+  `;
+  
+  // Animate progress bar
   setTimeout(() => {
-    // Hiển thị toàn bộ sản phẩm còn lại
+    progressBar.style.width = '100%';
+  }, 100);
+  
+  setTimeout(() => {
+    // Load all remaining products
     currentIndex = filteredProducts.length;
-    renderProducts();
-    showShopLoading(false);
-  }, 600);
+    
+    // Render products (không animate ở đây vì ta sẽ animate manual)
+    renderProducts(false);
+    
+    // Get all product columns với selector chính xác
+    const allProductCols = document.querySelectorAll('.product-section .row > div');
+    const newProductCols = Array.from(allProductCols).slice(startIndex);
+    
+    // Set initial state for new products
+    newProductCols.forEach((col, index) => {
+      col.style.opacity = '0';
+      col.style.transform = 'translateY(50px) scale(0.9)';
+      col.style.filter = 'blur(8px)';
+      col.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+    });
+    
+    // Trigger reflow để đảm bảo styles được áp dụng
+    void document.body.offsetHeight;
+    
+    // Animate new products với stagger effect
+    newProductCols.forEach((col, index) => {
+      setTimeout(() => {
+        col.style.opacity = '1';
+        col.style.transform = 'translateY(0) scale(1)';
+        col.style.filter = 'blur(0)';
+        
+        // Thêm bounce effect nhẹ
+        setTimeout(() => {
+          col.style.transform = 'translateY(-10px) scale(1.02)';
+          setTimeout(() => {
+            col.style.transform = 'translateY(0) scale(1)';
+          }, 200);
+        }, 400);
+        
+      }, index * 120); // Tăng thời gian delay giữa các items
+    });
+    
+    // Bỏ auto scroll - không cần thiết
+    
+    // Hide và animate button với hiệu ứng đẹp
+    setTimeout(() => {
+      btn.style.transform = 'scale(0.9)';
+      btn.style.opacity = '0.7';
+      btn.style.filter = 'blur(2px)';
+      
+      setTimeout(() => {
+        btn.style.transform = 'scale(0.8)';
+        btn.style.opacity = '0';
+        btn.style.filter = 'blur(4px)';
+        
+        setTimeout(() => {
+          btn.style.display = 'none';
+          
+          // Hiển thị thông báo hoàn thành
+          showLoadCompleteMessage(remainingProducts);
+          
+        }, 400);
+      }, 200);
+    }, (newProductCols.length * 120) + 800);
+    
+  }, 1500); // Tăng thời gian loading để tạo cảm giác chân thực
 });
+
+// Hàm hiển thị thông báo hoàn thành (không có fade-out animation)
+function showLoadCompleteMessage(loadedCount) {
+  const message = document.createElement('div');
+  message.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(135deg, #3b5d50, #5a8b7a);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(59, 93, 80, 0.3);
+    z-index: 10000;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  `;
+  
+  message.innerHTML = `
+    <i class="fas fa-check-circle" style="color: #4ade80;"></i>
+    Đã tải thêm ${loadedCount} sản phẩm thành công!
+  `;
+  
+  document.body.appendChild(message);
+  
+  // Animate vào
+  setTimeout(() => {
+    message.style.transform = 'translateX(-50%) translateY(0)';
+  }, 100);
+  
+  // Tự động biến mất sau 3 giây (không có animation)
+  setTimeout(() => {
+    if (document.body.contains(message)) {
+      document.body.removeChild(message);
+    }
+  }, 3000);
+}
+
 const style = document.createElement('style');
 style.innerHTML = `.clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 2.6em; }`;
 document.head.appendChild(style);
@@ -1694,6 +1878,94 @@ loadingStyle.innerHTML = `
   /* Tên sản phẩm chuyển màu xanh lá khi hover */
   .product-item:hover .product-title {
     color: #3b5d50 !important;
+  }
+  
+  /* CSS cho hiệu ứng Load More mượt mà */
+  .load-more-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  }
+  
+  .load-more-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 32px rgba(59, 93, 80, 0.15) !important;
+  }
+  
+  /* Animation cho sản phẩm mới được tải */
+  @keyframes productFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      filter: blur(8px);
+    }
+    50% {
+      opacity: 0.7;
+      transform: translateY(10px) scale(0.95);
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+  
+  .product-new-loaded {
+    animation: productFadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+  
+  /* Progress bar animation */
+  @keyframes progressGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(59, 93, 80, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(59, 93, 80, 0.8);
+    }
+  }
+  
+  .progress-bar-glow {
+    animation: progressGlow 1.5s ease-in-out infinite;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Loading message animation */
+  @keyframes messageSlideUp {
+    0% {
+      transform: translateX(-50%) translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .load-complete-message {
+    animation: messageSlideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+  
+  /* Responsive cho animation */
+  @media (max-width: 768px) {
+    .product-new-loaded {
+      animation-duration: 0.6s;
+    }
+  }
+  
+  /* Reduced motion cho users có preference */
+  @media (prefers-reduced-motion: reduce) {
+    .product-new-loaded,
+    .load-more-btn,
+    .progress-bar-glow,
+    .load-complete-message {
+      animation: none !important;
+      transition: none !important;
+    }
   }
  `;
   document.head.appendChild(loadingStyle);

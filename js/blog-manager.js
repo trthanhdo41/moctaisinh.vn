@@ -10,7 +10,7 @@ class BlogManager {
     this.loadMoreBtn = null;
     this.loadMoreSection = null;
     this.remainingCountSpan = null;
-    this.init();
+    this.init(); // Gọi init() một lần duy nhất
   }
 
   getPageSize() {
@@ -81,7 +81,9 @@ class BlogManager {
 
       // Initialize currentIndex to show first pageSize blogs
       this.currentIndex = Math.min(this.pageSize, blogs.length);
-      this.renderBlogPosts();
+      
+      // Render với animation
+      this.renderBlogPosts(true);
     } catch (error) {
       console.error("Error loading blog posts:", error);
       this.showErrorState();
@@ -122,7 +124,7 @@ class BlogManager {
     }
   }
 
-  renderBlogPosts() {
+  renderBlogPosts(animate = false) {
     if (!this.blogPostsContainer) return;
 
     // Clear container
@@ -135,6 +137,14 @@ class BlogManager {
 
       const blogCol = document.createElement("div");
       blogCol.className = "col-12 col-sm-6 col-md-4 mb-5";
+      
+      // Set initial animation state nếu cần animate
+      if (animate) {
+        blogCol.style.opacity = '0';
+        blogCol.style.transform = 'translateY(50px) scale(0.9)';
+        blogCol.style.filter = 'blur(8px)';
+        blogCol.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+      }
 
       // Format date
       const blogDate = blog.date
@@ -214,6 +224,31 @@ class BlogManager {
       this.blogPostsContainer.appendChild(blogCol);
     }
 
+    // Animate blogs nếu cần
+    if (animate) {
+      // Trigger reflow
+      void document.body.offsetHeight;
+      
+      // Animate từng bài viết với stagger
+      const allCols = this.blogPostsContainer.querySelectorAll('.col-12.col-sm-6.col-md-4');
+      allCols.forEach((col, index) => {
+        setTimeout(() => {
+          col.style.opacity = '1';
+          col.style.transform = 'translateY(0) scale(1)';
+          col.style.filter = 'blur(0)';
+          
+          // Bounce effect nhẹ
+          setTimeout(() => {
+            col.style.transform = 'translateY(-10px) scale(1.02)';
+            setTimeout(() => {
+              col.style.transform = 'translateY(0) scale(1)';
+            }, 200);
+          }, 400);
+          
+        }, index * 100); // Stagger 100ms cho mỗi item
+      });
+    }
+
     // Show/hide load more button based on whether there are more blogs to show
     if (this.loadMoreSection) {
       if (this.currentIndex < this.allBlogs.length) {
@@ -231,19 +266,113 @@ class BlogManager {
   }
 
   loadMore() {
-    if (this.blogLoading) {
-      this.blogLoading.style.display = "flex";
-    }
-
+    const btn = this.loadMoreBtn;
+    const originalHTML = btn.innerHTML;
+    const remainingBlogs = this.allBlogs.length - this.currentIndex;
+    const startIndex = this.currentIndex;
+    
+    // Show loading state in button
+    btn.disabled = true;
+    btn.innerHTML = `
+      <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+      Đang tải thêm ${remainingBlogs} bài viết...
+    `;
+    
     setTimeout(() => {
       // Show all remaining blogs at once
       this.currentIndex = this.allBlogs.length;
-      this.renderBlogPosts();
-
-      if (this.blogLoading) {
-        this.blogLoading.style.display = "none";
-      }
+      
+      // Render blogs
+      this.renderBlogPosts(false);
+      
+      // Get new blog columns để animate
+      const allBlogCols = this.blogPostsContainer.querySelectorAll('.col-12.col-sm-6.col-md-4');
+      const newBlogCols = Array.from(allBlogCols).slice(startIndex);
+      
+      // Set initial state for new blogs
+      newBlogCols.forEach((col, index) => {
+        col.style.opacity = '0';
+        col.style.transform = 'translateY(50px) scale(0.9)';
+        col.style.filter = 'blur(8px)';
+        col.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+      });
+      
+      // Trigger reflow
+      void document.body.offsetHeight;
+      
+      // Animate new blogs với stagger effect
+      newBlogCols.forEach((col, index) => {
+        setTimeout(() => {
+          col.style.opacity = '1';
+          col.style.transform = 'translateY(0) scale(1)';
+          col.style.filter = 'blur(0)';
+          
+          // Thêm bounce effect nhẹ
+          setTimeout(() => {
+            col.style.transform = 'translateY(-10px) scale(1.02)';
+            setTimeout(() => {
+              col.style.transform = 'translateY(0) scale(1)';
+            }, 200);
+          }, 400);
+          
+        }, index * 120); // Tăng thời gian delay giữa các items
+      });
+      
+      // Hide button sau khi load xong và hiển thị toast
+      setTimeout(() => {
+        if (this.loadMoreSection) {
+          this.loadMoreSection.style.display = 'none';
+        }
+        
+        // Hiển thị toast thông báo
+        this.showLoadCompleteMessage(remainingBlogs);
+        
+      }, (newBlogCols.length * 120) + 800);
+      
     }, 600);
+  }
+
+  // Hàm hiển thị thông báo hoàn thành (không có fade-out animation)
+  showLoadCompleteMessage(loadedCount) {
+    const message = document.createElement('div');
+    message.style.cssText = `
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, #3b5d50, #5a8b7a);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(59, 93, 80, 0.3);
+      z-index: 10000;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    `;
+    
+    message.innerHTML = `
+      <i class="fas fa-check-circle" style="color: #4ade80;"></i>
+      Đã tải thêm ${loadedCount} bài viết thành công!
+    `;
+    
+    document.body.appendChild(message);
+    
+    // Animate vào
+    setTimeout(() => {
+      message.style.transform = 'translateX(-50%) translateY(0)';
+    }, 100);
+    
+    // Tự động biến mất sau 3 giây (không có animation)
+    setTimeout(() => {
+      if (document.body.contains(message)) {
+        document.body.removeChild(message);
+      }
+    }, 3000);
   }
 
   showBlogDetail(id, title, content, author, date, image) {
@@ -415,12 +544,9 @@ class BlogManager {
   }
 }
 
-// Initialize blog manager immediately
-window.blogManager = new BlogManager();
-
-// Initialize when DOM is loaded
+// Initialize blog manager only when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.blogManager) {
-    window.blogManager.init();
+  if (!window.blogManager) {
+    window.blogManager = new BlogManager();
   }
 });

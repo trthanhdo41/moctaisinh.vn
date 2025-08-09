@@ -45,7 +45,10 @@ class AdminManager {
         });
 
         // Show selected tab
-        document.getElementById('tab-' + tabName).classList.remove('d-none');
+        const tabElement = document.getElementById('tab-' + tabName);
+        if (tabElement) {
+            tabElement.classList.remove('d-none');
+        }
 
         // Update active state in sidebar
         document.querySelectorAll('.admin-sidebar a').forEach(a => {
@@ -69,13 +72,41 @@ class AdminManager {
             case 'blogs':
                 this.fetchBlogs();
                 break;
+            case 'categories':
+                this.fetchCategories();
+                break;
         }
     }
 
     loadInitialData() {
         // Load products data initially
         this.fetchProducts();
+        // Load categories for product form
+        this.loadCategoriesForForm();
     }
+
+    async loadCategoriesForForm() {
+        try {
+            const response = await fetch(`${this.API_BASE}/api/categories`);
+            if (response.ok) {
+                const categories = await response.json();
+                const select = document.getElementById('productCategory');
+                if (select) {
+                    select.innerHTML = '<option value="">-- Chọn danh mục --</option>';
+                    categories.filter(cat => cat.status === 'active').forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category.id;
+                        option.textContent = category.name;
+                        select.appendChild(option);
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error loading categories for form:', error);
+        }
+    }
+
+    // loadCategoriesForDisplay removed - no longer needed since category column was removed
 
     // Utility functions
     showToast(message, type = 'success') {
@@ -113,6 +144,8 @@ class AdminManager {
         if (!number) return '0₫';
         return Number(number).toLocaleString('vi-VN') + '₫';
     }
+
+    // renderCategoryIcon method removed as icon feature was removed
 
 
 
@@ -169,10 +202,30 @@ class AdminManager {
         }
     }
 
+    async fetchCategories() {
+        this.showGlobalLoading(true);
+        try {
+            const response = await fetch(`${this.API_BASE}/api/categories`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch categories');
+            }
+            const categories = await response.json();
+            this.renderCategories(categories);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+            this.showToast('Không thể tải danh sách danh mục!', 'danger');
+        } finally {
+            this.showGlobalLoading(false);
+        }
+    }
+
     // Render functions
     renderProducts(products) {
         const tbody = document.querySelector('#productsTable tbody');
         tbody.innerHTML = '';
+        
+        // Store products globally
+        this.products = products;
 
         products.forEach((product, index) => {
             const tr = document.createElement('tr');
@@ -252,6 +305,79 @@ class AdminManager {
 
         // Update count
         document.getElementById('blogCountBtn').innerText = `Tổng: ${blogs.length} bài viết`;
+    }
+
+    renderCategories(categories) {
+        const tbody = document.querySelector('#categoriesTable tbody');
+        tbody.innerHTML = '';
+        
+        // Update global categories variable for edit/delete functions
+        window.categories = categories;
+        this.categories = categories;
+
+        categories.forEach((category, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${category.id || 'N/A'}</td>
+                <td>${category.name || 'N/A'}</td>
+                <td>${category.description || 'Chưa có mô tả'}</td>
+                <td>
+                    <span class="badge ${category.status === 'active' ? 'bg-success' : 'bg-secondary'}">${category.status === 'active' ? 'Hoạt động' : 'Tạm dừng'}</span>
+                </td>
+                <td>${category.displayOrder || 0}</td>
+                <td>
+                    <button class="admin-btn btn-sm" onclick="window.adminManager.editCategory(${index})">Sửa</button>
+                    <button class="admin-btn btn-danger btn-sm" onclick="window.adminManager.deleteCategory(${index})">Xoá</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Update count
+        document.getElementById('categoryCountBtn').innerText = `Tổng: ${categories.length} danh mục`;
+    }
+
+    editCategory(index) {
+        if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+        const category = this.categories[index];
+        if (!category) {
+            this.showToast('Không tìm thấy danh mục!', 'danger');
+            return;
+        }
+        
+        document.getElementById('categoryModalLabel').textContent = 'Sửa danh mục';
+        document.getElementById('categoryId').value = category.id;
+        document.getElementById('categoryName').value = category.name;
+        document.getElementById('categoryDescription').value = category.description;
+        document.getElementById('categoryStatus').value = category.status;
+        document.getElementById('categoryDisplayOrder').value = category.displayOrder;
+        document.getElementById('categoryRowIndex').value = index + 2;
+        document.getElementById('categoryIdGroup').style.display = 'block';
+        
+        // Icon logic removed
+        // Icon picker removed
+        
+        var modal = new bootstrap.Modal(document.getElementById('categoryModal'));
+        modal.show();
+    }
+
+    deleteCategory(index) {
+        if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
+        console.log('deleteCategory called with index:', index);
+        console.log('Available categories:', this.categories);
+        
+        const category = this.categories[index];
+        if (!category) {
+            console.error('Category not found at index:', index);
+            this.showToast('Không tìm thấy danh mục!', 'danger');
+            return;
+        }
+        
+        console.log('Setting categoryDeleteIdx to:', index);
+        window.categoryDeleteIdx = index;
+        
+        var modal = new bootstrap.Modal(document.getElementById('deleteCategoryConfirmModal'));
+        modal.show();
     }
 
     getStatusClass(status) {

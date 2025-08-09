@@ -3,54 +3,579 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Đăng nhập Admin</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <title>Quản lí Mộc Tái Sinh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f5f7fb}
-    .login-card{width:100%;max-width:380px;background:#fff;border-radius:12px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    /* From Uiverse.io by ilkhoeri */ 
+    .card {
+      --p: 32px;
+      --h-form: auto;
+      --w-form: 420px;
+      --input-px: 0.75rem;
+      --input-py: 0.65rem;
+      --submit-h: 42px;
+      --blind-w: 64px;
+      --space-y: 0.5rem;
+      width: var(--w-form);
+      height: var(--h-form);
+      max-width: 95%;
+      border-radius: 16px;
+      background: white;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: visible;
+      padding: var(--p);
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      -webkit-font-smoothing: antialiased;
+      -webkit-user-select: none;
+      user-select: none;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    .avatar {
+      --sz-avatar: 166px;
+      order: 0;
+      width: var(--sz-avatar);
+      min-width: var(--sz-avatar);
+      max-width: var(--sz-avatar);
+      height: var(--sz-avatar);
+      min-height: var(--sz-avatar);
+      max-height: var(--sz-avatar);
+      border: none;
+      border-radius: 9999px;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 2;
+      perspective: 80px;
+      position: relative;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      --sz-svg: calc(var(--sz-avatar) - 10px);
+    }
+    .avatar svg {
+      position: absolute;
+      transition:
+        transform 0.2s ease-in,
+        opacity 0.1s;
+      transform-origin: 50% 100%;
+      height: var(--sz-svg);
+      width: var(--sz-svg);
+      pointer-events: none;
+    }
+    .avatar svg#monkey {
+      z-index: 1;
+    }
+    .avatar svg#monkey-hands {
+      z-index: 2;
+      transform-style: preserve-3d;
+      transform: translateY(calc(var(--sz-avatar) / 1.25)) rotateX(-21deg);
+    }
+
+    .avatar::before {
+      content: "";
+      border-radius: 45%;
+      width: calc(var(--sz-svg) / 3.889);
+      height: calc(var(--sz-svg) / 5.833);
+      border: 0;
+      border-bottom: calc(var(--sz-svg) * (4 / 100)) solid #3c302a;
+      bottom: 20%;
+
+      position: absolute;
+      transition: all 0.2s ease;
+      z-index: 3;
+    }
+    .blind-check:checked ~ .avatar::before {
+      width: calc(var(--sz-svg) * (9 / 100));
+      height: 0;
+      border-radius: 50%;
+      border-bottom: calc(var(--sz-svg) * (10 / 100)) solid #3c302a;
+    }
+    .avatar svg#monkey .monkey-eye-r,
+    .avatar svg#monkey .monkey-eye-l {
+      animation: blink 10s 1s infinite;
+      transition: all 0.2s ease;
+    }
+    @keyframes blink {
+      0%,
+      2%,
+      4%,
+      26%,
+      28%,
+      71%,
+      73%,
+      100% {
+        ry: 4.5;
+        cy: 31.7;
+      }
+      1%,
+      3%,
+      27%,
+      72% {
+        ry: 0.5;
+        cy: 30;
+      }
+    }
+    .blind-check:checked ~ .avatar svg#monkey .monkey-eye-r,
+    .blind-check:checked ~ .avatar svg#monkey .monkey-eye-l {
+      ry: 0.5;
+      cy: 30;
+    }
+    .blind-check:checked ~ .avatar svg#monkey-hands {
+      transform: translate3d(0, 0, 0) rotateX(0deg);
+    }
+    .avatar svg#monkey,
+    .avatar::before,
+    .avatar svg#monkey .monkey-eye-nose,
+    .avatar svg#monkey .monkey-eye-r,
+    .avatar svg#monkey .monkey-eye-l {
+      transition: all 0.2s ease;
+    }
+    .blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey,
+    .blind-check:checked ~ .form:focus-within ~ .avatar::before,
+    .blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-nose,
+    .blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-r,
+    .blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-l {
+      animation: none;
+    }
+    .form:focus-within ~ .avatar svg#monkey {
+      animation: slick 3s ease infinite 1s;
+      --center: rotateY(0deg);
+      --left: rotateY(-4deg);
+      --right: rotateY(4deg);
+    }
+    .form:focus-within ~ .avatar::before,
+    .form:focus-within ~ .avatar svg#monkey .monkey-eye-nose,
+    .blind-check:not(:checked)
+      ~ .form:focus-within
+      ~ .avatar
+      svg#monkey
+      .monkey-eye-r,
+    .blind-check:not(:checked)
+      ~ .form:focus-within
+      ~ .avatar
+      svg#monkey
+      .monkey-eye-l {
+      ry: 3;
+      cy: 35;
+      animation: slick 3s ease infinite 1s;
+      --center: translateX(0);
+      --left: translateX(-0.5px);
+      --right: translateX(0.5px);
+    }
+    @keyframes slick {
+      0%,
+      100% {
+        transform: var(--center);
+      }
+      25% {
+        transform: var(--left);
+      }
+      75% {
+        transform: var(--right);
+      }
+    }
+
+    .password-wrapper .eye-toggle {
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      z-index: 10;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      transition: color 0.3s ease;
+      font-size: 16px;
+    }
+
+    .password-wrapper .eye-toggle:hover {
+      color: #007bff;
+    }
+
+    .password-wrapper .eye-toggle:active {
+      transform: translateY(-50%) scale(0.9);
+      color: #0056b3;
+    }
+    /* Mặc định: password type = "password" (ẩn) → hiện icon mắt gạch */
+    .eye-toggle .eye-open {
+      display: none;
+    }
+    .eye-toggle .eye-closed {
+      display: block;
+    }
+    
+    /* Khi checkbox checked (password type = "text", hiện) → hiện icon mắt mở */
+    .blind-check:checked ~ .password-wrapper .eye-toggle .eye-closed {
+      display: none;
+    }
+    .blind-check:checked ~ .password-wrapper .eye-toggle .eye-open {
+      display: block;
+    }
+
+    .form {
+      order: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      gap: 8px;
+    }
+
+    .form .title {
+      width: 100%;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      padding-top: 0;
+      padding-bottom: 1rem;
+      color: #2c3e50;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    .form .label_input {
+      white-space: nowrap;
+      font-size: 1rem;
+      margin-top: calc(var(--space-y) / 2);
+      color: rgba(0, 0, 0, 0.9);
+      font-weight: 600;
+      display: inline;
+      text-align: left;
+      margin-right: auto;
+      position: relative;
+      z-index: 99;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* CSS tự viết cho ô input - không dùng class .input gốc */
+    .custom-input {
+      width: 100%;
+      height: 45px;
+      background: #ffffff;
+      border: 1px solid #8f8f8f;
+      border-radius: 6px;
+      padding: var(--input-py) var(--input-px);
+      font-size: 18px;
+      font-family: inherit;
+      color: #000000b3;
+      margin: var(--space-y) 0;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .custom-input:focus {
+      border: 1px solid #0969da;
+      outline: 0;
+      box-shadow: 0 0 0 2px #0969da;
+    }
+
+    .custom-input:hover {
+      border-color: #6c757d;
+    }
+
+    .custom-input::placeholder {
+      color: #6c757d;
+    }
+
+    /* CSS riêng cho ô mật khẩu có nút toggle */
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .custom-input.password-input {
+      padding-right: 45px;
+      border-radius: 6px;
+    }
+    .form .frg_pss {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+    }
+    .form .frg_pss a {
+      background-color: transparent;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.25s ease;
+      color: #000000b3;
+      font-weight: 500;
+      float: right;
+    }
+    .form .frg_pss a:hover {
+      color: #000;
+    }
+
+    .form .submit {
+      height: 42px;
+      width: 100%;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      border: 1px solid #0056b3;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1rem;
+      text-align: center;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      -webkit-appearance: button;
+      appearance: button;
+      margin: var(--space-y) 0 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+    }
+    .form .submit:hover {
+      background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+      border-color: #004085;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    }
+    .form .submit:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    }
+
+    .blind-check:checked ~ .form .input[type="password"] {
+      -webkit-text-security: none;
+      font-family: inherit;
+    }
+
+    .error-message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+      display: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
   </style>
   <script>const API_BASE='http://localhost:8080';</script>
 </head>
 <body>
-  <div class="login-card">
-    <h5 class="mb-3">Đăng nhập Admin</h5>
-    <div class="mb-3">
-      <label class="form-label">Tài khoản</label>
-      <input id="loginUser" type="text" class="form-control" placeholder="Nhập tài khoản">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Mật khẩu</label>
-      <input id="loginPass" type="password" class="form-control" placeholder="Nhập mật khẩu">
-    </div>
-    <div class="d-flex gap-2">
-      <button id="btnLogin" class="btn btn-primary w-100">Đăng nhập</button>
-    </div>
-    <div id="loginMsg" class="mt-3 text-danger" style="display:none"></div>
+  <div class="card">
+    <input
+      value=""
+      class="blind-check"
+      type="checkbox"
+      id="blind-input"
+      name="blindcheck"
+      hidden=""
+    />
+
+
+
+    <form class="form">
+      <div class="title">Quản lí Mộc Tái Sinh</div>
+
+      <label class="label_input" for="email-input">Tài khoản</label>
+      <input
+        spellcheck="false"
+        class="custom-input"
+        type="text"
+        name="email"
+        id="email-input"
+        placeholder="Nhập tài khoản"
+      />
+
+      <div class="frg_pss">
+        <label class="label_input" for="password-input">Mật khẩu</label>
+      </div>
+      <div class="password-wrapper">
+        <input
+          spellcheck="false"
+          class="custom-input password-input"
+          type="password"
+          name="password"
+          id="password-input"
+          placeholder="Nhập mật khẩu"
+          autocomplete="new-password"
+          data-lpignore="true"
+        />
+        <label for="blind-input" class="eye-toggle">
+          <span class="eye-open">
+            <i class="fas fa-eye"></i>
+          </span>
+          <span class="eye-closed">
+            <i class="fas fa-eye-slash"></i>
+          </span>
+        </label>
+      </div>
+      <button class="submit" type="button" id="btnLogin">Đăng nhập</button>
+      
+      <div id="loginMsg" class="error-message"></div>
+    </form>
+
+    <label for="blind-input" class="avatar">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="35"
+        height="35"
+        viewBox="0 0 64 64"
+        id="monkey"
+      >
+        <ellipse cx="53.7" cy="33" rx="8.3" ry="8.2" fill="#89664c"></ellipse>
+        <ellipse cx="53.7" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+        <ellipse cx="10.2" cy="33" rx="8.2" ry="8.2" fill="#89664c"></ellipse>
+        <ellipse cx="10.2" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+        <g fill="#89664c">
+          <path
+            d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2"
+          ></path>
+          <path
+            d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4"
+          ></path>
+        </g>
+        <path
+          d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
+          fill="#e0ac7e"
+        ></path>
+        <g fill="#3b302a" class="monkey-eye-nose">
+          <path
+            d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1"
+          ></path>
+          <path
+            d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1"
+          ></path>
+          <ellipse
+            cx="40.7"
+            cy="31.7"
+            rx="3.5"
+            ry="4.5"
+            class="monkey-eye-r"
+          ></ellipse>
+          <ellipse
+            cx="23.3"
+            cy="31.7"
+            rx="3.5"
+            ry="4.5"
+            class="monkey-eye-l"
+          ></ellipse>
+        </g>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="35"
+        height="35"
+        viewBox="0 0 64 64"
+        id="monkey-hands"
+      >
+        <path
+          fill="#89664C"
+          d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"
+        ></path>
+        <path
+          fill="#FFD6BB"
+          d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
+      s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"
+        ></path>
+        <path
+          fill="#89664C"
+          d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"
+        ></path>
+        <path
+          fill="#FFD6BB"
+          d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
+      s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"
+        ></path>
+      </svg>
+    </label>
   </div>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('btnLogin').onclick = async function(){
-      const u=document.getElementById('loginUser').value.trim();
-      const p=document.getElementById('loginPass').value.trim();
-      const msg=document.getElementById('loginMsg');
-      msg.style.display='none';
-      try{
-        const res=await fetch(`${API_BASE}/api/auth/login?username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`,{method:'POST'});
-        if(res.ok){
-          localStorage.setItem('mts_admin_logged_in','true');
-          window.location.href='admin.html';
-        }else{
-          msg.textContent='Sai tài khoản hoặc mật khẩu';
-          msg.style.display='block';
+      const u = document.getElementById('email-input').value.trim();
+      const p = document.getElementById('password-input').value.trim();
+      const msg = document.getElementById('loginMsg');
+      const btn = document.getElementById('btnLogin');
+      
+      msg.style.display = 'none';
+      btn.textContent = 'Đang đăng nhập...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/auth/login?username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`, {
+          method: 'POST'
+        });
+        
+        if (res.ok) {
+          localStorage.setItem('mts_admin_logged_in', 'true');
+          btn.textContent = 'Thành công!';
+          setTimeout(() => {
+            window.location.href = 'admin.html';
+          }, 1000);
+        } else {
+          msg.textContent = 'Sai tài khoản hoặc mật khẩu';
+          msg.style.display = 'block';
+          btn.textContent = 'Đăng nhập';
+          btn.disabled = false;
         }
-      }catch(e){
-        msg.textContent='Không thể kết nối máy chủ';
-        msg.style.display='block';
+      } catch (e) {
+        msg.textContent = 'Không thể kết nối máy chủ. Vui lòng kiểm tra backend!';
+        msg.style.display = 'block';
+        btn.textContent = 'Đăng nhập';
+        btn.disabled = false;
       }
-    }
+    };
+
+    // Enter to login
+    document.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('btnLogin').click();
+      }
+    });
+
+    // Toggle password visibility
+    document.getElementById('blind-input').addEventListener('change', function() {
+      const passwordInput = document.getElementById('password-input');
+      if (this.checked) {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    });
   </script>
 </body>
 </html>
-
