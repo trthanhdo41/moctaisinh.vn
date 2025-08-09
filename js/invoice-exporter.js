@@ -3,7 +3,7 @@ class InvoiceExporter {
         this.companyInfo = {
             name: 'Mộc Tái Sinh',
             address: '449 Gia Phú, Phường 1, Quận 6, Hồ Chí Minh',
-            phone: '037 3566 167',
+            phone: '077 7666 386',
             email: 'cucphuong6166@gmail.com',
             website: 'moctaisinh.vn',
             taxCode: '0123456789'
@@ -74,7 +74,7 @@ class InvoiceExporter {
             [''],
             ['Thông tin công ty:'],
             ['Địa chỉ:', '449 Gia Phú, Phường 1, Quận 6, Hồ Chí Minh'],
-            ['Điện thoại:', '037 3566 167'],
+            ['Điện thoại:', '077 7666 386'],
             ['Email:', 'cucphuong6166@gmail.com'],
             ['Website:', 'moctaisinh.vn'],
             ['MST:', '0123456789'],
@@ -117,7 +117,7 @@ class InvoiceExporter {
         data.push(['- Chúng tôi cam kết giao hàng đúng thời gian và chất lượng sản phẩm như mô tả']);
         data.push(['- Khách hàng có thể kiểm tra hàng trước khi thanh toán']);
         data.push(['- Chính sách đổi trả trong vòng 7 ngày nếu sản phẩm có lỗi từ nhà sản xuất']);
-        data.push(['- Mọi thắc mắc vui lòng liên hệ: 037 3566 167 hoặc cucphuong6166@gmail.com']);
+        data.push(['- Mọi thắc mắc vui lòng liên hệ: 077 7666 386 hoặc cucphuong6166@gmail.com']);
         data.push(['']);
         data.push(['Cảm ơn quý khách đã tin tưởng và lựa chọn Mộc Tái Sinh!']);
         data.push(['Ngày xuất hóa đơn:', new Date().toLocaleDateString('vi-VN')]);
@@ -357,7 +357,7 @@ class InvoiceExporter {
                     <div class="company-slogan">Đồ gỗ thủ công từ vật liệu tái chế</div>
                     <div class="company-info">
                         <strong>Địa chỉ:</strong> 449 Gia Phú, Phường 1, Quận 6, Hồ Chí Minh<br>
-                        <strong>Điện thoại:</strong> 037 3566 167 | <strong>Email:</strong> cucphuong6166@gmail.com<br>
+                        <strong>Điện thoại:</strong> 077 7666 386 | <strong>Email:</strong> cucphuong6166@gmail.com<br>
                         <strong>Website:</strong> moctaisinh.vn | <strong>MST:</strong> 0123456789
                     </div>
                 </div>
@@ -448,7 +448,7 @@ class InvoiceExporter {
                         <li>Chúng tôi cam kết giao hàng đúng thời gian và chất lượng sản phẩm như mô tả</li>
                         <li>Khách hàng có thể kiểm tra hàng trước khi thanh toán</li>
                         <li>Chính sách đổi trả trong vòng 7 ngày nếu sản phẩm có lỗi từ nhà sản xuất</li>
-                        <li>Mọi thắc mắc vui lòng liên hệ: 037 3566 167 hoặc cucphuong6166@gmail.com</li>
+                        <li>Mọi thắc mắc vui lòng liên hệ: 077 7666 386 hoặc cucphuong6166@gmail.com</li>
                         <li>Sản phẩm được làm thủ công từ vật liệu tái chế, có thể có sự khác biệt nhỏ về màu sắc và kết cấu</li>
                     </ul>
                 </div>

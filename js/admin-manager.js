@@ -118,6 +118,7 @@ class AdminManager {
 
     // Data fetching functions
     async fetchProducts() {
+        // đọc public nên không yêu cầu đăng nhập
         this.showGlobalLoading(true);
         try {
             const response = await fetch(`${this.API_BASE}/api/products`);
@@ -263,8 +264,13 @@ class AdminManager {
     }
 }
 
-// Initialize Admin Manager when DOM is loaded
+// Initialize Admin Manager only after successful login
 document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('mts_admin_logged_in') === 'true';
+    if (!isLoggedIn) {
+        window.location.replace('login.html');
+        return;
+    }
     window.adminManager = new AdminManager();
 });
 
@@ -279,6 +285,9 @@ window.viewOrderDetail = function(index) {
 window.updateOrderStatus = function(index) {
     // This will be implemented in the main admin.html file
     if (window.updateOrderStatusHandler) {
-        window.updateOrderStatusHandler(index);
+        try {
+            if (typeof window.requireLoginOrBlock === 'function') window.requireLoginOrBlock();
+            window.updateOrderStatusHandler(index);
+        } catch (e) { /* blocked */ }
     }
 }; 

@@ -8,6 +8,17 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script>
+    // Chặn truy cập nếu chưa đăng nhập: chuyển sang login.html
+    (function(){
+      const ok = localStorage.getItem('mts_admin_logged_in') === 'true';
+      if (!ok) {
+        document.body.style.display = 'none'; // Ẩn nội dung ngay
+        window.location.href = 'login.html';
+        return;
+      }
+    })();
+  </script>
   <style>
     :root {
       --main-blue: #7EC8E3;
@@ -1037,6 +1048,7 @@
           <li><a href="#products" class="active" data-tab="products">Quản lý sản phẩm</a></li>
           <li><a href="#orders" data-tab="orders">Quản lý đơn hàng</a></li>
           <li><a href="#blogs" data-tab="blogs">Quản lý blog</a></li>
+          <li><a href="#" id="adminLogoutBtn">Đăng xuất</a></li>
         </ul>
       </nav>
       <div class="col-lg-10 admin-content">
@@ -1488,6 +1500,25 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/admin-manager.js"></script>
   <script>
+
+
+    // Xử lý nút đăng xuất
+    document.getElementById('adminLogoutBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      localStorage.removeItem('mts_admin_logged_in');
+      window.location.href = 'index.html';
+    });
+
+    // Chặn mọi thao tác ghi nếu chưa đăng nhập
+    function requireLoginOrBlock() {
+      const ok = localStorage.getItem('mts_admin_logged_in') === 'true';
+      if (!ok) {
+        alert('Phiên đã hết hạn. Vui lòng đăng nhập lại!');
+        window.location.href = 'login.html';
+        throw new Error('NOT_LOGGED_IN');
+      }
+    }
+
     const API_BASE = 'http://localhost:8080';
     function formatVND(number) {
       if (!number) return '';
@@ -1749,6 +1780,7 @@
       modal.show();
     };
     document.getElementById('btnConfirmDelete').onclick = async function () {
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
       if (deleteIdx !== null) {
         const rowIndex = deleteIdx + 2;
         showGlobalLoading(true);
@@ -1784,6 +1816,7 @@
     });
     document.getElementById('productForm').onsubmit = async function (e) {
       e.preventDefault();
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
       if (!validateProductForm()) return;
       const btn = this.querySelector('button[type="submit"]');
       btn.disabled = true;
@@ -2220,6 +2253,7 @@
     };
 
     document.getElementById('btnConfirmDeleteBlog').onclick = async function () {
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
       if (blogDeleteIdx !== null) {
         const b = blogs[blogDeleteIdx];
         // Tìm index thực tế trong allBlogs
@@ -2264,6 +2298,7 @@
     }
     document.getElementById('blogForm').onsubmit = async function (e) {
       e.preventDefault();
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
       if (!validateBlogForm()) return;
       const btn = this.querySelector('button[type="submit"]');
       btn.disabled = true;
@@ -2485,6 +2520,7 @@
 
     document.getElementById('orderStatusForm').onsubmit = async function(e) {
       e.preventDefault();
+      if (typeof requireLoginOrBlock === 'function') { try { requireLoginOrBlock(); } catch(e){ return; } }
       const orderId = document.getElementById('orderStatusId').textContent;
       const newStatus = document.getElementById('orderStatusSelect').value;
       
